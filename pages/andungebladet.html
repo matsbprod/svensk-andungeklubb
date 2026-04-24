@@ -9,40 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/page.css">
-  <style>
-  /* Navbar — matches main page */
-  .navbar {
-    height: 64px; /* starts at small size, header-static.js sets correct height */
-    background: rgba(14,25,35,.92);
-    backdrop-filter: blur(14px);
-    border-bottom: 1px solid rgba(184,145,74,.15);
-  }
-  .nav-links { opacity: 1 !important; } /* always visible on inner pages */
-
-  /* Logo */
-  #logo-block {
-    position: fixed; z-index: 200;
-    pointer-events: none;
-    display: flex; flex-direction: column; align-items: center;
-  }
-  .logo-line {
-    display: block;
-    font-family: "Cinzel", Georgia, serif;
-    font-weight: 400; text-transform: uppercase;
-    line-height: 1.08; white-space: nowrap;
-    color: #f0f4f6;
-  }
-  #duck-img {
-    position: fixed; z-index: 300;
-    pointer-events: none; opacity: 0;
-    filter: brightness(0) invert(1);
-  }
-  #logo-wrap {
-    position: fixed; z-index: 201;
-    top: 0; left: 0; width: 300px; height: 100px;
-    cursor: pointer; text-decoration: none;
-  }
-</style>
+  
 </head>
 <body>
 <nav class="navbar" id="navbar">
@@ -56,7 +23,6 @@
     <a href="kop-och-salj.html">K&#246;p och s&#228;lj</a>
   </div>
 </nav>
-<a href="../index.html" style="position:fixed;z-index:201;top:0;left:0;width:280px;height:100px;cursor:pointer;text-decoration:none" aria-label="Till startsidan"></a>
 <div id="logo-block">
   <span class="logo-line" id="line1">Svensk</span>
   <span class="logo-line" id="line2">Andungeklubb</span>
@@ -214,108 +180,6 @@
 </div>
 
 <script src="../js/duck.js"></script>
-<script src="../js/header-static.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-<script>
-pdfjsLib.GlobalWorkerOptions.workerSrc =
-  'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-
-var observer = new IntersectionObserver(function(entries) {
-  entries.forEach(function(entry) {
-    if (!entry.isIntersecting) return;
-    observer.unobserve(entry.target);
-    var canvas = entry.target;
-    var src = canvas.dataset.src;
-    pdfjsLib.getDocument(src).promise
-      .then(function(pdf) { return pdf.getPage(1); })
-      .then(function(page) {
-        var vp = page.getViewport({scale: 1});
-        var scale = (canvas.parentElement.offsetWidth / vp.width) * 2;
-        var scaled = page.getViewport({scale: scale});
-        canvas.width  = scaled.width;
-        canvas.height = scaled.height;
-        return page.render({canvasContext: canvas.getContext('2d'), viewport: scaled}).promise;
-      })
-      .then(function() { canvas.classList.add('loaded'); })
-      .catch(function(e) { console.log('Thumb failed:', canvas.dataset.src); });
-  });
-}, {rootMargin: '300px'});
-
-document.querySelectorAll('.pdf-canvas').forEach(function(c) { observer.observe(c); });
-</script>
-
-<!-- PDF Lightbox -->
-<div id="pdf-lightbox" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.95);backdrop-filter:blur(8px);flex-direction:column;align-items:center;justify-content:center;">
-  <div style="position:absolute;top:1.2rem;right:1.5rem;display:flex;gap:1.5rem;align-items:center;z-index:2">
-    <span id="pdf-page-info" style="font-family:sans-serif;font-size:.75rem;letter-spacing:.14em;color:rgba(255,255,255,.5)"></span>
-    <a id="pdf-download" href="#" download style="font-family:sans-serif;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--brass);text-decoration:none;border-bottom:1px solid rgba(184,145,74,.3);padding-bottom:2px;">&#8595; Ladda ned</a>
-    <span onclick="closePdf()" style="font-size:2rem;color:rgba(255,255,255,.4);cursor:pointer;line-height:1;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.4)'">&times;</span>
-  </div>
-  <span onclick="prevPage()" id="lb-prev" style="position:absolute;left:1.5rem;top:50%;transform:translateY(-50%);font-size:2rem;color:rgba(255,255,255,.3);cursor:pointer;padding:1rem;user-select:none;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.3)'">&#8592;</span>
-  <span onclick="nextPage()" id="lb-next" style="position:absolute;right:1.5rem;top:50%;transform:translateY(-50%);font-size:2rem;color:rgba(255,255,255,.3);cursor:pointer;padding:1rem;user-select:none;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.3)'">&#8594;</span>
-  <canvas id="pdf-lb-canvas" style="max-width:90vw;max-height:88vh;box-shadow:0 20px 80px rgba(0,0,0,.8);"></canvas>
-  <div id="pdf-loading" style="position:absolute;font-family:sans-serif;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.4)">Laddar...</div>
-</div>
-
-<script>
-var lbPdf = null, lbPage = 1, lbTotal = 0, lbSrc = '';
-var lb = document.getElementById('pdf-lightbox');
-var lbCanvas = document.getElementById('pdf-lb-canvas');
-var lbInfo = document.getElementById('pdf-page-info');
-var lbLoad = document.getElementById('pdf-loading');
-
-function openPdf(src) {
-  lbSrc = src;
-  lb.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-  lbLoad.style.display = 'block';
-  lbCanvas.style.display = 'none';
-  document.getElementById('pdf-download').href = src;
-  lbPage = 1;
-  pdfjsLib.getDocument(src).promise.then(function(pdf) {
-    lbPdf = pdf;
-    lbTotal = pdf.numPages;
-    renderLbPage(lbPage);
-  });
-}
-
-function renderLbPage(n) {
-  if (!lbPdf) return;
-  lbPdf.getPage(n).then(function(page) {
-    var vw = window.innerWidth * 0.88;
-    var vh = window.innerHeight * 0.86;
-    var vp1 = page.getViewport({scale: 1});
-    var scale = Math.min(vw / vp1.width, vh / vp1.height);
-    var vp = page.getViewport({scale: scale});
-    lbCanvas.width  = vp.width;
-    lbCanvas.height = vp.height;
-    lbLoad.style.display = 'none';
-    lbCanvas.style.display = 'block';
-    page.render({canvasContext: lbCanvas.getContext('2d'), viewport: vp}).promise.then(function() {
-      lbInfo.textContent = 'Sida ' + n + ' av ' + lbTotal;
-      document.getElementById('lb-prev').style.opacity = n > 1 ? '1' : '0.2';
-      document.getElementById('lb-next').style.opacity = n < lbTotal ? '1' : '0.2';
-    });
-  });
-}
-
-function closePdf() {
-  lb.style.display = 'none';
-  document.body.style.overflow = '';
-  lbPdf = null;
-}
-
-function nextPage() { if (lbPage < lbTotal) { lbPage++; renderLbPage(lbPage); } }
-function prevPage() { if (lbPage > 1) { lbPage--; renderLbPage(lbPage); } }
-
-lb.addEventListener('click', function(e) { if (e.target === lb) closePdf(); });
-document.addEventListener('keydown', function(e) {
-  if (lb.style.display === 'none') return;
-  if (e.key === 'Escape') closePdf();
-  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') nextPage();
-  if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   prevPage();
-});
-</script>
-
+<script src="../js/header.js"></script>
 </body>
 </html>
