@@ -201,6 +201,93 @@
   <p class="coming-soon">Nummer fr&#229;n 1985&ndash;2022 l&#228;ggs till inom kort.</p>
 </div>
 
+<!-- PDF.js thumbnails -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>
+pdfjsLib.GlobalWorkerOptions.workerSrc =
+  'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+// Lazy thumbnail rendering
+var thumbObserver = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (!entry.isIntersecting) return;
+    thumbObserver.unobserve(entry.target);
+    var canvas = entry.target;
+    var src = canvas.dataset.src;
+    pdfjsLib.getDocument(src).promise
+      .then(function(pdf) { return pdf.getPage(1); })
+      .then(function(page) {
+        var vp = page.getViewport({scale: 1});
+        var scale = (canvas.parentElement.offsetWidth / vp.width) * 2;
+        var scaled = page.getViewport({scale: scale});
+        canvas.width  = scaled.width;
+        canvas.height = scaled.height;
+        return page.render({canvasContext: canvas.getContext('2d'), viewport: scaled}).promise;
+      })
+      .then(function() { canvas.classList.add('loaded'); })
+      .catch(function() {});
+  });
+}, {rootMargin: '300px'});
+
+document.querySelectorAll('.pdf-canvas').forEach(function(c) { thumbObserver.observe(c); });
+
+// Lightbox
+var lbPdf = null, lbPage = 1, lbTotal = 0;
+var lb = document.getElementById('pdf-lightbox');
+var lbCanvas = document.getElementById('pdf-lb-canvas');
+var lbInfo = document.getElementById('pdf-page-info');
+var lbLoad = document.getElementById('pdf-loading');
+
+function openPdf(src) {
+  lb.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  lbLoad.style.display = 'block';
+  lbCanvas.style.display = 'none';
+  document.getElementById('pdf-download').href = src;
+  lbPage = 1;
+  pdfjsLib.getDocument(src).promise.then(function(pdf) {
+    lbPdf = pdf;
+    lbTotal = pdf.numPages;
+    renderLbPage(1);
+  });
+}
+
+function renderLbPage(n) {
+  lbPdf.getPage(n).then(function(page) {
+    var vw = window.innerWidth * 0.88;
+    var vh = window.innerHeight * 0.86;
+    var vp1 = page.getViewport({scale: 1});
+    var scale = Math.min(vw / vp1.width, vh / vp1.height);
+    var vp = page.getViewport({scale: scale});
+    lbCanvas.width  = vp.width;
+    lbCanvas.height = vp.height;
+    lbLoad.style.display = 'none';
+    lbCanvas.style.display = 'block';
+    page.render({canvasContext: lbCanvas.getContext('2d'), viewport: vp}).promise.then(function() {
+      lbInfo.textContent = 'Sida ' + n + ' av ' + lbTotal;
+      document.getElementById('lb-prev').style.opacity = n > 1 ? '1' : '0.2';
+      document.getElementById('lb-next').style.opacity = n < lbTotal ? '1' : '0.2';
+    });
+  });
+}
+
+function closePdf() {
+  lb.style.display = 'none';
+  document.body.style.overflow = '';
+  lbPdf = null;
+}
+
+function nextPage() { if (lbPage < lbTotal) { lbPage++; renderLbPage(lbPage); } }
+function prevPage() { if (lbPage > 1)        { lbPage--; renderLbPage(lbPage); } }
+
+lb.addEventListener('click', function(e) { if (e.target === lb) closePdf(); });
+document.addEventListener('keydown', function(e) {
+  if (lb.style.display === 'none') return;
+  if (e.key === 'Escape')                           closePdf();
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') nextPage();
+  if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   prevPage();
+});
+</script>
 <script src="../js/duck.js"></script>
 <script src="../js/header.js"></script>
 </body>
