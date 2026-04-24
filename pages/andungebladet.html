@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Andungebladet Arkiv — Svensk Andungeklubb</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/page.css">
+  <style>
+    #logo-block { position:fixed;z-index:200;left:clamp(1.5rem,5vw,6rem);display:flex;flex-direction:column;align-items:center;pointer-events:none; }
+    .logo-line { display:block;font-family:"Cinzel",Georgia,serif;font-weight:400;text-transform:uppercase;line-height:1.08;white-space:nowrap;color:#f0f4f6; }
+    #duck-img { position:fixed;z-index:300;pointer-events:none;opacity:0;filter:brightness(0) invert(1); }
+    .archive-body { max-width:var(--max-w);margin:0 auto;padding:5rem var(--pad); }
+    .archive-intro { font-size:1rem;color:var(--white-dim);margin-bottom:3rem;max-width:600px;line-height:1.8; }
+    .archive-year { margin-bottom:3.5rem; }
+    .year-heading {
+      font-family:"Cinzel",serif;font-size:1.6rem;font-weight:400;
+      color:var(--white);letter-spacing:.08em;
+      margin-bottom:1.2rem;padding-bottom:.6rem;
+      border-bottom:1px solid rgba(184,145,74,.2);
+    }
+    .pdf-row { display:flex;flex-wrap:wrap;gap:1.2rem; }
+    .pdf-item {
+      display:flex;flex-direction:column;align-items:center;
+      gap:.6rem;text-decoration:none;
+      width:90px;transition:transform .2s;
+    }
+    .pdf-item:hover { transform:translateY(-3px); }
+    .pdf-icon svg { width:48px;height:58px;display:block; }
+    .pdf-item:hover .pdf-icon svg path:first-child { fill:#1e3a52; }
+    .pdf-label {
+      font-family:sans-serif;font-size:.6rem;
+      letter-spacing:.1em;text-transform:uppercase;
+      color:var(--white-dim);text-align:center;
+      line-height:1.4;transition:color .2s;
+    }
+    .pdf-item:hover .pdf-label { color:var(--brass); }
+    .archive-note {
+      background:var(--card);border-left:2px solid var(--brass);
+      padding:1.2rem 1.6rem;margin-bottom:3rem;
+      font-size:.95rem;color:var(--white-dim);line-height:1.7;
+    }
+    .archive-note a { color:var(--brass); }
+  </style>
+</head>
+<body>
+<nav class="navbar" id="navbar">
+  <div class="nav-links">
+        <a href="om-klubben.html">Om klubben</a>
+    <a href="batregistret.html">B&#229;tregistret</a>
+    <a href="andungebladet.html" style="color:var(--white)">Andungebladet</a>
+    <a href="kappsegling.html">Kappsegling</a>
+    <a href="butiken.html">Butiken</a>
+    <a href="tips-och-rad.html">Tips och r&#229;d</a>
+    <a href="kop-och-salj.html">K&#246;p och s&#228;lj</a>
+  </div>
+</nav>
+<a href="../index.html" style="position:fixed;z-index:201;top:0;left:0;width:280px;height:100px;cursor:pointer;text-decoration:none" aria-label="Till startsidan"></a>
+<div id="logo-block">
+  <span class="logo-line" id="line1">Svensk</span>
+  <span class="logo-line" id="line2">Andungeklubb</span>
+</div>
+<img id="duck-img" src="" alt="">
+
+<div class="page-hero">
+  <div class="page-hero-img"><img src="../img/boat-card.jpg" alt="Andungebladet"></div>
+  <div class="page-hero-grad"></div>
+  <div class="page-hero-content reveal">
+    <p class="lbl">Arkiv</p>
+    <h1>Andungebladet</h1>
+    <p>Medlemsblad fr&aring;n Svensk Andungeklubb sedan 1985.</p>
+  </div>
+</div>
+
+<div class="archive-body">
+  <div class="archive-note">
+    N&aring;gra nummer saknas i arkivet. H&ouml;r g&auml;rna av er om ni kan komplettera.
+    <a href="mailto:register@andunge.se">register@andunge.se</a>
+  </div>
+  <p class="archive-intro">
+    Andungebladet &auml;r Svensk Andungeklubbs medlemstidning. H&auml;r hittar du alla nummer fr&aring;n 1985 och fram&aring;t.
+    Klicka p&aring; ett nummer f&ouml;r att &ouml;ppna det som PDF.
+  </p>
+    <div class="archive-year">
+      <h2 class="year-heading">1985</h2>
+      <div class="pdf-row">
+        <a href="../pdf/andungebladet_01.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 1 1985</span>
+        </a>
+      </div>
+    </div>
+    <div class="archive-year">
+      <h2 class="year-heading">1991</h2>
+      <div class="pdf-row">
+        <a href="../pdf/andungebladet_02.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 1 1991</span>
+        </a>
+      </div>
+    </div>
+    <div class="archive-year">
+      <h2 class="year-heading">1992</h2>
+      <div class="pdf-row">
+        <a href="../pdf/andungebladet_03.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 1 1992</span>
+        </a>
+      </div>
+    </div>
+    <div class="archive-year">
+      <h2 class="year-heading">1993</h2>
+      <div class="pdf-row">
+        <a href="../pdf/andungebladet_04.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 1 1993</span>
+        </a>
+      </div>
+    </div>
+    <div class="archive-year">
+      <h2 class="year-heading">1994</h2>
+      <div class="pdf-row">
+        <a href="../pdf/andungebladet_05.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 1 1994</span>
+        </a>
+      </div>
+    </div>
+    <div class="archive-year">
+      <h2 class="year-heading">1995</h2>
+      <div class="pdf-row">
+        <a href="../pdf/andungebladet_06.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 1 1995</span>
+        </a>
+      </div>
+    </div>
+    <div class="archive-year">
+      <h2 class="year-heading">1996</h2>
+      <div class="pdf-row">
+        <a href="../pdf/andungebladet_07.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 1 1996</span>
+        </a>
+      </div>
+    </div>
+    <div class="archive-year">
+      <h2 class="year-heading">1997</h2>
+      <div class="pdf-row">
+        <a href="../pdf/andungebladet_08.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 1 1997</span>
+        </a>
+      </div>
+    </div>
+    <div class="archive-year">
+      <h2 class="year-heading">1998</h2>
+      <div class="pdf-row">
+        <a href="../pdf/andungebladet_09.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 1 1998</span>
+        </a>
+      </div>
+    </div>
+    <div class="archive-year">
+      <h2 class="year-heading">1999</h2>
+      <div class="pdf-row">
+        <a href="../pdf/andungebladet_10.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 1 1999</span>
+        </a>
+      </div>
+    </div>
+    <div class="archive-year">
+      <h2 class="year-heading">2000</h2>
+      <div class="pdf-row">
+        <a href="../pdf/andungebladet_11.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 1 2000</span>
+        </a>
+      </div>
+    </div>
+    <div class="archive-year">
+      <h2 class="year-heading">2001</h2>
+      <div class="pdf-row">
+        <a href="../pdf/andungebladet_12.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 1 2001</span>
+        </a>
+        <a href="../pdf/andungebladet_13.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 2 2001</span>
+        </a>
+      </div>
+    </div>
+    <div class="archive-year">
+      <h2 class="year-heading">2002</h2>
+      <div class="pdf-row">
+        <a href="../pdf/andungebladet_14.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 1 2002</span>
+        </a>
+        <a href="../pdf/andungebladet_15.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 2 2002</span>
+        </a>
+      </div>
+    </div>
+    <div class="archive-year">
+      <h2 class="year-heading">2003</h2>
+      <div class="pdf-row">
+        <a href="../pdf/andungebladet_16.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 1 2003</span>
+        </a>
+        <a href="../pdf/andungebladet_17.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 2 2003</span>
+        </a>
+      </div>
+    </div>
+    <div class="archive-year">
+      <h2 class="year-heading">2004</h2>
+      <div class="pdf-row">
+        <a href="../pdf/andungebladet_18.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 1 2004</span>
+        </a>
+        <a href="../pdf/andungebladet_19.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 2 2004</span>
+        </a>
+      </div>
+    </div>
+    <div class="archive-year">
+      <h2 class="year-heading">2005</h2>
+      <div class="pdf-row">
+        <a href="../pdf/andungebladet_20.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 1 2005</span>
+        </a>
+        <a href="../pdf/andungebladet_21.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 2 2005</span>
+        </a>
+      </div>
+    </div>
+    <div class="archive-year">
+      <h2 class="year-heading">2006</h2>
+      <div class="pdf-row">
+        <a href="../pdf/andungebladet_22.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 1 2006</span>
+        </a>
+        <a href="../pdf/andungebladet_23.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 2 2006</span>
+        </a>
+      </div>
+    </div>
+    <div class="archive-year">
+      <h2 class="year-heading">2007</h2>
+      <div class="pdf-row">
+        <a href="../pdf/andungebladet_24.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 1 2007</span>
+        </a>
+        <a href="../pdf/andungebladet_25.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 2 2007</span>
+        </a>
+      </div>
+    </div>
+    <div class="archive-year">
+      <h2 class="year-heading">2008</h2>
+      <div class="pdf-row">
+        <a href="../pdf/andungebladet_26.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 1 2008</span>
+        </a>
+        <a href="../pdf/andungebladet_27.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 2 2008</span>
+        </a>
+      </div>
+    </div>
+    <div class="archive-year">
+      <h2 class="year-heading">2009</h2>
+      <div class="pdf-row">
+        <a href="../pdf/andungebladet_28.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 1 2009</span>
+        </a>
+        <a href="../pdf/andungebladet_29.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 2 2009</span>
+        </a>
+      </div>
+    </div>
+    <div class="archive-year">
+      <h2 class="year-heading">2010</h2>
+      <div class="pdf-row">
+        <a href="../pdf/andungebladet_30.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 1 2010</span>
+        </a>
+        <a href="../pdf/andungebladet_31.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 2 2010</span>
+        </a>
+      </div>
+    </div>
+    <div class="archive-year">
+      <h2 class="year-heading">2011</h2>
+      <div class="pdf-row">
+        <a href="../pdf/andungebladet_32.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 1 2011</span>
+        </a>
+        <a href="../pdf/andungebladet_33.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 2 2011</span>
+        </a>
+      </div>
+    </div>
+    <div class="archive-year">
+      <h2 class="year-heading">2012</h2>
+      <div class="pdf-row">
+        <a href="../pdf/andungebladet_34.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 1 2012</span>
+        </a>
+        <a href="../pdf/andungebladet_35.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 2 2012</span>
+        </a>
+      </div>
+    </div>
+    <div class="archive-year">
+      <h2 class="year-heading">2013</h2>
+      <div class="pdf-row">
+        <a href="../pdf/andungebladet_36.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 1 2013</span>
+        </a>
+        <a href="../pdf/andungebladet_37.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 2 2013</span>
+        </a>
+      </div>
+    </div>
+    <div class="archive-year">
+      <h2 class="year-heading">2014</h2>
+      <div class="pdf-row">
+        <a href="../pdf/andungebladet_38.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 1 2014</span>
+        </a>
+        <a href="../pdf/andungebladet_39.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 2 2014</span>
+        </a>
+      </div>
+    </div>
+    <div class="archive-year">
+      <h2 class="year-heading">2015</h2>
+      <div class="pdf-row">
+        <a href="../pdf/andungebladet_40.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 1 2015</span>
+        </a>
+        <a href="../pdf/andungebladet_41.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 2 2015</span>
+        </a>
+      </div>
+    </div>
+    <div class="archive-year">
+      <h2 class="year-heading">2016</h2>
+      <div class="pdf-row">
+        <a href="../pdf/andungebladet_42.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 1 2016</span>
+        </a>
+        <a href="../pdf/andungebladet_43.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 2 2016</span>
+        </a>
+      </div>
+    </div>
+    <div class="archive-year">
+      <h2 class="year-heading">2017</h2>
+      <div class="pdf-row">
+        <a href="../pdf/andungebladet_44.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 1 2017</span>
+        </a>
+        <a href="../pdf/andungebladet_45.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 2 2017</span>
+        </a>
+      </div>
+    </div>
+    <div class="archive-year">
+      <h2 class="year-heading">2018</h2>
+      <div class="pdf-row">
+        <a href="../pdf/andungebladet_46.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 1 2018</span>
+        </a>
+        <a href="../pdf/andungebladet_47.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 2 2018</span>
+        </a>
+      </div>
+    </div>
+    <div class="archive-year">
+      <h2 class="year-heading">2019</h2>
+      <div class="pdf-row">
+        <a href="../pdf/andungebladet_48.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 1 2019</span>
+        </a>
+        <a href="../pdf/andungebladet_49.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 2 2019</span>
+        </a>
+      </div>
+    </div>
+    <div class="archive-year">
+      <h2 class="year-heading">2020</h2>
+      <div class="pdf-row">
+        <a href="../pdf/andungebladet_50.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 1 2020</span>
+        </a>
+        <a href="../pdf/andungebladet_51.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 2 2020</span>
+        </a>
+      </div>
+    </div>
+    <div class="archive-year">
+      <h2 class="year-heading">2021</h2>
+      <div class="pdf-row">
+        <a href="../pdf/andungebladet_52.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 1 2021</span>
+        </a>
+        <a href="../pdf/andungebladet_53.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 2 2021</span>
+        </a>
+      </div>
+    </div>
+    <div class="archive-year">
+      <h2 class="year-heading">2022</h2>
+      <div class="pdf-row">
+        <a href="../pdf/andungebladet_54.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 1 2022</span>
+        </a>
+        <a href="../pdf/andungebladet_55.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 2 2022</span>
+        </a>
+        <a href="../pdf/andungebladet_56.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 3 2022</span>
+        </a>
+      </div>
+    </div>
+    <div class="archive-year">
+      <h2 class="year-heading">2023</h2>
+      <div class="pdf-row">
+        <a href="../pdf/andungebladet_57.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 1 2023</span>
+        </a>
+        <a href="../pdf/andungebladet_58.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 2 2023</span>
+        </a>
+        <a href="../pdf/andungebladet_59.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 3 2023</span>
+        </a>
+      </div>
+    </div>
+    <div class="archive-year">
+      <h2 class="year-heading">2024</h2>
+      <div class="pdf-row">
+        <a href="../pdf/andungebladet_60.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 1 2024</span>
+        </a>
+        <a href="../pdf/andungebladet_61.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 2 2024</span>
+        </a>
+        <a href="../pdf/andungebladet_62.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 3 2024</span>
+        </a>
+      </div>
+    </div>
+    <div class="archive-year">
+      <h2 class="year-heading">2025</h2>
+      <div class="pdf-row">
+        <a href="../pdf/andungebladet_63.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 1 2025</span>
+        </a>
+        <a href="../pdf/andungebladet_64.pdf" target="_blank" class="pdf-item">
+          <div class="pdf-icon">
+            <svg viewBox="0 0 40 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 0H4C1.8 0 0 1.8 0 4v40c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
+              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
+              <text x="20" y="34" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#b8914a">PDF</text>
+            </svg>
+          </div>
+          <span class="pdf-label">Nr 2 2025</span>
+        </a>
+      </div>
+    </div>
+</div>
+
+<script src="../js/duck.js"></script>
+<script src="../js/header-static.js"></script>
+</body>
+</html>

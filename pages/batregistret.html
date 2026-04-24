@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Båtregistret — Svensk Andungeklubb</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/page.css">
+  <style>
+  /* Logo — identical structure to main page */
+  #logo-block {
+    position: fixed;
+    z-index: 200;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .logo-line {
+    display: block;
+    font-family: "Cinzel", Georgia, serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    line-height: 1.08;
+    white-space: nowrap;
+    color: #f0f4f6;
+  }
+  #duck-img {
+    position: fixed;
+    z-index: 300;
+    pointer-events: none;
+    opacity: 0;
+    filter: brightness(0) invert(1);
+  }
+  /* Make logo block clickable via wrapper */
+  #logo-wrap {
+    position: fixed;
+    z-index: 201;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 140px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .andunge-table th {
+    position: sticky !important;
+    top: 208px !important;
+    background: #0c1620 !important;
+    z-index: 50 !important;
+  }
+</style>
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <div class="nav-links">
+        <a href="om-klubben.html">Om klubben</a>
+    <a href="batregistret.html" style="color:var(--white)">B&#229;tregistret</a>
+    <a href="andungebladet.html">Andungebladet</a>
+    <a href="kappsegling.html">Kappsegling</a>
+    <a href="butiken.html">Butiken</a>
+    <a href="tips-och-rad.html">Tips och r&#229;d</a>
+    <a href="kop-och-salj.html">K&#246;p och s&#228;lj</a>
+  </div>
+</nav>
+
+
+<a href="../index.html" id="logo-wrap" aria-label="Till startsidan"></a>
+<div id="logo-block">
+  <span class="logo-line" id="line1">Svensk</span>
+  <span class="logo-line" id="line2">Andungeklubb</span>
+</div>
+<img id="duck-img" src="" alt="">
+
+<div class="page-hero">
+  <div class="page-hero-img"><img src="../img/boat-card.jpg" alt="Båtregistret"></div>
+  <div class="page-hero-grad"></div>
+  <div class="page-hero-content reveal">
+    <p class="lbl">Registret</p>
+    <h1>Båtregistret</h1>
+    <p>149+ registrerade andungar (nr 150–175 saknas ännu). Senast uppdaterat augusti 2023.</p>
+  </div>
+</div>
+
+<div class="page-body">
+  <div class="page-section">
+    <div class="info-box" style="margin-bottom:2rem">
+      <p>För korrigering, ny ägarinformation, bilder eller annat, kontakta Claes-Henrik Möse via <a href="mailto:register@andunge.se" style="color:var(--brass)">register@andunge.se</a></p>
+    </div>
+
+    <div class="table-sticky-bar">
+    <div style="display:flex;gap:1rem;flex-wrap:wrap">
+      <input type="text" id="reg-search" placeholder="Sök på namn, ägare eller hamn..." oninput="filterTable()" style="flex:1;min-width:200px;background:transparent;border:1px solid rgba(184,145,74,.3);color:var(--white);padding:.7rem 1rem;font-family:inherit;font-size:1rem;outline:none">
+      <select id="reg-material" onchange="filterTable()" style="background:var(--card);border:1px solid rgba(184,145,74,.3);color:var(--white);padding:.7rem 1rem;font-family:inherit;font-size:.9rem;outline:none">
+        <option value="">Alla material</option>
+        <option value="Mahogny">Mahogny</option>
+        <option value="Pine">Pine</option>
+      </select>
+    </div>
+    </div><!-- /sticky bar -->
+
+    <div class="table-scroll-x">
+      <table class="andunge-table" id="reg-table">
+        <thead>
+          <tr>
+            <th style="cursor:pointer" onclick="sortTable(0)">Nr ↕</th>
+            <th style="cursor:pointer" onclick="sortTable(1)">Båtnamn ↕</th>
+            <th>Ägare</th>
+            <th style="cursor:pointer" onclick="sortTable(3)">Hemmahamn ↕</th>
+            <th style="cursor:pointer" onclick="sortTable(4)">Byggår ↕</th>
+            <th>Varv</th>
+            <th>Material</th>
+          </tr>
+        </thead>
+        <tbody id="reg-tbody">
+<tr><td>1</td><td><em>Ny dopceremoni vid sjösättning 2026</em></td><td>Jan-Erik Settergren/Torkel Haraldsson</td><td>Onsala</td><td>1954</td><td>Thore Larsson Kungsviken</td><td>Pine</td></tr>
+<tr><td>2</td><td><em>Anki</em></td><td>Ulf Sundquist</td><td>Rindö/Vaxholm</td><td>1954</td><td>Thore Larsson Kungsviken</td><td>Pine</td></tr>
+<tr><td>3</td><td><em>Allikin</em></td><td>Daniel Berg</td><td>Hästudden Tjörn</td><td>1954</td><td>Thore Larsson Kungsviken</td><td>Pine</td></tr>
+<tr class="avford"><td>4</td><td>&mdash;</td><td>Avförd</td><td>Uppbrunnen 27/3 1964</td><td>1955</td><td>Thore Larsson Kungsviken</td><td>Mahogny</td></tr>
+<tr><td>5</td><td><em>Monica</em></td><td>Per Angvert</td><td>Östersund</td><td>1955</td><td>Thore Larsson Kungsviken</td><td>Mahogny</td></tr>
+<tr><td>6</td><td><em>Randi</em></td><td>Bjarne Karlsson</td><td>Flatön</td><td>1955</td><td>Thore Larsson Kungsviken</td><td>Mahogny</td></tr>
+<tr><td>7</td><td><em>Fjundun</em></td><td>Martin Söderlund</td><td>Västerås</td><td>1956</td><td>Thore Larsson Kungsviken</td><td>Mahogny</td></tr>
+<tr><td>8</td><td><em>Kalliope</em></td><td>Roland Pollnow</td><td>Alingsås/Mjörn</td><td>1956</td><td>Thore Larsson Kungsviken</td><td>Mahogny</td></tr>
+<tr><td>9</td><td><em>Dunis</em></td><td>Nils Johansson</td><td>Son</td><td>1959</td><td>Son Asbj. Johnsen</td><td>Pine</td></tr>
+<tr><td>10</td><td><em>Sprutt</em></td><td>Ann Pettersson</td><td>Ellös</td><td>1957</td><td>Thore Larsson Kungsviken</td><td>Pine</td></tr>
+<tr><td>11</td><td><em>Älvan</em></td><td>Rolf Bjelm</td><td>Dingle</td><td>1957</td><td>Thore Larsson Kungsviken</td><td>Pine</td></tr>
+<tr><td>12</td><td><em>Anny</em></td><td>Per Gustavsson</td><td>Gullholmen</td><td>1957</td><td>Thore Larsson Kungsviken</td><td>Mahogny</td></tr>
+<tr><td>13</td><td><em>Solange</em></td><td>Eva Magnusson</td><td>Henån</td><td>1956</td><td>Skåléns, Säffle</td><td>Mahogny</td></tr>
+<tr class="avford"><td>14</td><td>&mdash;</td><td>Avförd</td><td>Vrak</td><td>1957</td><td>Skåléns Säffle</td><td>Mahogny</td></tr>
+<tr><td>15</td><td><em>Quaque</em></td><td>Leif Sjögren</td><td>Billdal</td><td>1957</td><td>Skåléns Säffle</td><td>Mahogny</td></tr>
+<tr class="avford"><td>16</td><td>&mdash;</td><td>Avförd</td><td>Exp San Francisco</td><td>1957</td><td>Skåléns Säffle</td><td>Mahogny</td></tr>
+<tr><td>17</td><td><em>Mimmi</em></td><td>John Carlsson</td><td>Torsö, Vänern</td><td>1957</td><td>Skåléns Säffle</td><td>Mahogny</td></tr>
+<tr><td>18</td><td><em>Mareld</em></td><td>Matilda Wollter Bergman/Harald Hagegård</td><td>Göteborg</td><td>1958</td><td>Skåléns Säffle</td><td>Mahogny</td></tr>
+<tr><td>19</td><td><em>Evangeline</em></td><td>Conny Nylén</td><td>Bohus-Björkö</td><td>1958</td><td>Skåléns Säffle</td><td>Mahogny</td></tr>
+<tr><td>20</td><td><em>Kajsa</em></td><td>Jan Ivarsson</td><td>Lysekil</td><td>1959</td><td>Skåléns, Säffle</td><td>Mahogny</td></tr>
+<tr class="avford"><td>21</td><td>&mdash;</td><td>Avförd</td><td>Exp San Francisco</td><td>1959</td><td>Skåléns Säffle</td><td>Mahogny</td></tr>
+<tr><td>22</td><td><em>Smulan</em></td><td>Ingemar Olsson</td><td>Hyppeln</td><td>1959</td><td>Skåléns Säffle</td><td>Mahogny</td></tr>
+<tr class="avford"><td>23</td><td>&mdash;</td><td>Avförd</td><td>Exp Acapulco</td><td>1959</td><td>Skåléns Säffle</td><td>Mahogny</td></tr>
+<tr><td>24</td><td><em>Molly</em></td><td>Kjell-Åke Jonsson</td><td>Lidköping</td><td>1959</td><td>Skålens, Säffle</td><td>Mahogny</td></tr>
+<tr><td>25</td><td><em>Perlan</em></td><td>Robert Celander</td><td>Raftö</td><td>1959</td><td>Skåléns Säffle</td><td>Mahogny</td></tr>
+<tr><td>26</td><td>&mdash;</td><td>Anders & Lars-Olof Eliasson</td><td>Krossholmen Göteborg</td><td>1959</td><td>Skåléns, Säffle</td><td>Mahogny</td></tr>
+<tr><td>27</td><td><em>Ester</em></td><td>C-H Möse & Lotte Waller</td><td>Ellös</td><td>1959</td><td>Skåléns Säffle</td><td>Mahogny</td></tr>
+<tr><td>28</td><td><em>Siri</em></td><td>Stefan Johansson</td><td>Veddökilen</td><td>1959</td><td>Skåléns Säffle</td><td>Mahogny</td></tr>
+<tr><td>29</td><td><em>Vildanden</em></td><td>Thomas Krook</td><td>Kämpersvik</td><td>1959</td><td>Skåléns, Säffle</td><td>Mahogny</td></tr>
+<tr><td>30</td><td><em>Devocean</em></td><td>Bill Nedderman</td><td>Export USA</td><td>1960</td><td>Skåléns Säffle</td><td>Mahogny</td></tr>
+<tr><td>31</td><td><em>Rapp</em></td><td>Lucien Koopmans</td><td>Kullavik</td><td>1960</td><td>Skåléns Säffle</td><td>Mahogny</td></tr>
+<tr><td>32</td><td><em>Dance</em></td><td>Dan Thorell</td><td>Lökanabben</td><td>1960</td><td>Skåléns Säffle</td><td>Mahogny</td></tr>
+<tr><td>33</td><td><em>Pärlan</em></td><td>Daysi Johansson</td><td>Fjällbacka</td><td>1961</td><td>Skåléns, Säffle</td><td>Mahogny</td></tr>
+<tr><td>34</td><td><em>Seaduction</em></td><td>Torulf Rutgersson</td><td>Skärhamn</td><td>1961</td><td>Skåléns Säffle</td><td>Mahogny</td></tr>
+<tr><td>35</td><td><em>Fanny</em></td><td>Örjan Hedborg</td><td>Bua, Halland</td><td>1962</td><td>Skåléns Säffle</td><td>Mahogny</td></tr>
+<tr class="avford"><td>36</td><td>&mdash;</td><td>Avförd</td><td>Exp Baltimore 1962</td><td>1962</td><td>Skåléns Säffle</td><td>Mahogny</td></tr>
+<tr><td>37</td><td><em>Storvätten</em></td><td>Gunnar Drougge</td><td>Ulebergshamn</td><td>1962</td><td>Skåléns Säffle</td><td>Mahogny</td></tr>
+<tr><td>38</td><td><em>Cygnet</em></td><td>Sebastian Örjenfelt</td><td>Barrevik, Orust</td><td>1962</td><td>Skåléns Säffle</td><td>Mahogny</td></tr>
+<tr><td>39</td><td><em>Andungen</em></td><td>Erik Nelander</td><td>Saltholmen</td><td>1962</td><td>Skåléns Säffle</td><td>Mahogny</td></tr>
+<tr><td>40</td><td>&mdash;</td><td>Thommy Pramås</td><td>Renovering/Björlanda Kile</td><td>1962</td><td>Skåléns Säffle</td><td>Mahogny</td></tr>
+<tr><td>41</td><td><em>Läcker</em></td><td>Lars Nygren</td><td>GKSS Långedrag</td><td>1962</td><td>Skåléns, Säffle</td><td>Mahogny</td></tr>
+<tr><td>42</td><td><em>Dyning</em></td><td>Hans P Hylander</td><td>Getterön</td><td>1962</td><td>Skåléns Säffle</td><td>Mahogny</td></tr>
+<tr><td>43</td><td><em>Ismène</em></td><td>Patrik Stenberg</td><td>Malevik</td><td>1962</td><td>Skåléns Säffle</td><td>Mahogny</td></tr>
+<tr><td>44</td><td>&mdash;</td><td>Börje Svensson</td><td>Bergkvara</td><td>1965</td><td>Börsholmen</td><td>Pine</td></tr>
+<tr><td>45</td><td><em>Trift</em></td><td>Claes Holmén/Hans-Olof Handmark</td><td>Brännö/Henån</td><td>1962</td><td>Skåléns, Säffle</td><td>Mahogny</td></tr>
+<tr><td>46</td><td><em>Flisa</em></td><td>Bengt Engström</td><td>Fotö</td><td>1963</td><td>Skåléns Säffle</td><td>Mahogny</td></tr>
+<tr><td>47</td><td><em>Wilma</em></td><td>Karl-Gunnar Karlsson</td><td>Smögen</td><td>1966</td><td>Skåléns, Säffle</td><td>Mahogny</td></tr>
+<tr><td>48</td><td><em>DNA 48</em></td><td>Martin Sievert</td><td>Långholmen, Stklm</td><td>1963</td><td>Skåléns Säffle</td><td>Mahogny</td></tr>
+<tr><td>49</td><td><em>Halcyon</em></td><td>Katarina Reuter</td><td>Pargas, Åboland</td><td>1963</td><td>Skåléns Säffle</td><td>Mahogny</td></tr>
+<tr><td>50</td><td><em>Pippi</em></td><td>Björn Carlsson</td><td>Revsudden</td><td>1962</td><td>Skåléns Säffle</td><td>Mahogny</td></tr>
+<tr><td>51</td><td><em>Cookie</em></td><td>Familjen Johansson</td><td>Bohuslän</td><td>1963</td><td>Skåléns Säffle</td><td>Mahogny</td></tr>
+<tr><td>52</td><td><em>Talitha</em></td><td>Stefan Werner</td><td>Särö</td><td>1963</td><td>Skåléns Säffle</td><td>Mahogny</td></tr>
+<tr><td>53</td><td><em>Svea</em></td><td>Martin Kössler</td><td>Malevik</td><td>1964</td><td>Skåléns, Säffle</td><td>Mahogny</td></tr>
+<tr><td>54</td><td><em>Stina</em></td><td>Niklas Thormark</td><td>Göteborg</td><td>1963</td><td>Skåléns Säffle</td><td>Mahogny</td></tr>
+<tr><td>55</td><td>&mdash;</td><td>Okänd</td><td>Vrak Nyköping</td><td>1963</td><td>Skåléns Säffle</td><td>Mahogny</td></tr>
+<tr><td>56</td><td><em>Åda</em></td><td>Nils-Eric Smitt</td><td>Billdal</td><td>1964</td><td>Skåléns, Säffle</td><td>Mahogny</td></tr>
+<tr><td>57</td><td><em>Amanda</em></td><td>Sanna Räsenen c/o Bluhm</td><td>Danmark/Marstal</td><td>1964</td><td>Skåléns, Säffle</td><td>Mahogny</td></tr>
+<tr><td>58</td><td><em>Linnea</em></td><td>Per Gabrielsson</td><td>Marstrand</td><td>1964</td><td>Skåléns, Säffle</td><td>Mahogny</td></tr>
+<tr><td>59</td><td><em>Myslund</em></td><td>Anders Aberin</td><td>Dragsö</td><td>1964</td><td>Skåléns Säffle</td><td>Mahogny</td></tr>
+<tr><td>60</td><td><em>Bumerang</em></td><td>Fredrik Nelson</td><td>Jönköping</td><td>1964</td><td>Skåléns Säffle</td><td>Mahogny</td></tr>
+<tr><td>61</td><td><em>Jill</em></td><td>Arne Saxin</td><td>Västerås</td><td>1964</td><td>Skåléns, Säffle</td><td>Mahogny</td></tr>
+<tr><td>62</td><td><em>Skarp</em></td><td>Gunnar Hanson</td><td>Lidköping</td><td>1964</td><td>Skåléns Säffle</td><td>Mahogny</td></tr>
+<tr><td>63</td><td>&mdash;</td><td>Torbjörn Holter</td><td>Kristinehamn</td><td>1964</td><td>Skålén Säffle</td><td>Mahogny</td></tr>
+<tr><td>64</td><td>&mdash;</td><td>Alf Björkner</td><td>Göteborgstrakten</td><td>1964</td><td>Skåléns, Säffle</td><td>Mahogny</td></tr>
+<tr><td>65</td><td><em>Le Petit Canard</em></td><td>Robert Mattsson</td><td>Kullavik</td><td>1964</td><td>Skåléns Säffle</td><td>Mahogny</td></tr>
+<tr><td>66</td><td><em>Vindhä</em></td><td>Jonatan Härngren</td><td>Stockholm</td><td>1964</td><td>Skåléns, Säffle</td><td>Mahogny</td></tr>
+<tr><td>67</td><td><em>AndKan</em></td><td>Claes Burman Barkebo</td><td>Skeppsviken, Uddevalla</td><td>1964</td><td>Skåléns, Säffle</td><td>Mahogny</td></tr>
+<tr><td>68</td><td><em>Greta</em></td><td>Jonas Halvord</td><td>Örn Sotenäs</td><td>1964</td><td>Skåléns, Säffle</td><td>Mahogny</td></tr>
+<tr><td>69</td><td><em>Davina</em></td><td>Carina Bendz</td><td>Fjällbacka</td><td>1965</td><td>Skåléns, Säffle</td><td>Mahogny</td></tr>
+<tr><td>70</td><td><em>Elinor</em></td><td>Eric Horwitz</td><td>Saltsjöbaden</td><td>1965</td><td>Skåléns Säffle</td><td>Mahogny</td></tr>
+<tr><td>71</td><td><em>Elin</em></td><td>Lars Gelin</td><td>Hemholmen, Möja</td><td>1965</td><td>Skåléns Säffle</td><td>Mahogny</td></tr>
+<tr><td>72</td><td><em>Trift</em></td><td>Jörgen Wallentin</td><td>Uppställd Bur</td><td>1965</td><td>Skåléns, Säffle</td><td>Mahogny</td></tr>
+<tr><td>73</td><td><em>Anabelle</em></td><td>Daniel Engblom</td><td>Ellös</td><td>1966</td><td>Skåléns Säffle</td><td>Mahogny</td></tr>
+<tr><td>74</td><td><em>Ängeln III</em></td><td>Patrik Edström</td><td>Ölmanäs/Marstrand</td><td>1966</td><td>Skåléns Säffle</td><td>Mahogny</td></tr>
+<tr class="avford"><td>75</td><td><em>Väst-And</em></td><td>Avförd</td><td>Frankrike</td><td>1967</td><td>Skåléns Säffle</td><td>Mahogny</td></tr>
+<tr><td>76</td><td>&mdash;</td><td>Thomas Skantze</td><td>Mollösund</td><td>1967</td><td>Skåléns Säffle</td><td>Mahogny</td></tr>
+<tr><td>77</td><td><em>FjunDun</em></td><td>Fredrik Wahlgren</td><td>Lerum</td><td>1967</td><td>Skåléns Säffle</td><td>Mahogny</td></tr>
+<tr><td>78</td><td><em>Ferina</em></td><td>Johan Eyssen</td><td>Tjörn</td><td>1968</td><td>Skåléns, Säffle</td><td>Mahogny</td></tr>
+<tr><td>79</td><td>&mdash;</td><td></td><td>Marstrand</td><td>1968</td><td>Skåléns, Säffle</td><td>Mahogny</td></tr>
+<tr><td>80</td><td>&mdash;</td><td>Rolf Hallberg</td><td>Lidköping</td><td>1968</td><td>Skåléns Säffle</td><td>Mahogny</td></tr>
+<tr><td>81</td><td><em>Elina</em></td><td>Gösta Leffler</td><td>Älgö/Saltsjöbaden</td><td>1968</td><td>Skåléns Säffle</td><td>Mahogny</td></tr>
+<tr><td>82</td><td><em>Karisma</em></td><td>Lars Andréasson</td><td>Ängeviken, Kyrkesund</td><td>1968</td><td>Skåléns, Säffle</td><td>Mahogny</td></tr>
+<tr><td>83</td><td>&mdash;</td><td>Marcus Allbäck</td><td>Saltsjöbaden</td><td>1963</td><td>Børsholmen</td><td>Mahogny</td></tr>
+<tr><td>84</td><td><em>Askungen</em></td><td>Wilhelm Lewerth</td><td>Lyr</td><td>1987</td><td>Lars Åhrman, Storebro</td><td>Mahogny</td></tr>
+<tr><td>85</td><td><em>Linnea</em></td><td>Kjell Boman</td><td>Kungsviken</td><td>1989</td><td>Thore Larsson Kungsviken</td><td>Mahogny</td></tr>
+<tr><td>86</td><td><em>Amanda</em></td><td>Patrik Simonson</td><td>Lyr</td><td>1991</td><td>Thore Larsson Kungsviken</td><td>Mahogny</td></tr>
+<tr><td>87</td><td><em>Astrid</em></td><td>Johan Tisell</td><td>Hemviken, Smådalarö</td><td>1991</td><td>Thore Larsson Kungsviken</td><td>Mahogny</td></tr>
+<tr><td>88</td><td>&mdash;</td><td>Urban Johansson</td><td>Tången Mollösund</td><td>1992</td><td>Thore Larsson Kungsviken</td><td>Mahogny</td></tr>
+<tr><td>89</td><td><em>Andra</em></td><td>Jan Engvall</td><td>Svanshall</td><td>1994</td><td>Thore Larsson Kungsviken</td><td>Mahogny</td></tr>
+<tr><td>90</td><td><em>Emilia</em></td><td>Olle Strid</td><td>Kåge</td><td>1995</td><td>Thore Larsson Kungsviken</td><td>Mahogny</td></tr>
+<tr><td>91</td><td><em>Sirius</em></td><td>Ulf Hansson</td><td>Rågådsvik, Skaftö</td><td>1994</td><td>Thore Larsson Kungsviken</td><td>Mahogny</td></tr>
+<tr><td>92</td><td><em>Ellinor II</em></td><td>Lars Liljestrand</td><td>Värmdö</td><td>1995</td><td>Thore Larsson Kungsviken</td><td>Mahogny</td></tr>
+<tr><td>93</td><td><em>Maja III</em></td><td>Johan Algell</td><td>GKSS Långedrag</td><td>1996</td><td>Thore Larsson Kungsviken</td><td>Mahogny</td></tr>
+<tr><td>94</td><td><em>Birgitta</em></td><td>Lars Westerlind</td><td>Skalvik</td><td>1997</td><td>Thore Larsson Kungsviken</td><td>Mahogny</td></tr>
+<tr><td>95</td><td><em>Ulla</em></td><td>Jack Forsgren</td><td>Fjällbacka</td><td>1996</td><td>Thore Larsson Kungsviken</td><td>Mahogny</td></tr>
+<tr><td>96</td><td><em>Eugenia</em></td><td>Mats Blomberg</td><td>Henån</td><td>2014</td><td>Mats Blomberg</td><td>Mahogny</td></tr>
+<tr><td>97</td><td><em>Strad</em></td><td>Bo Knape</td><td>Kullavik</td><td>2012</td><td>Lilla Kålvik</td><td>Mahogny</td></tr>
+<tr><td>98</td><td><em>Lotten</em></td><td>Peter Särneö</td><td>Almaviken, Orust</td><td>2015</td><td>Lilla Kålvik</td><td>Mahogny</td></tr>
+<tr><td>99</td><td>&mdash;</td><td>Ulf Smith</td><td>Mjörn</td><td>2020</td><td>Lilla Kålvik</td><td>Mahogny</td></tr>
+<tr><td>100</td><td><em>Amalia</em></td><td>Roger Hansson</td><td>Fiskebäck</td><td>2021</td><td>Lilla Kålvik</td><td>Mahogny</td></tr>
+        <tr><td>101</td><td>&mdash;</td><td>André Gjerström</td><td>Instön</td><td>197?</td><td>Börsholmen</td><td>Plast</td></tr>
+        <tr><td>102</td><td><em>Nora</em></td><td>Mikael Roos</td><td>Stockholm, Ornö</td><td>1971</td><td>Börsholmen</td><td>Plast</td></tr>
+        <tr><td>103</td><td><em>Rödstrumpa</em></td><td>Per Larsson</td><td>Brännö</td><td>1971</td><td>Börsholmen</td><td>Plast</td></tr>
+        <tr><td>104</td><td>&mdash;</td><td>Leif Königsson</td><td>Lerum</td><td>197?</td><td>Börsholmen</td><td>Plast</td></tr>
+        <tr class="avford"><td>105</td><td>&mdash;</td><td>Upphuggen</td><td>Upphuggen</td><td>1976</td><td>Börsholmen</td><td>Plast</td></tr>
+        <tr><td>106</td><td>&mdash;</td><td>Henrik & Fabian Pedersén</td><td>Ingaröfjorden</td><td>1976</td><td>Börsholmen</td><td>Plast</td></tr>
+        <tr><td>107</td><td><em>Elvira</em></td><td>Per Thurin</td><td>Skeppsmyra, Roslagen</td><td>1977</td><td>Börsholmen</td><td>Plast</td></tr>
+        <tr><td>108</td><td><em>Argo</em></td><td>Karin Rydén</td><td>Hällene Brygga</td><td></td><td>Börsholmen</td><td>Plast</td></tr>
+        <tr><td>109</td><td><em>Pippi</em></td><td>Stefan Holmgren</td><td>Kullavik</td><td>1973</td><td>Börsholmen</td><td>Plast</td></tr>
+        <tr><td>110</td><td><em>Andungen</em></td><td>Mats Lakander</td><td>Vargö</td><td>1981</td><td>Börsholmen</td><td>Plast</td></tr>
+        <tr><td>111</td><td><em>Musslan</em></td><td>Familjen Ottosson</td><td>Gunnersviken, Skärhamn</td><td>1979</td><td>SAK Göteborg</td><td>Plast / blå</td></tr>
+        <tr><td>112</td><td><em>Ena</em></td><td>Nina Romanus</td><td>Björholmen</td><td>1979</td><td>SAK Göteborg</td><td>Plast / röd</td></tr>
+        <tr><td>113</td><td><em>Clown</em></td><td>Charlotte Källfelt</td><td>Ängholmen</td><td>1979</td><td>SAK Göteborg</td><td>Plast</td></tr>
+        <tr><td>114</td><td><em>Anna-Lavinia</em></td><td>Niklas Petersson</td><td>Färjestaden</td><td>1980</td><td>SAK Göteborg</td><td>Plast / vit</td></tr>
+        <tr><td>115</td><td><em>Julia</em></td><td>Claes-Henrik Möse</td><td>Hinsholmen, Gbg</td><td>1980</td><td>SAK Göteborg</td><td>Plast / vit</td></tr>
+        <tr><td>116</td><td><em>Eja</em></td><td>Nils Ekberg</td><td>Brännö</td><td>1982</td><td>SAK Göteborg</td><td>Plast</td></tr>
+        <tr><td>117</td><td><em>Skogsanden Blanke</em></td><td>Håkan Sylvan</td><td>Sommen</td><td>1982</td><td>SAK Göteborg</td><td>Plast</td></tr>
+        <tr><td>118</td><td><em>Gulle-Fjun</em></td><td>Hans Granhed</td><td>Stora Förö Göteborg</td><td>1982</td><td>SAK Göteborg</td><td>Plast</td></tr>
+        <tr><td>119</td><td><em>Elin</em></td><td>Camilla Bränning Hans Bränning</td><td>Brännö</td><td>1977</td><td>Börsholmen</td><td>Plast</td></tr>
+        <tr><td>120</td><td><em>Anna</em></td><td>John Ulnes</td><td>Saltsjöbaden</td><td>1973</td><td>Börsholmen</td><td>Plast</td></tr>
+        <tr><td>121</td><td><em>Blårand</em></td><td>Bo Lind</td><td>Björholmen</td><td>1979</td><td>Börsholmen</td><td>Plast</td></tr>
+        <tr><td>122</td><td><em>Cissi</em></td><td>Björn Axelsson</td><td>Haverdal</td><td>1975</td><td>Börsholmen</td><td>Plast</td></tr>
+        <tr><td>123</td><td><em>Quack</em></td><td>Göran Berghagen</td><td>Kyrkesund</td><td></td><td>Börsholmen</td><td>Plast</td></tr>
+        <tr><td>124</td><td><em>Fröken Andersson</em></td><td>Lennart Roxvall</td><td>Varberg</td><td>1981</td><td>Börsholmen</td><td>Plast</td></tr>
+        <tr><td>125</td><td><em>Amorosa</em></td><td>Lars Strångert</td><td>Djursnäs, Edsbruk</td><td>197?</td><td>Börsholmen</td><td>Plast</td></tr>
+        <tr><td>126</td><td>&mdash;</td><td>Arne Osmundsvaag</td><td>Asker</td><td>1970</td><td>Börsholmen</td><td>Mahogny</td></tr>
+        <tr><td>127</td><td><em>Cirrus</em></td><td>Pehr&Annika Westin</td><td>Svartsö, Stockholm</td><td>1978</td><td>Börsholmen</td><td>Plast</td></tr>
+        <tr><td>128</td><td>&mdash;</td><td>Alf Andersson</td><td>Hinsholmskilen/Flatön</td><td>1970</td><td>Börsholmen</td><td>Plast</td></tr>
+        <tr><td>129</td><td><em>Alma III</em></td><td>Mathiason/Manhed/Knape</td><td>Kullavik</td><td>1981</td><td>Börsholmen</td><td>Plast</td></tr>
+        <tr><td>130</td><td><em>Andrum</em></td><td>Jan Dahlsten</td><td>Kyrkosund, Sydkoster</td><td>1977</td><td>Börsholmen</td><td>Plast</td></tr>
+        <tr><td>131</td><td><em>Demon</em></td><td>Gunnar Rydell</td><td>Kullavik</td><td>1983</td><td>Börsholmen</td><td>Plast</td></tr>
+        <tr><td>132</td><td><em>Elsa</em></td><td>Ami Knee</td><td>Mjösund, Ödsmål</td><td>1976</td><td>Börsholmen</td><td>Plast</td></tr>
+        <tr><td>133</td><td><em>Tidsfördrif</em></td><td>Klas Bennegård & Lennart Mårtensson</td><td>Tångudden</td><td>1980</td><td>Börsholmen</td><td>Plast</td></tr>
+        <tr><td>134</td><td>&mdash;</td><td>Kent Holzner</td><td>Billdal, På trailer</td><td>1979</td><td>Börsholmen</td><td>Plast</td></tr>
+        <tr><td>135</td><td>?</td><td>Bo Pousette</td><td>Långedrag</td><td>1978</td><td>Börsholmen</td><td>Plast</td></tr>
+        <tr><td>136</td><td>&mdash;</td><td>Kenneth Hagselius / Anders Johansson</td><td>Halmstad</td><td></td><td>Börsholmen</td><td>Plast</td></tr>
+        <tr><td>137</td><td><em>Fågel Grå</em></td><td>Henrik Nordhammar</td><td>Nordreviken, Billdal</td><td>1979</td><td>Börsholmen</td><td>Plast</td></tr>
+        <tr><td>138</td><td>&mdash;</td><td>Michael Jessing</td><td>Kornhall</td><td></td><td>Börsholmen</td><td>Plast</td></tr>
+        <tr><td>139</td><td>&mdash;</td><td>Stefan Laursen</td><td>Kalmar</td><td>1974</td><td>Börsholmen</td><td>Plast Blått / grön / vit</td></tr>
+        <tr><td>140</td><td><em>Galant</em></td><td>Jan Strömbeck</td><td>Kullavik, Kungsbacka</td><td>1990</td><td>Son Marin</td><td>Plast</td></tr>
+        <tr><td>141</td><td><em>Unnan</em></td><td>Jan Johansson</td><td>Mollösund</td><td>1977</td><td>Börsholmen</td><td>Plast</td></tr>
+        <tr><td>142</td><td><em>Dunet</em></td><td>Jan Rudberg</td><td>Saltsjöbaden</td><td>2021</td><td>Stockholms Båtsnickeri</td><td>Mahogny</td></tr>
+        <tr><td>143</td><td>&mdash;</td><td>Hans Caspersson</td><td>Göteborg</td><td>1979</td><td>Börsholmen</td><td>Plast</td></tr>
+        <tr><td>144</td><td>&mdash;</td><td>Anders Granéli</td><td>Bunn</td><td>1979</td><td>Börsholmen</td><td>Plast</td></tr>
+        <tr><td>145</td><td>&mdash;</td><td>Mats Andersson & Martin Otterstedl</td><td>Billdal</td><td>1976</td><td>Börsholmen</td><td>Plast</td></tr>
+        <tr><td>146</td><td>&mdash;</td><td>Mikael Jessing</td><td>Kornhall</td><td>2024</td><td>Kornhallsandungen AB</td><td>Plast</td></tr>
+        <tr><td>147</td><td>&mdash;</td><td>Lars Westerlind</td><td>Göteborg</td><td>2024</td><td>Kornhallsandungen AB</td><td>Plast</td></tr>
+        <tr><td>148</td><td>&mdash;</td><td>Michael Jessing</td><td>Kornhallsandungen AB</td><td>1975</td><td>Börsholmen</td><td>Plast</td></tr>
+        <tr><td>149</td><td>&mdash;</td><td>Kornhallsandungen AB</td><td>Kornhallsandungen AB</td><td>1979</td><td>Börsholmen</td><td>Plast</td></tr>
+        <tr><td>176</td><td><em>Da Capo XXVII</em></td><td>Lasse Molse</td><td>Särö/Marstrand</td><td>1991</td><td>Son Marin</td><td>Plast</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p id="reg-count" style="margin-top:1rem;font-family:sans-serif;font-size:.75rem;color:var(--white-dim);letter-spacing:.1em">Visar 100 båtar</p>
+  </div>
+
+  <div class="page-section reveal">
+    <p class="lbl">Registrera din båt</p>
+    <div class="rule"></div>
+    <h2>Lägg till i registret</h2>
+    <p>Äger du en andunge som inte finns i registret? Kontakta registratorn.</p>
+    <a href="mailto:register@andunge.se" class="btn btn-outline" style="margin-top:1rem;display:inline-block">register@andunge.se</a>
+  </div>
+</div>
+
+<style>
+.avford td { opacity: .45; font-style: italic; }
+#reg-tbody tr { cursor: pointer; transition: background .2s; }
+#reg-tbody tr:hover td { background: rgba(184,145,74,.08) !important; }
+.bat-link {
+  color: var(--brass) !important; font-family: sans-serif;
+  font-size: .6rem; letter-spacing: .12em; text-transform: uppercase;
+  text-decoration: none; border-bottom: 1px solid rgba(184,145,74,.3);
+  padding-bottom: 1px; white-space: nowrap; margin-left: .5rem;
+}
+.bat-link:hover { border-color: var(--brass); }
+</style>
+
+<script src="../js/duck.js"></script>
+<script src="../js/header-static.js"></script>
+<script>
+// Clickable rows in register
+document.querySelectorAll('#reg-tbody tr').forEach(function(row) {
+  var nr = row.cells[0] ? parseInt(row.cells[0].textContent.trim()) : 0;
+  if (!nr) return;
+  row.addEventListener('click', function() {
+    window.location.href = 'bat/' + nr + '.html';
+  });
+  if (row.cells[6]) {
+    var a = document.createElement('a');
+    a.className = 'bat-link';
+    a.href = 'bat/' + nr + '.html';
+    a.textContent = 'Visa →';
+    a.addEventListener('click', function(e) { e.stopPropagation(); });
+    row.cells[6].appendChild(a);
+  }
+});
+</script>
+</body>
+</html>

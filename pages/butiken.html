@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Butiken — Svensk Andungeklubb</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/page.css">
+<style>
+  /* Logo — identical structure to main page */
+  #logo-block {
+    position: fixed;
+    z-index: 200;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .logo-line {
+    display: block;
+    font-family: "Cinzel", Georgia, serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    line-height: 1.08;
+    white-space: nowrap;
+    color: #f0f4f6;
+  }
+  #duck-img {
+    position: fixed;
+    z-index: 300;
+    pointer-events: none;
+    opacity: 0;
+    filter: brightness(0) invert(1);
+  }
+  /* Make logo block clickable via wrapper */
+  #logo-wrap {
+    position: fixed;
+    z-index: 201;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 140px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .andunge-table th {
+    position: sticky !important;
+    top: 208px !important;
+    background: #0c1620 !important;
+    z-index: 50 !important;
+  }
+</style>
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <div class="nav-links">
+        <a href="om-klubben.html">Om klubben</a>
+    <a href="batregistret.html">B&#229;tregistret</a>
+    <a href="andungebladet.html">Andungebladet</a>
+    <a href="kappsegling.html">Kappsegling</a>
+    <a href="butiken.html" style="color:var(--white)">Butiken</a>
+    <a href="tips-och-rad.html">Tips och r&#229;d</a>
+    <a href="kop-och-salj.html">K&#246;p och s&#228;lj</a>
+  </div>
+</nav>
+
+
+<a href="../index.html" id="logo-wrap" aria-label="Till startsidan"></a>
+<div id="logo-block">
+  <span class="logo-line" id="line1">Svensk</span>
+  <span class="logo-line" id="line2">Andungeklubb</span>
+</div>
+<img id="duck-img" src="" alt="">
+
+<div class="page-hero">
+  <div class="page-hero-img"><img src="../img/boat-card.jpg" alt="Butiken"></div>
+  <div class="page-hero-grad"></div>
+  <div class="page-hero-content reveal">
+    <p class="lbl">Andungeprylar</p>
+    <h1>Butiken</h1>
+    <p>Betala med Swish &#8212; vi skickar s&#229; snart vi bekr&#228;ftat din betalning.</p>
+  </div>
+</div>
+
+<div class="page-body">
+  <div class="page-section">
+    <div class="info-box reveal" style="margin-bottom:2.5rem">
+      <h3>Hur du best&#228;ller</h3>
+      <p>1. Fyll i orderformuläret nedan &nbsp;&#8594;&nbsp; 2. Swisha beloppet till <strong style="color:var(--white)">123-456 78 90</strong> &nbsp;&#8594;&nbsp; 3. Vi bekräftar och skickar inom 3 arbetsdagar.</p>
+    </div>
+
+    <p class="lbl" style="margin-bottom:1rem">Produkter</p>
+    <div class="shop-grid reveal">
+      <div class="shop-item">
+        <div class="shop-item-img">Foto: Burgunder</div>
+        <div class="shop-item-body">
+          <div class="shop-item-name">Andungeburgunder</div>
+          <div class="shop-item-desc">Klubbens egen flaggburgunder i marinbl&#229;tt och vitt. Storlekar XS&#8211;XXL.</div>
+          <div class="shop-item-price">350 kr</div>
+          <a href="#order" class="btn btn-outline" style="text-align:center">Best&#228;ll</a>
+        </div>
+      </div>
+      <div class="shop-item">
+        <div class="shop-item-img">Foto: T-shirt</div>
+        <div class="shop-item-body">
+          <div class="shop-item-name">T-shirt med andungelogo</div>
+          <div class="shop-item-desc">V&#228;lgpassad t-shirt med tryck av andungens silhuett. 100% ekologisk bomull.</div>
+          <div class="shop-item-price">295 kr</div>
+          <a href="#order" class="btn btn-outline" style="text-align:center">Best&#228;ll</a>
+        </div>
+      </div>
+      <div class="shop-item">
+        <div class="shop-item-img">Foto: Keps</div>
+        <div class="shop-item-body">
+          <div class="shop-item-name">Skepparkeps</div>
+          <div class="shop-item-desc">Klassisk marinbl&#229; skepparkeps med andungeemblem i guld.</div>
+          <div class="shop-item-price">395 kr</div>
+          <a href="#order" class="btn btn-outline" style="text-align:center">Best&#228;ll</a>
+        </div>
+      </div>
+      <div class="shop-item">
+        <div class="shop-item-img">Foto: Modell</div>
+        <div class="shop-item-body">
+          <div class="shop-item-name">Tr&#228;modell 1:20</div>
+          <div class="shop-item-desc">Handgjord tr&#228;modell av andungen i skala 1:20. Perfekt som present eller dekoration.</div>
+          <div class="shop-item-price">1 200 kr</div>
+          <a href="#order" class="btn btn-outline" style="text-align:center">Best&#228;ll</a>
+        </div>
+      </div>
+      <div class="shop-item">
+        <div class="shop-item-img">Foto: Bok</div>
+        <div class="shop-item-body">
+          <div class="shop-item-name">Andungens historia</div>
+          <div class="shop-item-desc">Inbunden bok om andungens historia fr&#229;n 1937 till idag. 180 sidor, rikt illustrerad.</div>
+          <div class="shop-item-price">295 kr</div>
+          <a href="#order" class="btn btn-outline" style="text-align:center">Best&#228;ll</a>
+        </div>
+      </div>
+      <div class="shop-item">
+        <div class="shop-item-img">Foto: Dekaler</div>
+        <div class="shop-item-body">
+          <div class="shop-item-name">Segelm&#228;rke (dekal)</div>
+          <div class="shop-item-desc">Andungens klassiska segelm&#228;rke som v&#228;derbestandig UV-dekal. 15&#215;15 cm.</div>
+          <div class="shop-item-price">95 kr</div>
+          <a href="#order" class="btn btn-outline" style="text-align:center">Best&#228;ll</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-section" id="order">
+    <p class="lbl">Orderformul&#228;r</p>
+    <div class="rule"></div>
+    <h2>Skicka din best&#228;llning</h2>
+    <form class="andunge-form reveal" name="butiken" method="POST" data-netlify="true">
+      <input type="hidden" name="form-name" value="butiken">
+      <div class="form-row">
+        <label>Produkt och storlek</label>
+        <select name="produkt">
+          <option value="">V&#228;lj produkt...</option>
+          <option>Andungeburgunder &#8212; XS (350 kr)</option>
+          <option>Andungeburgunder &#8212; S (350 kr)</option>
+          <option>Andungeburgunder &#8212; M (350 kr)</option>
+          <option>Andungeburgunder &#8212; L (350 kr)</option>
+          <option>Andungeburgunder &#8212; XL (350 kr)</option>
+          <option>T-shirt med andungelogo &#8212; XS (295 kr)</option>
+          <option>T-shirt med andungelogo &#8212; S (295 kr)</option>
+          <option>T-shirt med andungelogo &#8212; M (295 kr)</option>
+          <option>T-shirt med andungelogo &#8212; L (295 kr)</option>
+          <option>T-shirt med andungelogo &#8212; XL (295 kr)</option>
+          <option>Skepparkeps (395 kr)</option>
+          <option>Tr&#228;modell 1:20 (1 200 kr)</option>
+          <option>Andungens historia &#8212; bok (295 kr)</option>
+          <option>Segelm&#228;rke dekal (95 kr)</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label>Antal</label>
+        <input type="number" name="antal" min="1" max="10" value="1">
+      </div>
+      <div class="form-row">
+        <label>Namn</label>
+        <input type="text" name="namn" required placeholder="F&#246;r- och efternamn">
+      </div>
+      <div class="form-row">
+        <label>E-post</label>
+        <input type="email" name="epost" required placeholder="din@epost.se">
+        <p class="form-note">Vi skickar orderbekr&#228;ftelse hit.</p>
+      </div>
+      <div class="form-row">
+        <label>Leveransadress</label>
+        <textarea name="adress" required placeholder="Gatuadress&#10;Postnummer och ort"></textarea>
+      </div>
+      <div class="form-row">
+        <label>Meddelande (valfritt)</label>
+        <textarea name="meddelande" placeholder="&#214;vriga &#246;nskem&#229;l..."></textarea>
+      </div>
+      <button type="submit" class="btn btn-outline" style="width:100%;margin-top:.5rem">Skicka best&#228;llning</button>
+      <p class="form-note" style="text-align:center;margin-top:1rem">
+        Swisha betalningen till <strong style="color:var(--white)">123-456 78 90</strong> efter att du skickat ordern.<br>
+        Ange ditt namn som meddelande. Vi bekr&#228;ftar via e-post.
+      </p>
+    </form>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">Svensk Andungeklubb</div>
+        <p>Klassiska tr&#228;b&#229;tar sedan 1976.<br>Hemmahamn i Hassel&#246;n, Bohusl&#228;n.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Klubben</h4>
+        <ul>
+          <li><a href="andungebladet.html">Andungebladet</a>
+    <a href="om-klubben.html">Om klubben</a></li>
+          <li><a href="medlemmar.html">Bli medlem</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+          <li><a href="medlemmar.html">Protokoll</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Segling</h4>
+        <ul>
+          <li><a href="batregistret.html">B&#229;tregistret</a></li>
+          <li><a href="kappsegling.html">Kappsegling</a></li>
+          <li><a href="kappsegling.html">Kalender</a></li>
+          <li><a href="medlemmar.html">Ritningar</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Mer</h4>
+        <ul>
+          <li><a href="butiken.html">Butiken</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Svensk Andungeklubb</span>
+      <span>Hassel&ouml;n &middot; Bohusl&auml;n &middot; Sverige</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/duck.js"></script>
+<script src="../js/header-static.js"></script>
+</body>
+</html>
