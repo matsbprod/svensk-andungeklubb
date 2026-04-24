@@ -259,6 +259,24 @@
 .bat-link:hover { border-color: var(--brass); }
 </style>
 
+<script>
+// Clickable rows — navigate to bat/NR.html
+document.querySelectorAll('#reg-tbody tr').forEach(function(row) {
+  var nr = row.cells[0] ? parseInt(row.cells[0].textContent.trim()) : 0;
+  if (!nr) return;
+  row.addEventListener('click', function() {
+    window.location.href = 'bat/' + nr + '.html';
+  });
+  if (row.cells[6]) {
+    var a = document.createElement('a');
+    a.className = 'bat-link';
+    a.href = 'bat/' + nr + '.html';
+    a.textContent = 'Visa →';
+    a.addEventListener('click', function(e) { e.stopPropagation(); });
+    row.cells[6].appendChild(a);
+  }
+});
+</script>
 <script src="../js/duck.js"></script>
 <script src="../js/header.js"></script>
 </body>
