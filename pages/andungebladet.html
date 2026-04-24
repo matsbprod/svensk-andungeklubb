@@ -128,7 +128,7 @@
   </div>
 
   <div class="pdf-grid">
-      <a href="../pdf/Andungebladet%201%202025.pdf" target="_blank" class="pdf-card">
+      <a href="#" onclick="openPdf('../pdf/Andungebladet%201%202025.pdf" target="_blank" class="pdf-card">
         <div class="pdf-thumb">
           <canvas class="pdf-canvas" data-src="../pdf/Andungebladet%201%202025.pdf"></canvas>
           <div class="pdf-fallback">
@@ -144,7 +144,7 @@
           <span class="pdf-label">Nr 1 2025</span>
         </div>
       </a>
-      <a href="../pdf/Andungebladet%202%202025.pdf" target="_blank" class="pdf-card">
+      <a href="#" onclick="openPdf('../pdf/Andungebladet%202%202025.pdf" target="_blank" class="pdf-card">
         <div class="pdf-thumb">
           <canvas class="pdf-canvas" data-src="../pdf/Andungebladet%202%202025.pdf"></canvas>
           <div class="pdf-fallback">
@@ -160,7 +160,7 @@
           <span class="pdf-label">Nr 2 2025</span>
         </div>
       </a>
-      <a href="../pdf/Andungebladet%201%202024.pdf" target="_blank" class="pdf-card">
+      <a href="#" onclick="openPdf('../pdf/Andungebladet%201%202024.pdf" target="_blank" class="pdf-card">
         <div class="pdf-thumb">
           <canvas class="pdf-canvas" data-src="../pdf/Andungebladet%201%202024.pdf"></canvas>
           <div class="pdf-fallback">
@@ -176,7 +176,7 @@
           <span class="pdf-label">Nr 1 2024</span>
         </div>
       </a>
-      <a href="../pdf/Andungebladet%202%202024.pdf" target="_blank" class="pdf-card">
+      <a href="#" onclick="openPdf('../pdf/Andungebladet%202%202024.pdf" target="_blank" class="pdf-card">
         <div class="pdf-thumb">
           <canvas class="pdf-canvas" data-src="../pdf/Andungebladet%202%202024.pdf"></canvas>
           <div class="pdf-fallback">
@@ -192,7 +192,7 @@
           <span class="pdf-label">Nr 2 2024</span>
         </div>
       </a>
-      <a href="../pdf/Andungebladet%203%202024.pdf" target="_blank" class="pdf-card">
+      <a href="#" onclick="openPdf('../pdf/Andungebladet%203%202024.pdf" target="_blank" class="pdf-card">
         <div class="pdf-thumb">
           <canvas class="pdf-canvas" data-src="../pdf/Andungebladet%203%202024.pdf"></canvas>
           <div class="pdf-fallback">
@@ -208,7 +208,7 @@
           <span class="pdf-label">Nr 3 2024</span>
         </div>
       </a>
-      <a href="../pdf/Andungebladet%201%202023.pdf" target="_blank" class="pdf-card">
+      <a href="#" onclick="openPdf('../pdf/Andungebladet%201%202023.pdf" target="_blank" class="pdf-card">
         <div class="pdf-thumb">
           <canvas class="pdf-canvas" data-src="../pdf/Andungebladet%201%202023.pdf"></canvas>
           <div class="pdf-fallback">
@@ -224,7 +224,7 @@
           <span class="pdf-label">Nr 1 2023</span>
         </div>
       </a>
-      <a href="../pdf/Andungebladet%202%202023.pdf" target="_blank" class="pdf-card">
+      <a href="#" onclick="openPdf('../pdf/Andungebladet%202%202023.pdf" target="_blank" class="pdf-card">
         <div class="pdf-thumb">
           <canvas class="pdf-canvas" data-src="../pdf/Andungebladet%202%202023.pdf"></canvas>
           <div class="pdf-fallback">
@@ -240,7 +240,7 @@
           <span class="pdf-label">Nr 2 2023</span>
         </div>
       </a>
-      <a href="../pdf/Andungebladet%203%202023.pdf" target="_blank" class="pdf-card">
+      <a href="#" onclick="openPdf('../pdf/Andungebladet%203%202023.pdf" target="_blank" class="pdf-card">
         <div class="pdf-thumb">
           <canvas class="pdf-canvas" data-src="../pdf/Andungebladet%203%202023.pdf"></canvas>
           <div class="pdf-fallback">
@@ -291,5 +291,79 @@ var observer = new IntersectionObserver(function(entries) {
 
 document.querySelectorAll('.pdf-canvas').forEach(function(c) { observer.observe(c); });
 </script>
+
+<!-- PDF Lightbox -->
+<div id="pdf-lightbox" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.95);backdrop-filter:blur(8px);flex-direction:column;align-items:center;justify-content:center;">
+  <div style="position:absolute;top:1.2rem;right:1.5rem;display:flex;gap:1.5rem;align-items:center;z-index:2">
+    <span id="pdf-page-info" style="font-family:sans-serif;font-size:.75rem;letter-spacing:.14em;color:rgba(255,255,255,.5)"></span>
+    <a id="pdf-download" href="#" download style="font-family:sans-serif;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--brass);text-decoration:none;border-bottom:1px solid rgba(184,145,74,.3);padding-bottom:2px;">&#8595; Ladda ned</a>
+    <span onclick="closePdf()" style="font-size:2rem;color:rgba(255,255,255,.4);cursor:pointer;line-height:1;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.4)'">&times;</span>
+  </div>
+  <span onclick="prevPage()" id="lb-prev" style="position:absolute;left:1.5rem;top:50%;transform:translateY(-50%);font-size:2rem;color:rgba(255,255,255,.3);cursor:pointer;padding:1rem;user-select:none;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.3)'">&#8592;</span>
+  <span onclick="nextPage()" id="lb-next" style="position:absolute;right:1.5rem;top:50%;transform:translateY(-50%);font-size:2rem;color:rgba(255,255,255,.3);cursor:pointer;padding:1rem;user-select:none;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.3)'">&#8594;</span>
+  <canvas id="pdf-lb-canvas" style="max-width:90vw;max-height:88vh;box-shadow:0 20px 80px rgba(0,0,0,.8);"></canvas>
+  <div id="pdf-loading" style="position:absolute;font-family:sans-serif;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.4)">Laddar...</div>
+</div>
+
+<script>
+var lbPdf = null, lbPage = 1, lbTotal = 0, lbSrc = '';
+var lb = document.getElementById('pdf-lightbox');
+var lbCanvas = document.getElementById('pdf-lb-canvas');
+var lbInfo = document.getElementById('pdf-page-info');
+var lbLoad = document.getElementById('pdf-loading');
+
+function openPdf(src) {
+  lbSrc = src;
+  lb.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  lbLoad.style.display = 'block';
+  lbCanvas.style.display = 'none';
+  document.getElementById('pdf-download').href = src;
+  lbPage = 1;
+  pdfjsLib.getDocument(src).promise.then(function(pdf) {
+    lbPdf = pdf;
+    lbTotal = pdf.numPages;
+    renderLbPage(lbPage);
+  });
+}
+
+function renderLbPage(n) {
+  if (!lbPdf) return;
+  lbPdf.getPage(n).then(function(page) {
+    var vw = window.innerWidth * 0.88;
+    var vh = window.innerHeight * 0.86;
+    var vp1 = page.getViewport({scale: 1});
+    var scale = Math.min(vw / vp1.width, vh / vp1.height);
+    var vp = page.getViewport({scale: scale});
+    lbCanvas.width  = vp.width;
+    lbCanvas.height = vp.height;
+    lbLoad.style.display = 'none';
+    lbCanvas.style.display = 'block';
+    page.render({canvasContext: lbCanvas.getContext('2d'), viewport: vp}).promise.then(function() {
+      lbInfo.textContent = 'Sida ' + n + ' av ' + lbTotal;
+      document.getElementById('lb-prev').style.opacity = n > 1 ? '1' : '0.2';
+      document.getElementById('lb-next').style.opacity = n < lbTotal ? '1' : '0.2';
+    });
+  });
+}
+
+function closePdf() {
+  lb.style.display = 'none';
+  document.body.style.overflow = '';
+  lbPdf = null;
+}
+
+function nextPage() { if (lbPage < lbTotal) { lbPage++; renderLbPage(lbPage); } }
+function prevPage() { if (lbPage > 1) { lbPage--; renderLbPage(lbPage); } }
+
+lb.addEventListener('click', function(e) { if (e.target === lb) closePdf(); });
+document.addEventListener('keydown', function(e) {
+  if (lb.style.display === 'none') return;
+  if (e.key === 'Escape') closePdf();
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') nextPage();
+  if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   prevPage();
+});
+</script>
+
 </body>
 </html>
