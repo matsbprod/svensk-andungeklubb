@@ -10,6 +10,28 @@
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/page.css">
   
+<style>
+  .archive-body {max-width:var(--max-w);margin:0 auto;padding:3rem var(--pad) 5rem;}
+  .archive-note {background:var(--card);border-left:2px solid var(--brass);padding:1rem 1.5rem;margin-bottom:2.5rem;font-size:.95rem;color:var(--white-dim);line-height:1.7;}
+  .archive-note a {color:var(--brass);}
+  .pdf-grid {display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:1.5rem 1.2rem;}
+  .pdf-card {text-decoration:none;display:flex;flex-direction:column;transition:transform .25s;}
+  .pdf-card:hover {transform:translateY(-4px);}
+  .pdf-thumb {position:relative;aspect-ratio:3/4;background:var(--card);overflow:hidden;border:1px solid rgba(184,145,74,.12);transition:border-color .25s,box-shadow .25s;}
+  .pdf-card:hover .pdf-thumb {border-color:rgba(184,145,74,.5);box-shadow:0 8px 24px rgba(0,0,0,.4);}
+  .pdf-canvas {position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity .4s;}
+  .pdf-canvas.loaded {opacity:1;}
+  .pdf-fallback {position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--card);transition:opacity .4s;}
+  .pdf-canvas.loaded ~ .pdf-fallback {opacity:0;pointer-events:none;}
+  .pdf-fallback svg {width:44px;height:56px;}
+  .pdf-info {padding:.5rem .1rem 0;}
+  .pdf-year {display:block;font-family:sans-serif;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--brass);margin-bottom:.15rem;}
+  .pdf-label {display:block;font-size:.88rem;font-weight:300;color:var(--white-dim);transition:color .2s;}
+  .pdf-card:hover .pdf-label {color:var(--white);}
+  .coming-soon {margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(184,145,74,.1);font-size:.95rem;color:var(--white-dim);font-style:italic;}
+  /* Lightbox */
+  #pdf-lightbox {display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.95);backdrop-filter:blur(8px);flex-direction:column;align-items:center;justify-content:center;}
+</style>
 </head>
 <body>
 <nav class="navbar" id="navbar">
