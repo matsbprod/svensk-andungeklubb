@@ -10,42 +10,39 @@
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/page.css">
 <style>
-  /* Logo — identical structure to main page */
+  /* Navbar — matches main page */
+  .navbar {
+    height: 64px; /* starts at small size, header-static.js sets correct height */
+    background: rgba(14,25,35,.92);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(184,145,74,.15);
+  }
+  .nav-links { opacity: 1 !important; } /* always visible on inner pages */
+
+  /* Logo */
   #logo-block {
-    position: fixed;
-    z-index: 200;
+    position: fixed; z-index: 200;
     pointer-events: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: flex; flex-direction: column; align-items: center;
   }
   .logo-line {
     display: block;
     font-family: "Cinzel", Georgia, serif;
-    font-weight: 400;
-    text-transform: uppercase;
-    line-height: 1.08;
-    white-space: nowrap;
+    font-weight: 400; text-transform: uppercase;
+    line-height: 1.08; white-space: nowrap;
     color: #f0f4f6;
   }
   #duck-img {
-    position: fixed;
-    z-index: 300;
-    pointer-events: none;
-    opacity: 0;
+    position: fixed; z-index: 300;
+    pointer-events: none; opacity: 0;
     filter: brightness(0) invert(1);
   }
-  /* Make logo block clickable via wrapper */
   #logo-wrap {
-    position: fixed;
-    z-index: 201;
-    top: 0;
-    left: 0;
-    width: 300px;
-    height: 140px;
-    cursor: pointer;
-    text-decoration: none;
+    position: fixed; z-index: 201;
+    top: 0; left: 0; width: 300px; height: 100px;
+    cursor: pointer; text-decoration: none;
   }
+
   .andunge-table th {
     position: sticky !important;
     top: 208px !important;

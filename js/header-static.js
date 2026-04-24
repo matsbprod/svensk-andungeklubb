@@ -6,7 +6,7 @@
 
   if (!block) return;
 
-  var NAV_H   = 100;
+  var NAV_H   = 64;
   var PX      = 22;       // fixed font size for inner pages
   var DUCK_AR = 2000 / 1116;
 
