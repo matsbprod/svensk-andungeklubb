@@ -201,6 +201,19 @@
   <p class="coming-soon">Nummer fr&#229;n 1985&ndash;2022 l&#228;ggs till inom kort.</p>
 </div>
 
+
+<!-- Lightbox overlay -->
+<div id="pdf-lightbox" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.95);backdrop-filter:blur(8px);flex-direction:column;align-items:center;justify-content:center;">
+  <div style="position:absolute;top:1.2rem;right:1.5rem;display:flex;gap:1.5rem;align-items:center;z-index:2">
+    <span id="pdf-page-info" style="font-family:sans-serif;font-size:.75rem;letter-spacing:.14em;color:rgba(255,255,255,.5)"></span>
+    <a id="pdf-download" href="#" download style="font-family:sans-serif;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--brass);text-decoration:none;border-bottom:1px solid rgba(184,145,74,.3);padding-bottom:2px;">&#8595; Ladda ned</a>
+    <span onclick="closePdf()" style="font-size:2rem;color:rgba(255,255,255,.5);cursor:pointer;line-height:1;">&times;</span>
+  </div>
+  <span id="lb-prev" onclick="prevPage()" style="position:absolute;left:1.5rem;top:50%;transform:translateY(-50%);font-size:2.5rem;color:rgba(255,255,255,.4);cursor:pointer;padding:1rem;user-select:none;">&#8592;</span>
+  <span id="lb-next" onclick="nextPage()" style="position:absolute;right:1.5rem;top:50%;transform:translateY(-50%);font-size:2.5rem;color:rgba(255,255,255,.4);cursor:pointer;padding:1rem;user-select:none;">&#8594;</span>
+  <div id="pdf-loading" style="color:rgba(255,255,255,.4);font-family:sans-serif;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;">Laddar...</div>
+  <canvas id="pdf-lb-canvas" style="max-width:90vw;max-height:86vh;display:none;box-shadow:0 20px 80px rgba(0,0,0,.8);"></canvas>
+</div>
 <!-- PDF.js thumbnails -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script>
