@@ -65,16 +65,24 @@
 
 <div class="bat-hero">
   <div class="bat-hero-inner">
-    <div>
-      <p class="bat-nr">SWE 96</p>
-      <h1 class="bat-name">—</h1>
-      <p class="bat-owner"></p>
+    <!-- Left: title -->
+    <div class="bat-title-block">
+      <div class="bat-nr-line">
+        <span class="bat-nr">SWE 96</span>
+        <h1 class="bat-name">Eugenia</h1>
+      </div>
+      <p class="bat-owner">Mats Blomberg</p>
     </div>
+    <!-- Right: meta box spans both rows -->
     <div class="bat-meta">
-      <div class="bat-meta-row"><div class="bat-meta-label">Hemmahamn</div><div class="bat-meta-value"></div></div>
-      <div class="bat-meta-row"><div class="bat-meta-label">Byggd</div><div class="bat-meta-value"></div></div>
-      <div class="bat-meta-row"><div class="bat-meta-label">Varv</div><div class="bat-meta-value"></div></div>
-      <div class="bat-meta-row"><div class="bat-meta-label">Material</div><div class="bat-meta-value"></div></div>
+      <div class="bat-meta-row"><div class="bat-meta-label">Hemmahamn</div><div class="bat-meta-value">Hen&#229;n / Kungsviken, Orust</div></div>
+      <div class="bat-meta-row"><div class="bat-meta-label">Bygg&#229;r</div><div class="bat-meta-value">2014</div></div>
+      <div class="bat-meta-row"><div class="bat-meta-label">Varv</div><div class="bat-meta-value">Eget bygge / Stockholms B&#229;tsnickeri</div></div>
+      <div class="bat-meta-row"><div class="bat-meta-label">Material</div><div class="bat-meta-value">Mahogny</div></div>
+    </div>
+    <!-- Bottom left: first photo -->
+    <div class="bat-hero-img" onclick="openLightbox(0)">
+      <img src="../../img/boat/bat_096_2.jpg" alt="Eugenia SWE 96">
     </div>
   </div>
 </div>
@@ -84,9 +92,7 @@
   <div class="bat-description"><p>SWE 96 är byggd i kallbakad mahogny av Mats Blomberg i egen regi. Skrovet består av krysslimmad fanér, i övrigt är den byggd som traditionella träbåtar. Däcket är i plywood med ribbor av Oregon pine. Bygget påbörjades 2002 vid Huvudsta kanot och kappseglingsklubb i Solna. Från början var det ett rent amatörbygge men blev senare någon form av lärlingsprojekt hos det som idag är Stockholms Båtsnickeri. Först i verkstaden i Hammarbyhamnen, Stockholm senare i Fisksätra. Båten färdigställdes på Orust hos båtbyggaren John Gustavssons i Brattås/Kungsviken. Sjösättning skedde 2014 i Henån och sommarhamn är antingen i Kungsviken eller vid boj i Mansvik, nordöstra Orust. Dagseglas främst i vattnen runt norra Orust.</p>
       </div>
   <div class="bat-prev"><h3>Tidigare &auml;gare</h3><table style="border-collapse:collapse"><tr><td style="color:var(--brass);padding-right:1.5rem;white-space:nowrap;font-family:sans-serif;font-size:.85rem">2014</td><td style="color:var(--white)">Mats Blomberg</td></tr></table></div>
-  <div class="bat-photos">      <div class="bat-photo">
-        <img src="../../img/boat/bat_096_2.jpg" alt="SWE 96" loading="lazy">
-      </div>
+  <div class="bat-photos">      
       <div class="bat-photo">
         <img src="../../img/boat/bat_096_3.jpg" alt="SWE 96" loading="lazy">
       </div>
@@ -115,6 +121,7 @@
   var cur=0;
   function show(i){cur=(i+photos.length)%photos.length;lbImg.src=photos[cur].querySelector('img').src;lb.classList.add('open');}
   photos.forEach(function(p,i){p.addEventListener('click',function(){show(i);});});
+window.openLightbox=function(i){show(i);};
   document.getElementById('lb-close').onclick=function(){lb.classList.remove('open');};
   document.getElementById('lb-prev').onclick=function(){show(cur-1);};
   document.getElementById('lb-next').onclick=function(){show(cur+1);};
