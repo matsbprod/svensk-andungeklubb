@@ -13,25 +13,50 @@
     #logo-block { position:fixed;z-index:200;left:clamp(1.5rem,5vw,6rem);display:flex;flex-direction:column;align-items:center;pointer-events:none; }
     .logo-line { display:block;font-family:"Cinzel",Georgia,serif;font-weight:400;text-transform:uppercase;line-height:1.08;white-space:nowrap;color:#f0f4f6; }
     #duck-img { position:fixed;z-index:300;pointer-events:none;opacity:0;filter:brightness(0) invert(1); }
-    .bat-hero { background:var(--card-dark);padding-top:100px;border-bottom:1px solid rgba(184,145,74,.15); }
-    .bat-hero-inner { max-width:var(--max-w);margin:0 auto;padding:3rem var(--pad);display:grid;grid-template-columns:1fr auto;gap:3rem;align-items:start; }
-    .bat-nr { font-family:sans-serif;font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:var(--brass);margin-bottom:.5rem; }
-    .bat-name { font-size:clamp(2.5rem,6vw,5rem);font-weight:300;color:var(--white);letter-spacing:.04em;line-height:1;margin-bottom:.4rem; }
-    .bat-owner { font-size:1.3rem;font-weight:300;color:var(--white-dim);font-style:italic; }
-    .bat-meta { background:var(--card);padding:1.8rem 2rem;min-width:220px; }
-    .bat-meta-row { margin-bottom:.9rem;padding-bottom:.9rem;border-bottom:1px solid rgba(255,255,255,.06); }
+
+    /* Hero grid: title | meta, image | meta */
+    .bat-hero { background:var(--card-dark);padding-top:0;border-bottom:1px solid rgba(184,145,74,.15); }
+    .bat-hero-inner {
+      max-width:var(--max-w); margin:0 auto;
+      padding:120px var(--pad) 2.5rem;
+      display:grid;
+      grid-template-columns:1fr 280px;
+      grid-template-rows:auto auto;
+      gap:1.2rem 2.5rem;
+      align-items:start;
+    }
+    /* Title: full width, row 1 */
+    .bat-title-block { grid-column:1 / 3; grid-row:1; }
+
+    .bat-nr-line { display:flex;align-items:baseline;gap:.8rem;margin-bottom:.3rem; }
+    .bat-nr { font-family:sans-serif;font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:var(--brass); }
+    .bat-name { font-size:clamp(2rem,4vw,3.5rem);font-weight:300;color:var(--white);letter-spacing:.04em;line-height:1; }
+    .bat-owner { font-size:1.1rem;font-weight:300;color:var(--white-dim);font-style:italic;margin-top:.3rem; }
+
+    /* Meta box: right column, spans both rows */
+    .bat-meta { grid-column:2;grid-row:2;background:var(--card);padding:1.5rem 1.8rem;align-self:start; }
+    .bat-meta-row { margin-bottom:.7rem;padding-bottom:.7rem;border-bottom:1px solid rgba(255,255,255,.06); }
     .bat-meta-row:last-child { border:none;margin:0;padding:0; }
-    .bat-meta-label { font-family:sans-serif;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--brass);margin-bottom:.2rem; }
-    .bat-meta-value { font-size:1rem;color:var(--white); }
-    .bat-body { max-width:var(--max-w);margin:0 auto;padding:4rem var(--pad); }
-    .bat-description p { font-size:1.15rem;font-weight:300;color:var(--white);line-height:1.9;max-width:720px;margin-bottom:1.2rem; }
-    .bat-prev { margin:3rem 0; }
-    .bat-prev h3 { font-family:sans-serif;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--brass);margin-bottom:1rem; }
-    .bat-photos { display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;margin:3rem 0; }
+    .bat-meta-label { font-family:sans-serif;font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;color:var(--brass);margin-bottom:.15rem; }
+    .bat-meta-value { font-size:.95rem;color:var(--white); }
+
+    /* Hero image: left column, row 2, top-aligned */
+    .bat-hero-img { grid-column:1;grid-row:2;overflow:hidden;cursor:zoom-in;align-self:start; }
+    .bat-hero-img img { width:100%;height:auto;display:block;object-fit:contain;transition:transform .5s ease; }
+    .bat-hero-img:hover img { transform:scale(1.03); }
+
+    /* Body */
+    .bat-body { max-width:var(--max-w);margin:0 auto;padding:3rem var(--pad); }
+    .bat-description p { font-size:1.05rem;font-weight:300;color:var(--white);line-height:1.6;max-width:720px;margin-bottom:.7rem; }
+    .bat-prev { margin:2rem 0; }
+    .bat-prev h3 { font-family:sans-serif;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--brass);margin-bottom:.8rem; }
+    .bat-photos { display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem;margin:2rem 0; }
     .bat-photo { cursor:zoom-in;overflow:hidden; }
-    .bat-photo img { width:100%;height:auto;display:block;object-fit:contain;transition:transform .5s ease; }
-    .bat-photo:hover img { transform:scale(1.04); }
-    .bat-back { display:inline-flex;align-items:center;gap:.5rem;font-family:sans-serif;font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--brass);margin-bottom:2rem;border-bottom:1px solid rgba(184,145,74,.3);padding-bottom:2px;text-decoration:none; }
+    .bat-photo img { width:100%;height:auto;display:block;max-height:480px;object-fit:contain;background:var(--card-dark);transition:transform .5s ease; }
+    .bat-photo:hover img { transform:scale(1.03); }
+    .bat-back { display:inline-flex;align-items:center;gap:.5rem;font-family:sans-serif;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--brass);margin-bottom:1.5rem;border-bottom:1px solid rgba(184,145,74,.3);padding-bottom:2px;text-decoration:none; }
+
+    /* Lightbox */
     #lightbox { display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);backdrop-filter:blur(8px);align-items:center;justify-content:center;flex-direction:column; }
     #lightbox.open { display:flex; }
     #lightbox img { max-width:90vw;max-height:82vh;object-fit:contain; }
@@ -41,7 +66,7 @@
     #lb-prev, #lb-next { position:absolute;top:50%;transform:translateY(-50%);font-size:2rem;color:rgba(255,255,255,.4);cursor:pointer;padding:1rem; }
     #lb-prev { left:1rem; } #lb-next { right:1rem; }
     #lb-prev:hover, #lb-next:hover { color:#fff; }
-    @media(max-width:700px) { .bat-hero-inner { grid-template-columns:1fr; } }
+    @media(max-width:700px) { .bat-hero-inner { grid-template-columns:1fr; } .bat-meta { grid-column:1;grid-row:auto; } .bat-hero-img { grid-row:auto; } }
   </style>
 </head>
 <body>
@@ -65,16 +90,19 @@
 
 <div class="bat-hero">
   <div class="bat-hero-inner">
-    <div>
-      <p class="bat-nr">SWE 41</p>
-      <h1 class="bat-name">—</h1>
-      <p class="bat-owner"></p>
+    <div class="bat-title-block">
+      <div class="bat-nr-line">
+        <span class="bat-nr">SWE 41</span>
+        <h1 class="bat-name">Läcker</h1>
+      </div>
+      <p class="bat-owner">Lars Nygren</p>
     </div>
+    <div class="bat-hero-img" onclick="openLightbox(0)"><img src="../../img/boat/bat_041_2.jpg" alt="SWE 41"></div>
     <div class="bat-meta">
-      <div class="bat-meta-row"><div class="bat-meta-label">Hemmahamn</div><div class="bat-meta-value"></div></div>
-      <div class="bat-meta-row"><div class="bat-meta-label">Byggd</div><div class="bat-meta-value"></div></div>
-      <div class="bat-meta-row"><div class="bat-meta-label">Varv</div><div class="bat-meta-value"></div></div>
-      <div class="bat-meta-row"><div class="bat-meta-label">Material</div><div class="bat-meta-value"></div></div>
+      <div class="bat-meta-row"><div class="bat-meta-label">Hemmahamn</div><div class="bat-meta-value">GKSS Långedrag</div></div>
+      <div class="bat-meta-row"><div class="bat-meta-label">Bygg&aring;r</div><div class="bat-meta-value">1962</div></div>
+      <div class="bat-meta-row"><div class="bat-meta-label">Varv</div><div class="bat-meta-value">Skåléns, Säffle</div></div>
+      <div class="bat-meta-row"><div class="bat-meta-label">Material</div><div class="bat-meta-value">Mahogny</div></div>
     </div>
   </div>
 </div>
@@ -84,9 +112,7 @@
   <div class="bat-description"><p>&#8203;</p>
       </div>
   <div class="bat-prev"><h3>Tidigare &auml;gare</h3><table style="border-collapse:collapse"><tr><td style="color:var(--brass);padding-right:1.5rem;white-space:nowrap;font-family:sans-serif;font-size:.85rem">1962</td><td style="color:var(--white)">Hans Winge1969</td></tr><tr><td style="color:var(--brass);padding-right:1.5rem;white-space:nowrap;font-family:sans-serif;font-size:.85rem">1969</td><td style="color:var(--white)">Ingemar Andersson</td></tr><tr><td style="color:var(--brass);padding-right:1.5rem;white-space:nowrap;font-family:sans-serif;font-size:.85rem">1974</td><td style="color:var(--white)">Nils Bernhardsson</td></tr><tr><td style="color:var(--brass);padding-right:1.5rem;white-space:nowrap;font-family:sans-serif;font-size:.85rem">1979</td><td style="color:var(--white)">Agneta Nilsson</td></tr><tr><td style="color:var(--brass);padding-right:1.5rem;white-space:nowrap;font-family:sans-serif;font-size:.85rem">1984</td><td style="color:var(--white)">Gunnar Drougge</td></tr><tr><td style="color:var(--brass);padding-right:1.5rem;white-space:nowrap;font-family:sans-serif;font-size:.85rem">1986</td><td style="color:var(--white)">Hans Carlewitz</td></tr><tr><td style="color:var(--brass);padding-right:1.5rem;white-space:nowrap;font-family:sans-serif;font-size:.85rem">1988</td><td style="color:var(--white)">Lennart Hansson</td></tr><tr><td style="color:var(--brass);padding-right:1.5rem;white-space:nowrap;font-family:sans-serif;font-size:.85rem">1992</td><td style="color:var(--white)">Frank Olof Zingaropoli</td></tr><tr><td style="color:var(--brass);padding-right:1.5rem;white-space:nowrap;font-family:sans-serif;font-size:.85rem">1995</td><td style="color:var(--white)">Lars Hedberg</td></tr><tr><td style="color:var(--brass);padding-right:1.5rem;white-space:nowrap;font-family:sans-serif;font-size:.85rem">2006</td><td style="color:var(--white)">Lars Nygren</td></tr></table></div>
-  <div class="bat-photos">      <div class="bat-photo">
-        <img src="../../img/boat/bat_041_2.jpg" alt="SWE 41" loading="lazy">
-      </div>
+  <div class="bat-photos">
 </div>
   <a href="../../pages/batregistret.html" class="bat-back">&larr; &Aring;ter b&aring;t&ouml;versikt</a>
 </div>
@@ -109,9 +135,22 @@
   var cur=0;
   function show(i){cur=(i+photos.length)%photos.length;lbImg.src=photos[cur].querySelector('img').src;lb.classList.add('open');}
   photos.forEach(function(p,i){p.addEventListener('click',function(){show(i);});});
+// Include hero image in lightbox array
+  var heroImg = document.querySelector('.bat-hero-img img');
+  var allImgs = heroImg ? [heroImg].concat(photos.map(function(p){return p.querySelector('img');})) : photos.map(function(p){return p.querySelector('img');});
+  function showImg(i){
+    cur=(i+allImgs.length)%allImgs.length;
+    lbImg.src=allImgs[cur].src;
+    lb.classList.add('open');
+  }
+  window.openLightbox=function(i){showImg(i);};
+  // Override photo clicks to use combined array
+  photos.forEach(function(p,i){
+    p.onclick=function(){showImg(i+1);}; // +1 because hero is index 0
+  });
   document.getElementById('lb-close').onclick=function(){lb.classList.remove('open');};
-  document.getElementById('lb-prev').onclick=function(){show(cur-1);};
-  document.getElementById('lb-next').onclick=function(){show(cur+1);};
+  document.getElementById('lb-prev').onclick=function(){showImg(cur-1);};
+  document.getElementById('lb-next').onclick=function(){showImg(cur+1);};
   lb.addEventListener('click',function(e){if(e.target===lb)lb.classList.remove('open');});
   document.addEventListener('keydown',function(e){if(!lb.classList.contains('open'))return;if(e.key==='Escape')lb.classList.remove('open');if(e.key==='ArrowLeft')show(cur-1);if(e.key==='ArrowRight')show(cur+1);});
 })();
