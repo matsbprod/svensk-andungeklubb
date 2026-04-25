@@ -230,7 +230,7 @@
 /* Sticky search bar above the register table */
 .table-sticky-bar {
   position: sticky;
-  top: 140px;
+  top: 64px;
   z-index: 60;
   background: var(--bg);
   padding: 1rem 0;
