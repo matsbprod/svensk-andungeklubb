@@ -9,9 +9,9 @@
 
   var SCROLL_END = 300;
   var NAV_SMALL  = 140;   // navbar height at page top
-  var NAV_LARGE  = 64;    // navbar height when scrolled (logo shrunk)
+  var NAV_LARGE  = 220;    // navbar height when scrolled (logo shrunk)
   var SMALL_PX   = 38;    // font size at page top (large)
-  var LARGE_PX   = 15;    // font size when scrolled (small)
+  var LARGE_PX   = 60;    // font size when scrolled (small)
   var DUCK_AR    = 2000 / 1116;
 
   function clamp(v,a,b){ return Math.min(Math.max(v,a),b); }
