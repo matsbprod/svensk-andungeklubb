@@ -51,29 +51,41 @@
     <div style="display:flex;flex-direction:column;gap:1.5rem;margin-top:1.5rem">
 
       <div class="info-box" style="position:relative">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.5rem;margin-bottom:.9rem">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem">
           <div>
             <span style="font-family:'Cinzel',serif;font-size:.75em;letter-spacing:.07em;color:var(--brass)">TILL SALU · BÅT</span>
             <h3 style="margin:.2rem 0 0">Andunge nr 76</h3>
           </div>
           <span style="font-family:'Cinzel',serif;font-size:1.05em;color:var(--white);white-space:nowrap">50 000 kr</span>
         </div>
-        <p style="margin:0 0 .8rem">Båten är i gott skick och har renoverats på Lilla Kålviks varv. Kappseglingsutrustad med ett North segelställ och ny spinnaker. Dokumentation och fotografier från renovering finns. Till båten hör en metallmast och bom.</p>
-        <div style="font-size:.85em;opacity:.65;margin-top:.6rem">Kontakt: <a href="mailto:info@andunge.se" class="brass">info@andunge.se</a> &nbsp;·&nbsp; Annonsör: Tomas Skantze</div>
+        <img src="../img/SWE_76.jpg" alt="Andunge SWE 76" style="width:100%;max-height:340px;object-fit:cover;border-radius:3px;margin-bottom:1rem;border:1px solid rgba(184,145,74,.15)">
+        <p style="margin:0 0 .8rem">Andunge nr 76 säljes. Båten är i gott skick och har renoverats på Lilla Kålviks varv. Kappseglingsutrustad med ett North segelställ och ny spinnaker. Dokumentation och fotografier från renovering finns. Till båten hör en metallmast och bom.</p>
+        <div style="font-size:.88em;margin-top:.9rem;display:flex;flex-direction:column;gap:.25rem;opacity:.8">
+          <div>Kontakt: <strong style="color:var(--white)">Tomas</strong></div>
+          <div>Mobil: <a href="tel:+46708238782" class="brass">0708-238782</a></div>
+        </div>
       </div>
 
     </div>
   </div>
 
   <div class="page-section reveal" id="ny-annons" style="margin-top:3rem">
-    <p class="lbl">Lägg upp annons</p>
+    <p class="lbl">Kontakta oss</p>
     <div class="rule"></div>
-    <h2>Vill du sälja?</h2>
-    <p>Skicka in din annons nedan så publicerar vi den här. Gäller andungar, utrustning och tillbehör.</p>
+    <h2>Vill du sälja eller köpa?</h2>
+    <p>Skicka in din annons nedan så publicerar vi den här. Letar du efter en andunge? Lägg upp en köpes-annons så når du klubbens medlemmar.</p>
     <form class="andunge-form" name="kop-och-salj" method="POST" data-netlify="true" style="margin-top:1.5rem">
       <input type="hidden" name="form-name" value="kop-och-salj">
       <div class="form-row">
-        <label>Vad säljer du? <span style="color:var(--brass)">*</span></label>
+        <label>Typ av annons <span style="color:var(--brass)">*</span></label>
+        <select name="typ" required onchange="updateFormLabels(this.value)">
+          <option value="">Välj...</option>
+          <option value="saljes">Säljes</option>
+          <option value="kopes">Köpes</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label id="label-kategori">Kategori <span style="color:var(--brass)">*</span></label>
         <select name="kategori">
           <option value="">Välj kategori...</option>
           <option>Båt</option>
@@ -85,13 +97,13 @@
       </div>
       <div class="form-row">
         <label>Rubrik <span style="color:var(--brass)">*</span></label>
-        <input type="text" name="rubrik" required placeholder="t.ex. Andunge nr 42 till salu">
+        <input type="text" name="rubrik" required placeholder="t.ex. Andunge nr 42 till salu / sökes">
       </div>
       <div class="form-row">
-        <label>Beskrivning <span style="color:var(--brass)">*</span></label>
-        <textarea name="beskrivning" required placeholder="Beskriv vad du säljer..."></textarea>
+        <label id="label-beskrivning">Beskrivning <span style="color:var(--brass)">*</span></label>
+        <textarea name="beskrivning" required placeholder="Beskriv vad du säljer eller söker..."></textarea>
       </div>
-      <div class="form-row">
+      <div class="form-row" id="pris-row">
         <label>Pris (SEK)</label>
         <input type="text" name="pris" placeholder="t.ex. 45 000">
       </div>
@@ -113,6 +125,22 @@
   </div>
 </div>
 
+<script>
+function updateFormLabels(typ) {
+  var prisRow = document.getElementById('pris-row');
+  var beskLabel = document.getElementById('label-beskrivning');
+  var katLabel = document.getElementById('label-kategori');
+  if (typ === 'kopes') {
+    prisRow.style.display = 'none';
+    beskLabel.childNodes[0].textContent = 'Vad söker du? ';
+    katLabel.childNodes[0].textContent = 'Kategori ';
+  } else {
+    prisRow.style.display = '';
+    beskLabel.childNodes[0].textContent = 'Beskrivning ';
+    katLabel.childNodes[0].textContent = 'Kategori ';
+  }
+}
+</script>
 <script src="../js/duck.js"></script>
 <script src="../js/header.js"></script>
 </body>
