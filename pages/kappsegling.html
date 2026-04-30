@@ -386,16 +386,17 @@ var thumbObserver = new IntersectionObserver(function(entries) {
       .then(function(pdf) { return pdf.getPage(1); })
       .then(function(page) {
         var vp = page.getViewport({scale:1});
-        var scale = (canvas.parentElement.offsetWidth / vp.width) * 2;
+        var containerW = canvas.parentElement.offsetWidth || 120;
+        var scale = (containerW / vp.width) * 2;
         var scaled = page.getViewport({scale:scale});
         canvas.width = scaled.width; canvas.height = scaled.height;
         return page.render({canvasContext:canvas.getContext('2d'), viewport:scaled}).promise;
       })
-      .then(function() { canvas.style.opacity = '1'; canvas.nextElementSibling.style.opacity = '0'; })
+      .then(function() { canvas.style.opacity = '1'; if (canvas.nextElementSibling) canvas.nextElementSibling.style.opacity = '0'; })
       .catch(function(){});
   });
 }, {rootMargin:'300px'});
-document.querySelectorAll('.pdf-canvas').forEach(function(c) { thumbObserver.observe(c); });
+document.querySelectorAll('.pdf-canvas[data-src]').forEach(function(c) { thumbObserver.observe(c); });
 
 // Lightbox
 var vmPdf = null, vmPage = 1, vmTotal = 0;
