@@ -9,14 +9,58 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/page.css">
-
 <style>
-.andunge-table th {
-    position: sticky !important;
-    top: 208px !important;
-    background: #0c1620 !important;
-    z-index: 50 !important;
-  }
+.shop-qty-row {
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+  margin-top: .75rem;
+  flex-wrap: wrap;
+}
+.qty-btn {
+  background: rgba(184,145,74,.15);
+  border: 1px solid rgba(184,145,74,.4);
+  color: var(--brass);
+  width: 28px;
+  height: 28px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .15s;
+}
+.qty-btn:hover { background: rgba(184,145,74,.3); }
+.qty-val {
+  min-width: 1.4rem;
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  font-size: .95em;
+  color: var(--white);
+}
+.qty-added {
+  font-size: .8em;
+  color: var(--brass);
+  opacity: .85;
+}
+.size-select {
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(184,145,74,.3);
+  color: var(--white);
+  padding: .2rem .45rem;
+  border-radius: 3px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: .9em;
+}
+#cart-lines li {
+  display: flex;
+  justify-content: space-between;
+  padding: .3rem 0;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  font-size: .9em;
+  color: rgba(240,244,246,.85);
+}
+#cart-lines li:last-child { border-bottom: none; }
 </style>
 </head>
 <body>
@@ -25,15 +69,14 @@
   <div class="nav-links">
     <a href="../index.html">Hem</a>
     <a href="om-klubben.html">Om klubben</a>
-    <a href="batregistret.html">B&#229;tregistret</a>
+    <a href="batregistret.html">Båtregistret</a>
     <a href="andungebladet.html">Andungebladet</a>
     <a href="kappsegling.html">Kappsegling</a>
     <a href="butiken.html" style="color:var(--white)">Butiken</a>
-    <a href="tips-och-rad.html">Tips och r&#229;d</a>
-    <a href="kop-och-salj.html">K&#246;p och s&#228;lj</a>
+    <a href="tips-och-rad.html">Tips och råd</a>
+    <a href="kop-och-salj.html">Köp och sälj</a>
   </div>
 </nav>
-
 
 <a href="../index.html" style="position:fixed;z-index:201;top:0;left:0;width:320px;height:220px;cursor:pointer;text-decoration:none" aria-label="Hem"></a>
 <div id="logo-block">
@@ -48,114 +91,281 @@
   <div class="page-hero-content reveal">
     <p class="lbl">Andungeprylar</p>
     <h1>Butiken</h1>
-    <p>Betala med Swish &#8212; vi skickar s&#229; snart vi bekr&#228;ftat din betalning.</p>
+    <p>Välj produkter, skicka beställning och betala med Swish eller Plusgiro.</p>
   </div>
 </div>
 
 <div class="page-body">
   <div class="page-section">
     <div class="info-box reveal" style="margin-bottom:2.5rem">
-      <h3>Hur du best&#228;ller</h3>
-      <p>1. Fyll i orderformuläret nedan &nbsp;&#8594;&nbsp; 2. Swisha beloppet till <strong style="color:var(--white)">123-456 78 90</strong> &nbsp;&#8594;&nbsp; 3. Vi bekräftar och skickar inom 3 arbetsdagar.</p>
+      <h3>Hur du beställer</h3>
+      <p>1. Lägg produkter i varukorgen &nbsp;→&nbsp; 2. Fyll i dina uppgifter &nbsp;→&nbsp; 3. Skicka beställning &nbsp;→&nbsp; 4. Betala via Swish <strong style="color:var(--white)">123 143 15 84</strong> eller Plusgiro <strong style="color:var(--white)">62 00 96-8</strong>. Vi bekräftar och skickar inom 3 arbetsdagar.</p>
     </div>
 
     <p class="lbl" style="margin-bottom:1rem">Produkter</p>
-    <div class="shop-grid reveal">
-      <div class="shop-item">
-        <div class="shop-item-img">Foto: Burgunder</div>
+    <div class="shop-grid reveal" id="shop-grid">
+
+      <div class="shop-item" data-id="1" data-name="Keps, blå" data-price="210">
+        <div class="shop-item-img" style="background:#1a2e42;display:flex;align-items:center;justify-content:center;font-size:2.5rem">🧢</div>
         <div class="shop-item-body">
-          <div class="shop-item-name">Andungeburgunder</div>
-          <div class="shop-item-desc">Klubbens egen flaggburgunder i marinbl&#229;tt och vitt. Storlekar XS&#8211;XXL.</div>
+          <div class="shop-item-name">Keps, blå</div>
+          <div class="shop-item-desc">Marinblå keps med Andungeemblem.</div>
+          <div class="shop-item-price">210 kr</div>
+          <div class="shop-qty-row">
+            <button class="qty-btn" onclick="changeQty(1,-1)">−</button>
+            <span class="qty-val" id="qty-1">0</span>
+            <button class="qty-btn" onclick="changeQty(1,1)">+</button>
+            <span class="qty-added" id="added-1"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="shop-item" data-id="2" data-name="Keps, vit" data-price="210">
+        <div class="shop-item-img" style="background:#1a2e42;display:flex;align-items:center;justify-content:center;font-size:2.5rem">🧢</div>
+        <div class="shop-item-body">
+          <div class="shop-item-name">Keps, vit</div>
+          <div class="shop-item-desc">Vit keps med Andungeemblem.</div>
+          <div class="shop-item-price">210 kr</div>
+          <div class="shop-qty-row">
+            <button class="qty-btn" onclick="changeQty(2,-1)">−</button>
+            <span class="qty-val" id="qty-2">0</span>
+            <button class="qty-btn" onclick="changeQty(2,1)">+</button>
+            <span class="qty-added" id="added-2"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="shop-item" data-id="3" data-name="Piké Navy (ny version)" data-price="475" data-sizes="true">
+        <div class="shop-item-img" style="background:#1a2e42;display:flex;align-items:center;justify-content:center;font-size:2.5rem">👕</div>
+        <div class="shop-item-body">
+          <div class="shop-item-name">Piké Navy, ny version</div>
+          <div class="shop-item-desc">Marinblå pikétröja med Andungeemblem. Storlekar XS–XXL.</div>
+          <div class="shop-item-price">475 kr</div>
+          <div class="shop-qty-row">
+            <select class="size-select" id="size-3">
+              <option value="">Storlek...</option>
+              <option>XS</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>XXL</option>
+            </select>
+            <button class="qty-btn" onclick="changeQty(3,-1)">−</button>
+            <span class="qty-val" id="qty-3">0</span>
+            <button class="qty-btn" onclick="changeQty(3,1)">+</button>
+            <span class="qty-added" id="added-3"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="shop-item" data-id="4" data-name="Mössa, marinblå" data-price="175">
+        <div class="shop-item-img" style="background:#1a2e42;display:flex;align-items:center;justify-content:center;font-size:2.5rem">🧶</div>
+        <div class="shop-item-body">
+          <div class="shop-item-name">Mössa, marinblå</div>
+          <div class="shop-item-desc">Stickad mössa i marinblått med Andungeemblem.</div>
+          <div class="shop-item-price">175 kr</div>
+          <div class="shop-qty-row">
+            <button class="qty-btn" onclick="changeQty(4,-1)">−</button>
+            <span class="qty-val" id="qty-4">0</span>
+            <button class="qty-btn" onclick="changeQty(4,1)">+</button>
+            <span class="qty-added" id="added-4"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="shop-item" data-id="5" data-name="Piké Navy (äldre version)" data-price="100" data-sizes="true">
+        <div class="shop-item-img" style="background:#1a2e42;display:flex;align-items:center;justify-content:center;font-size:2.5rem">👕</div>
+        <div class="shop-item-body">
+          <div class="shop-item-name">Piké Navy, äldre version</div>
+          <div class="shop-item-desc">Marinblå pikétröja, äldre version. Storlekar XS–XXL.</div>
+          <div class="shop-item-price">100 kr</div>
+          <div class="shop-qty-row">
+            <select class="size-select" id="size-5">
+              <option value="">Storlek...</option>
+              <option>XS</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>XXL</option>
+            </select>
+            <button class="qty-btn" onclick="changeQty(5,-1)">−</button>
+            <span class="qty-val" id="qty-5">0</span>
+            <button class="qty-btn" onclick="changeQty(5,1)">+</button>
+            <span class="qty-added" id="added-5"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="shop-item" data-id="6" data-name="Piké Vit (äldre version)" data-price="100" data-sizes="true">
+        <div class="shop-item-img" style="background:#1a2e42;display:flex;align-items:center;justify-content:center;font-size:2.5rem">👕</div>
+        <div class="shop-item-body">
+          <div class="shop-item-name">Piké Vit, äldre version</div>
+          <div class="shop-item-desc">Vit pikétröja, äldre version. Storlekar XS–XXL.</div>
+          <div class="shop-item-price">100 kr</div>
+          <div class="shop-qty-row">
+            <select class="size-select" id="size-6">
+              <option value="">Storlek...</option>
+              <option>XS</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>XXL</option>
+            </select>
+            <button class="qty-btn" onclick="changeQty(6,-1)">−</button>
+            <span class="qty-val" id="qty-6">0</span>
+            <button class="qty-btn" onclick="changeQty(6,1)">+</button>
+            <span class="qty-added" id="added-6"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="shop-item" data-id="7" data-name="Standert" data-price="175">
+        <div class="shop-item-img" style="background:#1a2e42;display:flex;align-items:center;justify-content:center;font-size:2.5rem">🚩</div>
+        <div class="shop-item-body">
+          <div class="shop-item-name">Standert</div>
+          <div class="shop-item-desc">Andungeklubbens standert/flagga.</div>
+          <div class="shop-item-price">175 kr</div>
+          <div class="shop-qty-row">
+            <button class="qty-btn" onclick="changeQty(7,-1)">−</button>
+            <span class="qty-val" id="qty-7">0</span>
+            <button class="qty-btn" onclick="changeQty(7,1)">+</button>
+            <span class="qty-added" id="added-7"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="shop-item" data-id="8" data-name="Broderat emblem" data-price="80">
+        <div class="shop-item-img" style="background:#1a2e42;display:flex;align-items:center;justify-content:center;font-size:2.5rem">⚓</div>
+        <div class="shop-item-body">
+          <div class="shop-item-name">Broderat emblem</div>
+          <div class="shop-item-desc">Andungens broderade emblem att sy på klädsel.</div>
+          <div class="shop-item-price">80 kr</div>
+          <div class="shop-qty-row">
+            <button class="qty-btn" onclick="changeQty(8,-1)">−</button>
+            <span class="qty-val" id="qty-8">0</span>
+            <button class="qty-btn" onclick="changeQty(8,1)">+</button>
+            <span class="qty-added" id="added-8"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="shop-item" data-id="9" data-name="Ritningsplansch Andunge" data-price="190">
+        <div class="shop-item-img" style="background:#1a2e42;display:flex;align-items:center;justify-content:center;font-size:2.5rem">📐</div>
+        <div class="shop-item-body">
+          <div class="shop-item-name">Ritningsplansch Andunge</div>
+          <div class="shop-item-desc">Plansch med konstruktionsritningar av Andungen.</div>
+          <div class="shop-item-price">190 kr</div>
+          <div class="shop-qty-row">
+            <button class="qty-btn" onclick="changeQty(9,-1)">−</button>
+            <span class="qty-val" id="qty-9">0</span>
+            <button class="qty-btn" onclick="changeQty(9,1)">+</button>
+            <span class="qty-added" id="added-9"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="shop-item" data-id="10" data-name="Pin" data-price="50">
+        <div class="shop-item-img" style="background:#1a2e42;display:flex;align-items:center;justify-content:center;font-size:2.5rem">📌</div>
+        <div class="shop-item-body">
+          <div class="shop-item-name">Pin</div>
+          <div class="shop-item-desc">Andungenål/pin att fästa på kläder eller väska.</div>
+          <div class="shop-item-price">50 kr</div>
+          <div class="shop-qty-row">
+            <button class="qty-btn" onclick="changeQty(10,-1)">−</button>
+            <span class="qty-val" id="qty-10">0</span>
+            <button class="qty-btn" onclick="changeQty(10,1)">+</button>
+            <span class="qty-added" id="added-10"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="shop-item" data-id="11" data-name="Pins × 3" data-price="100">
+        <div class="shop-item-img" style="background:#1a2e42;display:flex;align-items:center;justify-content:center;font-size:2.5rem">📌</div>
+        <div class="shop-item-body">
+          <div class="shop-item-name">Pins × 3</div>
+          <div class="shop-item-desc">Tre Andungenålar i ett paket.</div>
+          <div class="shop-item-price">100 kr</div>
+          <div class="shop-qty-row">
+            <button class="qty-btn" onclick="changeQty(11,-1)">−</button>
+            <span class="qty-val" id="qty-11">0</span>
+            <button class="qty-btn" onclick="changeQty(11,1)">+</button>
+            <span class="qty-added" id="added-11"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="shop-item" data-id="12" data-name="Årskalender 2026 (inkl porto)" data-price="120">
+        <div class="shop-item-img" style="background:#1a2e42;display:flex;align-items:center;justify-content:center;font-size:2.5rem">📅</div>
+        <div class="shop-item-body">
+          <div class="shop-item-name">Årskalender 2026</div>
+          <div class="shop-item-desc">Årskalender med seglingsbilder. Porto ingår i priset.</div>
+          <div class="shop-item-price">120 kr <span style="font-size:.75em;opacity:.6">(inkl. porto)</span></div>
+          <div class="shop-qty-row">
+            <button class="qty-btn" onclick="changeQty(12,-1)">−</button>
+            <span class="qty-val" id="qty-12">0</span>
+            <button class="qty-btn" onclick="changeQty(12,1)">+</button>
+            <span class="qty-added" id="added-12"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="shop-item" data-id="13" data-name="Medlemskap övriga 2025" data-price="200">
+        <div class="shop-item-img" style="background:#1a2e42;display:flex;align-items:center;justify-content:center;font-size:2.5rem">🦆</div>
+        <div class="shop-item-body">
+          <div class="shop-item-name">Medlemskap övriga 2025</div>
+          <div class="shop-item-desc">Medlemsavgift 2025 för stödmedlem / medlem utan båt.</div>
+          <div class="shop-item-price">200 kr</div>
+          <div class="shop-qty-row">
+            <button class="qty-btn" onclick="changeQty(13,-1)">−</button>
+            <span class="qty-val" id="qty-13">0</span>
+            <button class="qty-btn" onclick="changeQty(13,1)">+</button>
+            <span class="qty-added" id="added-13"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="shop-item" data-id="14" data-name="Medlemskap båtägare 2025" data-price="350">
+        <div class="shop-item-img" style="background:#1a2e42;display:flex;align-items:center;justify-content:center;font-size:2.5rem">🦆</div>
+        <div class="shop-item-body">
+          <div class="shop-item-name">Medlemskap båtägare 2025</div>
+          <div class="shop-item-desc">Medlemsavgift 2025 för båtägare.</div>
           <div class="shop-item-price">350 kr</div>
-          <a href="#order" class="btn btn-outline" style="text-align:center">Best&#228;ll</a>
+          <div class="shop-qty-row">
+            <button class="qty-btn" onclick="changeQty(14,-1)">−</button>
+            <span class="qty-val" id="qty-14">0</span>
+            <button class="qty-btn" onclick="changeQty(14,1)">+</button>
+            <span class="qty-added" id="added-14"></span>
+          </div>
         </div>
       </div>
-      <div class="shop-item">
-        <div class="shop-item-img">Foto: T-shirt</div>
-        <div class="shop-item-body">
-          <div class="shop-item-name">T-shirt med andungelogo</div>
-          <div class="shop-item-desc">V&#228;lgpassad t-shirt med tryck av andungens silhuett. 100% ekologisk bomull.</div>
-          <div class="shop-item-price">295 kr</div>
-          <a href="#order" class="btn btn-outline" style="text-align:center">Best&#228;ll</a>
+
+    </div><!-- /shop-grid -->
+
+    <!-- Cart summary -->
+    <div id="cart-summary" style="display:none;margin-top:2.5rem">
+      <div class="info-box">
+        <h3>Varukorg</h3>
+        <ul id="cart-lines" style="list-style:none;padding:0;margin:0 0 1rem 0"></ul>
+        <div style="border-top:1px solid rgba(184,145,74,.25);padding-top:.75rem;display:flex;flex-direction:column;gap:.35rem">
+          <div style="display:flex;justify-content:space-between;opacity:.7"><span>Delsumma</span><span id="cart-subtotal">0 kr</span></div>
+          <div style="display:flex;justify-content:space-between;opacity:.7"><span>Frakt</span><span>70 kr</span></div>
+          <div style="display:flex;justify-content:space-between;font-weight:600;color:var(--white);font-size:1.05em;margin-top:.25rem"><span>Totalt att betala</span><span id="cart-total">0 kr</span></div>
         </div>
-      </div>
-      <div class="shop-item">
-        <div class="shop-item-img">Foto: Keps</div>
-        <div class="shop-item-body">
-          <div class="shop-item-name">Skepparkeps</div>
-          <div class="shop-item-desc">Klassisk marinbl&#229; skepparkeps med andungeemblem i guld.</div>
-          <div class="shop-item-price">395 kr</div>
-          <a href="#order" class="btn btn-outline" style="text-align:center">Best&#228;ll</a>
-        </div>
-      </div>
-      <div class="shop-item">
-        <div class="shop-item-img">Foto: Modell</div>
-        <div class="shop-item-body">
-          <div class="shop-item-name">Tr&#228;modell 1:20</div>
-          <div class="shop-item-desc">Handgjord tr&#228;modell av andungen i skala 1:20. Perfekt som present eller dekoration.</div>
-          <div class="shop-item-price">1 200 kr</div>
-          <a href="#order" class="btn btn-outline" style="text-align:center">Best&#228;ll</a>
-        </div>
-      </div>
-      <div class="shop-item">
-        <div class="shop-item-img">Foto: Bok</div>
-        <div class="shop-item-body">
-          <div class="shop-item-name">Andungens historia</div>
-          <div class="shop-item-desc">Inbunden bok om andungens historia fr&#229;n 1937 till idag. 180 sidor, rikt illustrerad.</div>
-          <div class="shop-item-price">295 kr</div>
-          <a href="#order" class="btn btn-outline" style="text-align:center">Best&#228;ll</a>
-        </div>
-      </div>
-      <div class="shop-item">
-        <div class="shop-item-img">Foto: Dekaler</div>
-        <div class="shop-item-body">
-          <div class="shop-item-name">Segelm&#228;rke (dekal)</div>
-          <div class="shop-item-desc">Andungens klassiska segelm&#228;rke som v&#228;derbestandig UV-dekal. 15&#215;15 cm.</div>
-          <div class="shop-item-price">95 kr</div>
-          <a href="#order" class="btn btn-outline" style="text-align:center">Best&#228;ll</a>
-        </div>
+        <a href="#order" class="btn btn-outline" style="display:block;text-align:center;margin-top:1.2rem">Gå till beställning ↓</a>
       </div>
     </div>
   </div>
 
   <div class="page-section" id="order">
-    <p class="lbl">Orderformul&#228;r</p>
+    <p class="lbl">Orderformulär</p>
     <div class="rule"></div>
-    <h2>Skicka din best&#228;llning</h2>
+    <h2>Skicka din beställning</h2>
     <form class="andunge-form reveal" name="butiken" method="POST" data-netlify="true">
       <input type="hidden" name="form-name" value="butiken">
+      <input type="hidden" name="bestallning" id="hidden-bestallning" value="">
+      <input type="hidden" name="totalsumma" id="hidden-totalsumma" value="">
       <div class="form-row">
-        <label>Produkt och storlek</label>
-        <select name="produkt">
-          <option value="">V&#228;lj produkt...</option>
-          <option>Andungeburgunder &#8212; XS (350 kr)</option>
-          <option>Andungeburgunder &#8212; S (350 kr)</option>
-          <option>Andungeburgunder &#8212; M (350 kr)</option>
-          <option>Andungeburgunder &#8212; L (350 kr)</option>
-          <option>Andungeburgunder &#8212; XL (350 kr)</option>
-          <option>T-shirt med andungelogo &#8212; XS (295 kr)</option>
-          <option>T-shirt med andungelogo &#8212; S (295 kr)</option>
-          <option>T-shirt med andungelogo &#8212; M (295 kr)</option>
-          <option>T-shirt med andungelogo &#8212; L (295 kr)</option>
-          <option>T-shirt med andungelogo &#8212; XL (295 kr)</option>
-          <option>Skepparkeps (395 kr)</option>
-          <option>Tr&#228;modell 1:20 (1 200 kr)</option>
-          <option>Andungens historia &#8212; bok (295 kr)</option>
-          <option>Segelm&#228;rke dekal (95 kr)</option>
-        </select>
-      </div>
-      <div class="form-row">
-        <label>Antal</label>
-        <input type="number" name="antal" min="1" max="10" value="1">
+        <label>Din beställning</label>
+        <div id="order-summary-box" style="background:rgba(255,255,255,.04);border:1px solid rgba(184,145,74,.2);border-radius:4px;padding:.85rem 1rem;min-height:3rem;font-size:.9em;color:var(--white);line-height:1.8">
+          Inga produkter valda ännu.
+        </div>
       </div>
       <div class="form-row">
         <label>Namn</label>
-        <input type="text" name="namn" required placeholder="F&#246;r- och efternamn">
+        <input type="text" name="namn" required placeholder="För- och efternamn">
       </div>
       <div class="form-row">
         <label>E-post</label>
         <input type="email" name="epost" required placeholder="din@epost.se">
-        <p class="form-note">Vi skickar orderbekr&#228;ftelse hit.</p>
+        <p class="form-note">Vi skickar orderbekräftelse hit.</p>
       </div>
       <div class="form-row">
         <label>Leveransadress</label>
@@ -163,12 +373,12 @@
       </div>
       <div class="form-row">
         <label>Meddelande (valfritt)</label>
-        <textarea name="meddelande" placeholder="&#214;vriga &#246;nskem&#229;l..."></textarea>
+        <textarea name="meddelande" placeholder="Övriga önskemål, t.ex. storlekar om ej angivna ovan..."></textarea>
       </div>
-      <button type="submit" class="btn btn-outline" style="width:100%;margin-top:.5rem">Skicka best&#228;llning</button>
+      <button type="submit" class="btn btn-outline" style="width:100%;margin-top:.5rem">Skicka beställning</button>
       <p class="form-note" style="text-align:center;margin-top:1rem">
-        Swisha betalningen till <strong style="color:var(--white)">123-456 78 90</strong> efter att du skickat ordern.<br>
-        Ange ditt namn som meddelande. Vi bekr&#228;ftar via e-post.
+        Betala via Swish <strong style="color:var(--white)">123 143 15 84</strong> eller Plusgiro <strong style="color:var(--white)">62 00 96-8</strong> efter att du skickat ordern.<br>
+        Ange ditt namn som meddelande. Vi bekräftar via e-post.
       </p>
     </form>
   </div>
@@ -179,7 +389,7 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <div class="footer-logo">Svensk Andungeklubb</div>
-        <p>Klassiska tr&#228;b&#229;tar sedan 1976.<br>Hemmahamn i Hassel&#246;n, Bohusl&#228;n.</p>
+        <p>Klassiska träbåtar sedan 1958.<br>Hemmahamn i Hasselön, Bohuslän.</p>
       </div>
       <div class="footer-col">
         <h4>Klubben</h4>
@@ -194,7 +404,7 @@
       <div class="footer-col">
         <h4>Segling</h4>
         <ul>
-          <li><a href="batregistret.html">B&#229;tregistret</a></li>
+          <li><a href="batregistret.html">Båtregistret</a></li>
           <li><a href="kappsegling.html">Kappsegling</a></li>
           <li><a href="kappsegling.html">Kalender</a></li>
           <li><a href="medlemmar.html">Ritningar</a></li>
@@ -211,12 +421,98 @@
     </div>
     <div class="footer-bottom">
       <span>&copy; 2026 Svensk Andungeklubb</span>
-      <span>Hassel&ouml;n &middot; Bohusl&auml;n &middot; Sverige</span>
+      <span>Hasselön &middot; Bohuslän &middot; Sverige</span>
     </div>
   </div>
 </footer>
 
 <script src="../js/duck.js"></script>
 <script src="../js/header.js"></script>
+<script>
+const SHIPPING = 70;
+const cart = {};
+
+// Collect product data from DOM
+const products = {};
+document.querySelectorAll('.shop-item[data-id]').forEach(el => {
+  products[el.dataset.id] = {
+    name: el.dataset.name,
+    price: parseInt(el.dataset.price),
+    hasSize: el.dataset.sizes === 'true'
+  };
+});
+
+function changeQty(id, delta) {
+  const sid = String(id);
+  const prod = products[sid];
+
+  if (delta > 0 && prod.hasSize) {
+    const sel = document.getElementById('size-' + sid);
+    if (sel && !sel.value) {
+      sel.style.border = '1px solid var(--brass)';
+      sel.focus();
+      return;
+    }
+  }
+
+  const size = prod.hasSize ? (document.getElementById('size-' + sid)?.value || '') : '';
+  if (!cart[sid]) cart[sid] = { name: prod.name, price: prod.price, qty: 0, size };
+  cart[sid].size = size;
+  cart[sid].qty = Math.max(0, cart[sid].qty + delta);
+  if (cart[sid].qty === 0) delete cart[sid];
+
+  const qty = cart[sid] ? cart[sid].qty : 0;
+  document.getElementById('qty-' + sid).textContent = qty;
+  document.getElementById('added-' + sid).textContent = qty > 0 ? '(' + (qty * prod.price) + ' kr)' : '';
+
+  updateCart();
+}
+
+function updateCart() {
+  const ids = Object.keys(cart);
+  const cartSummary = document.getElementById('cart-summary');
+  const cartLines = document.getElementById('cart-lines');
+  const orderBox = document.getElementById('order-summary-box');
+
+  if (ids.length === 0) {
+    cartSummary.style.display = 'none';
+    orderBox.textContent = 'Inga produkter valda ännu.';
+    document.getElementById('hidden-bestallning').value = '';
+    document.getElementById('hidden-totalsumma').value = '';
+    return;
+  }
+
+  cartSummary.style.display = 'block';
+  let subtotal = 0;
+  let liHtml = '';
+  let orderLines = [];
+  let summaryDivs = '';
+
+  ids.forEach(sid => {
+    const item = cart[sid];
+    const lineTotal = item.price * item.qty;
+    subtotal += lineTotal;
+    const sizePart = item.size ? ' (' + item.size + ')' : '';
+    const label = item.name + sizePart + ' × ' + item.qty;
+    liHtml += '<li><span>' + label + '</span><span>' + lineTotal + ' kr</span></li>';
+    orderLines.push(label + ' = ' + lineTotal + ' kr');
+    summaryDivs += '<div>' + label + ' = ' + lineTotal + ' kr</div>';
+  });
+
+  const total = subtotal + SHIPPING;
+  cartLines.innerHTML = liHtml;
+  document.getElementById('cart-subtotal').textContent = subtotal + ' kr';
+  document.getElementById('cart-total').textContent = total + ' kr';
+
+  orderBox.innerHTML = summaryDivs +
+    '<div style="border-top:1px solid rgba(255,255,255,.1);margin-top:.5rem;padding-top:.5rem;opacity:.7">' +
+    'Frakt: ' + SHIPPING + ' kr &nbsp;·&nbsp; ' +
+    '<strong style="color:var(--white)">Totalt: ' + total + ' kr</strong></div>';
+
+  const orderText = orderLines.join('\n') + '\nFrakt: ' + SHIPPING + ' kr\nTotalt: ' + total + ' kr';
+  document.getElementById('hidden-bestallning').value = orderText;
+  document.getElementById('hidden-totalsumma').value = total + ' kr';
+}
+</script>
 </body>
 </html>
