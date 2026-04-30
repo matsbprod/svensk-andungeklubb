@@ -62,6 +62,21 @@
         <p>Svensk Andungeklubb grundades 1958 och har idag ca 140 medlemmar. Dessa medlemmar är en trevlig samling seglare, unga, gamla, familjeseglare, långseglare, ensamseglare, kappseglare samt allmänna segelnjutare.</p>
         <p>Klubben ger ut en medlemstidning — Andungebladet — 2–3 gånger per år, arrangerar VM (Västkustmästerskap) i Andunge årligen, samt avhåller även årsmöte i början av året med diverse föredragshållare. Alla medlemmar får även klubbens kalender med seglingsbilder från året som gått.</p>
         <p>Organisationsnummer: 802506-5510</p>
+
+        <!-- Jubileumsskrift PDF -->
+        <a href="#" onclick="openJubPdf('../pdf/Jubileumsskrift.pdf'); return false;" style="display:grid;grid-template-columns:80px 1fr;gap:1rem;text-decoration:none;margin-top:1.5rem;background:var(--card);border:1px solid rgba(184,145,74,.15);border-radius:4px;padding:.9rem;transition:border-color .2s,box-shadow .2s" onmouseover="this.style.borderColor='rgba(184,145,74,.5)';this.style.boxShadow='0 6px 20px rgba(0,0,0,.35)'" onmouseout="this.style.borderColor='rgba(184,145,74,.15)';this.style.boxShadow='none'">
+          <div class="jub-thumb-box" style="position:relative;aspect-ratio:3/4;background:#0c1620;overflow:hidden;border:1px solid rgba(184,145,74,.1);border-radius:3px">
+            <canvas class="jub-canvas" data-src="../pdf/Jubileumsskrift.pdf" style="position:absolute;inset:0;width:100%;height:100%;display:block;opacity:0;transition:opacity .4s"></canvas>
+            <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center" id="jub-fallback">
+              <svg viewBox="0 0 40 52" width="36" height="46" xmlns="http://www.w3.org/2000/svg"><path d="M24 0H4C1.8 0 0 1.8 0 4v44c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/><path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/><text x="20" y="36" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#b8914a">PDF</text></svg>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;justify-content:center;gap:.35rem">
+            <span style="font-family:'Cinzel',serif;font-size:.7em;letter-spacing:.1em;color:var(--brass)">JUBILEUMSSKRIFT</span>
+            <span style="color:var(--white);font-family:'Cormorant Garamond',serif;font-size:1.05em">Jubileumsskrift 1958–1978</span>
+            <span style="font-size:.8em;color:var(--brass);margin-top:.2rem">Klicka för att läsa →</span>
+          </div>
+        </a>
       </div>
 
       <div class="page-section reveal">
@@ -204,6 +219,96 @@
     </div>
   </div>
 </footer>
+
+<!-- PDF Lightbox — Jubileumsskrift -->
+<div id="jub-lightbox" onclick="closeJubPdf(event)" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.95);backdrop-filter:blur(8px);flex-direction:column;align-items:center;justify-content:center">
+  <div style="position:absolute;top:1rem;right:1rem;display:flex;gap:.8rem;align-items:center">
+    <a id="jub-download" href="../pdf/Jubileumsskrift.pdf" download style="color:rgba(240,244,246,.6);font-family:'Cinzel',serif;font-size:.7em;letter-spacing:.08em;text-decoration:none;border:1px solid rgba(255,255,255,.2);padding:.35rem .7rem;border-radius:3px">LADDA NED</a>
+    <button onclick="closeJubPdf()" style="background:none;border:none;color:rgba(240,244,246,.7);font-size:2rem;line-height:1;cursor:pointer;padding:0">×</button>
+  </div>
+  <div id="jub-loading" style="color:rgba(240,244,246,.5);font-family:'Cinzel',serif;font-size:.8em;letter-spacing:.1em">LADDAR…</div>
+  <canvas id="jub-lb-canvas" style="display:none;max-width:92vw;max-height:86vh;border-radius:3px;box-shadow:0 8px 40px rgba(0,0,0,.6)"></canvas>
+  <div style="display:flex;align-items:center;gap:1.5rem;margin-top:1rem">
+    <button id="jub-prev" onclick="changeJubPage(-1)" style="background:none;border:none;color:var(--brass);font-size:1.4rem;cursor:pointer;opacity:.3">‹</button>
+    <span id="jub-info" style="color:rgba(240,244,246,.5);font-family:'Cinzel',serif;font-size:.7em;letter-spacing:.1em"></span>
+    <button id="jub-next" onclick="changeJubPage(1)" style="background:none;border:none;color:var(--brass);font-size:1.4rem;cursor:pointer">›</button>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>
+pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+// Thumbnail
+var jubCanvas = document.querySelector('.jub-canvas');
+if (jubCanvas) {
+  pdfjsLib.getDocument(jubCanvas.dataset.src).promise
+    .then(function(pdf) { return pdf.getPage(1); })
+    .then(function(page) {
+      var vp = page.getViewport({scale:1});
+      var scale = (80 / vp.width) * 2;
+      var scaled = page.getViewport({scale:scale});
+      jubCanvas.width = scaled.width;
+      jubCanvas.height = scaled.height;
+      return page.render({canvasContext:jubCanvas.getContext('2d'), viewport:scaled}).promise;
+    })
+    .then(function() {
+      jubCanvas.style.opacity = '1';
+      var fb = document.getElementById('jub-fallback');
+      if (fb) fb.style.opacity = '0';
+    })
+    .catch(function(e) { console.warn('Jub thumb:', e); });
+}
+
+// Lightbox
+var jubPdf = null, jubPage = 1, jubTotal = 0;
+function openJubPdf(src) {
+  var lb = document.getElementById('jub-lightbox');
+  lb.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  document.getElementById('jub-loading').style.display = 'block';
+  document.getElementById('jub-lb-canvas').style.display = 'none';
+  jubPage = 1;
+  pdfjsLib.getDocument(src).promise.then(function(pdf) {
+    jubPdf = pdf; jubTotal = pdf.numPages;
+    renderJubPage(1);
+  });
+}
+function renderJubPage(n) {
+  jubPdf.getPage(n).then(function(page) {
+    var vw = window.innerWidth * 0.88, vh = window.innerHeight * 0.82;
+    var vp1 = page.getViewport({scale:1});
+    var scale = Math.min(vw/vp1.width, vh/vp1.height);
+    var vp = page.getViewport({scale:scale});
+    var c = document.getElementById('jub-lb-canvas');
+    c.width = vp.width; c.height = vp.height;
+    document.getElementById('jub-loading').style.display = 'none';
+    c.style.display = 'block';
+    page.render({canvasContext:c.getContext('2d'), viewport:vp}).promise.then(function() {
+      document.getElementById('jub-info').textContent = 'Sida ' + n + ' av ' + jubTotal;
+      document.getElementById('jub-prev').style.opacity = n > 1 ? '1' : '0.2';
+      document.getElementById('jub-next').style.opacity = n < jubTotal ? '1' : '0.2';
+    });
+  });
+}
+function changeJubPage(d) {
+  var n = jubPage + d;
+  if (n < 1 || n > jubTotal) return;
+  jubPage = n; renderJubPage(n);
+}
+function closeJubPdf(e) {
+  if (e && e.target !== document.getElementById('jub-lightbox') && !e.target.closest('button')) return;
+  document.getElementById('jub-lightbox').style.display = 'none';
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e) {
+  if (document.getElementById('jub-lightbox').style.display === 'flex') {
+    if (e.key === 'Escape') closeJubPdf({target: document.getElementById('jub-lightbox')});
+    if (e.key === 'ArrowRight') changeJubPage(1);
+    if (e.key === 'ArrowLeft') changeJubPage(-1);
+  }
+});
+</script>
 
 <script src="../js/duck.js"></script>
 <script src="../js/header.js"></script>
