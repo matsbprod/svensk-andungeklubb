@@ -377,26 +377,26 @@
 pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
 // Thumbnail rendering
-var thumbObserver = new IntersectionObserver(function(entries) {
-  entries.forEach(function(entry) {
-    if (!entry.isIntersecting) return;
-    thumbObserver.unobserve(entry.target);
-    var canvas = entry.target;
+// Thumbnail rendering - render after page load with fixed size
+window.addEventListener('load', function() {
+  document.querySelectorAll('.pdf-canvas[data-src]').forEach(function(canvas) {
     pdfjsLib.getDocument(canvas.dataset.src).promise
       .then(function(pdf) { return pdf.getPage(1); })
       .then(function(page) {
-        var vp = page.getViewport({scale:1});
-        var containerW = canvas.parentElement.offsetWidth || 120;
-        var scale = (containerW / vp.width) * 2;
-        var scaled = page.getViewport({scale:scale});
-        canvas.width = scaled.width; canvas.height = scaled.height;
-        return page.render({canvasContext:canvas.getContext('2d'), viewport:scaled}).promise;
+        var vp = page.getViewport({scale: 1});
+        var scale = 240 / vp.width;
+        var scaled = page.getViewport({scale: scale});
+        canvas.width = scaled.width;
+        canvas.height = scaled.height;
+        return page.render({canvasContext: canvas.getContext('2d'), viewport: scaled}).promise;
       })
-      .then(function() { canvas.style.opacity = '1'; if (canvas.nextElementSibling) canvas.nextElementSibling.style.opacity = '0'; })
-      .catch(function(){});
+      .then(function() {
+        canvas.style.opacity = '1';
+        if (canvas.nextElementSibling) canvas.nextElementSibling.style.opacity = '0';
+      })
+      .catch(function(err) { console.warn('PDF thumb error:', err); });
   });
-}, {rootMargin:'300px'});
-document.querySelectorAll('.pdf-canvas[data-src]').forEach(function(c) { thumbObserver.observe(c); });
+});
 
 // Lightbox
 var vmPdf = null, vmPage = 1, vmTotal = 0;
