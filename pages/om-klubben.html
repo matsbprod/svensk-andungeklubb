@@ -282,9 +282,12 @@ function renderJubPage(n) {
     var vp = page.getViewport({scale:scale});
     var c = document.getElementById('jub-lb-canvas');
     c.width = vp.width; c.height = vp.height;
+    var ctx = c.getContext('2d');
+    ctx.clearRect(0, 0, c.width, c.height);
     document.getElementById('jub-loading').style.display = 'none';
     c.style.display = 'block';
-    page.render({canvasContext:c.getContext('2d'), viewport:vp}).promise.then(function() {
+    page.render({canvasContext:ctx, viewport:vp}).promise.then(function() {
+      jubPage = n;
       document.getElementById('jub-info').textContent = 'Sida ' + n + ' av ' + jubTotal;
       document.getElementById('jub-prev').style.opacity = n > 1 ? '1' : '0.2';
       document.getElementById('jub-next').style.opacity = n < jubTotal ? '1' : '0.2';
@@ -294,7 +297,7 @@ function renderJubPage(n) {
 function changeJubPage(d) {
   var n = jubPage + d;
   if (n < 1 || n > jubTotal) return;
-  jubPage = n; renderJubPage(n);
+  renderJubPage(n);
 }
 function closeJubPdf(e) {
   if (e && e.target !== document.getElementById('jub-lightbox') && !e.target.closest('button')) return;
