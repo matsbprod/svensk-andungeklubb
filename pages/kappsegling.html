@@ -39,8 +39,11 @@
   letter-spacing: .04em;
   padding-top: .1em;
 }
-.pdf-canvas { opacity: 0; transition: opacity .4s; }
-.pdf-canvas.loaded { opacity: 1; }
+.pdf-canvas { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; opacity:0; transition:opacity .4s; }
+.pdf-canvas.loaded { opacity:1; }
+.pdf-fallback { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:var(--card); transition:opacity .4s; }
+.pdf-canvas.loaded ~ .pdf-fallback { opacity:0; pointer-events:none; }
+.pdf-thumb-box { position:relative; width:120px; flex-shrink:0; aspect-ratio:3/4; background:var(--card); overflow:hidden; border:1px solid rgba(184,145,74,.15); border-radius:3px; }
 </style>
 </head>
 <body>
@@ -167,10 +170,10 @@
             <h2>Inbjudan &amp; regler</h2>
             <p>Fullständig inbjudan med regler, tidsprogram och praktisk information.</p>
             <a href="#" onclick="openVmPdf('../pdf/Inbjudan_VM_Andunge_2026.pdf'); return false;" class="pdf-featured-card" style="display:grid;grid-template-columns:120px 1fr;gap:1.2rem;text-decoration:none;margin-top:1.2rem;background:var(--card);border:1px solid rgba(184,145,74,.15);border-radius:4px;padding:1rem;transition:border-color .2s,box-shadow .2s" onmouseover="this.style.borderColor='rgba(184,145,74,.5)';this.style.boxShadow='0 6px 20px rgba(0,0,0,.35)'" onmouseout="this.style.borderColor='rgba(184,145,74,.15)';this.style.boxShadow='none'">
-              <div style="position:relative;aspect-ratio:3/4;background:#0c1620;border:1px solid rgba(184,145,74,.1);border-radius:3px;overflow:hidden">
-                <canvas class="pdf-canvas" data-src="../pdf/Inbjudan_VM_Andunge_2026.pdf" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></canvas>
-                <div class="pdf-fallback" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center">
-                  <svg viewBox="0 0 40 52" width="40" height="52"><rect width="40" height="52" rx="3" fill="#152130"/><text x="20" y="32" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#b8914a">PDF</text></svg>
+              <div class="pdf-thumb-box">
+                <canvas class="pdf-canvas" data-src="../pdf/Inbjudan_VM_Andunge_2026.pdf"></canvas>
+                <div class="pdf-fallback">
+                  <svg viewBox="0 0 40 52" xmlns="http://www.w3.org/2000/svg"><path d="M24 0H4C1.8 0 0 1.8 0 4v44c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/><path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/><text x="20" y="36" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#b8914a">PDF</text></svg>
                 </div>
               </div>
               <div style="display:flex;flex-direction:column;justify-content:center;gap:.4rem">
