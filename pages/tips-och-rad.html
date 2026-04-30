@@ -9,21 +9,141 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/page.css">
-  
+<style>
+/* Jump-nav */
+.tips-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-bottom: 3rem;
+}
+.tips-nav a {
+  display: inline-block;
+  padding: .4rem .9rem;
+  border: 1px solid rgba(184,145,74,.4);
+  border-radius: 3px;
+  color: var(--brass);
+  font-family: 'Cinzel', serif;
+  font-size: .75em;
+  text-decoration: none;
+  letter-spacing: .04em;
+  transition: background .15s, color .15s;
+}
+.tips-nav a:hover {
+  background: rgba(184,145,74,.15);
+  color: var(--white);
+}
+
+/* Category section */
+.tips-section {
+  margin-bottom: 4rem;
+  scroll-margin-top: 90px;
+}
+.tips-section + .tips-section {
+  border-top: 1px solid rgba(184,145,74,.15);
+  padding-top: 4rem;
+}
+
+/* Image gallery */
+.tips-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: .6rem;
+  margin-top: 1.5rem;
+}
+.tips-gallery img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 3px;
+  cursor: zoom-in;
+  transition: opacity .15s, transform .15s;
+  border: 1px solid rgba(255,255,255,.06);
+}
+.tips-gallery img:hover {
+  opacity: .85;
+  transform: scale(1.02);
+}
+
+/* Caption under image */
+.tips-gallery figure {
+  margin: 0;
+}
+.tips-gallery figcaption {
+  font-size: .75em;
+  color: rgba(240,244,246,.55);
+  margin-top: .3rem;
+  line-height: 1.35;
+}
+
+/* Lightbox */
+#lb-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.92);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+}
+#lb-overlay.open { display: flex; }
+#lb-overlay img {
+  max-width: 92vw;
+  max-height: 88vh;
+  object-fit: contain;
+  border-radius: 3px;
+  box-shadow: 0 8px 40px rgba(0,0,0,.6);
+}
+#lb-close {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.5rem;
+  color: rgba(240,244,246,.7);
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+#lb-caption {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(240,244,246,.65);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: .95em;
+  text-align: center;
+  max-width: 80vw;
+}
+
+/* Prose list style */
+.tips-list {
+  padding-left: 1.2rem;
+  line-height: 2;
+}
+.tips-list li {
+  margin-bottom: .3rem;
+}
+</style>
 </head>
 <body>
+
 <nav class="navbar" id="navbar">
   <div class="nav-links">
     <a href="../index.html">Hem</a>
     <a href="om-klubben.html">Om klubben</a>
-    <a href="batregistret.html">B&#229;tregistret</a>
+    <a href="batregistret.html">Båtregistret</a>
     <a href="andungebladet.html">Andungebladet</a>
     <a href="kappsegling.html">Kappsegling</a>
     <a href="butiken.html">Butiken</a>
-    <a href="tips-och-rad.html" style="color:var(--white)">Tips och r&#229;d</a>
-    <a href="kop-och-salj.html">K&#246;p och s&#228;lj</a>
+    <a href="tips-och-rad.html" style="color:var(--white)">Tips och råd</a>
+    <a href="kop-och-salj.html">Köp och sälj</a>
   </div>
 </nav>
+
 <a href="../index.html" style="position:fixed;z-index:201;top:0;left:0;width:320px;height:220px;cursor:pointer;text-decoration:none" aria-label="Hem"></a>
 <div id="logo-block">
   <span class="logo-line" id="line1">Svensk</span>
@@ -35,23 +155,424 @@
   <div class="page-hero-img"><img src="../img/boat-card.jpg" alt="Tips och råd"></div>
   <div class="page-hero-grad"></div>
   <div class="page-hero-content reveal">
-    <p class="lbl">Underhåll & byggnad</p>
+    <p class="lbl">Underhåll &amp; rigg</p>
     <h1>Tips och råd</h1>
-    <p>Ritningar, byggbeskrivningar och underhållstips från erfarna andungeägare.</p>
+    <p>Erfarenheter och lösningar från andungeägare längs hela kusten.</p>
   </div>
 </div>
 
 <div class="page-body">
-  <div class="page-section reveal">
-    <p class="lbl">Kommer snart</p>
-    <div class="rule"></div>
-    <h2>Sidan är under uppbyggnad</h2>
-    <p>Innehåll publiceras inom kort. Kontakta oss i mellantiden.</p>
-    <a href="kontakt.html" class="btn btn-outline" style="margin-top:1.5rem;display:inline-block">Kontakta oss</a>
+
+  <div class="page-section reveal" style="margin-bottom:1rem">
+    <div class="info-box" style="margin-bottom:2rem">
+      <p style="margin:0;opacity:.8">Denna sida samlar tips och bilder för inspiration till egna lösningar. Innehållet växer med bidrag från klubbens medlemmar. Skicka tips och synpunkter till <a href="mailto:register@andunge.se" class="brass">register@andunge.se</a>.</p>
+    </div>
+
+    <!-- Jump navigation -->
+    <nav class="tips-nav" aria-label="Hoppa till kategori">
+      <a href="#fock-skotning">Fock skotning</a>
+      <a href="#stor-skotning">Stor skotning</a>
+      <a href="#kapell">Kapell</a>
+      <a href="#centrumlyft">Centrumlyft</a>
+      <a href="#mast">Mast</a>
+      <a href="#traskrov">Träskrov</a>
+      <a href="#bom">Bom</a>
+      <a href="#trailer">Trailer</a>
+      <a href="#hjalpmotor">Hjälpmotor</a>
+      <a href="#kol-roder">Köl / Roder</a>
+    </nav>
   </div>
+
+  <!-- ─── 1. FOCK SKOTNING ─── -->
+  <div class="tips-section reveal" id="fock-skotning">
+    <p class="lbl">Segling</p>
+    <div class="rule"></div>
+    <h2>Fock skotning</h2>
+    <p>Olika lösningar och placering av fockens skotpunkt. Ursprungligen hade focken en hög skärning med en skotpunkt långt bak. Numera sveper underliket nära däcket och skotpunkten har flyttats föröver. De flesta exempel relaterar till den fock nr 1 som används vid kappsegling idag. Enligt klassreglerna finns även en Fock nr 2 med en skotpunkt längre akterut.</p>
+    <p>Placering i sidled är vanligen parallellt med sargkant/kappkant på de flesta båtar. I vissa situationer kan en justering såväl in som ut ge fördel.</p>
+    <div class="tips-gallery">
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_b356090806184125b1b010d007ebfabc~mv2.png/v1/fill/w_226,h_225,q_75,enc_avif,quality_auto/350193_b356090806184125b1b010d007ebfabc~mv2.png" alt="Fock skotpunkt" loading="lazy" onclick="openLb(this)">
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_1b3eb91eb13f4ef98db922387bb7b8e4~mv2.jpg/v1/fill/w_225,h_225,q_75,enc_avif,quality_auto/350193_1b3eb91eb13f4ef98db922387bb7b8e4~mv2.jpg" alt="Fock skotpunkt" loading="lazy" onclick="openLb(this)">
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_6442660ae5c14d068759038cee5e6306~mv2.jpg/v1/fill/w_226,h_225,q_75,enc_avif,quality_auto/350193_6442660ae5c14d068759038cee5e6306~mv2.jpg" alt="Fock skotpunkt" loading="lazy" onclick="openLb(this)">
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_a2fca753e8f14a56b7af4181779cacc4~mv2.jpg/v1/fill/w_225,h_225,q_75,enc_avif,quality_auto/350193_a2fca753e8f14a56b7af4181779cacc4~mv2.jpg" alt="Fockskotskena, placering i relation till mastfot" loading="lazy" onclick="openLb(this)">
+        <figcaption>Fockskotskena i relation till mastfot. Vanlig position.</figcaption>
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_e8beaf7d1ad6481b99cfad1873f6864f~mv2.jpg/v1/fill/w_226,h_225,q_75,enc_avif,quality_auto/350193_e8beaf7d1ad6481b99cfad1873f6864f~mv2.jpg" alt="Flytande skotpunkt med tvärgående skena" loading="lazy" onclick="openLb(this)">
+        <figcaption>Flytande skotpunkt med tvärgående skena. Skena från RWO. 2023.</figcaption>
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_fe772dace3f0462ca4915b03097e6a15~mv2.jpg/v1/fill/w_225,h_225,q_75,enc_avif,quality_auto/350193_fe772dace3f0462ca4915b03097e6a15~mv2.jpg" alt="Flytande skotpunkt tvärgående skena, placering" loading="lazy" onclick="openLb(this)">
+        <figcaption>Flytande skotpunkt, tvärgående skena — placering.</figcaption>
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_5f4c4371ffca455c84cb9f7c0a5dd92e~mv2.jpg/v1/fill/w_226,h_225,q_75,enc_avif,quality_auto/350193_5f4c4371ffca455c84cb9f7c0a5dd92e~mv2.jpg" alt="Träbåt, flytande skotpunkt med dubbla skenor" loading="lazy" onclick="openLb(this)">
+        <figcaption>Träbåt — flytande skotpunkt med dubbla skenor.</figcaption>
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_6cab6b25e45b407abea30f3f3e025585~mv2.jpg/v1/fill/w_225,h_225,q_75,enc_avif,quality_auto/350193_6cab6b25e45b407abea30f3f3e025585~mv2.jpg" alt="Flytande skotpunkt dubbla skenor" loading="lazy" onclick="openLb(this)">
+        <figcaption>Flytande skotpunkt, dubbla skenor.</figcaption>
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_e11c5349a7874f02886443aadb21b3b7~mv2.jpg/v1/fill/w_226,h_225,q_75,enc_avif,quality_auto/350193_e11c5349a7874f02886443aadb21b3b7~mv2.jpg" alt="Träbåt, översikt placering skotskenor" loading="lazy" onclick="openLb(this)">
+        <figcaption>Träbåt — översikt. Främre del för ordinarie fock, aktre del för fock nr 2.</figcaption>
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_19460a4400b14b62978faeb66e2917f2~mv2.jpg/v1/fill/w_225,h_225,q_75,enc_avif,quality_auto/350193_19460a4400b14b62978faeb66e2917f2~mv2.jpg" alt="Lång skena med aktre del för fock nr 2" loading="lazy" onclick="openLb(this)">
+        <figcaption>Lång skena — aktre del för Fock nr 2 och fäste för brytblock.</figcaption>
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_5148d6c5222142a884efc55f6cd8c596~mv2.jpg/v1/fill/w_226,h_225,q_75,enc_avif,quality_auto/350193_5148d6c5222142a884efc55f6cd8c596~mv2.jpg" alt="Tvärgående skenor, barberholerfunktion" loading="lazy" onclick="openLb(this)">
+        <figcaption>S-118 — vanlig placering på plastbåt nära kappen.</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <!-- ─── 2. STOR SKOTNING ─── -->
+  <div class="tips-section reveal" id="stor-skotning">
+    <p class="lbl">Segling</p>
+    <div class="rule"></div>
+    <h2>Stor skotning</h2>
+    <p>Historiskt och idag är det vanligaste att snabbskotet sitter på nedre taljan i en skotskena strax akter roderhuvudet, vanligtvis med utväxling 1:3. Lite opraktiskt att vända blicken akterut vid justering, och taljan har en tendens att fastna på roderhuvudet vid gipp och slag.</p>
+    <p>Vissa båtar nyttjar skotskenan på skotbänken men sätter ett skotlås på bommen en bit föröver, alternativt drar ner denna part till ett svirvlande skotlås på durken. Ytterligare ett alternativ är att nyttja skotskenan bakom roderhuvudet men dra ner skotet på durken bakom rodret och sedan föröver till skotlås. Skotskenan kan även ersättas av en hanfot modell Laserjolle.</p>
+    <div class="tips-gallery">
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_0062c583222342a387abccabb3455fc0~mv2.jpg/v1/fill/w_221,h_221,q_90,enc_avif,quality_auto/350193_0062c583222342a387abccabb3455fc0~mv2.jpg" alt="Stor skotning" loading="lazy" onclick="openLb(this)">
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_2e6a6cc9fa64434ab820d8e9f86e207a~mv2.jpg/v1/fill/w_221,h_221,q_90,enc_avif,quality_auto/350193_2e6a6cc9fa64434ab820d8e9f86e207a~mv2.jpg" alt="Stor skotning" loading="lazy" onclick="openLb(this)">
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_911576e7f6d248fa85b8545296354199~mv2.jpg/v1/fill/w_221,h_221,q_90,enc_avif,quality_auto/350193_911576e7f6d248fa85b8545296354199~mv2.jpg" alt="Stor skotning" loading="lazy" onclick="openLb(this)">
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_ae11d19e6e104d5785ae0d029f6515a6~mv2.jpg/v1/fill/w_221,h_221,q_90,enc_avif,quality_auto/350193_ae11d19e6e104d5785ae0d029f6515a6~mv2.jpg" alt="Stor skotning" loading="lazy" onclick="openLb(this)">
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_693df1393c054a2488d71352ed3a35c9~mv2.jpg/v1/fill/w_221,h_221,q_90,enc_avif,quality_auto/350193_693df1393c054a2488d71352ed3a35c9~mv2.jpg" alt="Stor skotning" loading="lazy" onclick="openLb(this)">
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_3213eaa2c4c9489cb51a6a0e0debb386~mv2.jpg/v1/fill/w_221,h_221,q_90,enc_avif,quality_auto/350193_3213eaa2c4c9489cb51a6a0e0debb386~mv2.jpg" alt="Stor skotning — hanfot" loading="lazy" onclick="openLb(this)">
+        <figcaption>Hanfot modell Laserjolle.</figcaption>
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_dd79d22e8bd44c889255c08edfc36d78~mv2.jpg/v1/fill/w_221,h_221,q_90,enc_avif,quality_auto/350193_dd79d22e8bd44c889255c08edfc36d78~mv2.jpg" alt="Stor skotning" loading="lazy" onclick="openLb(this)">
+      </figure>
+    </div>
+  </div>
+
+  <!-- ─── 3. KAPELL ─── -->
+  <div class="tips-section reveal" id="kapell">
+    <p class="lbl">Förtöjning &amp; förvaring</p>
+    <div class="rule"></div>
+    <h2>Kapell</h2>
+    <p>Hamnkapell till Andungen finns i många skepnader.</p>
+    <p>Traditionellt Andungekapell på bågar skyddar inte ett kvarsittande storsegel men kan användas som sprayhood under segling. Kapell som ligger på bommen med gavlar skyddar mot sol och regn — storseglet kan sitta kvar och kapellet går snabbt att lägga på. Kapell som hänger under bommen kräver stötta eller dirk och eventuellt en genomföring för storskotet. Dålig lutning för avrinning; omsorg krävs att spänna upp ordentligt annars lätt för vattenpölar. Till nöds duger en enkel presenning över bommen.</p>
+    <div class="tips-gallery">
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_3838e4f5717e40a9b0898633d457eefe~mv2.png/v1/fit/w_194,h_194,q_90,enc_avif,quality_auto/350193_3838e4f5717e40a9b0898633d457eefe~mv2.png" alt="Kapell" loading="lazy" onclick="openLb(this)">
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_399b5a4164a241b9bec1e236713f2096~mv2.jpg/v1/fit/w_194,h_194,q_90,enc_avif,quality_auto/350193_399b5a4164a241b9bec1e236713f2096~mv2.jpg" alt="Kapell" loading="lazy" onclick="openLb(this)">
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_61821d2b3fe04181bab01b25096c154a~mv2.jpg/v1/fit/w_194,h_194,q_90,enc_avif,quality_auto/350193_61821d2b3fe04181bab01b25096c154a~mv2.jpg" alt="Kapell" loading="lazy" onclick="openLb(this)">
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_5db38a9c65624eb992dde275c09da743~mv2.jpg/v1/fit/w_194,h_194,q_90,enc_avif,quality_auto/350193_5db38a9c65624eb992dde275c09da743~mv2.jpg" alt="Kapell" loading="lazy" onclick="openLb(this)">
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_30eacf79bdf04040a64034aee1f09bca~mv2.jpg/v1/fit/w_194,h_194,q_90,enc_avif,quality_auto/350193_30eacf79bdf04040a64034aee1f09bca~mv2.jpg" alt="Kapell" loading="lazy" onclick="openLb(this)">
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_eee9a622ee4b4320a9f73f73ad850701~mv2.jpg/v1/fit/w_194,h_194,q_90,enc_avif,quality_auto/350193_eee9a622ee4b4320a9f73f73ad850701~mv2.jpg" alt="Kapell" loading="lazy" onclick="openLb(this)">
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_9db7c2d0e2cb40a5b4dd4d288cd9d489~mv2.webp/v1/fit/w_194,h_194,q_90,enc_avif,quality_auto/350193_9db7c2d0e2cb40a5b4dd4d288cd9d489~mv2.webp" alt="Kapell" loading="lazy" onclick="openLb(this)">
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_3ebdd6452d4a48009cd153492d7358a8~mv2.webp/v1/fit/w_194,h_194,q_90,enc_avif,quality_auto/350193_3ebdd6452d4a48009cd153492d7358a8~mv2.webp" alt="Kapell" loading="lazy" onclick="openLb(this)">
+      </figure>
+    </div>
+  </div>
+
+  <!-- ─── 4. CENTRUMLYFT ─── -->
+  <div class="tips-section reveal" id="centrumlyft">
+    <p class="lbl">Sjösättning &amp; upptagning</p>
+    <div class="rule"></div>
+    <h2>Centrumlyft</h2>
+    <p>Centrumlyft är mycket praktiskt i de flesta situationer — speciellt vid lyft till trailer kommer båten alltid ner exakt rätt. De flesta lyft har två fästen i kölsvinet samt någon form av stabilisering i sidled. Fästena i kölsvinet, vanligen lyftöron påskruvade på kölbultar eller i plastbåtarna inplastade i skrovet, sitter så lågt att båten blir instabil i sidled utan ytterligare stöd.</p>
+    <p>Sidostabiliseringen kan fästas i röstjärn eller i fockens skotning. Andra lösningar med stagande träreglar har också fungerat.</p>
+    <div class="tips-gallery">
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_693df1393c054a2488d71352ed3a35c9~mv2.jpg/v1/fit/w_202,h_201,q_90,enc_avif,quality_auto/350193_693df1393c054a2488d71352ed3a35c9~mv2.jpg" alt="Centrumlyft" loading="lazy" onclick="openLb(this)">
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_b93cbdff6d7b4050ad419a024586a58e~mv2.jpg/v1/fit/w_201,h_201,q_90,enc_avif,quality_auto/350193_b93cbdff6d7b4050ad419a024586a58e~mv2.jpg" alt="Centrumlyft" loading="lazy" onclick="openLb(this)">
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/8bb438_ac2af14459894a6cbce641b7d8af9dc9~mv2_d_3000_2000_s_2.jpg/v1/fit/w_202,h_201,q_90,enc_avif,quality_auto/8bb438_ac2af14459894a6cbce641b7d8af9dc9~mv2_d_3000_2000_s_2.jpg" alt="Centrumlyft" loading="lazy" onclick="openLb(this)">
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/8bb438_b596f0cc1c134605b59843a052cd8f37~mv2_d_3000_2930_s_4_2.jpg/v1/fit/w_201,h_201,q_90,enc_avif,quality_auto/8bb438_b596f0cc1c134605b59843a052cd8f37~mv2_d_3000_2930_s_4_2.jpg" alt="Centrumlyft" loading="lazy" onclick="openLb(this)">
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/8bb438_288176fe374c49949c53917e808c1410~mv2_d_8192_7754_s_4_2.jpg/v1/fit/w_202,h_201,q_90,enc_avif,quality_auto/8bb438_288176fe374c49949c53917e808c1410~mv2_d_8192_7754_s_4_2.jpg" alt="Centrumlyft" loading="lazy" onclick="openLb(this)">
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/8bb438_ec9a72099f9648dfb08d9412804a464a~mv2_d_3000_2000_s_2.jpg/v1/fit/w_201,h_201,q_90,enc_avif,quality_auto/8bb438_ec9a72099f9648dfb08d9412804a464a~mv2_d_3000_2000_s_2.jpg" alt="Centrumlyft" loading="lazy" onclick="openLb(this)">
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/8bb438_cb8e4681180a4bf39d73b69a7d51f086~mv2_d_3000_1688_s_2.jpg/v1/fit/w_202,h_201,q_90,enc_avif,quality_auto/8bb438_cb8e4681180a4bf39d73b69a7d51f086~mv2_d_3000_1688_s_2.jpg" alt="Centrumlyft" loading="lazy" onclick="openLb(this)">
+      </figure>
+    </div>
+  </div>
+
+  <!-- ─── 5. MAST ─── -->
+  <div class="tips-section reveal" id="mast">
+    <p class="lbl">Rigg</p>
+    <div class="rule"></div>
+    <h2>Mast</h2>
+    <p><strong style="color:var(--white)">Mastfot:</strong> Vid riggning utan mastkran finns stort värde i "gångjärnsfunktion" i mastfoten. Flera förslag finns, allt från en tillfällig tamp till traditionellt en hjälpande fot till tydliga gångjärn.</p>
+    <p><strong style="color:var(--white)">Röstjärn:</strong> I träbåtarna består röstjärnen på tidiga båtar av ett bandjärn nitat med fyra nitar direkt i bordläggningen, eller i de flesta senare Skålenbåtar i en förstärkningskloss på insidan. Med åren börjar nitförbandet röra sig och nitarna lossnar — fukt tränger in och rigghaveri hotar. Flera lösningar finns, t.ex. en plåt med de gamla bandjärnen påsvetsade och ett breddat fäste i bordläggning och spant.</p>
+    <p><strong style="color:var(--white)">Riggtrim:</strong> Mastlutning — det finns inga givna svar, bara många kockar! Grundtips: ca 25–30 cm med lodlina från masttopp.</p>
+    <div class="tips-gallery">
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_d2bf5c5189c14b838a6f2400fe820c8d~mv2.jpg/v1/fit/w_217,h_216,q_90,enc_avif,quality_auto/350193_d2bf5c5189c14b838a6f2400fe820c8d~mv2.jpg" alt="Mast" loading="lazy" onclick="openLb(this)">
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_a5d4801a20654143a991377af109a374~mv2.jpg/v1/fit/w_216,h_216,q_90,enc_avif,quality_auto/350193_a5d4801a20654143a991377af109a374~mv2.jpg" alt="Mast" loading="lazy" onclick="openLb(this)">
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_097b01f67a6e4e8f88dd9da5f5851070~mv2.jpg/v1/fit/w_217,h_216,q_90,enc_avif,quality_auto/350193_097b01f67a6e4e8f88dd9da5f5851070~mv2.jpg" alt="Mast" loading="lazy" onclick="openLb(this)">
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_67bef7a6c21b45a7ad30500acb421728~mv2.jpg/v1/fit/w_216,h_216,q_90,enc_avif,quality_auto/350193_67bef7a6c21b45a7ad30500acb421728~mv2.jpg" alt="Röstjärn" loading="lazy" onclick="openLb(this)">
+        <figcaption>Röstjärn.</figcaption>
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_6b57d097ab4d41cab2866929a133793e~mv2.jpg/v1/fit/w_217,h_216,q_90,enc_avif,quality_auto/350193_6b57d097ab4d41cab2866929a133793e~mv2.jpg" alt="Mast" loading="lazy" onclick="openLb(this)">
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_d58e855578264262af625189be7f356c~mv2.jpg/v1/fit/w_216,h_216,q_90,enc_avif,quality_auto/350193_d58e855578264262af625189be7f356c~mv2.jpg" alt="Mast" loading="lazy" onclick="openLb(this)">
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_7d06790088474183a14c2b820296c39e~mv2.jpg/v1/fit/w_217,h_216,q_90,enc_avif,quality_auto/350193_7d06790088474183a14c2b820296c39e~mv2.jpg" alt="Mast" loading="lazy" onclick="openLb(this)">
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_f479ffb0fd97463893e41a627498cdf8~mv2.jpg/v1/fit/w_216,h_216,q_90,enc_avif,quality_auto/350193_f479ffb0fd97463893e41a627498cdf8~mv2.jpg" alt="Mast" loading="lazy" onclick="openLb(this)">
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_08ddade386334b7e91b131e4768bcc33~mv2.jpg/v1/fit/w_217,h_216,q_90,enc_avif,quality_auto/350193_08ddade386334b7e91b131e4768bcc33~mv2.jpg" alt="Mast" loading="lazy" onclick="openLb(this)">
+      </figure>
+    </div>
+  </div>
+
+  <!-- ─── 6. TRÄSKROV ─── -->
+  <div class="tips-section reveal" id="traskrov">
+    <p class="lbl">Underhåll</p>
+    <div class="rule"></div>
+    <h2>Träskrov</h2>
+    <p>En kravellbyggd träbåt måste skyddas mot både vatteninträngning och uttorkning. Fuktkvoten ska hållas så jämn som möjligt över året, både under och över vattenlinjen. Många båtar är ca 60 år gamla och limmet som håller ihop bordläggningen har förlorat sin styrka. Vatten tränger in i sprickor och när båten torkar uppstår fler och större sprickor.</p>
+    <p>Nedan ett antal tips för att förlänga båtens liv, sammanställda av Leif Sjögren (2023):</p>
+    <ul class="tips-list">
+      <li>Se till att båten kommer i sjön varje år. Sjösätt innan den torkat ut för mycket, och ta upp tidigt så att botten inte är vattenmättad när frosten kommer.</li>
+      <li>Vinterförvara väl täckt och ventilerad, helst på skuggig plats. Palla upp under kölen och förskeppet. Tejpa gärna fast byggplastfolie längs vattenlinjen och lägg in blöta tidningar — bevarar fukten under vattenlinjen.</li>
+      <li>Under sommaren ska sittbrunnen vara täckt med kapell. Se till att däcket är tätt vid sittbrunnssarg, reling och röstjärn. Skydda bordläggningens utsida mot sol.</li>
+      <li>Håll båten väl inoljad och ytbehandlad, både på utsidan och insidan. Använd raffinerad linolja (t.ex. Selders grundolja) som värms in i träet och härdar.</li>
+      <li>Stryk lite rå linolja i skarvarna under durkarna innan sjösättning.</li>
+    </ul>
+    <p>Dokumenten nedan av Leif Sjögren finns tillgängliga på <a href="https://www.andunge.se/träskrov" target="_blank" class="brass">andunge.se</a>: Nåtlimning av Andunge (jan 2024) samt Typiska skador på träandungar (2024).</p>
+  </div>
+
+  <!-- ─── 7. BOM ─── -->
+  <div class="tips-section reveal" id="bom">
+    <p class="lbl">Rigg</p>
+    <div class="rule"></div>
+    <h2>Bom</h2>
+    <p>Andungen har historiskt haft rep i bomliket — idag är detta valfritt och många nya segel är lösfotade. Många bombeslag är slitna och behöver bytas. Här några exempel på lösningar.</p>
+    <div class="tips-gallery">
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_c3cccff827324ced8668b860b42db146~mv2.jpg/v1/fill/w_221,h_220,q_90,enc_avif,quality_auto/350193_c3cccff827324ced8668b860b42db146~mv2.jpg" alt="Bom" loading="lazy" onclick="openLb(this)">
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_52684ac1ab26494a880240064c3984c3~mv2.jpg/v1/fill/w_221,h_220,q_90,enc_avif,quality_auto/350193_52684ac1ab26494a880240064c3984c3~mv2.jpg" alt="Bom" loading="lazy" onclick="openLb(this)">
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/8bb438_734b8f436e944886b4185aa6f72b5cad~mv2_d_3000_2000_s_2.jpg/v1/fill/w_221,h_220,q_90,enc_avif,quality_auto/8bb438_734b8f436e944886b4185aa6f72b5cad~mv2_d_3000_2000_s_2.jpg" alt="Bom" loading="lazy" onclick="openLb(this)">
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/8bb438_ac2af14459894a6cbce641b7d8af9dc9~mv2_d_3000_2000_s_2.jpg/v1/fill/w_220,h_220,q_90,enc_avif,quality_auto/8bb438_ac2af14459894a6cbce641b7d8af9dc9~mv2_d_3000_2000_s_2.jpg" alt="Bom" loading="lazy" onclick="openLb(this)">
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/8bb438_b596f0cc1c134605b59843a052cd8f37~mv2_d_3000_2930_s_4_2.jpg/v1/fill/w_221,h_220,q_90,enc_avif,quality_auto/8bb438_b596f0cc1c134605b59843a052cd8f37~mv2_d_3000_2930_s_4_2.jpg" alt="Bom" loading="lazy" onclick="openLb(this)">
+      </figure>
+    </div>
+  </div>
+
+  <!-- ─── 8. TRAILER ─── -->
+  <div class="tips-section reveal" id="trailer">
+    <p class="lbl">Transport</p>
+    <div class="rule"></div>
+    <h2>Trailer</h2>
+    <p>Vid trailertransport finns flera överväganden. Vad gäller regler för vikter, hastigheter, körkortsbehörighet och tekniska krav hänvisas till Transportstyrelsen.</p>
+    <p>Tänk på att båtar, träbåtar i synnerhet, är konstruerade för att flyta i vatten med en köl som hänger i kölbultar. På kärran blir belastningen helt omvänd, vilket accentueras vid körning över fartgupp. Äldre båtar med sviktande hållfasthet i limfogar och skruvförband är extra känsliga. Kärrans stöd till köl respektive skrov har stor betydelse.</p>
+    <div class="tips-gallery">
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_c22486e44f2b4ab4a32a01c26f62dcfd~mv2.jpg/v1/fill/w_228,h_228,q_90,enc_avif,quality_auto/350193_c22486e44f2b4ab4a32a01c26f62dcfd~mv2.jpg" alt="Trailer" loading="lazy" onclick="openLb(this)">
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_a934cd2dabd044d9b597b0f028bdb2dd~mv2.jpg/v1/fill/w_228,h_228,q_90,enc_avif,quality_auto/350193_a934cd2dabd044d9b597b0f028bdb2dd~mv2.jpg" alt="Trailer" loading="lazy" onclick="openLb(this)">
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_7703690bd13643229d098ccb0a90884d~mv2.jpg/v1/fill/w_228,h_228,q_90,enc_avif,quality_auto/350193_7703690bd13643229d098ccb0a90884d~mv2.jpg" alt="Trailer" loading="lazy" onclick="openLb(this)">
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_1a530be7bd464b94861016947af7e834~mv2.jpg/v1/fill/w_228,h_228,q_90,enc_avif,quality_auto/350193_1a530be7bd464b94861016947af7e834~mv2.jpg" alt="Trailer" loading="lazy" onclick="openLb(this)">
+      </figure>
+    </div>
+  </div>
+
+  <!-- ─── 9. HJÄLPMOTOR ─── -->
+  <div class="tips-section reveal" id="hjalpmotor">
+    <p class="lbl">Motor</p>
+    <div class="rule"></div>
+    <h2>Hjälpmotor</h2>
+    <p>Hjälpmotor är praktisk ibland, men i övrigt bara ivägen! Vanligaste arrangemanget är en demonterbar motorbock på skrovsidan i höjd med skotbänken, med skruvfäste i däcket. Placeringen gör den känslig för sjögång och svallvågor, och propellern vill gärna spinna i luften. Motor med lång rigg och en låg position av fästbrädan ger fördel. Motorbock monterad på akterstäven fungerar avsevärt bättre men är svårare att nå vid manövrering.</p>
+    <p>Bensinmotor 2,5 hkr utan backslag räcker väl — med ca 75 % pådrag når man 4–5 kn i stilla väder. Elmotor är en fråga om batterikapacitet och laddningsmöjlighet. Enstaka andungar har utrustats med elektrisk inombordare.</p>
+    <div class="tips-gallery">
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_d53a166d1f85459b98dd19c49dd27c69~mv2.jpg/v1/fill/w_225,h_225,q_90,enc_avif,quality_auto/350193_d53a166d1f85459b98dd19c49dd27c69~mv2.jpg" alt="Hjälpmotor" loading="lazy" onclick="openLb(this)">
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_0495101d62e4489783664fb727054716~mv2.jpg/v1/fill/w_225,h_225,q_90,enc_avif,quality_auto/350193_0495101d62e4489783664fb727054716~mv2.jpg" alt="Hjälpmotor" loading="lazy" onclick="openLb(this)">
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_94a8cd075e4a4810804da6b381c6e12d~mv2.jpg/v1/fill/w_226,h_225,q_90,enc_avif,quality_auto/350193_94a8cd075e4a4810804da6b381c6e12d~mv2.jpg" alt="Hjälpmotor" loading="lazy" onclick="openLb(this)">
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_c58798f479e9490cbb3ecafa2b082bc6~mv2.jpg/v1/fill/w_225,h_225,q_90,enc_avif,quality_auto/350193_c58798f479e9490cbb3ecafa2b082bc6~mv2.jpg" alt="Hjälpmotor" loading="lazy" onclick="openLb(this)">
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_a5b01543d13d467c878d0e3413d392d9~mv2.jpg/v1/fill/w_225,h_225,q_90,enc_avif,quality_auto/350193_a5b01543d13d467c878d0e3413d392d9~mv2.jpg" alt="Hjälpmotor" loading="lazy" onclick="openLb(this)">
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_b353afcbde8547d38e1e3d1fb0dc25e1~mv2.jpg/v1/fill/w_225,h_225,q_90,enc_avif,quality_auto/350193_b353afcbde8547d38e1e3d1fb0dc25e1~mv2.jpg" alt="Hjälpmotor" loading="lazy" onclick="openLb(this)">
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_57bed1b8898e4574b257a1f2d3ed1917~mv2.jpg/v1/fill/w_226,h_225,q_90,enc_avif,quality_auto/350193_57bed1b8898e4574b257a1f2d3ed1917~mv2.jpg" alt="Hjälpmotor" loading="lazy" onclick="openLb(this)">
+      </figure>
+    </div>
+  </div>
+
+  <!-- ─── 10. KÖL / RODER ─── -->
+  <div class="tips-section reveal" id="kol-roder">
+    <p class="lbl">Skrov &amp; köl</p>
+    <div class="rule"></div>
+    <h2>Köl / Roder (trä &amp; plast)</h2>
+    <p>Järnköl, döträ, kölbultar, kölplankor och bottenstockar på träbåtar är ett eget kapitel — vittnesbörd från renoveringsarbeten publiceras här efter hand.</p>
+    <p>Kölen på plastbåtarna har en lång historia. De första 20 plastbåtarna (NOR 41–60, 1970–72) fick fyllning med järnskrot och polyester. Från båt NOR-61 användes järnskrot och cement, troligen upp till NOR-173 (1986). Cementkölarna åldras — cementklumpen släpper från plastskalets insida och vittrar/fryser. Man kan höra ett tydligt tomljud när man knackar på kölen. Vattenläckage accelererar processen.</p>
+    <p>De 8 svenska plastandungarna byggda av medlemmar 1980–82 har ballast av 10 mm järnprovbitar — ingen cement. I det norska båtregistret finns anteckningar om att ca 22 båtar fått kölen utbytt.</p>
+    <p>Dokumenten nedan finns på <a href="https://www.andunge.se/köl" target="_blank" class="brass">andunge.se</a>: Renovering roderarrangemang (Björn Carlsson, 2024) och Roderinstallation SWE 15 (Leif Sjögren, 2024).</p>
+    <p><em>Text: Claes-Henrik Möse, november 2023.</em></p>
+    <div class="tips-gallery">
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_2fd85d4559794d46b1ed90386087fa6c~mv2.jpg/v1/fit/w_180,h_180,q_90,enc_avif,quality_auto/350193_2fd85d4559794d46b1ed90386087fa6c~mv2.jpg" alt="Köl — innehåll" loading="lazy" onclick="openLb(this)">
+        <figcaption>Kölfyllnad, norskbyggd båt.</figcaption>
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_de664527a67a4423a463c7d4b2c0973f~mv2.jpg/v1/fit/w_180,h_180,q_90,enc_avif,quality_auto/350193_de664527a67a4423a463c7d4b2c0973f~mv2.jpg" alt="Köl" loading="lazy" onclick="openLb(this)">
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_5474535aa54144c6b08007f26e8c454a~mv2.jpg/v1/fit/w_180,h_180,q_90,enc_avif,quality_auto/350193_5474535aa54144c6b08007f26e8c454a~mv2.jpg" alt="Köl" loading="lazy" onclick="openLb(this)">
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_37f7153edf184b98960eb9dc4203e492~mv2.jpg/v1/fit/w_181,h_180,q_90,enc_avif,quality_auto/350193_37f7153edf184b98960eb9dc4203e492~mv2.jpg" alt="Köl" loading="lazy" onclick="openLb(this)">
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_f900137c3c044d47b01c50da1e20f9af~mv2.jpg/v1/fit/w_180,h_180,q_90,enc_avif,quality_auto/350193_f900137c3c044d47b01c50da1e20f9af~mv2.jpg" alt="Köl" loading="lazy" onclick="openLb(this)">
+      </figure>
+      <figure>
+        <img src="https://static.wixstatic.com/media/350193_9b67b74327884982bcf30ebd52df6053~mv2.jpg/v1/fit/w_180,h_180,q_90,enc_avif,quality_auto/350193_9b67b74327884982bcf30ebd52df6053~mv2.jpg" alt="Köl" loading="lazy" onclick="openLb(this)">
+      </figure>
+    </div>
+  </div>
+
+</div><!-- /page-body -->
+
+<!-- Lightbox -->
+<div id="lb-overlay" role="dialog" aria-modal="true" onclick="closeLb(event)">
+  <button id="lb-close" onclick="closeLb()" aria-label="Stäng">×</button>
+  <img id="lb-img" src="" alt="">
+  <div id="lb-caption"></div>
 </div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">Svensk Andungeklubb</div>
+        <p>Klassiska träbåtar sedan 1958.<br>Hemmahamn i Hasselön, Bohuslän.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Klubben</h4>
+        <ul>
+          <li><a href="andungebladet.html">Andungebladet</a>
+          <a href="om-klubben.html">Om klubben</a></li>
+          <li><a href="medlemmar.html">Bli medlem</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Segling</h4>
+        <ul>
+          <li><a href="batregistret.html">Båtregistret</a></li>
+          <li><a href="kappsegling.html">Kappsegling</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Mer</h4>
+        <ul>
+          <li><a href="butiken.html">Butiken</a></li>
+          <li><a href="tips-och-rad.html">Tips och råd</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Svensk Andungeklubb</span>
+      <span>Hasselön &middot; Bohuslän &middot; Sverige</span>
+    </div>
+  </div>
+</footer>
 
 <script src="../js/duck.js"></script>
 <script src="../js/header.js"></script>
+<script>
+function openLb(img) {
+  const overlay = document.getElementById('lb-overlay');
+  const lbImg = document.getElementById('lb-img');
+  const lbCap = document.getElementById('lb-caption');
+  // Use full-size version by stripping size constraints from URL
+  lbImg.src = img.src.replace(/\/v1\/(fill|fit)\/w_\d+,h_\d+[^/]*\//, '/v1/fill/w_1200,h_1200,al_c,q_90,enc_avif,quality_auto/');
+  lbImg.alt = img.alt;
+  lbCap.textContent = img.closest('figure')?.querySelector('figcaption')?.textContent || img.alt || '';
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLb(e) {
+  if (e && e.target !== document.getElementById('lb-overlay') && e.target !== document.getElementById('lb-close')) return;
+  document.getElementById('lb-overlay').classList.remove('open');
+  document.getElementById('lb-img').src = '';
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
+</script>
 </body>
 </html>
