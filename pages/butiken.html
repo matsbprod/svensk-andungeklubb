@@ -282,20 +282,6 @@
         </div>
       </div>
 
-      <div class="shop-item" data-id="12" data-name="Årskalender 2026 (inkl porto)" data-price="120">
-        <div class="shop-item-img" style="background:#1a2e42;display:flex;align-items:center;justify-content:center;font-size:2.5rem">📅</div>
-        <div class="shop-item-body">
-          <div class="shop-item-name">Årskalender 2026</div>
-          <div class="shop-item-desc">Årskalender med seglingsbilder. Porto ingår i priset.</div>
-          <div class="shop-item-price">120 kr <span style="font-size:.75em;opacity:.6">(inkl. porto)</span></div>
-          <div class="shop-qty-row">
-            <button class="qty-btn" onclick="changeQty(12,-1)">−</button>
-            <span class="qty-val" id="qty-12">0</span>
-            <button class="qty-btn" onclick="changeQty(12,1)">+</button>
-            <span class="qty-added" id="added-12"></span>
-          </div>
-        </div>
-      </div>
 
       <div class="shop-item" data-id="13" data-name="Medlemskap övriga 2025" data-price="200">
         <div class="shop-item-img" style="background:#1a2e42;display:flex;align-items:center;justify-content:center;font-size:2.5rem">🦆</div>
@@ -350,6 +336,7 @@
     <h2>Skicka din beställning</h2>
     <form class="andunge-form reveal" name="butiken" method="POST" data-netlify="true">
       <input type="hidden" name="form-name" value="butiken">
+      <input type="hidden" name="_to" value="christ.johansson@yahoo.se">
       <input type="hidden" name="bestallning" id="hidden-bestallning" value="">
       <input type="hidden" name="totalsumma" id="hidden-totalsumma" value="">
       <div class="form-row">
