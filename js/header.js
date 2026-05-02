@@ -41,10 +41,11 @@
     }
   });
 
-  var SCROLL_END = 300;
-  var NAV_SMALL  = 220;
+  var isMobile = window.innerWidth <= 860;
+  var SCROLL_END = isMobile ? 200 : 300;
+  var NAV_SMALL  = isMobile ? 120 : 220;
   var NAV_LARGE  = 64;
-  var SMALL_PX   = 60;
+  var SMALL_PX   = isMobile ? 28 : 60;
   var LARGE_PX   = 15;
   var DUCK_AR    = 2000 / 1116;
 
@@ -94,7 +95,13 @@
   }
 
   window.addEventListener("scroll", update, { passive: true });
-  window.addEventListener("resize", update);
+  window.addEventListener("resize", function() {
+    isMobile = window.innerWidth <= 860;
+    SCROLL_END = isMobile ? 200 : 300;
+    NAV_SMALL  = isMobile ? 120 : 220;
+    SMALL_PX   = isMobile ? 28 : 60;
+    update();
+  });
   update();
 
   if (duck) {
