@@ -7,11 +7,45 @@
 
   if (!block) return;
 
+  // ── Hamburger menu ──────────────────────────────────────────
+  var navLinks = navbar ? navbar.querySelector('.nav-links') : null;
+  var burger = document.createElement('button');
+  burger.className = 'hamburger';
+  burger.setAttribute('aria-label', 'Meny');
+  burger.innerHTML = '<span></span><span></span><span></span>';
+  document.body.appendChild(burger);
+
+  // Build drawer from existing nav links
+  var drawer = document.createElement('div');
+  drawer.className = 'nav-drawer';
+  if (navLinks) {
+    navLinks.querySelectorAll('a').forEach(function(a) {
+      var link = document.createElement('a');
+      link.href = a.href;
+      link.textContent = a.textContent;
+      drawer.appendChild(link);
+    });
+  }
+  document.body.appendChild(drawer);
+
+  burger.addEventListener('click', function() {
+    var isOpen = burger.classList.toggle('open');
+    drawer.classList.toggle('open', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+  drawer.addEventListener('click', function(e) {
+    if (e.target.tagName === 'A') {
+      burger.classList.remove('open');
+      drawer.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+
   var SCROLL_END = 300;
-  var NAV_SMALL  = 220;   // navbar height at page top (big)   // navbar height at page top
-  var NAV_LARGE  = 64;    // navbar height when scrolled (small)    // navbar height when scrolled (logo shrunk)
-  var SMALL_PX   = 60;    // font size at page top (big)    // font size at page top (large)
-  var LARGE_PX   = 15;    // font size when scrolled (small)    // font size when scrolled (small)
+  var NAV_SMALL  = 220;
+  var NAV_LARGE  = 64;
+  var SMALL_PX   = 60;
+  var LARGE_PX   = 15;
   var DUCK_AR    = 2000 / 1116;
 
   function clamp(v,a,b){ return Math.min(Math.max(v,a),b); }
@@ -23,11 +57,9 @@
     var vw  = window.innerWidth;
     var t   = easeIO(clamp(sy / SCROLL_END, 0, 1));
 
-    // Navbar grows taller as user scrolls
     var navH = Math.round(lerp(NAV_SMALL, NAV_LARGE, t));
     navbar.style.height = navH + "px";
 
-    // Logo grows with navbar
     var curPx   = lerp(SMALL_PX, LARGE_PX, t);
     var spacing = lerp(0.07, 0.10, t);
 
@@ -36,11 +68,13 @@
     line2.style.fontSize      = curPx + "px";
     line2.style.letterSpacing = spacing + "em";
 
-    // Logo vertically centered in the growing navbar
     block.style.left = "clamp(1.5rem, 5vw, 6rem)";
     var blockH   = block.offsetHeight || curPx * 2.2;
     var blockTop = (navH - blockH) / 2;
     block.style.top = blockTop + "px";
+
+    // Keep hamburger vertically centred in navbar
+    burger.style.top = Math.round((navH - 18) / 2) + "px";
 
     if (duck) {
       var duckH     = line1.offsetHeight || Math.round(curPx);
