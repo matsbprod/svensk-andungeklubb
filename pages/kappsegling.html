@@ -120,10 +120,7 @@
 
           <!-- PDF Inbjudan -->
           <div class="page-section reveal" style="margin-top:2rem">
-            <p class="lbl">Dokument</p>
-            <div class="rule"></div>
             <h2>Inbjudan &amp; regler</h2>
-            <p>Fullständig inbjudan med regler, tidsprogram och praktisk information.</p>
             <a href="#" onclick="openVmPdf('../pdf/Inbjudan%20VM%20Andunge%202026.pdf'); return false;" class="pdf-featured-card" style="display:grid;grid-template-columns:120px 1fr;gap:1.2rem;text-decoration:none;margin-top:1.2rem;background:var(--card);border:1px solid rgba(184,145,74,.15);border-radius:4px;padding:1rem;transition:border-color .2s,box-shadow .2s" onmouseover="this.style.borderColor='rgba(184,145,74,.5)';this.style.boxShadow='0 6px 20px rgba(0,0,0,.35)'" onmouseout="this.style.borderColor='rgba(184,145,74,.15)';this.style.boxShadow='none'">
               <div class="pdf-thumb-box">
                 <canvas class="pdf-canvas" data-src="../pdf/Inbjudan%20VM%20Andunge%202026.pdf"></canvas>
@@ -134,7 +131,6 @@
               <div style="display:flex;flex-direction:column;justify-content:center;gap:.4rem">
                 <span style="font-family:'Cinzel',serif;font-size:.7em;letter-spacing:.1em;color:var(--brass)">INBJUDAN 2026</span>
                 <span style="color:var(--white);font-family:'Cormorant Garamond',serif;font-size:1.05em">Inbjudan till Västkustmästerskap Andunge</span>
-                <span style="font-size:.82em;opacity:.6">Regler · Tidsprogram · Praktisk info · 3 sidor</span>
                 <span style="font-size:.8em;color:var(--brass);margin-top:.2rem">Klicka för att läsa →</span>
               </div>
             </a>
@@ -145,8 +141,6 @@
 
         <!-- VM Registration form -->
         <div class="page-section reveal" id="vm-anmalan">
-          <p class="lbl">Anmälan</p>
-          <div class="rule"></div>
           <h2>Anmäl till Andunge-VM</h2>
           <form class="andunge-form" name="andunge-vm-2026" method="POST" data-netlify="true" action="tack.html">
             <input type="hidden" name="form-name" value="andunge-vm-2026">
