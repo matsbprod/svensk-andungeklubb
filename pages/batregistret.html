@@ -252,6 +252,20 @@
 .bat-link:hover { border-color: var(--brass); }
 </style>
 
+
+function filterTable() {
+  var query = document.getElementById('reg-search').value.toLowerCase().trim();
+  var material = document.getElementById('reg-material').value.toLowerCase().trim();
+  var rows = document.querySelectorAll('#reg-tbody tr');
+  rows.forEach(function(row) {
+    var text = row.textContent.toLowerCase();
+    var mat = row.cells[6] ? row.cells[6].textContent.toLowerCase() : '';
+    var matchQuery = !query || text.indexOf(query) !== -1;
+    var matchMat = !material || mat.indexOf(material) !== -1;
+    row.style.display = (matchQuery && matchMat) ? '' : 'none';
+  });
+}
+
 <script>
 // Clickable rows — navigate to bat/NR.html
 document.querySelectorAll('#reg-tbody tr').forEach(function(row) {
