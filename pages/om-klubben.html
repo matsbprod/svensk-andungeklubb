@@ -89,6 +89,46 @@
         <p>Var noga med att meddela namn, adress och båtnummer. Nya medlemmar får gärna meddela båtnamn och hemmahamn till <a href="mailto:register@andunge.se" class="brass">register@andunge.se</a> så uppdaterar vi båtregistret.</p>
         <p style="font-size:0.85em;opacity:0.7">Från utlandet — IBAN: SE73 9500 0099 6042 0620 0968 &nbsp;·&nbsp; BIC: NDEASESS<br>
         Svensk Andungeklubb, Claes-Henrik Möse, Mölndalsvägen 41, 412 63 Göteborg, Sverige</p>
+
+        <form class="andunge-form" name="bli-medlem" method="POST" data-netlify="true" action="tack.html" style="margin-top:2rem">
+          <input type="hidden" name="form-name" value="bli-medlem">
+          <div class="form-row">
+            <label>Namn <span style="color:var(--brass)">*</span></label>
+            <input type="text" name="namn" required placeholder="För- och efternamn">
+          </div>
+          <div class="form-row">
+            <label>E-post <span style="color:var(--brass)">*</span></label>
+            <input type="email" name="epost" required placeholder="din@epost.se">
+          </div>
+          <div class="form-row">
+            <label>Adress</label>
+            <textarea name="adress" placeholder="Gatuadress&#10;Postnummer och ort"></textarea>
+          </div>
+          <div class="form-row">
+            <label>Båtnamn</label>
+            <input type="text" name="batnamn" placeholder="Båtens namn">
+          </div>
+          <div class="form-row">
+            <label>Båtnummer</label>
+            <input type="text" name="batnummer" placeholder="t.ex. SWE 42">
+          </div>
+          <div class="form-row">
+            <label>Hemmahamn</label>
+            <input type="text" name="hemmahamn" placeholder="Hamnens namn">
+          </div>
+          <div class="form-row">
+            <label>Typ av medlemskap <span style="color:var(--brass)">*</span></label>
+            <select name="typ" required>
+              <option value="">Välj...</option>
+              <option value="batägare">Båtägare — 350 kr</option>
+              <option value="stodmedlem">Stödmedlem / utan båt — 200 kr</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-outline" style="width:100%;margin-top:.5rem">Skicka anmälan</button>
+          <p class="form-note" style="text-align:center;margin-top:1rem">
+            Betala via Swish <strong style="color:var(--white)">123 143 15 84</strong> eller Plusgiro <strong style="color:var(--white)">62 00 96-8</strong> efter att du skickat anmälan.
+          </p>
+        </form>
       </div>
 
       <div class="page-section reveal">
