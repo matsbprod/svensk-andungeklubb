@@ -125,7 +125,60 @@
         <p>Båtens historia, tekniska data, ritningar och klassregler finns på en egen sida.</p>
         <a href="om-andungen.html" class="brass" style="display:inline-block;margin-top:.5rem">Läs mer om Andungen →</a>
       </div>
-      <div class="info-box reveal" style="display:none"><h3>Tekniska data</h3>
+
+      <div class="info-box reveal" style="margin-top:1.5rem">
+        <h3>Styrelseprotokoll</h3>
+<style>
+.proto-year { width:100%; background:none; border:none; border-bottom:1px solid rgba(184,145,74,.15); color:var(--white); font-family:'Cinzel',serif; font-size:.8em; letter-spacing:.07em; padding:.6rem 0; cursor:pointer; display:flex; justify-content:space-between; align-items:center; }
+.proto-year:hover { color:var(--brass); }
+.proto-year .arrow { color:var(--brass); transition:transform .2s; font-style:normal; }
+.proto-year.open .arrow { transform:rotate(90deg); }
+.proto-list { list-style:none; padding:0; margin:0; overflow:hidden; max-height:0; transition:max-height .3s ease; }
+.proto-list.open { max-height:500px; }
+.proto-list li { padding:.35rem 0; border-bottom:1px solid rgba(255,255,255,.04); }
+.proto-list li:last-child { border-bottom:none; }
+.proto-list a { color:rgba(240,244,246,.75); text-decoration:none; font-size:.88em; display:flex; align-items:center; gap:.5rem; transition:color .15s; }
+.proto-list a:hover { color:var(--brass); }
+</style>
+
+        <!-- 2026 -->
+        <button class="proto-year open" onclick="toggleProto(this)">
+          2026 <em class="arrow">›</em>
+        </button>
+        <ul class="proto-list open">
+          <li><a href="../pdf/protokoll/2026-01.pdf" target="_blank">📄 Årsmötesprotokoll januari 2026</a></li>
+          <li><a href="../pdf/protokoll/2026-02.pdf" target="_blank">📄 Styrelsemöte mars 2026</a></li>
+        </ul>
+
+        <!-- 2025 -->
+        <button class="proto-year" onclick="toggleProto(this)">
+          2025 <em class="arrow">›</em>
+        </button>
+        <ul class="proto-list">
+          <li><a href="../pdf/protokoll/2025-01.pdf" target="_blank">📄 Årsmötesprotokoll januari 2025</a></li>
+          <li><a href="../pdf/protokoll/2025-02.pdf" target="_blank">📄 Styrelsemöte mars 2025</a></li>
+          <li><a href="../pdf/protokoll/2025-03.pdf" target="_blank">📄 Styrelsemöte maj 2025</a></li>
+          <li><a href="../pdf/protokoll/2025-04.pdf" target="_blank">📄 Styrelsemöte september 2025</a></li>
+        </ul>
+
+        <!-- 2024 -->
+        <button class="proto-year" onclick="toggleProto(this)">
+          2024 <em class="arrow">›</em>
+        </button>
+        <ul class="proto-list">
+          <li><a href="../pdf/protokoll/2024-01.pdf" target="_blank">📄 Årsmötesprotokoll januari 2024</a></li>
+          <li><a href="../pdf/protokoll/2024-02.pdf" target="_blank">📄 Styrelsemöte april 2024</a></li>
+          <li><a href="../pdf/protokoll/2024-03.pdf" target="_blank">📄 Styrelsemöte september 2024</a></li>
+        </ul>
+
+<script>
+function toggleProto(btn) {
+  btn.classList.toggle('open');
+  var list = btn.nextElementSibling;
+  list.classList.toggle('open');
+}
+</script>
+      </div>
         <ul>
           <li><span class="brass">Konstruktör</span><br>Thorvald Gjerdrum, 1944</li>
           <li><span class="brass">Längd över allt</span><br>6,74 m</li>
