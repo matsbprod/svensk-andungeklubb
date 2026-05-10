@@ -59,11 +59,6 @@
     <div class="table-sticky-bar">
     <div style="display:flex;gap:1rem;flex-wrap:wrap">
       <input type="text" id="reg-search" placeholder="Sök på namn, ägare eller hamn..." oninput="filterTable()" style="flex:1;min-width:200px;background:transparent;border:1px solid rgba(184,145,74,.3);color:var(--white);padding:.7rem 1rem;font-family:inherit;font-size:1rem;outline:none">
-      <select id="reg-material" onchange="filterTable()" style="background:var(--card);border:1px solid rgba(184,145,74,.3);color:var(--white);padding:.7rem 1rem;font-family:inherit;font-size:.9rem;outline:none">
-        <option value="">Alla material</option>
-        <option value="Mahogny">Mahogny</option>
-        <option value="Pine">Pine</option>
-      </select>
     </div>
     </div><!-- /sticky bar -->
 
@@ -252,19 +247,15 @@
 .bat-link:hover { border-color: var(--brass); }
 </style>
 
-
+<script>
 function filterTable() {
   var query = document.getElementById('reg-search').value.toLowerCase().trim();
-  var material = document.getElementById('reg-material').value.toLowerCase().trim();
   var rows = document.querySelectorAll('#reg-tbody tr');
   rows.forEach(function(row) {
-    var text = row.textContent.toLowerCase();
-    var mat = row.cells[6] ? row.cells[6].textContent.toLowerCase() : '';
-    var matchQuery = !query || text.indexOf(query) !== -1;
-    var matchMat = !material || mat.indexOf(material) !== -1;
-    row.style.display = (matchQuery && matchMat) ? '' : 'none';
+    row.style.display = (!query || row.textContent.toLowerCase().indexOf(query) !== -1) ? '' : 'none';
   });
 }
+</script>
 
 <script>
 // Clickable rows — navigate to bat/NR.html
