@@ -59,7 +59,7 @@
           </div>
           <span style="font-family:'Cinzel',serif;font-size:1.05em;color:var(--white);white-space:nowrap">50 000 kr</span>
         </div>
-        <img src="../img/SWE_76.jpg" alt="Andunge SWE 76" onclick="document.getElementById('lb-76').style.display='flex'" style="width:120px;height:90px;object-fit:cover;border-radius:3px;margin-bottom:1rem;border:1px solid rgba(184,145,74,.2);cursor:zoom-in;transition:opacity .15s" onmouseover="this.style.opacity='.8'" onmouseout="this.style.opacity='1'">
+        <img src="../img/SWE_76.jpg" alt="Andunge SWE 76" onclick="document.getElementById('lb-76').style.display='flex'" style="width:120px;height:90px;object-fit:contain;background:#0c1620;border-radius:3px;margin-bottom:1rem;border:1px solid rgba(184,145,74,.2);cursor:zoom-in;transition:opacity .15s" onmouseover="this.style.opacity='.8'" onmouseout="this.style.opacity='1'">
         <p style="margin:0 0 .8rem">Andunge nr 76 säljes. Båten är i gott skick och har renoverats på Lilla Kålviks varv. Kappseglingsutrustad med ett North segelställ och ny spinnaker. Dokumentation och fotografier från renovering finns. Till båten hör en metallmast och bom.</p>
         <div style="font-size:.88em;margin-top:.9rem;display:flex;flex-direction:column;gap:.25rem;opacity:.8">
           <div>Kontakt: <strong style="color:var(--white)">Tomas</strong></div>
@@ -83,17 +83,6 @@
           <option value="">Välj...</option>
           <option value="saljes">Säljes</option>
           <option value="kopes">Köpes</option>
-        </select>
-      </div>
-      <div class="form-row">
-        <label id="label-kategori">Kategori <span style="color:var(--brass)">*</span></label>
-        <select name="kategori">
-          <option value="">Välj kategori...</option>
-          <option>Båt</option>
-          <option>Segel</option>
-          <option>Rigg</option>
-          <option>Motor</option>
-          <option>Övrigt</option>
         </select>
       </div>
       <div class="form-row">
@@ -134,15 +123,12 @@
 function updateFormLabels(typ) {
   var prisRow = document.getElementById('pris-row');
   var beskLabel = document.getElementById('label-beskrivning');
-  var katLabel = document.getElementById('label-kategori');
   if (typ === 'kopes') {
     prisRow.style.display = 'none';
     beskLabel.childNodes[0].textContent = 'Vad söker du? ';
-    katLabel.childNodes[0].textContent = 'Kategori ';
   } else {
     prisRow.style.display = '';
     beskLabel.childNodes[0].textContent = 'Beskrivning ';
-    katLabel.childNodes[0].textContent = 'Kategori ';
   }
 }
 </script>
