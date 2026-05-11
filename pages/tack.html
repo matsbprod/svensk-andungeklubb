@@ -37,20 +37,15 @@
   <div class="page-hero-grad"></div>
   <div class="page-hero-content reveal">
     <p class="lbl">Bekräftelse</p>
-    <h1>Tack för din anmälan!</h1>
+    <h1 id="tack-rubrik">Tack!</h1>
   </div>
 </div>
 
 <div class="page-body">
   <div class="page-section reveal" style="text-align:center;max-width:560px;margin:0 auto">
-    <p style="font-size:1.1em">Din anmälan är mottagen. Vi återkommer med bekräftelse via e-post.</p>
-    <p>Kom ihåg att betala anmälningsavgiften <strong style="color:var(--white)">850 SEK</strong> via:</p>
-    <div style="margin:1.5rem 0;display:flex;flex-direction:column;gap:.5rem">
-      <div>Swish: <strong style="color:var(--white)">123 143 15 84</strong></div>
-      <div>Plusgiro: <strong style="color:var(--white)">62 00 96-8</strong></div>
-    </div>
-    <p style="opacity:.7;font-size:.9em">Ange ditt namn och "VM 2026" som meddelande.</p>
-    <a href="kappsegling.html" class="btn btn-outline" style="display:inline-block;margin-top:2rem">Tillbaka till Kappsegling</a>
+    <p style="font-size:1.1em">Ditt meddelande är mottaget. Vi återkommer med bekräftelse via e-post.</p>
+    <div id="tack-extra" style="margin:1.5rem 0"></div>
+    <a id="tack-back" href="../index.html" class="btn btn-outline" style="display:inline-block;margin-top:2rem">Tillbaka till startsidan</a>
   </div>
 </div>
 
@@ -70,5 +65,50 @@
 
 <script src="../js/duck.js"></script>
 <script src="../js/header.js"></script>
+<script>
+// Anpassa sidan baserat på referrer
+var ref = document.referrer;
+var rubrik = document.getElementById('tack-rubrik');
+var extra = document.getElementById('tack-extra');
+var back = document.getElementById('tack-back');
+
+if (ref.indexOf('kappsegling') !== -1) {
+  rubrik.textContent = 'Tack för din anmälan!';
+  extra.innerHTML =
+    '<p>Kom ihåg att betala anmälningsavgiften <strong style="color:var(--white)">850 SEK</strong> via:</p>' +
+    '<div style="display:flex;flex-direction:column;gap:.5rem;margin-top:.8rem">' +
+    '<div>Swish: <strong style="color:var(--white)">123 143 15 84</strong></div>' +
+    '<div>Plusgiro: <strong style="color:var(--white)">62 00 96-8</strong></div>' +
+    '</div>' +
+    '<p style="opacity:.7;font-size:.9em;margin-top:.8rem">Ange ditt namn och "VM 2026" som meddelande.</p>';
+  back.href = 'kappsegling.html';
+  back.textContent = 'Tillbaka till Kappsegling';
+} else if (ref.indexOf('butiken') !== -1) {
+  rubrik.textContent = 'Tack för din beställning!';
+  extra.innerHTML =
+    '<p>Kom ihåg att betala via:</p>' +
+    '<div style="display:flex;flex-direction:column;gap:.5rem;margin-top:.8rem">' +
+    '<div>Swish: <strong style="color:var(--white)">123 143 15 84</strong></div>' +
+    '<div>Plusgiro: <strong style="color:var(--white)">62 00 96-8</strong></div>' +
+    '</div>' +
+    '<p style="opacity:.7;font-size:.9em;margin-top:.8rem">Ange ditt namn som meddelande.</p>';
+  back.href = 'butiken.html';
+  back.textContent = 'Tillbaka till Butiken';
+} else if (ref.indexOf('om-klubben') !== -1) {
+  rubrik.textContent = 'Tack för din medlemsanmälan!';
+  extra.innerHTML =
+    '<p>Kom ihåg att betala årsavgiften via:</p>' +
+    '<div style="display:flex;flex-direction:column;gap:.5rem;margin-top:.8rem">' +
+    '<div>Swish: <strong style="color:var(--white)">123 143 15 84</strong></div>' +
+    '<div>Plusgiro: <strong style="color:var(--white)">62 00 96-8</strong></div>' +
+    '</div>';
+  back.href = 'om-klubben.html';
+  back.textContent = 'Tillbaka till Om klubben';
+} else if (ref.indexOf('kop-och-salj') !== -1) {
+  rubrik.textContent = 'Tack! Din annons är mottagen.';
+  back.href = 'kop-och-salj.html';
+  back.textContent = 'Tillbaka till Köp och sälj';
+}
+</script>
 </body>
 </html>
