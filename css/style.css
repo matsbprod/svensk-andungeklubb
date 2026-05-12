@@ -48,7 +48,7 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
   flex-wrap: wrap;
   position: absolute;
   right: var(--pad);
-  top: 14px;
+  top: var(--nav-links-top, 14px);
   max-width: calc(100% - clamp(260px, 28vw, 400px));
   justify-content: flex-end;
 }

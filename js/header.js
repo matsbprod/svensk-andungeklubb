@@ -75,6 +75,7 @@
     var blockH   = block.offsetHeight || curPx * 2.2;
     var blockTop = (navH - blockH) / 2;
     block.style.top = blockTop + "px";
+    document.documentElement.style.setProperty('--nav-links-top', Math.round(blockTop) + 'px');
 
     // Keep hamburger vertically centred in navbar
     burger.style.top = Math.round((navH - 18) / 2) + "px";
