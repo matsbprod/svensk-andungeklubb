@@ -44,9 +44,9 @@
   var isMobile = window.innerWidth <= 860;
   var isTablet = window.innerWidth <= 1100 && window.innerWidth > 860;
   var SCROLL_END = isMobile ? 200 : 250;
-  var NAV_SMALL  = isMobile ? 100 : (isTablet ? 160 : 180);
+  var NAV_SMALL  = isMobile ? 100 : (isTablet ? 120 : 180);
   var NAV_LARGE  = 64;
-  var SMALL_PX   = isMobile ? 26 : (isTablet ? 40 : 48);
+  var SMALL_PX   = isMobile ? 26 : (isTablet ? 30 : 48);
   var LARGE_PX   = 15;
   var DUCK_AR    = 2000 / 1116;
 
