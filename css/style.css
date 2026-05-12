@@ -11,7 +11,7 @@
   --card-dark:  #0c1620;      /* deepest card */
   --card-accent:#1b4f72;      /* marine blue accent — our "red" */
   --white:      #f0f4f6;
-  --white-dim:  rgba(240,244,246,.62);
+  --white-dim:  rgba(240,244,246,1);
   --white-faint:rgba(240,244,246,.32);
   --brass:      #b8914a;
   --nav-h:      64px;  /* initial — JS overrides */
@@ -268,7 +268,6 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
   display: flex; flex-direction: column; justify-content: center;
   padding: 3rem 3.5rem;
   cursor: pointer;
-  overflow: hidden;
   transition: background .35s ease;
 }
 .f-solid-a { background: var(--card); }
