@@ -75,8 +75,6 @@
     var blockH   = block.offsetHeight || curPx * 2.2;
     var blockTop = (navH - blockH) / 2;
     block.style.top = blockTop + "px";
-    // Align nav-links top edge to logo top edge
-    document.documentElement.style.setProperty('--nav-links-top', blockTop + 'px');
 
     // Keep hamburger vertically centred in navbar
     burger.style.top = Math.round((navH - 18) / 2) + "px";

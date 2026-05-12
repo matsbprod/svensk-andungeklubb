@@ -44,17 +44,18 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
   will-change: height;
 }
 .nav-links {
-  display: flex; gap: 1.4rem 2rem; align-items: flex-start;
+  display: flex; gap: .3rem 1.2rem; align-items: flex-start;
   flex-wrap: wrap;
-  opacity: 1;
   position: absolute;
   right: var(--pad);
-  top: var(--nav-links-top, 20px);
-  max-width: calc(100% - clamp(280px, 30vw, 420px));
+  top: 50%;
+  transform: translateY(-50%);
+  max-width: calc(100% - clamp(260px, 28vw, 400px));
+  justify-content: flex-end;
 }
 .nav-links a {
-  font-family: sans-serif; font-size: 0.72rem;
-  letter-spacing: .18em; text-transform: uppercase;
+  font-family: sans-serif; font-size: 0.68rem;
+  letter-spacing: .10em; text-transform: uppercase;
   color: var(--white-dim); transition: color .2s;
 }
 .nav-links a:hover { color: var(--white); }
