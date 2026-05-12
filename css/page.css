@@ -101,7 +101,7 @@
   border-bottom: 2px solid rgba(184,145,74,.4);
   text-align: left;
   position: sticky;
-  top: 140px;
+  top: calc(var(--nav-h) + 1rem);
   background: #0c1620;
   z-index: 50;
   white-space: nowrap;
@@ -230,7 +230,7 @@
 /* Sticky search bar above the register table */
 .table-sticky-bar {
   position: sticky;
-  top: 64px;
+  top: var(--nav-h);
   z-index: 60;
   background: var(--bg);
   padding: 1rem 0;

@@ -61,6 +61,7 @@
 
     var navH = Math.round(lerp(NAV_SMALL, NAV_LARGE, t));
     navbar.style.height = navH + "px";
+    document.documentElement.style.setProperty('--nav-h', navH + 'px');
 
     var curPx   = lerp(SMALL_PX, LARGE_PX, t);
     var spacing = lerp(0.07, 0.10, t);
