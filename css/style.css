@@ -43,7 +43,7 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
   transition: border-color .4s;
   will-change: height;
 }
-.nav-links {
+.nav-links { padding-left: clamp(280px, 30vw, 420px);
   display: flex; gap: 2rem; align-items: center;
   opacity: 1;
   position: absolute;
@@ -445,7 +445,7 @@ footer {
 
 @media (max-width: 860px) {
   .hamburger { display: flex; }
-  .nav-links { display: none; }
+  .nav-links { padding-left: clamp(280px, 30vw, 420px); display: none; }
   .nav-drawer { display: flex; }
 
   /* Hero adjustments */

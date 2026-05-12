@@ -42,10 +42,11 @@
   });
 
   var isMobile = window.innerWidth <= 860;
-  var SCROLL_END = isMobile ? 200 : 300;
-  var NAV_SMALL  = isMobile ? 120 : 220;
+  var isTablet = window.innerWidth <= 1100 && window.innerWidth > 860;
+  var SCROLL_END = isMobile ? 200 : 250;
+  var NAV_SMALL  = isMobile ? 100 : (isTablet ? 160 : 180);
   var NAV_LARGE  = 64;
-  var SMALL_PX   = isMobile ? 28 : 60;
+  var SMALL_PX   = isMobile ? 26 : (isTablet ? 40 : 48);
   var LARGE_PX   = 15;
   var DUCK_AR    = 2000 / 1116;
 
@@ -97,9 +98,10 @@
   window.addEventListener("scroll", update, { passive: true });
   window.addEventListener("resize", function() {
     isMobile = window.innerWidth <= 860;
-    SCROLL_END = isMobile ? 200 : 300;
-    NAV_SMALL  = isMobile ? 120 : 220;
-    SMALL_PX   = isMobile ? 28 : 60;
+    isTablet = window.innerWidth <= 1100 && window.innerWidth > 860;
+    SCROLL_END = isMobile ? 200 : 250;
+    NAV_SMALL  = isMobile ? 100 : (isTablet ? 160 : 180);
+    SMALL_PX   = isMobile ? 26 : (isTablet ? 40 : 48);
     update();
   });
   update();
