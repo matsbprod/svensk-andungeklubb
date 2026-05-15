@@ -413,11 +413,16 @@
 <!-- PDF Lightbox -->
 <div id="vm-pdf-lightbox" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.95);backdrop-filter:blur(8px);flex-direction:column;align-items:center;justify-content:center">
   <div style="position:absolute;top:1rem;right:1rem;display:flex;gap:.8rem;align-items:center">
+    <span onclick="vmZoomOut()" style="font-family:sans-serif;font-size:1.3rem;color:rgba(255,255,255,.6);cursor:pointer;user-select:none;line-height:1;">&#x2212;</span>
+    <span id="vm-zoom-info" style="font-family:sans-serif;font-size:.7rem;letter-spacing:.1em;color:rgba(255,255,255,.4);min-width:3em;text-align:center;">100%</span>
+    <span onclick="vmZoomIn()" style="font-family:sans-serif;font-size:1.3rem;color:rgba(255,255,255,.6);cursor:pointer;user-select:none;line-height:1;">&#x2b;</span>
     <a id="vm-pdf-download" href="../pdf/Inbjudan%20VM%20Andunge%202026.pdf" download style="color:rgba(240,244,246,.6);font-family:'Cinzel',serif;font-size:.7em;letter-spacing:.08em;text-decoration:none;border:1px solid rgba(255,255,255,.2);padding:.35rem .7rem;border-radius:3px">LADDA NED</a>
     <button onclick="closeVmPdf()" style="background:none;border:none;color:rgba(240,244,246,.7);font-size:2rem;line-height:1;cursor:pointer;padding:0">×</button>
   </div>
   <div id="vm-pdf-loading" style="color:rgba(240,244,246,.5);font-family:'Cinzel',serif;font-size:.8em;letter-spacing:.1em">LADDAR…</div>
-  <canvas id="vm-pdf-canvas" style="display:none;max-width:92vw;max-height:86vh;border-radius:3px;box-shadow:0 8px 40px rgba(0,0,0,.6)"></canvas>
+  <div id="vm-canvas-wrap" style="overflow:auto;max-width:92vw;max-height:82vh;display:none;cursor:grab;">
+    <canvas id="vm-pdf-canvas" style="display:block;border-radius:3px;box-shadow:0 8px 40px rgba(0,0,0,.6);transform-origin:top left;"></canvas>
+  </div>
   <div style="display:flex;align-items:center;gap:1.5rem;margin-top:1rem">
     <button id="vm-lb-prev" onclick="changeVmPage(-1)" style="background:none;border:none;color:var(--brass);font-size:1.4rem;cursor:pointer;opacity:.3">‹</button>
     <span id="vm-pdf-info" style="color:rgba(240,244,246,.5);font-family:'Cinzel',serif;font-size:.7em;letter-spacing:.1em"></span>
@@ -453,54 +458,59 @@ var thumbObserver = new IntersectionObserver(function(entries) {
 
 document.querySelectorAll('.pdf-canvas[data-src]').forEach(function(c) { thumbObserver.observe(c); });
 
-// Lightbox
-var vmPdf = null, vmPage = 1, vmTotal = 0;
+// Lightbox with zoom
+var vmPdf=null, vmPage=1, vmTotal=0, vmZoom=1;
+var vmWrap=document.getElementById('vm-canvas-wrap');
 function openVmPdf(src) {
-  var lb = document.getElementById('vm-pdf-lightbox');
-  lb.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-  document.getElementById('vm-pdf-loading').style.display = 'block';
-  document.getElementById('vm-pdf-canvas').style.display = 'none';
-  vmPage = 1;
-  pdfjsLib.getDocument(src).promise.then(function(pdf) {
-    vmPdf = pdf; vmTotal = pdf.numPages;
-    renderVmPage(1);
-  });
+  var lb=document.getElementById('vm-pdf-lightbox');
+  lb.style.display='flex'; document.body.style.overflow='hidden';
+  document.getElementById('vm-pdf-loading').style.display='block';
+  vmWrap.style.display='none'; vmZoom=1; vmPage=1;
+  pdfjsLib.getDocument(src).promise.then(function(pdf){ vmPdf=pdf; vmTotal=pdf.numPages; renderVmPage(1); });
 }
 function renderVmPage(n) {
   vmPdf.getPage(n).then(function(page) {
-    var vw = window.innerWidth * 0.88, vh = window.innerHeight * 0.82;
-    var vp1 = page.getViewport({scale:1});
-    var scale = Math.min(vw/vp1.width, vh/vp1.height);
-    var vp = page.getViewport({scale:scale});
-    var c = document.getElementById('vm-pdf-canvas');
-    c.width = vp.width; c.height = vp.height;
-    document.getElementById('vm-pdf-loading').style.display = 'none';
-    c.style.display = 'block';
-    page.render({canvasContext:c.getContext('2d'), viewport:vp}).promise.then(function() {
-      document.getElementById('vm-pdf-info').textContent = 'Sida ' + n + ' av ' + vmTotal;
-      document.getElementById('vm-lb-prev').style.opacity = n > 1 ? '1' : '0.2';
-      document.getElementById('vm-lb-next').style.opacity = n < vmTotal ? '1' : '0.2';
+    var vw=window.innerWidth*.88, vh=window.innerHeight*.78;
+    var vp1=page.getViewport({scale:1});
+    var base=Math.min(vw/vp1.width, vh/vp1.height);
+    var vp=page.getViewport({scale:base*2});
+    var c=document.getElementById('vm-pdf-canvas');
+    c.width=vp.width; c.height=vp.height;
+    c.style.width=(vp.width/2)+'px'; c.style.height=(vp.height/2)+'px';
+    c.style.transform='scale('+vmZoom+')'; c.style.transformOrigin='top left';
+    document.getElementById('vm-pdf-loading').style.display='none';
+    vmWrap.style.display='block';
+    page.render({canvasContext:c.getContext('2d'),viewport:vp}).promise.then(function(){
+      document.getElementById('vm-pdf-info').textContent='Sida '+n+' av '+vmTotal;
+      document.getElementById('vm-lb-prev').style.opacity=n>1?'1':'0.2';
+      document.getElementById('vm-lb-next').style.opacity=n<vmTotal?'1':'0.2';
+      document.getElementById('vm-zoom-info').textContent=Math.round(vmZoom*100)+'%';
+      vmPage=n;
     });
   });
 }
-function changeVmPage(d) {
-  var n = vmPage + d;
-  if (n < 1 || n > vmTotal) return;
-  vmPage = n; renderVmPage(n);
+function vmZoomIn(){ vmZoom=Math.min(vmZoom+0.25,4); vmApplyZoom(); }
+function vmZoomOut(){ vmZoom=Math.max(vmZoom-0.25,0.5); vmApplyZoom(); }
+function vmApplyZoom(){
+  var c=document.getElementById('vm-pdf-canvas');
+  c.style.transform='scale('+vmZoom+')';
+  vmWrap.style.width=(parseFloat(c.style.width)*vmZoom)+'px';
+  vmWrap.style.height=(parseFloat(c.style.height)*vmZoom)+'px';
+  document.getElementById('vm-zoom-info').textContent=Math.round(vmZoom*100)+'%';
 }
-function closeVmPdf() {
-  document.getElementById('vm-pdf-lightbox').style.display = 'none';
-  document.body.style.overflow = '';
-}
-document.getElementById('vm-pdf-lightbox').addEventListener('click', function(e) {
-  if (e.target === this) closeVmPdf();
-});
+function changeVmPage(d){ var n=vmPage+d; if(n<1||n>vmTotal) return; vmZoom=1; vmPage=n; renderVmPage(n); }
+function closeVmPdf(){ document.getElementById('vm-pdf-lightbox').style.display='none'; document.body.style.overflow=''; vmZoom=1; }
+document.getElementById('vm-pdf-lightbox').addEventListener('click',function(e){ if(e.target===this||e.target===vmWrap) closeVmPdf(); });
+var vmPinchStart=1, vmPinchDist=0;
+vmWrap.addEventListener('touchstart',function(e){ if(e.touches.length===2){ vmPinchStart=vmZoom; vmPinchDist=Math.hypot(e.touches[1].clientX-e.touches[0].clientX,e.touches[1].clientY-e.touches[0].clientY); e.preventDefault(); }},{passive:false});
+vmWrap.addEventListener('touchmove',function(e){ if(e.touches.length===2){ var d=Math.hypot(e.touches[1].clientX-e.touches[0].clientX,e.touches[1].clientY-e.touches[0].clientY); vmZoom=Math.min(Math.max(vmPinchStart*(d/vmPinchDist),0.5),4); vmApplyZoom(); e.preventDefault(); }},{passive:false});
 document.addEventListener('keydown', function(e) {
   if (document.getElementById('vm-pdf-lightbox').style.display === 'flex') {
     if (e.key === 'Escape') closeVmPdf();
     if (e.key === 'ArrowRight') changeVmPage(1);
     if (e.key === 'ArrowLeft') changeVmPage(-1);
+    if (e.key === '+' || e.key === '=') vmZoomIn();
+    if (e.key === '-') vmZoomOut();
   }
 });
 </script>

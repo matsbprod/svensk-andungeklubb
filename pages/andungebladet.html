@@ -272,13 +272,18 @@
 <div id="pdf-lightbox" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.95);backdrop-filter:blur(8px);flex-direction:column;align-items:center;justify-content:center;">
   <div style="position:absolute;top:1.2rem;right:1.5rem;display:flex;gap:1.5rem;align-items:center;z-index:2">
     <span id="pdf-page-info" style="font-family:sans-serif;font-size:.75rem;letter-spacing:.14em;color:rgba(255,255,255,.5)"></span>
+    <span onclick="zoomOut()" style="font-family:sans-serif;font-size:1.3rem;color:rgba(255,255,255,.6);cursor:pointer;user-select:none;line-height:1;">&#x2212;</span>
+    <span id="pdf-zoom-info" style="font-family:sans-serif;font-size:.7rem;letter-spacing:.1em;color:rgba(255,255,255,.4);min-width:3em;text-align:center;">100%</span>
+    <span onclick="zoomIn()" style="font-family:sans-serif;font-size:1.3rem;color:rgba(255,255,255,.6);cursor:pointer;user-select:none;line-height:1;">&#x2b;</span>
     <a id="pdf-download" href="#" download style="font-family:sans-serif;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--brass);text-decoration:none;border-bottom:1px solid rgba(184,145,74,.3);padding-bottom:2px;">&#8595; Ladda ned</a>
     <span onclick="closePdf()" style="font-size:2rem;color:rgba(255,255,255,.5);cursor:pointer;line-height:1;">&times;</span>
   </div>
   <span id="lb-prev" onclick="prevPage()" style="position:absolute;left:1.5rem;top:50%;transform:translateY(-50%);font-size:2.5rem;color:rgba(255,255,255,.4);cursor:pointer;padding:1rem;user-select:none;">&#8592;</span>
   <span id="lb-next" onclick="nextPage()" style="position:absolute;right:1.5rem;top:50%;transform:translateY(-50%);font-size:2.5rem;color:rgba(255,255,255,.4);cursor:pointer;padding:1rem;user-select:none;">&#8594;</span>
   <div id="pdf-loading" style="color:rgba(255,255,255,.4);font-family:sans-serif;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;">Laddar...</div>
-  <canvas id="pdf-lb-canvas" style="max-width:90vw;max-height:86vh;display:none;box-shadow:0 20px 80px rgba(0,0,0,.8);"></canvas>
+  <div id="pdf-canvas-wrap" style="overflow:auto;max-width:92vw;max-height:84vh;display:none;cursor:grab;">
+    <canvas id="pdf-lb-canvas" style="display:block;box-shadow:0 20px 80px rgba(0,0,0,.8);transform-origin:top left;"></canvas>
+  </div>
 </div>
 <!-- PDF.js thumbnails -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
@@ -310,61 +315,63 @@ var thumbObserver = new IntersectionObserver(function(entries) {
 
 document.querySelectorAll('.pdf-canvas').forEach(function(c) { thumbObserver.observe(c); });
 
-// Lightbox
-var lbPdf = null, lbPage = 1, lbTotal = 0;
-var lb = document.getElementById('pdf-lightbox');
-var lbCanvas = document.getElementById('pdf-lb-canvas');
-var lbInfo = document.getElementById('pdf-page-info');
-var lbLoad = document.getElementById('pdf-loading');
+// Lightbox with zoom
+var lbPdf=null, lbPage=1, lbTotal=0, lbZoom=1;
+var lb=document.getElementById('pdf-lightbox');
+var lbCanvas=document.getElementById('pdf-lb-canvas');
+var lbWrap=document.getElementById('pdf-canvas-wrap');
+var lbInfo=document.getElementById('pdf-page-info');
+var lbLoad=document.getElementById('pdf-loading');
+var lbZoomInfo=document.getElementById('pdf-zoom-info');
 
 function openPdf(src) {
-  lb.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-  lbLoad.style.display = 'block';
-  lbCanvas.style.display = 'none';
-  document.getElementById('pdf-download').href = src;
-  lbPage = 1;
-  pdfjsLib.getDocument(src).promise.then(function(pdf) {
-    lbPdf = pdf;
-    lbTotal = pdf.numPages;
-    renderLbPage(1);
-  });
+  lb.style.display='flex'; document.body.style.overflow='hidden';
+  lbLoad.style.display='block'; lbWrap.style.display='none';
+  lbZoom=1;
+  document.getElementById('pdf-download').href=src; lbPage=1;
+  pdfjsLib.getDocument(src).promise.then(function(pdf){ lbPdf=pdf; lbTotal=pdf.numPages; renderLbPage(1); });
 }
-
 function renderLbPage(n) {
-  lbPdf.getPage(n).then(function(page) {
-    var vw = window.innerWidth * 0.88;
-    var vh = window.innerHeight * 0.86;
-    var vp1 = page.getViewport({scale: 1});
-    var scale = Math.min(vw / vp1.width, vh / vp1.height);
-    var vp = page.getViewport({scale: scale});
-    lbCanvas.width  = vp.width;
-    lbCanvas.height = vp.height;
-    lbLoad.style.display = 'none';
-    lbCanvas.style.display = 'block';
-    page.render({canvasContext: lbCanvas.getContext('2d'), viewport: vp}).promise.then(function() {
-      lbInfo.textContent = 'Sida ' + n + ' av ' + lbTotal;
-      document.getElementById('lb-prev').style.opacity = n > 1 ? '1' : '0.2';
-      document.getElementById('lb-next').style.opacity = n < lbTotal ? '1' : '0.2';
+  lbPdf.getPage(n).then(function(page){
+    var vw=window.innerWidth*.88, vh=window.innerHeight*.84;
+    var vp1=page.getViewport({scale:1});
+    var base=Math.min(vw/vp1.width, vh/vp1.height);
+    var vp=page.getViewport({scale:base*2});
+    lbCanvas.width=vp.width; lbCanvas.height=vp.height;
+    lbCanvas.style.width=(vp.width/2)+'px'; lbCanvas.style.height=(vp.height/2)+'px';
+    lbCanvas.style.transform='scale('+lbZoom+')'; lbCanvas.style.transformOrigin='top left';
+    lbLoad.style.display='none'; lbWrap.style.display='block';
+    page.render({canvasContext:lbCanvas.getContext('2d'),viewport:vp}).promise.then(function(){
+      lbInfo.textContent='Sida '+n+' av '+lbTotal;
+      document.getElementById('lb-prev').style.opacity=n>1?'1':'0.2';
+      document.getElementById('lb-next').style.opacity=n<lbTotal?'1':'0.2';
+      lbZoomInfo.textContent=Math.round(lbZoom*100)+'%';
+      lbPage=n;
     });
   });
 }
-
-function closePdf() {
-  lb.style.display = 'none';
-  document.body.style.overflow = '';
-  lbPdf = null;
+function zoomIn(){ lbZoom=Math.min(lbZoom+0.25,4); applyZoom(); }
+function zoomOut(){ lbZoom=Math.max(lbZoom-0.25,0.5); applyZoom(); }
+function applyZoom(){
+  lbCanvas.style.transform='scale('+lbZoom+')';
+  lbWrap.style.width=(parseFloat(lbCanvas.style.width)*lbZoom)+'px';
+  lbWrap.style.height=(parseFloat(lbCanvas.style.height)*lbZoom)+'px';
+  lbZoomInfo.textContent=Math.round(lbZoom*100)+'%';
 }
-
-function nextPage() { if (lbPage < lbTotal) { lbPage++; renderLbPage(lbPage); } }
-function prevPage() { if (lbPage > 1)        { lbPage--; renderLbPage(lbPage); } }
-
-lb.addEventListener('click', function(e) { if (e.target === lb) closePdf(); });
+function closePdf(){ lb.style.display='none'; document.body.style.overflow=''; lbPdf=null; lbZoom=1; }
+function nextPage(){ if(lbPage<lbTotal){ lbZoom=1; renderLbPage(lbPage+1); } }
+function prevPage(){ if(lbPage>1){ lbZoom=1; renderLbPage(lbPage-1); } }
+lb.addEventListener('click',function(e){ if(e.target===lb||e.target===lbWrap) closePdf(); });
+var pinchStartZoom=1,pinchStartDist=0;
+lbWrap.addEventListener('touchstart',function(e){ if(e.touches.length===2){ pinchStartZoom=lbZoom; pinchStartDist=Math.hypot(e.touches[1].clientX-e.touches[0].clientX,e.touches[1].clientY-e.touches[0].clientY); e.preventDefault(); }},{passive:false});
+lbWrap.addEventListener('touchmove',function(e){ if(e.touches.length===2){ var d=Math.hypot(e.touches[1].clientX-e.touches[0].clientX,e.touches[1].clientY-e.touches[0].clientY); lbZoom=Math.min(Math.max(pinchStartZoom*(d/pinchStartDist),0.5),4); applyZoom(); e.preventDefault(); }},{passive:false});
 document.addEventListener('keydown', function(e) {
   if (lb.style.display === 'none') return;
   if (e.key === 'Escape')                           closePdf();
   if (e.key === 'ArrowRight' || e.key === 'ArrowDown') nextPage();
   if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   prevPage();
+  if (e.key === '+' || e.key === '=') zoomIn();
+  if (e.key === '-') zoomOut();
 });
 </script>
 <script src="../js/duck.js"></script>
