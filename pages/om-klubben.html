@@ -265,11 +265,16 @@ function toggleProto(btn) {
 <!-- PDF Lightbox — Jubileumsskrift -->
 <div id="jub-lightbox" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.95);backdrop-filter:blur(8px);flex-direction:column;align-items:center;justify-content:center">
   <div style="position:absolute;top:1rem;right:1rem;display:flex;gap:.8rem;align-items:center">
+    <span onclick="jubZoomOut()" style="font-family:sans-serif;font-size:1.3rem;color:rgba(255,255,255,.6);cursor:pointer;user-select:none;line-height:1;">&#x2212;</span>
+    <span id="jub-zoom-info" style="font-family:sans-serif;font-size:.85rem;letter-spacing:.08em;color:#fff;min-width:3.5em;text-align:center;font-weight:500;">100%</span>
+    <span onclick="jubZoomIn()" style="font-family:sans-serif;font-size:1.3rem;color:rgba(255,255,255,.6);cursor:pointer;user-select:none;line-height:1;">&#x2b;</span>
     <a id="jub-download" href="../pdf/Jubileumsskrift.pdf" download style="color:rgba(240,244,246,.6);font-family:'Cinzel',serif;font-size:.7em;letter-spacing:.08em;text-decoration:none;border:1px solid rgba(255,255,255,.2);padding:.35rem .7rem;border-radius:3px">LADDA NED</a>
     <button id="jub-close-btn" style="background:none;border:none;color:rgba(240,244,246,.7);font-size:2.2rem;line-height:1;cursor:pointer;padding:0 .3rem">×</button>
   </div>
   <div id="jub-loading" style="color:rgba(240,244,246,.5);font-family:'Cinzel',serif;font-size:.8em;letter-spacing:.1em">LADDAR…</div>
-  <canvas id="jub-lb-canvas" style="display:none;max-width:88vw;max-height:80vh;border-radius:3px;box-shadow:0 8px 40px rgba(0,0,0,.6)"></canvas>
+  <div id="jub-canvas-wrap" style="overflow:auto;max-width:92vw;max-height:78vh;display:none;cursor:grab;">
+    <canvas id="jub-lb-canvas" style="display:block;border-radius:3px;box-shadow:0 8px 40px rgba(0,0,0,.6);transform-origin:top left;"></canvas>
+  </div>
   <div style="display:flex;align-items:center;gap:2rem;margin-top:1.2rem">
     <button id="jub-prev" onclick="changeJubPage(-1)" style="background:rgba(184,145,74,.15);border:1px solid rgba(184,145,74,.4);color:var(--brass);font-size:1.6rem;width:44px;height:44px;border-radius:4px;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:.3;transition:opacity .15s">‹</button>
     <span id="jub-info" style="color:rgba(240,244,246,.7);font-family:'Cinzel',serif;font-size:.85em;letter-spacing:.12em;min-width:120px;text-align:center"></span>
@@ -302,55 +307,59 @@ if (jubCanvas) {
     .catch(function(e) { console.warn('Jub thumb:', e); });
 }
 
-// Lightbox
-var jubPdf = null, jubPage = 1, jubTotal = 0;
+// Lightbox with zoom
+var jubPdf=null, jubPage=1, jubTotal=0, jubZoom=1;
+var jubWrap=document.getElementById('jub-canvas-wrap');
 function openJubPdf(src) {
-  var lb = document.getElementById('jub-lightbox');
-  lb.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-  document.getElementById('jub-loading').style.display = 'block';
-  document.getElementById('jub-lb-canvas').style.display = 'none';
-  jubPage = 1;
-  pdfjsLib.getDocument(src).promise.then(function(pdf) {
-    jubPdf = pdf; jubTotal = pdf.numPages;
-    renderJubPage(1);
-  });
+  var lb=document.getElementById('jub-lightbox');
+  lb.style.display='flex'; document.body.style.overflow='hidden';
+  document.getElementById('jub-loading').style.display='block';
+  jubWrap.style.display='none'; jubZoom=1; jubPage=1;
+  pdfjsLib.getDocument(src).promise.then(function(pdf){ jubPdf=pdf; jubTotal=pdf.numPages; renderJubPage(1); });
 }
 function renderJubPage(n) {
   jubPdf.getPage(n).then(function(page) {
-    var vw = window.innerWidth * 0.88, vh = window.innerHeight * 0.82;
-    var vp1 = page.getViewport({scale:1});
-    var scale = Math.min(vw/vp1.width, vh/vp1.height);
-    var vp = page.getViewport({scale:scale});
-    var c = document.getElementById('jub-lb-canvas');
-    c.width = vp.width; c.height = vp.height;
-    var ctx = c.getContext('2d');
-    ctx.clearRect(0, 0, c.width, c.height);
-    document.getElementById('jub-loading').style.display = 'none';
-    c.style.display = 'block';
-    page.render({canvasContext:ctx, viewport:vp}).promise.then(function() {
-      jubPage = n;
-      document.getElementById('jub-info').textContent = 'Sida ' + n + ' av ' + jubTotal;
-      document.getElementById('jub-prev').style.opacity = n > 1 ? '1' : '0.2';
-      document.getElementById('jub-next').style.opacity = n < jubTotal ? '1' : '0.2';
+    var vw=window.innerWidth*.88, vh=window.innerHeight*.78;
+    var vp1=page.getViewport({scale:1});
+    var base=Math.min(vw/vp1.width, vh/vp1.height);
+    var vp=page.getViewport({scale:base*2});
+    var c=document.getElementById('jub-lb-canvas');
+    c.width=vp.width; c.height=vp.height;
+    c.style.width=(vp.width/2)+'px'; c.style.height=(vp.height/2)+'px';
+    c.style.transform='scale('+jubZoom+')'; c.style.transformOrigin='top left';
+    document.getElementById('jub-loading').style.display='none';
+    jubWrap.style.display='block';
+    page.render({canvasContext:c.getContext('2d'),viewport:vp}).promise.then(function(){
+      jubPage=n;
+      document.getElementById('jub-info').textContent='Sida '+n+' av '+jubTotal;
+      document.getElementById('jub-prev').style.opacity=n>1?'1':'0.2';
+      document.getElementById('jub-next').style.opacity=n<jubTotal?'1':'0.2';
+      document.getElementById('jub-zoom-info').textContent=Math.round(jubZoom*100)+'%';
     });
   });
 }
-function changeJubPage(d) {
-  var n = jubPage + d;
-  if (n < 1 || n > jubTotal) return;
-  renderJubPage(n);
+function jubZoomIn(){ jubZoom=Math.min(jubZoom+0.25,4); jubApplyZoom(); }
+function jubZoomOut(){ jubZoom=Math.max(jubZoom-0.25,0.5); jubApplyZoom(); }
+function jubApplyZoom(){
+  var c=document.getElementById('jub-lb-canvas');
+  c.style.transform='scale('+jubZoom+')';
+  jubWrap.style.width=(parseFloat(c.style.width)*jubZoom)+'px';
+  jubWrap.style.height=(parseFloat(c.style.height)*jubZoom)+'px';
+  document.getElementById('jub-zoom-info').textContent=Math.round(jubZoom*100)+'%';
 }
-function closeJubPdf() {
-  document.getElementById('jub-lightbox').style.display = 'none';
-  document.body.style.overflow = '';
-}
+function changeJubPage(d){ var n=jubPage+d; if(n<1||n>jubTotal) return; jubZoom=1; renderJubPage(n); }
+function closeJubPdf(){ document.getElementById('jub-lightbox').style.display='none'; document.body.style.overflow=''; jubZoom=1; }
 document.getElementById('jub-close-btn').addEventListener('click', closeJubPdf);
+var jubPinchStart=1, jubPinchDist=0;
+jubWrap.addEventListener('touchstart',function(e){ if(e.touches.length===2){ jubPinchStart=jubZoom; jubPinchDist=Math.hypot(e.touches[1].clientX-e.touches[0].clientX,e.touches[1].clientY-e.touches[0].clientY); e.preventDefault(); }},{passive:false});
+jubWrap.addEventListener('touchmove',function(e){ if(e.touches.length===2){ var d=Math.hypot(e.touches[1].clientX-e.touches[0].clientX,e.touches[1].clientY-e.touches[0].clientY); jubZoom=Math.min(Math.max(jubPinchStart*(d/jubPinchDist),0.5),4); jubApplyZoom(); e.preventDefault(); }},{passive:false});
 document.addEventListener('keydown', function(e) {
   if (document.getElementById('jub-lightbox').style.display === 'flex') {
     if (e.key === 'Escape') closeJubPdf();
     if (e.key === 'ArrowRight') changeJubPage(1);
     if (e.key === 'ArrowLeft') changeJubPage(-1);
+    if (e.key === '+' || e.key === '=') jubZoomIn();
+    if (e.key === '-') jubZoomOut();
   }
 });
 </script>
