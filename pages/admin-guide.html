@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Andunge.se — Adminhandledning</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0a121a;
+      --card: #111e2b;
+      --brass: #b8914a;
+      --brass-dim: rgba(184,145,74,.25);
+      --white: #f0f4f6;
+      --white-dim: rgba(240,244,246,.6);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--navy);
+      color: var(--white);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      padding: 3rem 1.5rem;
+    }
+    .wrap { max-width: 720px; margin: 0 auto; }
+
+    h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.4rem, 4vw, 2.2rem);
+      font-weight: 400;
+      letter-spacing: .12em;
+      color: var(--brass);
+      margin-bottom: .3rem;
+    }
+    .subtitle {
+      font-size: .9rem;
+      font-family: sans-serif;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--white-dim);
+      margin-bottom: 3rem;
+    }
+    h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--brass);
+      margin: 2.5rem 0 .8rem;
+      padding-bottom: .5rem;
+      border-bottom: 1px solid var(--brass-dim);
+    }
+    h3 {
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--white);
+      margin: 1.5rem 0 .3rem;
+    }
+    p { color: var(--white-dim); margin-bottom: .8rem; }
+    p strong { color: var(--white); font-weight: 400; }
+
+    a { color: var(--brass); text-decoration: none; border-bottom: 1px solid var(--brass-dim); }
+    a:hover { color: var(--white); border-color: var(--white); }
+
+    ol, ul { padding-left: 1.4rem; color: var(--white-dim); }
+    li { margin-bottom: .4rem; }
+    li strong { color: var(--white); font-weight: 400; }
+
+    code {
+      font-family: 'Courier New', monospace;
+      font-size: .9rem;
+      background: rgba(255,255,255,.06);
+      border: 1px solid var(--brass-dim);
+      padding: .15rem .5rem;
+      border-radius: 3px;
+      color: var(--brass);
+    }
+    .box {
+      background: var(--card);
+      border-left: 2px solid var(--brass);
+      padding: 1.2rem 1.5rem;
+      margin: 1.2rem 0;
+    }
+    .box p { margin: 0; }
+    .step {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      align-items: baseline;
+    }
+    .step-num {
+      font-family: 'Cinzel', serif;
+      font-size: .75rem;
+      color: var(--brass);
+      min-width: 1.8rem;
+      letter-spacing: .1em;
+    }
+    hr { border: none; border-top: 1px solid var(--brass-dim); margin: 2.5rem 0; }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>Andunge.se</h1>
+  <p class="subtitle">Adminhandledning — webbplatsens uppbyggnad och underhåll</p>
+
+  <!-- ÖVERSIKT -->
+  <h2>Översikt</h2>
+  <p>Webbplatsen är en statisk HTML/CSS/JS-sajt som versionshanteras i GitHub och automatiskt driftsätts via Netlify vid varje uppdatering av <code>main</code>-grenen.</p>
+  <div class="box">
+    <p>
+      <strong>Live-adress:</strong> <a href="https://andunge.se" target="_blank">andunge.se</a><br>
+      <strong>GitHub-repo:</strong> <a href="https://github.com/matsbprod/andungeklubb" target="_blank">github.com/matsbprod/andungeklubb</a><br>
+      <strong>Netlify:</strong> <a href="https://app.netlify.com" target="_blank">app.netlify.com</a> (team: 95:a)
+    </p>
+  </div>
+
+  <!-- INSTALLERA -->
+  <h2>Installera verktygen</h2>
+  <p>Du behöver tre program för att kunna redigera och publicera sajten.</p>
+
+  <h3>1. GitHub Desktop</h3>
+  <p>Används för att hämta ner, hantera och ladda upp ändringar till repot.</p>
+  <p><a href="https://desktop.github.com" target="_blank">Ladda ned GitHub Desktop →</a></p>
+  <ol>
+    <li>Installera och logga in med ditt GitHub-konto.</li>
+    <li>Välj <strong>File → Clone repository</strong> och sök efter <code>andungeklubb</code>.</li>
+    <li>Välj var du vill spara repot lokalt och klicka <strong>Clone</strong>.</li>
+  </ol>
+
+  <h3>2. Visual Studio Code</h3>
+  <p>Textredigerare för att ändra i HTML/CSS/JS-filer.</p>
+  <p><a href="https://code.visualstudio.com" target="_blank">Ladda ned Visual Studio Code →</a></p>
+  <ol>
+    <li>Installera och öppna programmet.</li>
+    <li>Välj <strong>File → Open Folder</strong> och öppna mappen där du klonade repot.</li>
+    <li>Alla filer syns i vänster filpanel.</li>
+  </ol>
+
+  <h3>3. GitHub-konto</h3>
+  <p>Be Mats lägga till dig som <strong>collaborator</strong> på repot under Settings → Collaborators. Du får då en inbjudan via e-post som du accepterar.</p>
+
+  <hr>
+
+  <!-- MAPPSTRUKTUR -->
+  <h2>Mappstruktur</h2>
+  <ul>
+    <li><code>index.html</code> — startsidan</li>
+    <li><code>pages/</code> — alla undersidor (om-klubben, batregistret, butiken etc.)</li>
+    <li><code>pages/bat/</code> — individuella båtsidor (1.html–176.html)</li>
+    <li><code>css/</code> — style.css (global) och page.css (undersidor)</li>
+    <li><code>js/</code> — header.js, duck.js</li>
+    <li><code>img/</code> — bilder (hero, folk-grid)</li>
+    <li><code>img/boat/</code> — båtbilder (bat_001_2.jpg, bat_001_3.jpg...)</li>
+    <li><code>pdf/</code> — alla PDF-filer (regler, andungebladet, protokoll)</li>
+  </ul>
+
+  <hr>
+
+  <!-- PUBLICERA ÄNDRINGAR -->
+  <h2>Publicera en ändring</h2>
+  <p>Så här går det till när du gjort en ändring i en fil:</p>
+
+  <div class="step"><span class="step-num">01</span><span>Öppna filen i VS Code, gör ändringen och spara (<code>Cmd+S</code>).</span></div>
+  <div class="step"><span class="step-num">02</span><span>Öppna GitHub Desktop — du ser filen markerad som ändrad i vänster panel.</span></div>
+  <div class="step"><span class="step-num">03</span><span>Skriv en kort kommentar i fältet <strong>Summary</strong>, t.ex. <em>"Uppdaterade båt 76"</em>.</span></div>
+  <div class="step"><span class="step-num">04</span><span>Klicka <strong>Commit to main</strong>.</span></div>
+  <div class="step"><span class="step-num">05</span><span>Klicka <strong>Push origin</strong> (uppe till höger). Netlify plockar upp ändringen automatiskt och sajten är uppdaterad inom ~30 sekunder.</span></div>
+
+  <div class="box">
+    <p><strong>Tips:</strong> Hämta alltid senaste versionen innan du börjar redigera — klicka <strong>Fetch origin</strong> i GitHub Desktop så du inte jobbar på en gammal version.</p>
+  </div>
+
+  <hr>
+
+  <!-- VANLIGA UPPGIFTER -->
+  <h2>Vanliga uppgifter</h2>
+
+  <h3>Lägga till en ny ägare på en båtsida</h3>
+  <p>Öppna <code>pages/bat/[nummer].html</code> i VS Code. Hitta tabellen under "Tidigare ägare" och kopiera en befintlig rad, ändra år och namn.</p>
+
+  <h3>Uppdatera en annons på Köp och sälj</h3>
+  <p>Öppna <code>pages/kop-och-salj.html</code>. Annonser ligger i <code>div.info-box</code>-block. Kopiera ett befintligt block och anpassa innehållet.</p>
+
+  <h3>Lägga till en ny PDF i Andungebladet</h3>
+  <p>Lägg PDF-filen i <code>pdf/</code>-mappen. Öppna <code>pages/andungebladet.html</code> och kopiera ett befintligt <code>pdf-card</code>-block, uppdatera filnamn, år och label.</p>
+
+  <h3>Uppdatera lagersaldo</h3>
+  <p>Gå till <a href="https://andunge.se/pages/lager.html" target="_blank">andunge.se/pages/lager.html</a> och logga in med lösenordet. Saldot sparas automatiskt i browsern.</p>
+
+  <hr>
+
+  <!-- KONTAKTER -->
+  <h2>Kontakter och inloggningar</h2>
+  <ul>
+    <li><strong>GitHub-repo:</strong> github.com/matsbprod/andungeklubb</li>
+    <li><strong>Netlify:</strong> app.netlify.com (team: 95:a)</li>
+    <li><strong>DNS:</strong> Netlify DNS (MX via one.com)</li>
+    <li><strong>Domän:</strong> registrerad hos one.com</li>
+    <li><strong>Formulär:</strong> Netlify Forms — notiser till mats@plop.se m.fl.</li>
+    <li><strong>Webb-admin:</strong> webb@andunge.se</li>
+  </ul>
+
+</div>
+</body>
+</html>
