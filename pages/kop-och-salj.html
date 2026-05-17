@@ -51,21 +51,7 @@
     <!-- Listing card -->
     <div style="display:flex;flex-direction:column;gap:1.5rem;margin-top:1.5rem">
 
-      <div class="info-box" style="position:relative">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem">
-          <div>
-            <span style="font-family:'Cinzel',serif;font-size:.75em;letter-spacing:.07em;color:var(--brass)">TILL SALU · BÅT</span>
-            <h3 style="margin:.2rem 0 0">Andunge nr 76</h3>
-          </div>
-          <span style="font-family:'Cinzel',serif;font-size:1.05em;color:var(--white);white-space:nowrap">50 000 kr</span>
-        </div>
-        <img src="../img/SWE_76.jpg" alt="Andunge SWE 76" onclick="document.getElementById('lb-76').style.display='flex'" style="width:120px;height:90px;object-fit:contain;background:#0c1620;border-radius:3px;margin-bottom:1rem;border:1px solid rgba(184,145,74,.2);cursor:zoom-in;transition:opacity .15s" onmouseover="this.style.opacity='.8'" onmouseout="this.style.opacity='1'">
-        <p style="margin:0 0 .8rem">Andunge nr 76 säljes. Båten är i gott skick och har renoverats på Lilla Kålviks varv. Kappseglingsutrustad med ett North segelställ och ny spinnaker. Dokumentation och fotografier från renovering finns. Till båten hör en metallmast och bom.</p>
-        <div style="font-size:.88em;margin-top:.9rem;display:flex;flex-direction:column;gap:.25rem;opacity:.8">
-          <div>Kontakt: <strong style="color:var(--white)">Tomas</strong></div>
-          <div>Mobil: <a href="tel:+46708238782" class="brass">0708-238782</a></div>
-        </div>
-      </div>
+      <p style="color:var(--white-dim);font-style:italic">Inga båtar till salu just nu.</p>
 
     </div>
   </div>
@@ -115,9 +101,6 @@
   </div>
 </div>
 
-<div id="lb-76" onclick="this.style.display='none'" style="display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.92);align-items:center;justify-content:center;cursor:zoom-out">
-  <img src="../img/SWE_76.jpg" alt="Andunge SWE 76" style="max-width:92vw;max-height:88vh;object-fit:contain;border-radius:3px;box-shadow:0 8px 40px rgba(0,0,0,.6)">
-</div>
 
 <script>
 function updateFormLabels(typ) {
