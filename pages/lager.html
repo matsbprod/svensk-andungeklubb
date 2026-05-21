@@ -296,7 +296,6 @@
 <script>
 // ── CONFIG ──────────────────────────────────────────────────
 const PASSWORD = 'andunge';
-const STORAGE_KEY = 'andunge-lager-v1';
 
 // Products — sizes null = ingen storlek, array = storleksval
 const PRODUCTS = [
@@ -317,17 +316,8 @@ const PRODUCTS = [
 let stock = {};  // { id: number } or { id_S: number, id_M: ... }
 let lastUpdated = null;
 
-// ── STORAGE ─────────────────────────────────────────────────
-function loadStock() {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (raw) {
-      const d = JSON.parse(raw);
-      stock = d.stock || {};
-      lastUpdated = d.lastUpdated || null;
-    }
-  } catch(e) {}
-  // Init missing keys to 0
+// ── STORAGE — Netlify Blobs via API ─────────────────────────
+function initKeys() {
   PRODUCTS.forEach(p => {
     if (p.sizes) {
       p.sizes.forEach(s => {
@@ -340,12 +330,37 @@ function loadStock() {
   });
 }
 
+async function loadStock() {
+  try {
+    const res = await fetch('/api/lager');
+    if (res.ok) {
+      const d = await res.json();
+      stock = d.stock || {};
+      lastUpdated = d.lastUpdated || null;
+    }
+  } catch(e) {}
+  initKeys();
+}
+
+let saveTimer = null;
 function saveStock() {
   lastUpdated = new Date().toISOString();
-  localStorage.setItem(STORAGE_KEY, JSON.stringify({ stock, lastUpdated }));
-  showSaved();
   updateSummary();
   updateLastUpdated();
+  // Debounce — vänta 800ms efter sista ändringen innan sparning
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(async () => {
+    try {
+      const res = await fetch('/api/lager', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ stock, lastUpdated })
+      });
+      if (res.ok) showSaved();
+    } catch(e) {
+      console.error('Sparning misslyckades:', e);
+    }
+  }, 800);
 }
 
 function showSaved() {
@@ -361,8 +376,7 @@ function doLogin() {
   if (val === PASSWORD) {
     document.getElementById('login-screen').style.display = 'none';
     document.getElementById('app').style.display = 'block';
-    loadStock();
-    renderTable();
+    loadStock().then(() => { renderTable(); updateSummary(); updateLastUpdated(); });
     updateSummary();
     updateLastUpdated();
   } else {
