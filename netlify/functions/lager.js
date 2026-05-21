@@ -8,13 +8,8 @@ exports.handler = async function(event, context) {
     'Content-Type': 'application/json'
   };
 
-  // Get store using context token (available in deployed functions)
-  const store = getStore({
-    name: 'lager',
-    consistency: 'strong',
-    siteID: process.env.NETLIFY_SITE_ID || context.clientContext?.custom?.netlify,
-    token: process.env.NETLIFY_AUTH_TOKEN
-  });
+  // Use environment context injected by Netlify automatically
+  const store = getStore('lager');
 
   if (event.httpMethod === 'GET') {
     try {
@@ -28,7 +23,7 @@ exports.handler = async function(event, context) {
       return {
         statusCode: 200,
         headers,
-        body: JSON.stringify({ stock: {}, lastUpdated: null, error: e.message })
+        body: JSON.stringify({ stock: {}, lastUpdated: null })
       };
     }
   }
