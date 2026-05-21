@@ -1,32 +1,32 @@
-import { getStore } from '@netlify/blobs';
+exports.handler = async function(event) {
+  const headers = {
+    'Access-Control-Allow-Origin': '*',
+    'Content-Type': 'application/json'
+  };
 
-const BLOB_KEY = 'andunge-lager-v1';
-
-export default async (req, context) => {
+  // Dynamically import @netlify/blobs
+  const { getStore } = await import('@netlify/blobs');
   const store = getStore({ name: 'lager', consistency: 'strong' });
+  const BLOB_KEY = 'andunge-lager-v1';
 
-  // GET — hämta saldo
-  if (req.method === 'GET') {
+  if (event.httpMethod === 'GET') {
     try {
       const data = await store.get(BLOB_KEY, { type: 'json' });
-      return Response.json(data || { stock: {}, lastUpdated: null });
-    } catch (e) {
-      return Response.json({ stock: {}, lastUpdated: null });
+      return { statusCode: 200, headers, body: JSON.stringify(data || { stock: {}, lastUpdated: null }) };
+    } catch(e) {
+      return { statusCode: 200, headers, body: JSON.stringify({ stock: {}, lastUpdated: null }) };
     }
   }
 
-  // POST — spara saldo
-  if (req.method === 'POST') {
+  if (event.httpMethod === 'POST') {
     try {
-      const body = await req.json();
+      const body = JSON.parse(event.body);
       await store.setJSON(BLOB_KEY, body);
-      return Response.json({ ok: true });
-    } catch (e) {
-      return Response.json({ ok: false, error: e.message }, { status: 500 });
+      return { statusCode: 200, headers, body: JSON.stringify({ ok: true }) };
+    } catch(e) {
+      return { statusCode: 500, headers, body: JSON.stringify({ ok: false, error: e.message }) };
     }
   }
 
-  return new Response('Method not allowed', { status: 405 });
+  return { statusCode: 405, headers, body: 'Method not allowed' };
 };
-
-export const config = { path: '/api/lager' };
