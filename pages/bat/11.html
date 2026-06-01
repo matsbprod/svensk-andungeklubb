@@ -1,159 +1,273 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SWE 11  — Svensk Andungeklubb</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../css/style.css">
-  <link rel="stylesheet" href="../../css/page.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SWE 11 Älvan – Svensk Andungeklubb</title>
   <style>
-    #logo-block { position:fixed;z-index:200;left:clamp(1.5rem,5vw,6rem);display:flex;flex-direction:column;align-items:center;pointer-events:none; }
-    .logo-line { display:block;font-family:"Cinzel",Georgia,serif;font-weight:400;text-transform:uppercase;line-height:1.08;white-space:nowrap;color:#f0f4f6; }
-    #duck-img { position:fixed;z-index:300;pointer-events:none;opacity:0;filter:brightness(0) invert(1); }
-
-    /* Hero grid: title | meta, image | meta */
-    .bat-hero { background:var(--card-dark);padding-top:0;border-bottom:1px solid rgba(184,145,74,.15); }
-    .bat-hero-inner {
-      max-width:var(--max-w); margin:0 auto;
-      padding:120px var(--pad) 2.5rem;
-      display:grid;
-      grid-template-columns:1fr 280px;
-      grid-template-rows:auto auto;
-      gap:1.2rem 2.5rem;
-      align-items:start;
+    body {
+      font-family: Georgia, serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f5f0;
+      color: #222;
     }
-    /* Title: full width, row 1 */
-    .bat-title-block { grid-column:1 / 3; grid-row:1; }
 
-    .bat-nr-line { display:flex;align-items:baseline;gap:.8rem;margin-bottom:.3rem; }
-    .bat-nr { font-family:sans-serif;font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:var(--brass); }
-    .bat-name { font-size:clamp(2rem,4vw,3.5rem);font-weight:300;color:var(--white);letter-spacing:.04em;line-height:1; }
-    .bat-owner { font-size:1.1rem;font-weight:300;color:var(--white-dim);font-style:italic;margin-top:.3rem; }
+    nav {
+      background: #1a3a5c;
+      padding: 12px 24px;
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
 
-    /* Meta box: right column, spans both rows */
-    .bat-meta { grid-column:2;grid-row:2;background:var(--card);padding:1.5rem 1.8rem;align-self:start; }
-    .bat-meta-row { margin-bottom:.7rem;padding-bottom:.7rem;border-bottom:1px solid rgba(255,255,255,.06); }
-    .bat-meta-row:last-child { border:none;margin:0;padding:0; }
-    .bat-meta-label { font-family:sans-serif;font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;color:var(--brass);margin-bottom:.15rem; }
-    .bat-meta-value { font-size:.95rem;color:var(--white); }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+    }
 
-    /* Hero image: left column, row 2, top-aligned */
-    .bat-hero-img { grid-column:1;grid-row:2;overflow:hidden;cursor:zoom-in;align-self:start; }
-    .bat-hero-img img { width:100%;height:auto;display:block;object-fit:contain;transition:transform .5s ease; }
-    .bat-hero-img:hover img { transform:scale(1.03); }
+    nav a:hover {
+      text-decoration: underline;
+    }
 
-    /* Body */
-    .bat-body { max-width:var(--max-w);margin:0 auto;padding:3rem var(--pad); }
-    .bat-description p { font-size:1.05rem;font-weight:300;color:var(--white);line-height:1.6;max-width:720px;margin-bottom:.7rem; }
-    .bat-prev { margin:2rem 0; }
-    .bat-prev h3 { font-family:sans-serif;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--brass);margin-bottom:.8rem; }
-    .bat-photos { display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem;margin:2rem 0; }
-    .bat-photo { cursor:zoom-in;overflow:hidden; }
-    .bat-photo img { width:100%;height:auto;display:block;max-height:480px;object-fit:contain;background:var(--card-dark);transition:transform .5s ease; }
-    .bat-photo:hover img { transform:scale(1.03); }
-    .bat-back { display:inline-flex;align-items:center;gap:.5rem;font-family:sans-serif;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--brass);margin-bottom:1.5rem;border-bottom:1px solid rgba(184,145,74,.3);padding-bottom:2px;text-decoration:none; }
+    .page-title {
+      background: #1a3a5c;
+      color: #fff;
+      text-align: center;
+      padding: 16px 24px 20px;
+      font-size: 1.1rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
 
-    /* Lightbox */
-    #lightbox { display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);backdrop-filter:blur(8px);align-items:center;justify-content:center;flex-direction:column; }
-    #lightbox.open { display:flex; }
-    #lightbox img { max-width:90vw;max-height:82vh;object-fit:contain; }
-    #lightbox-caption { margin-top:.8rem;font-family:sans-serif;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.5); }
-    #lb-close { position:absolute;top:1.5rem;right:2rem;font-size:2.5rem;color:rgba(255,255,255,.5);cursor:pointer;line-height:1; }
-    #lb-close:hover { color:#fff; }
-    #lb-prev, #lb-next { position:absolute;top:50%;transform:translateY(-50%);font-size:2rem;color:rgba(255,255,255,.4);cursor:pointer;padding:1rem; }
-    #lb-prev { left:1rem; } #lb-next { right:1rem; }
-    #lb-prev:hover, #lb-next:hover { color:#fff; }
-    @media(max-width:700px) { .bat-hero-inner { grid-template-columns:1fr; } .bat-meta { grid-column:1;grid-row:auto; } .bat-hero-img { grid-row:auto; } }
+    .container {
+      max-width: 760px;
+      margin: 32px auto;
+      padding: 0 20px 60px;
+    }
+
+    .boat-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .boat-title h1 {
+      font-size: 2rem;
+      margin: 0 0 4px;
+    }
+
+    .boat-title p {
+      margin: 0;
+      color: #555;
+      font-size: 1rem;
+    }
+
+    .badge {
+      background: #1a3a5c;
+      color: #fff;
+      padding: 8px 18px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    .specs {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 16px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 20px;
+      margin-bottom: 28px;
+    }
+
+    .spec-item label {
+      display: block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #888;
+      margin-bottom: 4px;
+    }
+
+    .spec-item span {
+      font-size: 0.95rem;
+      font-weight: bold;
+    }
+
+    .section {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 20px 24px;
+      margin-bottom: 24px;
+    }
+
+    .section h2 {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #1a3a5c;
+      margin: 0 0 14px;
+      border-bottom: 1px solid #e0e0e0;
+      padding-bottom: 8px;
+    }
+
+    .section p {
+      font-size: 0.92rem;
+      line-height: 1.7;
+      margin: 0 0 12px;
+    }
+
+    .section p:last-child {
+      margin-bottom: 0;
+    }
+
+    .owners-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+    }
+
+    .owners-table tr td {
+      padding: 5px 8px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .owners-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .owners-table td:first-child {
+      font-weight: bold;
+      width: 60px;
+      color: #1a3a5c;
+    }
+
+    .owners-table tr.current td {
+      color: #999;
+      font-style: italic;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 8px;
+      color: #1a3a5c;
+      text-decoration: none;
+      font-size: 0.9rem;
+      border-bottom: 1px solid #1a3a5c;
+    }
+
+    .back-link:hover {
+      color: #c0392b;
+      border-color: #c0392b;
+    }
   </style>
 </head>
 <body>
-<nav class="navbar" id="navbar">
-  <div class="nav-links">
-    <a href="../../pages/batregistret.html">B&aring;tregistret</a>
-    <a href="../../pages/kappsegling.html">Kappsegling</a>
-    <a href="../../pages/butiken.html">Butiken</a>
-    <a href="../../pages/medlemmar.html">Medlemmar</a>
-    <span class="nav-sep">|</span>
-    <a href="../../pages/om-klubben.html">Om klubben</a>
-    <a href="../../pages/kontakt.html">Kontakt</a>
-  </div>
-</nav>
-<a href="../../index.html" style="position:fixed;z-index:201;top:0;left:0;width:280px;height:100px;cursor:pointer;text-decoration:none" aria-label="Till startsidan"></a>
-<div id="logo-block">
-  <span class="logo-line" id="line1">Svensk</span>
-  <span class="logo-line" id="line2">Andungeklubb</span>
-</div>
-<img id="duck-img" src="" alt="">
 
-<div class="bat-hero">
-  <div class="bat-hero-inner">
-    <div class="bat-title-block">
-      <div class="bat-nr-line">
-        <span class="bat-nr">SWE 11</span>
-        <h1 class="bat-name">Älvan</h1>
+  <nav>
+    <a href="/pages/batregistret.html">Båtregistret</a>
+    <a href="/pages/kappsegling.html">Kappsegling</a>
+    <a href="/pages/butiken.html">Butiken</a>
+    <a href="/pages/medlemmar.html">Medlemmar</a>
+    <a href="/pages/om-klubben.html">Om klubben</a>
+    <a href="/pages/kontakt.html">Kontakt</a>
+  </nav>
+
+  <div class="page-title">Svensk Andungeklubb</div>
+
+  <div class="container">
+
+    <a href="/pages/batregistret.html" class="back-link">← Åter båtöversikt</a>
+
+    <div class="boat-header" style="margin-top: 20px;">
+      <div class="boat-title">
+        <h1>SWE 11 Älvan</h1>
+        <p>2026 Okänd</p>
       </div>
-      <p class="bat-owner">2026 Okänd</p>
+      <div class="badge">SWE 11</div>
     </div>
-    <div class="bat-hero-img" onclick="openLightbox(0)"><img src="../../img/boat/bat_011_2.jpg" alt="SWE 11"></div>
-    <div class="bat-meta">
-      <div class="bat-meta-row"><div class="bat-meta-label">Hemmahamn</div><div class="bat-meta-value">2026 Okänd</div></div>
-      <div class="bat-meta-row"><div class="bat-meta-label">Bygg&aring;r</div><div class="bat-meta-value">1957</div></div>
-      <div class="bat-meta-row"><div class="bat-meta-label">Varv</div><div class="bat-meta-value">Thore Larsson Kungsviken</div></div>
-      <div class="bat-meta-row"><div class="bat-meta-label">Material</div><div class="bat-meta-value">Pine</div></div>
-    </div>
-  </div>
-</div>
 
-<div class="bat-body">
-  <a href="../../pages/batregistret.html" class="bat-back">&larr; &Aring;ter b&aring;t&ouml;versikt</a>
-  <div class="bat-description"><p>Minnesanteckng båt No 1 - 12 sammanställd av Torulf Rutgersson efter samtal med Ante Larsson ca 2004, publicerat i Andungebladet 2004-2005Andunge Nr 11 Beställare: Mats Seldén Köpare: Nils Faxén På denna båt en del extra detaljer Bordläggning – hondurasmahogny (troligen fel, se nedan), spant – ask, Randgång – vit ask Resning – ek, bottenstockar – ek, Mitt i brunnen en rund sarg, vidare höj och sänkbara tofter På däcket en tjock grön plastduk Dexolium, plywooddäck, Mast och bom – spruce Vit bottenfärg Leverans 1957-06-28Minnesanteckning av Anders Faxén 201911:an Vivace var i oregonpine precis som 1:an och 10:an, jag kommer inte ihåg om det var några fler i oregonpine. Jag köpte 11:an av Jonny Albrechtson, som jag var klasskamrat med i många år och som jag gastade i hans olika stjärnbåtar i lika många år.Anders Faxen skrev 2019 01 24 (kompletterande fråga från CHM 22/1-19)Jonny seglade 11:an själv men jag icke säker på att han ägde den, utan det kan ha varit så att den ägdes av Pelle Seldén och han ville göra reklam för båten genom att låta Jonny segla den.Min far köpte de åt mig och min bror Nils-Bertil 1956 eller möjligen -57, men jag blev inom något år egen ägare.Jag kommer inte ihåg vem som köpte den, men jag såg den för säkert tio år sedan i Hällevikstrand då den var till salu, men säljaren ändrade sig och behöll den.Vänliga hälsningarAnders FaxénEfter kontakt med nuvarande ägare framkommer att båten är under omvårdnad i Hunnebostrandstrakten./CHM</p>
+    <div class="specs">
+      <div class="spec-item">
+        <label>Hemmahamn</label>
+        <span>2026 Okänd</span>
       </div>
-  <div class="bat-prev"><h3>Tidigare &auml;gare</h3><table style="border-collapse:collapse"><tr><td style="color:var(--brass);padding-right:1.5rem;white-space:nowrap;font-family:sans-serif;font-size:.85rem">1956</td><td style="color:var(--white)">Jonny Albrechtson/Seldén</td></tr><tr><td style="color:var(--brass);padding-right:1.5rem;white-space:nowrap;font-family:sans-serif;font-size:.85rem">1957</td><td style="color:var(--white)">Nils-Berti & Anders Faxen (1957-71)</td></tr><tr><td style="color:var(--brass);padding-right:1.5rem;white-space:nowrap;font-family:sans-serif;font-size:.85rem">1976</td><td style="color:var(--white)">Jan-Olof Juhlin</td></tr><tr><td style="color:var(--brass);padding-right:1.5rem;white-space:nowrap;font-family:sans-serif;font-size:.85rem">1984</td><td style="color:var(--white)">Dan Lind</td></tr><tr><td style="color:var(--brass);padding-right:1.5rem;white-space:nowrap;font-family:sans-serif;font-size:.85rem">1986</td><td style="color:var(--white)">Göran Norén</td></tr><tr><td style="color:var(--brass);padding-right:1.5rem;white-space:nowrap;font-family:sans-serif;font-size:.85rem">1987</td><td style="color:var(--white)">Alf Åberg</td></tr><tr><td style="color:var(--brass);padding-right:1.5rem;white-space:nowrap;font-family:sans-serif;font-size:.85rem">1990</td><td style="color:var(--white)">L-Å Hansson</td></tr><tr><td style="color:var(--brass);padding-right:1.5rem;white-space:nowrap;font-family:sans-serif;font-size:.85rem">1993</td><td style="color:var(--white)">Anna-Carin Edlund</td></tr><tr><td style="color:var(--brass);padding-right:1.5rem;white-space:nowrap;font-family:sans-serif;font-size:.85rem">2002</td><td style="color:var(--white)">Erland Thölén</td></tr><tr><td style="color:var(--brass);padding-right:1.5rem;white-space:nowrap;font-family:sans-serif;font-size:.85rem">2013</td><td style="color:var(--white)">Sven Johansson</td></tr><tr><td style="color:var(--brass);padding-right:1.5rem;white-space:nowrap;font-family:sans-serif;font-size:.85rem">2023</td><td style="color:var(--white)">Rolf Bjelm</td></tr></table></div>>2026</td><td style="color:var(--white)">Okänd</td></tr></table></div>
-  <div class="bat-photos">
+      <div class="spec-item">
+        <label>Byggår</label>
+        <span>1957</span>
+      </div>
+      <div class="spec-item">
+        <label>Varv</label>
+        <span>Thore Larsson Kungsviken</span>
+      </div>
+      <div class="spec-item">
+        <label>Material</label>
+        <span>Pine</span>
+      </div>
     </div>
-  <a href="../../pages/batregistret.html" class="bat-back">&larr; &Aring;ter b&aring;t&ouml;versikt</a>
-</div>
 
-<div id="lightbox">
-  <span id="lb-close">&times;</span>
-  <span id="lb-prev">&#8592;</span>
-  <img id="lb-img" src="" alt="">
-  <p id="lightbox-caption"></p>
-  <span id="lb-next">&#8594;</span>
-</div>
+    <div class="section">
+      <h2>Historik</h2>
+      <p>
+        Minnesanteckning båt No 1–12 sammanställd av Torulf Rutgersson efter samtal med Ante Larsson ca 2004,
+        publicerat i Andungebladet 2004–2005.
+      </p>
+      <p>
+        <strong>Andunge Nr 11.</strong> Beställare: Mats Seldén. Köpare: Nils Faxén. På denna båt en del extra detaljer.
+        Bordläggning – hondurasmahogny (troligen fel, se nedan), spant – ask, randgång – vit ask, resning – ek,
+        bottenstockar – ek. Mitt i brunnen en rund sarg, vidare höj- och sänkbara tofter. På däcket en tjock grön
+        plastduk Dexolium, plywooddäck. Mast och bom – spruce. Vit bottenfärg. Leverans 1957-06-28.
+      </p>
+      <p>
+        <strong>Minnesanteckning av Anders Faxén 2019.</strong> 11:an Vivace var i oregonpine precis som 1:an och
+        10:an, jag kommer inte ihåg om det var några fler i oregonpine. Jag köpte 11:an av Jonny Albrechtson, som jag
+        var klasskamrat med i många år och som jag gastade i hans olika stjärnbåtar i lika många år.
+      </p>
+      <p>
+        Anders Faxén skrev 2019-01-24 (kompletterande fråga från CHM 22/1-19): Jonny seglade 11:an själv men jag är
+        icke säker på att han ägde den, utan det kan ha varit så att den ägdes av Pelle Seldén och han ville göra
+        reklam för båten genom att låta Jonny segla den. Min far köpte den åt mig och min bror Nils-Bertil 1956 eller
+        möjligen -57, men jag blev inom något år egen ägare. Jag kommer inte ihåg vem som köpte den, men jag såg den
+        för säkert tio år sedan i Hällevikstrand då den var till salu, men säljaren ändrade sig och behöll den.
+      </p>
+      <p>
+        Efter kontakt med nuvarande ägare framkommer att båten är under omvårdnad i Hunnebostrandstrakten. /CHM
+      </p>
+    </div>
 
-<script src="../../js/duck.js"></script>
-<script src="../../js/header-static.js"></script>
-<script>
-(function(){
-  var photos=Array.from(document.querySelectorAll('.bat-photo'));
-  var lb=document.getElementById('lightbox');
-  var lbImg=document.getElementById('lb-img');
-  var cur=0;
-  function show(i){cur=(i+photos.length)%photos.length;lbImg.src=photos[cur].querySelector('img').src;lb.classList.add('open');}
-  photos.forEach(function(p,i){p.addEventListener('click',function(){show(i);});});
-// Include hero image in lightbox array
-  var heroImg = document.querySelector('.bat-hero-img img');
-  var allImgs = heroImg ? [heroImg].concat(photos.map(function(p){return p.querySelector('img');})) : photos.map(function(p){return p.querySelector('img');});
-  function showImg(i){
-    cur=(i+allImgs.length)%allImgs.length;
-    lbImg.src=allImgs[cur].src;
-    lb.classList.add('open');
-  }
-  window.openLightbox=function(i){showImg(i);};
-  // Override photo clicks to use combined array
-  photos.forEach(function(p,i){
-    p.onclick=function(){showImg(i+1);}; // +1 because hero is index 0
-  });
-  document.getElementById('lb-close').onclick=function(){lb.classList.remove('open');};
-  document.getElementById('lb-prev').onclick=function(){showImg(cur-1);};
-  document.getElementById('lb-next').onclick=function(){showImg(cur+1);};
-  lb.addEventListener('click',function(e){if(e.target===lb)lb.classList.remove('open');});
-  document.addEventListener('keydown',function(e){if(!lb.classList.contains('open'))return;if(e.key==='Escape')lb.classList.remove('open');if(e.key==='ArrowLeft')show(cur-1);if(e.key==='ArrowRight')show(cur+1);});
-})();
-</script>
+    <div class="section">
+      <h2>Tidigare ägare</h2>
+      <table class="owners-table">
+        <tbody>
+          <tr><td>1956</td><td>Jonny Albrechtson / Seldén</td></tr>
+          <tr><td>1957</td><td>Nils-Bertil &amp; Anders Faxén (1957–71)</td></tr>
+          <tr><td>1976</td><td>Jan-Olof Juhlin</td></tr>
+          <tr><td>1984</td><td>Dan Lind</td></tr>
+          <tr><td>1986</td><td>Göran Norén</td></tr>
+          <tr><td>1987</td><td>Alf Åberg</td></tr>
+          <tr><td>1990</td><td><a href="/index.html">L-Å Hansson</a></td></tr>
+          <tr><td>1993</td><td>Anna-Carin Edlund</td></tr>
+          <tr><td>2002</td><td>Erland Thölén</td></tr>
+          <tr><td>2013</td><td>Sven Johansson</td></tr>
+          <tr><td>2023</td><td>Rolf Bjelm</td></tr>
+          <tr class="current"><td>2026</td><td>Okänd</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <a href="/pages/batregistret.html" class="back-link">← Åter båtöversikt</a>
+
+  </div>
+
 </body>
 </html>
