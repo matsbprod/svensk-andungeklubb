@@ -247,6 +247,12 @@
           </tbody>
         </table>
       </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem;margin-top:2rem">
+        <div style="overflow:hidden;cursor:zoom-in" onclick="openVmPhoto(0)"><img src="../img/VM2026/image00017.jpeg" alt="Andunge-VM 2026" loading="lazy" style="width:100%;height:auto;display:block;object-fit:cover;transition:transform .5s ease" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'"></div>
+        <div style="overflow:hidden;cursor:zoom-in" onclick="openVmPhoto(1)"><img src="../img/VM2026/image00019.jpeg" alt="Andunge-VM 2026" loading="lazy" style="width:100%;height:auto;display:block;object-fit:cover;transition:transform .5s ease" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'"></div>
+        <div style="overflow:hidden;cursor:zoom-in" onclick="openVmPhoto(2)"><img src="../img/VM2026/image00036.jpeg" alt="Andunge-VM 2026" loading="lazy" style="width:100%;height:auto;display:block;object-fit:cover;transition:transform .5s ease" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'"></div>
+        <div style="overflow:hidden;cursor:zoom-in" onclick="openVmPhoto(3)"><img src="../img/VM2026/image00048.jpeg" alt="Andunge-VM 2026" loading="lazy" style="width:100%;height:auto;display:block;object-fit:cover;transition:transform .5s ease" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'"></div>
+      </div>
     </div>
   </div><!-- /event-section andunge-vm -->
 
@@ -484,6 +490,20 @@ document.addEventListener('keydown', function(e) {
 });
 </script>
 
+<div id="vm-photo-lb" style="display:none;position:fixed;inset:0;z-index:9998;background:rgba(0,0,0,.92);backdrop-filter:blur(8px);align-items:center;justify-content:center">
+  <span onclick="document.getElementById('vm-photo-lb').style.display='none'" style="position:absolute;top:1.5rem;right:2rem;font-size:2.5rem;color:rgba(255,255,255,.5);cursor:pointer;line-height:1">&times;</span>
+  <span onclick="vmPhotoNav(-1)" style="position:absolute;left:1rem;top:50%;transform:translateY(-50%);font-size:2rem;color:rgba(255,255,255,.4);cursor:pointer;padding:1rem">&#8592;</span>
+  <img id="vm-photo-lb-img" src="" alt="" style="max-width:90vw;max-height:88vh;object-fit:contain">
+  <span onclick="vmPhotoNav(1)" style="position:absolute;right:1rem;top:50%;transform:translateY(-50%);font-size:2rem;color:rgba(255,255,255,.4);cursor:pointer;padding:1rem">&#8594;</span>
+</div>
+<script>
+var vmPhotos=['../img/VM2026/image00017.jpeg','../img/VM2026/image00019.jpeg','../img/VM2026/image00036.jpeg','../img/VM2026/image00048.jpeg'];
+var vmPhotoCur=0;
+function openVmPhoto(i){vmPhotoCur=i;document.getElementById('vm-photo-lb-img').src=vmPhotos[i];document.getElementById('vm-photo-lb').style.display='flex';}
+function vmPhotoNav(d){vmPhotoCur=(vmPhotoCur+d+vmPhotos.length)%vmPhotos.length;document.getElementById('vm-photo-lb-img').src=vmPhotos[vmPhotoCur];}
+document.getElementById('vm-photo-lb').addEventListener('click',function(e){if(e.target===this)this.style.display='none';});
+document.addEventListener('keydown',function(e){var lb=document.getElementById('vm-photo-lb');if(lb.style.display!=='flex')return;if(e.key==='Escape')lb.style.display='none';if(e.key==='ArrowLeft')vmPhotoNav(-1);if(e.key==='ArrowRight')vmPhotoNav(1);});
+</script>
 <script src="../js/duck.js"></script>
 <script src="../js/header.js"></script>
 </body>
