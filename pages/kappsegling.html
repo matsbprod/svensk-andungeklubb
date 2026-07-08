@@ -82,231 +82,186 @@
 <div class="page-body">
 
   <!-- ═══════════════════════════════════════════
-       ANDUNGE-VM
+       ANDUNGE-VM RESULTAT
   ════════════════════════════════════════════ -->
   <div class="event-section" id="andunge-vm" style="scroll-margin-top:80px">
-    <div class="two-col two-col-wide">
-      <div>
-        <div class="page-section reveal">
-          <div class="rule"></div>
-          <h2>Andunge-VM</h2>
-          <p>Välkommen till årets Västkustmästerskapet i Andunge i Kullavik/Korshamn. Arrangör Korshamns BK.</p>
-          <p>Anmälan till seglingen är nu öppen och görs via formuläret nedan. Det går nu att anmäla antal personer till regattamiddagen, pris 500:-. Formuläret kan fyllas i flera gånger om något behöver ändras.</p>
-
-          <div style="margin:1.8rem 0">
-            <div class="event-detail">
-              <span class="ed-label">Datum</span>
-              <span>12–14 juni 2026</span>
-            </div>
-            <div class="event-detail">
-              <span class="ed-label">Plats</span>
-              <span>Korshamn / Kullavik</span>
-            </div>
-            <div class="event-detail">
-              <span class="ed-label">Anmälan senast</span>
-              <span>5 juni 2026</span>
-            </div>
-            <div class="event-detail">
-              <span class="ed-label">Avgift</span>
-              <span>850 SEK</span>
-            </div>
-            <div class="event-detail">
-              <span class="ed-label">Efteranmälan</span>
-              <span>Möjlig till 12 juni — avgift 1 000 SEK</span>
-            </div>
-            <div class="event-detail">
-              <span class="ed-label">Avanmälan</span>
-              <span>Återbetalning om avanmälan görs senast 8 juni, eller om arrangören avvisar anmälan</span>
-            </div>
-          </div>
-
-          <!-- PDF Inbjudan -->
-          <div class="page-section reveal" style="margin-top:2rem">
-            <h2>Inbjudan &amp; regler</h2>
-            <a href="#" onclick="openVmPdf('../pdf/Inbjudan%20VM%20Andunge%202026.pdf'); return false;" class="pdf-featured-card" style="display:grid;grid-template-columns:120px 1fr;gap:1.2rem;text-decoration:none;margin-top:1.2rem;background:var(--card);border:1px solid rgba(184,145,74,.15);border-radius:4px;padding:1rem;transition:border-color .2s,box-shadow .2s" onmouseover="this.style.borderColor='rgba(184,145,74,.5)';this.style.boxShadow='0 6px 20px rgba(0,0,0,.35)'" onmouseout="this.style.borderColor='rgba(184,145,74,.15)';this.style.boxShadow='none'">
-              <div class="pdf-thumb-box">
-                <canvas class="pdf-canvas" data-src="../pdf/Inbjudan%20VM%20Andunge%202026.pdf"></canvas>
-                <div class="pdf-fallback">
-                  <svg viewBox="0 0 40 52" xmlns="http://www.w3.org/2000/svg"><path d="M24 0H4C1.8 0 0 1.8 0 4v44c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/><path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/><text x="20" y="36" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#b8914a">PDF</text></svg>
-                </div>
-              </div>
-              <div style="display:flex;flex-direction:column;justify-content:center;gap:.4rem">
-                <span style="font-family:'Cinzel',serif;font-size:.7em;letter-spacing:.1em;color:var(--brass)">INBJUDAN 2026</span>
-                <span style="color:var(--white);font-family:'Cormorant Garamond',serif;font-size:1.05em">Inbjudan till Västkustmästerskap Andunge</span>
-                <span style="font-size:.8em;color:var(--brass);margin-top:.2rem">Klicka för att läsa →</span>
-              </div>
-            </a>
-          </div>
-
-        </div>
-
-        <!-- VM Registration form -->
-        <div class="page-section reveal" id="vm-anmalan">
-          <h2>Anmäl till Andunge-VM</h2>
-
-          <!-- Payment info -->
-          <div class="info-box" style="margin-bottom:2rem">
-            <h3>Betalning av anmälningsavgift</h3>
-            <p>Anmälningsavgiften <strong style="color:var(--white)">850 SEK</strong> betalas i samband med anmälan.</p>
-            <div style="margin-top:1rem">
-              <div class="event-detail">
-                <span class="ed-label">Plusgiro</span>
-                <span><strong style="color:var(--white)">62 00 96-8</strong></span>
-              </div>
-              <div class="event-detail">
-                <span class="ed-label">Swish</span>
-                <span><strong style="color:var(--white)">123 143 15 84</strong></span>
-              </div>
-            </div>
-            <p style="margin-top:.9rem;font-size:.88em;opacity:.7">Ange skepparens namn och "VM 2026" som meddelande. Efteranmälan (efter 5 juni) kostar 1 000 SEK.</p>
-          </div>
-
-          <form class="andunge-form" name="andunge-vm-2026" method="POST" data-netlify="true" action="tack.html">
-            <input type="hidden" name="form-name" value="andunge-vm-2026">
-            <input type="hidden" name="_to" value="mats@plop.se">
-
-            <div class="form-row">
-              <label>Skeppare <span style="color:var(--brass)">*</span></label>
-              <input type="text" name="skeppare" required placeholder="För- och efternamn">
-            </div>
-            <div class="form-row">
-              <label>Besättning</label>
-              <input type="text" name="besattning" placeholder="Namn på besättningsmedlemmar">
-            </div>
-            <div class="form-row">
-              <label>Båtnamn <span style="color:var(--brass)">*</span></label>
-              <input type="text" name="batnamn" required placeholder="Båtens namn">
-            </div>
-            <div class="form-row">
-              <label>Båtnummer</label>
-              <input type="text" name="batnummer" placeholder="t.ex. SWE 42">
-            </div>
-            <div class="form-row">
-              <label>E-post <span style="color:var(--brass)">*</span></label>
-              <input type="email" name="epost" required placeholder="din@epost.se">
-              <p class="form-note">Vi skickar bekräftelse hit.</p>
-            </div>
-            <div class="form-row">
-              <label>Telefon</label>
-              <input type="tel" name="telefon" placeholder="070-xxx xx xx">
-            </div>
-            <div class="form-row">
-              <div class="form-row">
-                <label>Regattamiddag — antal personer</label>
-                <select name="regattamiddag">
-                  <option value="0">Deltar ej i middagen</option>
-                  <option value="1">1 person</option>
-                  <option value="2">2 personer</option>
-                  <option value="3">3 personer</option>
-                  <option value="4">4 personer</option>
-                  <option value="5">5 personer</option>
-                  <option value="6">6 personer</option>
-                  <option value="7">7 personer</option>
-                  <option value="8">8 personer</option>
-                  <option value="9">9 personer</option>
-                  <option value="10">10 personer</option>
-                </select>
-              </div>
-                            <label>Meddelande (valfritt)</label>
-              <textarea name="meddelande" placeholder="Övriga upplysningar..."></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-outline" style="width:100%;margin-top:.5rem">Skicka anmälan</button>
-          </form>
-        </div>
+    <div class="page-section reveal">
+      <div class="rule"></div>
+      <h2>Resultat Andunge-VM i Korshamn/Kullavik, 13-14 juni 2026</h2>
+      <p>Arrangör: Korshamns BK</p>
+      <div style="overflow-x:auto;margin-top:1.5rem">
+        <table style="width:100%;border-collapse:collapse;font-size:.9em">
+          <thead>
+            <tr style="border-bottom:1px solid rgba(184,145,74,.4)">
+              <th style="text-align:left;padding:.5rem .6rem .5rem 0;font-family:'Cinzel',serif;font-size:.72em;letter-spacing:.07em;color:var(--brass);font-weight:400">Plac</th>
+              <th style="text-align:left;padding:.5rem .6rem;font-family:'Cinzel',serif;font-size:.72em;letter-spacing:.07em;color:var(--brass);font-weight:400">Segelnr</th>
+              <th style="text-align:left;padding:.5rem .6rem;font-family:'Cinzel',serif;font-size:.72em;letter-spacing:.07em;color:var(--brass);font-weight:400">Båtnamn</th>
+              <th style="text-align:left;padding:.5rem .6rem;font-family:'Cinzel',serif;font-size:.72em;letter-spacing:.07em;color:var(--brass);font-weight:400">Skeppare</th>
+              <th style="text-align:left;padding:.5rem .6rem;font-family:'Cinzel',serif;font-size:.72em;letter-spacing:.07em;color:var(--brass);font-weight:400">Besättning</th>
+              <th style="text-align:right;padding:.5rem .3rem;font-family:'Cinzel',serif;font-size:.72em;letter-spacing:.07em;color:var(--brass);font-weight:400">R1</th>
+              <th style="text-align:right;padding:.5rem .3rem;font-family:'Cinzel',serif;font-size:.72em;letter-spacing:.07em;color:var(--brass);font-weight:400">R2</th>
+              <th style="text-align:right;padding:.5rem .3rem;font-family:'Cinzel',serif;font-size:.72em;letter-spacing:.07em;color:var(--brass);font-weight:400">R3</th>
+              <th style="text-align:right;padding:.5rem .3rem;font-family:'Cinzel',serif;font-size:.72em;letter-spacing:.07em;color:var(--brass);font-weight:400">R4</th>
+              <th style="text-align:right;padding:.5rem .3rem;font-family:'Cinzel',serif;font-size:.72em;letter-spacing:.07em;color:var(--brass);font-weight:400">R5</th>
+              <th style="text-align:right;padding:.5rem .3rem;font-family:'Cinzel',serif;font-size:.72em;letter-spacing:.07em;color:var(--brass);font-weight:400">R6</th>
+              <th style="text-align:right;padding:.5rem .3rem;font-family:'Cinzel',serif;font-size:.72em;letter-spacing:.07em;color:var(--brass);font-weight:400">R7</th>
+              <th style="text-align:right;padding:.5rem 0 .5rem .6rem;font-family:'Cinzel',serif;font-size:.72em;letter-spacing:.07em;color:var(--brass);font-weight:400">Poäng</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid rgba(255,255,255,.06)">
+              <td style="padding:.55rem .6rem .55rem 0;color:var(--brass);font-weight:600">1</td>
+              <td style="padding:.55rem .6rem;color:var(--white-dim)">SWE 134</td>
+              <td style="padding:.55rem .6rem;color:var(--white)">Rut</td>
+              <td style="padding:.55rem .6rem;color:var(--white-dim)">Tomas Nordqvist</td>
+              <td style="padding:.55rem .6rem;color:var(--white-dim)">Kent Holzner</td>
+              <td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">1</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">2</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">8</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">1</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">1</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">1</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">2</td>
+              <td style="padding:.55rem 0 .55rem .6rem;color:var(--brass);text-align:right;font-weight:600">16</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,.06)">
+              <td style="padding:.55rem .6rem .55rem 0;color:var(--white-dim)">2</td>
+              <td style="padding:.55rem .6rem;color:var(--white-dim)">SWE 176</td>
+              <td style="padding:.55rem .6rem;color:var(--white)">Da Capo</td>
+              <td style="padding:.55rem .6rem;color:var(--white-dim)">Lasse Molse</td>
+              <td style="padding:.55rem .6rem;color:var(--white-dim)">Michael Jessing</td>
+              <td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">3</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">4</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">1</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">4</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">2</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">6</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">4</td>
+              <td style="padding:.55rem 0 .55rem .6rem;color:var(--brass);text-align:right;font-weight:600">24</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,.06)">
+              <td style="padding:.55rem .6rem .55rem 0;color:var(--white-dim)">3</td>
+              <td style="padding:.55rem .6rem;color:var(--white-dim)">SWE 147</td>
+              <td style="padding:.55rem .6rem;color:var(--white)">Västan</td>
+              <td style="padding:.55rem .6rem;color:var(--white-dim)">Lars Westerlind</td>
+              <td style="padding:.55rem .6rem;color:var(--white-dim)">Per Westerlind</td>
+              <td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">2</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">1</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">9</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">5</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">3</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">7</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">1</td>
+              <td style="padding:.55rem 0 .55rem .6rem;color:var(--brass);text-align:right;font-weight:600">28</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,.06)">
+              <td style="padding:.55rem .6rem .55rem 0;color:var(--white-dim)">4</td>
+              <td style="padding:.55rem .6rem;color:var(--white-dim)">SWE 118</td>
+              <td style="padding:.55rem .6rem;color:var(--white)">Gullefjun</td>
+              <td style="padding:.55rem .6rem;color:var(--white-dim)">Hans Granhed</td>
+              <td style="padding:.55rem .6rem;color:var(--white-dim)">Ulf Lindahl</td>
+              <td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">4</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">5</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">3</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">6</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">5</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">2</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">6</td>
+              <td style="padding:.55rem 0 .55rem .6rem;color:var(--brass);text-align:right;font-weight:600">31</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,.06)">
+              <td style="padding:.55rem .6rem .55rem 0;color:var(--white-dim)">5</td>
+              <td style="padding:.55rem .6rem;color:var(--white-dim)">SWE 15</td>
+              <td style="padding:.55rem .6rem;color:var(--white)">Quaque</td>
+              <td style="padding:.55rem .6rem;color:var(--white-dim)">Leif Sjögren</td>
+              <td style="padding:.55rem .6rem;color:var(--white-dim)">Astrid Sjögren, Bo Wolgast</td>
+              <td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">10</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">3</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">2</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">7</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">6</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">5</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">10</td>
+              <td style="padding:.55rem 0 .55rem .6rem;color:var(--brass);text-align:right;font-weight:600">43</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,.06)">
+              <td style="padding:.55rem .6rem .55rem 0;color:var(--white-dim)">6</td>
+              <td style="padding:.55rem .6rem;color:var(--white-dim)">SWE 143</td>
+              <td style="padding:.55rem .6rem;color:var(--white)">Lova</td>
+              <td style="padding:.55rem .6rem;color:var(--white-dim)">Hans Caspersson</td>
+              <td style="padding:.55rem .6rem;color:var(--white-dim)">Lennart Eriksson</td>
+              <td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">7</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">6</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">4</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">9</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">11</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">4</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">3</td>
+              <td style="padding:.55rem 0 .55rem .6rem;color:var(--brass);text-align:right;font-weight:600">44</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,.06)">
+              <td style="padding:.55rem .6rem .55rem 0;color:var(--white-dim)">7</td>
+              <td style="padding:.55rem .6rem;color:var(--white-dim)">SWE 115</td>
+              <td style="padding:.55rem .6rem;color:var(--white)">Julia</td>
+              <td style="padding:.55rem .6rem;color:var(--white-dim)">Claes-Henrik Möse</td>
+              <td style="padding:.55rem .6rem;color:var(--white-dim)">Lotte Waller</td>
+              <td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">11</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">10</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">5</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">2</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">4</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">8</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">9</td>
+              <td style="padding:.55rem 0 .55rem .6rem;color:var(--brass);text-align:right;font-weight:600">49</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,.06)">
+              <td style="padding:.55rem .6rem .55rem 0;color:var(--white-dim)">8</td>
+              <td style="padding:.55rem .6rem;color:var(--white-dim)">SWE 56</td>
+              <td style="padding:.55rem .6rem;color:var(--white)">Åda</td>
+              <td style="padding:.55rem .6rem;color:var(--white-dim)">Nils-Erik Smitt</td>
+              <td style="padding:.55rem .6rem;color:var(--white-dim)">Christina Johansson</td>
+              <td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">9</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">7</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">6</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">10</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">10</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">3</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">5</td>
+              <td style="padding:.55rem 0 .55rem .6rem;color:var(--brass);text-align:right;font-weight:600">50</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,.06)">
+              <td style="padding:.55rem .6rem .55rem 0;color:var(--white-dim)">9</td>
+              <td style="padding:.55rem .6rem;color:var(--white-dim)">SWE 109</td>
+              <td style="padding:.55rem .6rem;color:var(--white)">Pippi</td>
+              <td style="padding:.55rem .6rem;color:var(--white-dim)">Stefan Holmgren</td>
+              <td style="padding:.55rem .6rem;color:var(--white-dim)">Niklas Thielen</td>
+              <td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">8</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">9</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">DNS</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">12</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">7</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">9</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">7</td>
+              <td style="padding:.55rem 0 .55rem .6rem;color:var(--brass);text-align:right;font-weight:600">68</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,.06)">
+              <td style="padding:.55rem .6rem .55rem 0;color:var(--white-dim)">10</td>
+              <td style="padding:.55rem .6rem;color:var(--white-dim)">SWE 128</td>
+              <td style="padding:.55rem .6rem;color:var(--white)">Ursula</td>
+              <td style="padding:.55rem .6rem;color:var(--white-dim)">Alf Andersson</td>
+              <td style="padding:.55rem .6rem;color:var(--white-dim)">Dag Fritzon</td>
+              <td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">12</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">13</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">10</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">3</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">8</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">10</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">13</td>
+              <td style="padding:.55rem 0 .55rem .6rem;color:var(--brass);text-align:right;font-weight:600">69</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,.06)">
+              <td style="padding:.55rem .6rem .55rem 0;color:var(--white-dim)">11</td>
+              <td style="padding:.55rem .6rem;color:var(--white-dim)">SWE 68</td>
+              <td style="padding:.55rem .6rem;color:var(--white)">Greta</td>
+              <td style="padding:.55rem .6rem;color:var(--white-dim)">Jonas Halvord</td>
+              <td style="padding:.55rem .6rem;color:var(--white-dim)">Sten Wallin</td>
+              <td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">6</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">8</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">11</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">11</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">9</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">13</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">11</td>
+              <td style="padding:.55rem 0 .55rem .6rem;color:var(--brass);text-align:right;font-weight:600">69</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,.06)">
+              <td style="padding:.55rem .6rem .55rem 0;color:var(--white-dim)">12</td>
+              <td style="padding:.55rem .6rem;color:var(--white-dim)">SWE 129</td>
+              <td style="padding:.55rem .6rem;color:var(--white)">Alma</td>
+              <td style="padding:.55rem .6rem;color:var(--white-dim)">Bosse Knape</td>
+              <td style="padding:.55rem .6rem;color:var(--white-dim)">Dan Manhed, Magnus Chöler</td>
+              <td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">5</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">11</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">12</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">13</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">13</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">11</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">8</td>
+              <td style="padding:.55rem 0 .55rem .6rem;color:var(--brass);text-align:right;font-weight:600">73</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,.06)">
+              <td style="padding:.55rem .6rem .55rem 0;color:var(--white-dim)">13</td>
+              <td style="padding:.55rem .6rem;color:var(--white-dim)">SWE 76</td>
+              <td style="padding:.55rem .6rem;color:var(--white)">Twist</td>
+              <td style="padding:.55rem .6rem;color:var(--white-dim)">Lars Gelin</td>
+              <td style="padding:.55rem .6rem;color:var(--white-dim)">Lotta Gelin</td>
+              <td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">13</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">14</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">7</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">8</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">14</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">14</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">12</td>
+              <td style="padding:.55rem 0 .55rem .6rem;color:var(--brass);text-align:right;font-weight:600">82</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,.06)">
+              <td style="padding:.55rem .6rem .55rem 0;color:var(--white-dim)">14</td>
+              <td style="padding:.55rem .6rem;color:var(--white-dim)">SWE 145</td>
+              <td style="padding:.55rem .6rem;color:var(--white)">Gubbröra</td>
+              <td style="padding:.55rem .6rem;color:var(--white-dim)">Mats Andersson</td>
+              <td style="padding:.55rem .6rem;color:var(--white-dim)">Martin Otterstedt, Per-Ola Andersson</td>
+              <td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">14</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">12</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">13</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">14</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">12</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">15</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">14</td>
+              <td style="padding:.55rem 0 .55rem .6rem;color:var(--brass);text-align:right;font-weight:600">94</td>
+            </tr>
+            <tr>
+              <td style="padding:.55rem .6rem .55rem 0;color:var(--white-dim)">15</td>
+              <td style="padding:.55rem .6rem;color:var(--white-dim)">SWE 93</td>
+              <td style="padding:.55rem .6rem;color:var(--white)">Maja III</td>
+              <td style="padding:.55rem .6rem;color:var(--white-dim)">Johan Algell</td>
+              <td style="padding:.55rem .6rem;color:var(--white-dim)">Ia Algell</td>
+              <td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">15</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">15</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">DNF</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">15</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">15</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">12</td><td style="padding:.55rem .3rem;color:var(--white-dim);text-align:right">15</td>
+              <td style="padding:.55rem 0 .55rem .6rem;color:var(--brass);text-align:right;font-weight:600">103</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-
-      <!-- Right column: info boxes -->
-      <div>
-        <div class="info-box reveal">
-          <h3>Praktisk info</h3>
-          <ul>
-            <li><span class="brass">Arrangör</span><br>Korshamns BK</li>
-            <li><span class="brass">Tävlingsledare</span><br>Nils-Eric Smitt</li>
-            <li><span class="brass">Kontakt</span><br><a href="mailto:nilseric.smitt@yahoo.se">nilseric.smitt@yahoo.se</a><br>073 217 40 42</li>
-          </ul>
-        </div>
-        <div class="info-box reveal" style="margin-top:1.5rem">
-          <h3>Program</h3>
-          <ul>
-            <li><span class="brass">Fredag 12 juni</span><br>Sjösättning, registrering och grillkväll</li>
-            <li><span class="brass">Lördag 13 juni</span><br>Segling</li>
-            <li><span class="brass">Söndag 14 juni</span><br>Segling och prisutdelning</li>
-          </ul>
-        </div>
-
-        <div class="info-box reveal" style="margin-top:1.5rem;padding:0;overflow:hidden">
-          <div style="padding:1.2rem 1.5rem .8rem">
-            <h3 style="margin-bottom:.2rem">Korshamn / Kullavik</h3>
-            <p style="font-size:.85em;opacity:.65;margin:0">Korshamns Båtklubb, Kullavik</p>
-          </div>
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2000!2d11.9254806!3d57.5533924!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x464fedbb58064e33%3A0x8cac35d9de8afee1e!2sKorshamn%2C+Kul%C3%A5sv%C3%A4gen%2C+Kullavik!5e0!3m2!1ssv!2sse!4v1"
-            width="100%" height="220"
-            style="border:0;display:block"
-            allowfullscreen="" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-            title="Korshamn Kullavik karta">
-          </iframe>
-        </div>
-
-        <div class="info-box reveal" style="margin-top:1.5rem">
-          <h3>Anmälda båtar</h3>
-          <table style="width:100%;border-collapse:collapse;margin-top:.8rem;font-size:.88em">
-            <thead>
-              <tr style="border-bottom:1px solid rgba(184,145,74,.4)">
-                <th style="text-align:left;padding:.4rem .6rem .4rem 0;font-family:'Cinzel',serif;font-size:.72em;letter-spacing:.07em;color:var(--brass);font-weight:400">Nr</th>
-                <th style="text-align:left;padding:.4rem .6rem;font-family:'Cinzel',serif;font-size:.72em;letter-spacing:.07em;color:var(--brass);font-weight:400">Båtnamn</th>
-                <th style="text-align:left;padding:.4rem .6rem;font-family:'Cinzel',serif;font-size:.72em;letter-spacing:.07em;color:var(--brass);font-weight:400">Skeppare</th>
-                <th style="text-align:left;padding:.4rem 0 .4rem .6rem;font-family:'Cinzel',serif;font-size:.72em;letter-spacing:.07em;color:var(--brass);font-weight:400">Besättning</th>
-              </tr>
-            </thead>
-            <tbody id="anmalda-bat">
-              <!-- Rad 1 -->
-              <tr style="border-bottom:1px solid rgba(255,255,255,.06)">
-                <td style="padding:.55rem .6rem .55rem 0;color:var(--white-dim)">SWE 115</td>
-                <td style="padding:.55rem .6rem;color:var(--white-dim)">Julia</td>
-                <td style="padding:.55rem .6rem;color:var(--white-dim)">Claes-Henrik Möse</td>
-                <td style="padding:.55rem 0 .55rem .6rem;color:var(--white-dim)">Lotte Waller</td>
-              </tr>
-              <!-- Rad 2 -->
-              <tr style="border-bottom:1px solid rgba(255,255,255,.06)">
-                <td style="padding:.55rem .6rem .55rem 0;color:var(--white-dim)">SWE 145</td>
-                <td style="padding:.55rem .6rem;color:var(--white-dim)">Gubbröra</td>
-                <td style="padding:.55rem .6rem;color:var(--white-dim)">Mats Andersson</td>
-                <td style="padding:.55rem 0 .55rem .6rem;color:var(--white-dim)">Martin Otterstedt, Per-Ola Andersson</td>
-              </tr>
-              <!-- Rad 3 -->
-              <tr>
-                <td style="padding:.55rem .6rem .55rem 0;color:var(--white-dim)">SWE 56</td>
-                <td style="padding:.55rem .6rem;color:var(--white-dim)">Åda</td>
-                <td style="padding:.55rem .6rem;color:var(--white-dim)">Nils-Erik Smitt</td>
-                <td style="padding:.55rem 0 .55rem .6rem;color:var(--white-dim)">Christina Johansson</td>
-              <!-- Rad 4 -->
-              <tr style="border-bottom:1px solid rgba(255,255,255,.06)">
-                <td style="padding:.55rem .6rem .55rem 0;color:var(--white-dim)">SWE 76</td>
-                <td style="padding:.55rem .6rem;color:var(--white-dim)">Twist</td>
-                <td style="padding:.55rem .6rem;color:var(--white-dim)">Lars Gelin</td>
-                <td style="padding:.55rem 0 .55rem .6rem;color:var(--white-dim)">Lotta Gelin</td>
-              <!-- Rad 5 -->
-              <tr style="border-bottom:1px solid rgba(255,255,255,.06)">
-                <td style="padding:.55rem .6rem .55rem 0;color:var(--white-dim)">SWE 146</td>
-                <td style="padding:.55rem .6rem;color:var(--white-dim)">Respekt</td>
-                <td style="padding:.55rem .6rem;color:var(--white-dim)">Michael Jessing</td>
-                <td style="padding:.55rem 0 .55rem .6rem;color:var(--white-dim)">Jörgen Sjögren</td>
-              </tr>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-      </div><!-- /right column -->
-    </div><!-- /two-col -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem;margin-top:2rem">
+        <div style="overflow:hidden;cursor:zoom-in" onclick="openVmPhoto(0)"><img src="../img/VM2026/image00003.jpeg" alt="Andunge-VM 2026" loading="lazy" style="width:100%;height:auto;display:block;object-fit:cover;transition:transform .5s ease" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'"></div>
+        <div style="overflow:hidden;cursor:zoom-in" onclick="openVmPhoto(1)"><img src="../img/VM2026/image00008.jpeg" alt="Andunge-VM 2026" loading="lazy" style="width:100%;height:auto;display:block;object-fit:cover;transition:transform .5s ease" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'"></div>
+        <div style="overflow:hidden;cursor:zoom-in" onclick="openVmPhoto(2)"><img src="../img/VM2026/image00017.jpeg" alt="Andunge-VM 2026" loading="lazy" style="width:100%;height:auto;display:block;object-fit:cover;transition:transform .5s ease" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'"></div>
+        <div style="overflow:hidden;cursor:zoom-in" onclick="openVmPhoto(3)"><img src="../img/VM2026/image00019.jpeg" alt="Andunge-VM 2026" loading="lazy" style="width:100%;height:auto;display:block;object-fit:cover;transition:transform .5s ease" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'"></div>
+        <div style="overflow:hidden;cursor:zoom-in" onclick="openVmPhoto(4)"><img src="../img/VM2026/image00036.jpeg" alt="Andunge-VM 2026" loading="lazy" style="width:100%;height:auto;display:block;object-fit:cover;transition:transform .5s ease" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'"></div>
+        <div style="overflow:hidden;cursor:zoom-in" onclick="openVmPhoto(5)"><img src="../img/VM2026/image00048.jpeg" alt="Andunge-VM 2026" loading="lazy" style="width:100%;height:auto;display:block;object-fit:cover;transition:transform .5s ease" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'"></div>
+      </div>
+    </div>
   </div><!-- /event-section andunge-vm -->
 
   <!-- ═══════════════════════════════════════════
        VÄSTKUSTSERIEN
   ════════════════════════════════════════════ -->
+
   <div class="event-section">
     <div class="two-col two-col-wide">
       <div>
@@ -314,7 +269,7 @@
           <p class="lbl">Löpande serie</p>
           <div class="rule"></div>
           <h2>Svensk Andungeklubbs<br>Västkustserie 2026</h2>
-          <p>Snart är det dags för kappsegling igen! Västkustserien är till för att uppmuntra till kappsegling. Nedan finner du en lista på de viktigaste kappseglingarna — de som brukar samla flest deltagare. Det finns emellertid andra regattor (enligt SRS, ALMA eller entyp) där du kan starta.</p>
+          <p>Västkustserien är till för att uppmuntra till kappsegling. Nedan finner du en lista på de viktigaste kappseglingarna — de som brukar samla flest deltagare. Det finns emellertid andra regattor (enligt SRS, ALMA eller entyp) där du kan starta.</p>
           <p>Poäng i Västkustserien kan du få om minst två svenska Andungar deltar. Så ta kontakt med dina Andungekompisar och kom överens om att delta i samma seglingar.</p>
           <p>När du deltagit i en segling, rapportera till <a href="mailto:info@andunge.se" class="brass">info@andunge.se</a>.</p>
         </div>
@@ -537,6 +492,20 @@ document.addEventListener('keydown', function(e) {
 });
 </script>
 
+<div id="vm-photo-lb" style="display:none;position:fixed;inset:0;z-index:9998;background:rgba(0,0,0,.92);backdrop-filter:blur(8px);align-items:center;justify-content:center">
+  <span onclick="document.getElementById('vm-photo-lb').style.display='none'" style="position:absolute;top:1.5rem;right:2rem;font-size:2.5rem;color:rgba(255,255,255,.5);cursor:pointer;line-height:1">&times;</span>
+  <span onclick="vmPhotoNav(-1)" style="position:absolute;left:1rem;top:50%;transform:translateY(-50%);font-size:2rem;color:rgba(255,255,255,.4);cursor:pointer;padding:1rem">&#8592;</span>
+  <img id="vm-photo-lb-img" src="" alt="" style="max-width:90vw;max-height:88vh;object-fit:contain">
+  <span onclick="vmPhotoNav(1)" style="position:absolute;right:1rem;top:50%;transform:translateY(-50%);font-size:2rem;color:rgba(255,255,255,.4);cursor:pointer;padding:1rem">&#8594;</span>
+</div>
+<script>
+var vmPhotos=['../img/VM2026/image00003.jpeg','../img/VM2026/image00008.jpeg','../img/VM2026/image00017.jpeg','../img/VM2026/image00019.jpeg','../img/VM2026/image00036.jpeg','../img/VM2026/image00048.jpeg'];
+var vmPhotoCur=0;
+function openVmPhoto(i){vmPhotoCur=i;document.getElementById('vm-photo-lb-img').src=vmPhotos[i];document.getElementById('vm-photo-lb').style.display='flex';}
+function vmPhotoNav(d){vmPhotoCur=(vmPhotoCur+d+vmPhotos.length)%vmPhotos.length;document.getElementById('vm-photo-lb-img').src=vmPhotos[vmPhotoCur];}
+document.getElementById('vm-photo-lb').addEventListener('click',function(e){if(e.target===this)this.style.display='none';});
+document.addEventListener('keydown',function(e){var lb=document.getElementById('vm-photo-lb');if(lb.style.display!=='flex')return;if(e.key==='Escape')lb.style.display='none';if(e.key==='ArrowLeft')vmPhotoNav(-1);if(e.key==='ArrowRight')vmPhotoNav(1);});
+</script>
 <script src="../js/duck.js"></script>
 <script src="../js/header.js"></script>
 </body>

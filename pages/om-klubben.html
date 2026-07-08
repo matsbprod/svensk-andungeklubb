@@ -89,6 +89,17 @@
         <p style="font-size:0.85em;opacity:0.7">Från utlandet — IBAN: SE73 9500 0099 6042 0620 0968 &nbsp;·&nbsp; BIC: NDEASESS<br>
         Svensk Andungeklubb, Claes-Henrik Möse, Mölndalsvägen 41, 412 63 Göteborg, Sverige</p>
 
+        <div style="margin:1.5rem 0 2rem;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap">
+          <div style="background:#fff;padding:10px;border-radius:6px;display:inline-block;line-height:0">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=https%3A%2F%2Fapp.swish.nu%2F1%2Fpayment%2Fnew%3FPhoneNumber%3D1231431584" alt="Swish QR-kod 123 143 15 84" width="140" height="140" style="display:block;border-radius:3px">
+          </div>
+          <div>
+            <p style="font-family:'Cinzel',serif;font-size:.72em;letter-spacing:.1em;color:var(--brass);margin:0 0 .3rem">SWISH</p>
+            <p style="font-size:1.4rem;color:var(--white);margin:0 0 .3rem;letter-spacing:.04em">123 143 15 84</p>
+            <p style="font-size:.85em;opacity:.65;margin:0">Skanna med Swish-appen för att betala<br>medlemsavgiften direkt.</p>
+          </div>
+        </div>
+
         <form class="andunge-form" name="bli-medlem" method="POST" data-netlify="true" action="tack.html" style="margin-top:2rem">
           <input type="hidden" name="form-name" value="bli-medlem">
           <div class="form-row">

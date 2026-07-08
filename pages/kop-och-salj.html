@@ -54,6 +54,44 @@
       <div class="info-box" style="position:relative">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem">
           <div>
+            <span style="font-family:'Cinzel',serif;font-size:.75em;letter-spacing:.07em;color:var(--brass)">SÄLJES · BÅT</span>
+            <h3 style="margin:.2rem 0 0">Andunge nr 26 säljes</h3>
+          </div>
+          <span style="font-family:'Cinzel',serif;font-size:.85em;color:var(--brass)">45 000 kr</span>
+        </div>
+        <p style="margin:0 0 .8rem">Vacker Andunge säljes, kärra följer med. Nytt segel, seglat tre timmar. Har gjort smärre reparationer, däcksbalkar på babord sida. Bomkapell och solskydd på sidorna. Hör av er, hon ligger i Vallda Sandö.</p>
+        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:.5rem;margin:.9rem 0">
+          <img src="../img/boat/bat_026_2.jpeg" alt="Andunge 26" loading="lazy" onclick="openKosLb(0)" style="width:100%;aspect-ratio:1;object-fit:cover;cursor:zoom-in;border-radius:2px;transition:opacity .2s" onmouseover="this.style.opacity='.75'" onmouseout="this.style.opacity='1'">
+          <img src="../img/boat/bat_026_3.jpeg" alt="Andunge 26" loading="lazy" onclick="openKosLb(1)" style="width:100%;aspect-ratio:1;object-fit:cover;cursor:zoom-in;border-radius:2px;transition:opacity .2s" onmouseover="this.style.opacity='.75'" onmouseout="this.style.opacity='1'">
+          <img src="../img/boat/bat_026_4.jpeg" alt="Andunge 26" loading="lazy" onclick="openKosLb(2)" style="width:100%;aspect-ratio:1;object-fit:cover;cursor:zoom-in;border-radius:2px;transition:opacity .2s" onmouseover="this.style.opacity='.75'" onmouseout="this.style.opacity='1'">
+          <img src="../img/boat/bat_026_5.jpeg" alt="Andunge 26" loading="lazy" onclick="openKosLb(3)" style="width:100%;aspect-ratio:1;object-fit:cover;cursor:zoom-in;border-radius:2px;transition:opacity .2s" onmouseover="this.style.opacity='.75'" onmouseout="this.style.opacity='1'">
+          <img src="../img/boat/bat_026_6.jpeg" alt="Andunge 26" loading="lazy" onclick="openKosLb(4)" style="width:100%;aspect-ratio:1;object-fit:cover;cursor:zoom-in;border-radius:2px;transition:opacity .2s" onmouseover="this.style.opacity='.75'" onmouseout="this.style.opacity='1'">
+        </div>
+        <div style="font-size:.88em;margin-top:.9rem;display:flex;flex-direction:column;gap:.25rem;opacity:.8">
+          <div>Kontakt: <strong style="color:var(--white)">Anders Eliasson</strong></div>
+          <div>E-post: <a href="mailto:agneta-anders.eliasson@hotmail.com" style="color:var(--brass)">agneta-anders.eliasson@hotmail.com</a></div>
+          <div>Mobil: <a href="tel:+460706642164" style="color:var(--brass)">0706 64 21 64</a></div>
+        </div>
+      </div>
+
+      <div class="info-box" style="position:relative">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem">
+          <div>
+            <span style="font-family:'Cinzel',serif;font-size:.75em;letter-spacing:.07em;color:var(--brass)">KÖPES · UTRUSTNING</span>
+            <h3 style="margin:.2rem 0 0">Mast och bom i aluminium</h3>
+          </div>
+        </div>
+        <p style="margin:0 0 .8rem">Jag önskar köpa mast och bom i aluminium samt all stående rigg.</p>
+        <div style="font-size:.88em;margin-top:.9rem;display:flex;flex-direction:column;gap:.25rem;opacity:.8">
+          <div>Kontakt: <strong style="color:var(--white)">Erik Andersson</strong></div>
+          <div>E-post: <a href="mailto:era816@hotmail.com" style="color:var(--brass)">era816@hotmail.com</a></div>
+          <div>Mobil: <a href="tel:+460766457345" style="color:var(--brass)">0766 45 73 45</a></div>
+        </div>
+      </div>
+
+      <div class="info-box" style="position:relative">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem">
+          <div>
             <span style="font-family:'Cinzel',serif;font-size:.75em;letter-spacing:.07em;color:var(--brass)">KÖPES · UTRUSTNING</span>
             <h3 style="margin:.2rem 0 0">Bomtält</h3>
           </div>
@@ -65,7 +103,6 @@
           <div>Mobil: <a href="tel:+46707537973" style="color:var(--brass)">+46707537973</a></div>
         </div>
       </div>
-      <p style="color:var(--white-dim);font-style:italic">Inga båtar till salu just nu.</p>
 
     </div>
   </div>
@@ -128,6 +165,22 @@ function updateFormLabels(typ) {
     beskLabel.childNodes[0].textContent = 'Beskrivning ';
   }
 }
+</script>
+<div id="kos-lb" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);backdrop-filter:blur(8px);align-items:center;justify-content:center">
+  <span onclick="document.getElementById('kos-lb').style.display='none'" style="position:absolute;top:1.5rem;right:2rem;font-size:2.5rem;color:rgba(255,255,255,.5);cursor:pointer;line-height:1">&times;</span>
+  <span onclick="kosLbNav(-1)" style="position:absolute;left:1rem;top:50%;transform:translateY(-50%);font-size:2rem;color:rgba(255,255,255,.4);cursor:pointer;padding:1rem">&#8592;</span>
+  <img id="kos-lb-img" src="" alt="" style="max-width:90vw;max-height:88vh;object-fit:contain">
+  <span onclick="kosLbNav(1)" style="position:absolute;right:1rem;top:50%;transform:translateY(-50%);font-size:2rem;color:rgba(255,255,255,.4);cursor:pointer;padding:1rem">&#8594;</span>
+</div>
+<script>
+var kosPhotos=['../img/boat/bat_026_2.jpeg','../img/boat/bat_026_3.jpeg','../img/boat/bat_026_4.jpeg','../img/boat/bat_026_5.jpeg','../img/boat/bat_026_6.jpeg'];
+var kosCur=0;
+function openKosLb(i){kosCur=i;document.getElementById('kos-lb-img').src=kosPhotos[i];document.getElementById('kos-lb').style.display='flex';}
+function kosLbNav(d){kosCur=(kosCur+d+kosPhotos.length)%kosPhotos.length;document.getElementById('kos-lb-img').src=kosPhotos[kosCur];}
+document.addEventListener('DOMContentLoaded',function(){
+  document.getElementById('kos-lb').addEventListener('click',function(e){if(e.target===this)this.style.display='none';});
+  document.addEventListener('keydown',function(e){var lb=document.getElementById('kos-lb');if(lb.style.display!=='flex')return;if(e.key==='Escape')lb.style.display='none';if(e.key==='ArrowLeft')kosLbNav(-1);if(e.key==='ArrowRight')kosLbNav(1);});
+});
 </script>
 <script src="../js/duck.js"></script>
 <script src="../js/header.js"></script>
