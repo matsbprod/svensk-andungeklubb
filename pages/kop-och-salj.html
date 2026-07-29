@@ -55,7 +55,22 @@
         <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem">
           <div>
             <span style="font-family:'Cinzel',serif;font-size:.75em;letter-spacing:.07em;color:var(--brass)">SÄLJES · BÅT</span>
-            <h3 style="margin:.2rem 0 0">Andunge nr 26 säljes</h3>
+            <h3 style="margin:.2rem 0 0">Andunge nr 52 till salu</h3>
+          </div>
+          <span style="font-family:'Cinzel',serif;font-size:.85em;color:var(--brass)">25 000 kr</span>
+        </div>
+        <p style="margin:0 0 .8rem">Andunge, mahogny, byggd av Skåléns 1963. Båten är segelklar med bra segel, ankare, förtöjnings tampar, fendrar mm.</p>
+        <div style="display:grid;grid-template-columns:repeat(1,1fr);gap:.5rem;margin:.9rem 0;max-width:200px">
+          <img src="../img/SWE52.jpg" alt="Andunge 52" loading="lazy" onclick="openKosLb52(0)" style="width:100%;aspect-ratio:1;object-fit:cover;cursor:zoom-in;border-radius:2px;transition:opacity .2s" onmouseover="this.style.opacity='.75'" onmouseout="this.style.opacity='1'">
+        </div>
+        <div style="font-size:.88em;margin-top:.9rem;display:flex;flex-direction:column;gap:.25rem;opacity:.8">
+          <div>Kontakt: <strong style="color:var(--white)">Stefan Werner</strong></div>
+          <div>E-post: <a href="mailto:stefan@wernerarkitekter.se" style="color:var(--brass)">stefan@wernerarkitekter.se</a></div>
+          <div>Mobil: <a href="tel:+460708135878" style="color:var(--brass)">0708-13 58 78</a></div>
+        </div>
+      </div>
+
+      <div class="info-box" style="position:relative">
           </div>
           <span style="font-family:'Cinzel',serif;font-size:.85em;color:var(--brass)">45 000 kr</span>
         </div>
@@ -173,6 +188,9 @@ function updateFormLabels(typ) {
   <span onclick="kosLbNav(1)" style="position:absolute;right:1rem;top:50%;transform:translateY(-50%);font-size:2rem;color:rgba(255,255,255,.4);cursor:pointer;padding:1rem">&#8594;</span>
 </div>
 <script>
+var kosPhotos52=['../img/SWE52.jpg'];
+var kosCur52=0;
+function openKosLb52(i){kosCur52=i;document.getElementById('kos-lb-img').src=kosPhotos52[i];document.getElementById('kos-lb').style.display='flex';}
 var kosPhotos=['../img/boat/bat_026_2.jpeg','../img/boat/bat_026_3.jpeg','../img/boat/bat_026_4.jpeg','../img/boat/bat_026_5.jpeg','../img/boat/bat_026_6.jpeg'];
 var kosCur=0;
 function openKosLb(i){kosCur=i;document.getElementById('kos-lb-img').src=kosPhotos[i];document.getElementById('kos-lb').style.display='flex';}
