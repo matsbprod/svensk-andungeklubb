@@ -193,14 +193,15 @@ function updateFormLabels(typ) {
 <script>
 var kosPhotos37=['../kop_salj/img/37_1.jpg','../kop_salj/img/37_2.jpg','../kop_salj/img/37_3.jpg','../kop_salj/img/37_4.jpg'];
 var kosCur37=0;
-function openKosLb37(i){kosCur37=i;document.getElementById('kos-lb-img').src=kosPhotos37[i];document.getElementById('kos-lb').style.display='flex';}
+var kosActivePhoots=[];var kosActiveCur=0;
+function openKosLb37(i){kosActivePhoots=kosPhotos37;kosActiveCur=i;document.getElementById('kos-lb-img').src=kosActivePhoots[i];document.getElementById('kos-lb').style.display='flex';}
 var kosPhotos52=['../img/SWE52.jpg'];
 var kosCur52=0;
-function openKosLb52(i){kosCur52=i;document.getElementById('kos-lb-img').src=kosPhotos52[i];document.getElementById('kos-lb').style.display='flex';}
+function openKosLb52(i){kosActivePhoots=kosPhotos52;kosActiveCur=i;document.getElementById('kos-lb-img').src=kosActivePhoots[i];document.getElementById('kos-lb').style.display='flex';}
 var kosPhotos=['../img/boat/bat_026_2.jpeg','../img/boat/bat_026_3.jpeg','../img/boat/bat_026_4.jpeg','../img/boat/bat_026_5.jpeg','../img/boat/bat_026_6.jpeg'];
 var kosCur=0;
-function openKosLb(i){kosCur=i;document.getElementById('kos-lb-img').src=kosPhotos[i];document.getElementById('kos-lb').style.display='flex';}
-function kosLbNav(d){kosCur=(kosCur+d+kosPhotos.length)%kosPhotos.length;document.getElementById('kos-lb-img').src=kosPhotos[kosCur];}
+function openKosLb(i){kosActivePhoots=kosPhotos;kosActiveCur=i;document.getElementById('kos-lb-img').src=kosActivePhoots[i];document.getElementById('kos-lb').style.display='flex';}
+function kosLbNav(d){kosActiveCur=(kosActiveCur+d+kosActivePhoots.length)%kosActivePhoots.length;document.getElementById('kos-lb-img').src=kosActivePhoots[kosActiveCur];}
 document.addEventListener('DOMContentLoaded',function(){
   document.getElementById('kos-lb').addEventListener('click',function(e){if(e.target===this)this.style.display='none';});
   document.addEventListener('keydown',function(e){var lb=document.getElementById('kos-lb');if(lb.style.display!=='flex')return;if(e.key==='Escape')lb.style.display='none';if(e.key==='ArrowLeft')kosLbNav(-1);if(e.key==='ArrowRight')kosLbNav(1);});
