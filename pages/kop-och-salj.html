@@ -60,6 +60,12 @@
           <span style="font-family:'Cinzel',serif;font-size:.85em;color:var(--brass)">Gratis</span>
         </div>
         <p style="margin:0 0 .8rem">Sonen och undertecknad köpte en Andunge för många år sedan. Den hade stått i en lagerlokal där värmen var för hög så resultatet blev att bordläggningen släppte i fogarna. Båten är renskrapad på utsidan. Båten bortskänkes med enklare tvåaxlad vagn.</p>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;margin:.9rem 0">
+          <img src="../kop_salj/img/37_1.jpg" alt="SWE 37" loading="lazy" onclick="openKosLb37(0)" style="width:100%;aspect-ratio:1;object-fit:cover;cursor:zoom-in;border-radius:2px;transition:opacity .2s" onmouseover="this.style.opacity='.75'" onmouseout="this.style.opacity='1'">
+          <img src="../kop_salj/img/37_2.jpg" alt="SWE 37" loading="lazy" onclick="openKosLb37(1)" style="width:100%;aspect-ratio:1;object-fit:cover;cursor:zoom-in;border-radius:2px;transition:opacity .2s" onmouseover="this.style.opacity='.75'" onmouseout="this.style.opacity='1'">
+          <img src="../kop_salj/img/37_3.jpg" alt="SWE 37" loading="lazy" onclick="openKosLb37(2)" style="width:100%;aspect-ratio:1;object-fit:cover;cursor:zoom-in;border-radius:2px;transition:opacity .2s" onmouseover="this.style.opacity='.75'" onmouseout="this.style.opacity='1'">
+          <img src="../kop_salj/img/37_4.jpg" alt="SWE 37" loading="lazy" onclick="openKosLb37(3)" style="width:100%;aspect-ratio:1;object-fit:cover;cursor:zoom-in;border-radius:2px;transition:opacity .2s" onmouseover="this.style.opacity='.75'" onmouseout="this.style.opacity='1'">
+        </div>
         <div style="font-size:.88em;margin-top:.9rem;display:flex;flex-direction:column;gap:.25rem;opacity:.8">
           <div>Kontakt: <strong style="color:var(--white)">Gunnar Drougge</strong></div>
           <div>E-post: <a href="mailto:gunnar.drougge@gmail.com" style="color:var(--brass)">gunnar.drougge@gmail.com</a></div>
@@ -185,6 +191,9 @@ function updateFormLabels(typ) {
   <span onclick="kosLbNav(1)" style="position:absolute;right:1rem;top:50%;transform:translateY(-50%);font-size:2rem;color:rgba(255,255,255,.4);cursor:pointer;padding:1rem">&#8594;</span>
 </div>
 <script>
+var kosPhotos37=['../kop_salj/img/37_1.jpg','../kop_salj/img/37_2.jpg','../kop_salj/img/37_3.jpg','../kop_salj/img/37_4.jpg'];
+var kosCur37=0;
+function openKosLb37(i){kosCur37=i;document.getElementById('kos-lb-img').src=kosPhotos37[i];document.getElementById('kos-lb').style.display='flex';}
 var kosPhotos52=['../img/SWE52.jpg'];
 var kosCur52=0;
 function openKosLb52(i){kosCur52=i;document.getElementById('kos-lb-img').src=kosPhotos52[i];document.getElementById('kos-lb').style.display='flex';}
