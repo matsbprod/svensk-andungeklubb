@@ -1,4 +1,25 @@
 (function() {
+  // ── Inject shared navbar ──────────────────────────────────────────────────
+  var existingNav = document.getElementById('navbar');
+  fetch('../../nav.html')
+    .then(function(r){ return r.text(); })
+    .then(function(html){
+      var tmp = document.createElement('div');
+      tmp.innerHTML = html;
+      var newNav = tmp.querySelector('nav');
+      if (newNav) {
+        if (existingNav) {
+          existingNav.parentNode.replaceChild(newNav, existingNav);
+        } else {
+          document.body.insertBefore(newNav, document.body.firstChild);
+        }
+      }
+    })
+    .catch(function(){
+      // If fetch fails (e.g. local file://) leave existing nav in place
+    });
+
+  // ── Logo + duck placement ─────────────────────────────────────────────────
   var block = document.getElementById("logo-block");
   var line1 = document.getElementById("line1");
   var line2 = document.getElementById("line2");
@@ -7,23 +28,20 @@
   if (!block) return;
 
   var NAV_H   = 64;
-  var PX      = 22;       // fixed font size for inner pages
+  var PX      = 22;
   var DUCK_AR = 2000 / 1116;
 
   if (window.DUCK_SRC) duck.src = window.DUCK_SRC;
 
   function place() {
-    // Set font size
     line1.style.fontSize      = PX + "px";
     line2.style.fontSize      = PX + "px";
     line1.style.letterSpacing = "0.09em";
     line2.style.letterSpacing = "0.09em";
 
-    // Position block vertically centered in navbar
     block.style.left = "clamp(1.5rem, 5vw, 6rem)";
     block.style.top  = ((NAV_H - block.offsetHeight) / 2) + "px";
 
-    // Position duck using real measured widths (same as header.js)
     var line2W    = line2.offsetWidth;
     var line1W    = line1.offsetWidth;
     var blockLeft = parseFloat(window.getComputedStyle(block).left) || 48;
@@ -38,7 +56,6 @@
     duck.style.opacity = "1";
   }
 
-  // Run immediately, then after fonts load
   place();
   setTimeout(place, 100);
   setTimeout(place, 500);
@@ -47,7 +64,7 @@
   }
   window.addEventListener("resize", place);
 
-  // Scroll reveal
+  // ── Scroll reveal ─────────────────────────────────────────────────────────
   var reveals = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window) {
     var io = new IntersectionObserver(function(entries) {
