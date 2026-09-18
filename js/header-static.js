@@ -1,4 +1,10 @@
 (function() {
+  // ── Tema (ljust/mörkt) ──────────────────────────────────────
+  (function(){
+    var saved = localStorage.getItem('sak-theme');
+    if (saved === 'light') document.documentElement.setAttribute('data-theme', 'light');
+  })();
+
   // ── Inject shared navbar ──────────────────────────────────────────────────
   var existingNav = document.getElementById('navbar');
   fetch('../../nav.html')

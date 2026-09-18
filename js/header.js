@@ -1,4 +1,42 @@
 (function() {
+  // ── Tema (ljust/mörkt) ──────────────────────────────────────
+  (function(){
+    var saved = localStorage.getItem('sak-theme');
+    if (saved === 'light') document.documentElement.setAttribute('data-theme', 'light');
+  })();
+
+  function injectThemeButton() {
+    var navLinks = document.querySelector('.nav-links');
+    if (!navLinks || document.getElementById('theme-toggle')) return;
+    var btn = document.createElement('button');
+    btn.id = 'theme-toggle';
+    btn.className = 'theme-toggle';
+    btn.setAttribute('aria-label', 'Byt tema');
+    function updateBtn() {
+      btn.textContent = document.documentElement.getAttribute('data-theme') === 'light'
+        ? '\u2602 M\u00f6rkt' : '\u2600 Ljust';
+    }
+    updateBtn();
+    btn.addEventListener('click', function() {
+      var next = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      if (next === 'dark') {
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.removeItem('sak-theme');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+        localStorage.setItem('sak-theme', 'light');
+      }
+      updateBtn();
+    });
+    navLinks.appendChild(btn);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', injectThemeButton);
+  } else {
+    injectThemeButton();
+  }
+
   var navbar = document.getElementById("navbar");
   var block  = document.getElementById("logo-block");
   var line1  = document.getElementById("line1");

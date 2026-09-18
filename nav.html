@@ -9,35 +9,5 @@
     <a href="../../pages/butiken.html">Butiken</a>
     <a href="../../pages/tips-och-rad.html">Tips och r&#229;d</a>
     <a href="../../pages/kop-och-salj.html">K&#246;p och s&#228;lj</a>
-    <button class="theme-toggle" id="theme-toggle" aria-label="Byt tema">&#9788; Ljust</button>
   </div>
 </nav>
-<script>
-(function(){
-  // Apply saved theme immediately (before paint)
-  var saved = localStorage.getItem('sak-theme');
-  if (saved) document.documentElement.setAttribute('data-theme', saved);
-
-  document.addEventListener('DOMContentLoaded', function(){
-    var btn = document.getElementById('theme-toggle');
-    if (!btn) return;
-    function updateBtn(){
-      var t = document.documentElement.getAttribute('data-theme');
-      btn.textContent = (t === 'light') ? '\u2602 M\u00f6rkt' : '\u2600 Ljust';
-    }
-    updateBtn();
-    btn.addEventListener('click', function(){
-      var current = document.documentElement.getAttribute('data-theme');
-      var next = (current === 'light') ? 'dark' : 'light';
-      if (next === 'dark') {
-        document.documentElement.removeAttribute('data-theme');
-        localStorage.removeItem('sak-theme');
-      } else {
-        document.documentElement.setAttribute('data-theme', next);
-        localStorage.setItem('sak-theme', next);
-      }
-      updateBtn();
-    });
-  });
-})();
-</script>
