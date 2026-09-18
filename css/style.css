@@ -477,3 +477,90 @@ footer {
 .d1 { transition-delay: .12s; }
 .d2 { transition-delay: .24s; }
 .d3 { transition-delay: .36s; }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   LJUST TEMA  —  lägg till  data-theme="light"  på <html>
+   för att aktivera. Temväljaren i nav.html sätter detta via JS
+   och sparar valet i localStorage.
+   ═══════════════════════════════════════════════════════════════ */
+[data-theme="light"] {
+  --bg:          #f4f0e8;          /* varmt papper */
+  --card:        #e8e2d6;          /* lite mörkare papper */
+  --card-alt:    #ddd7ca;
+  --card-dark:   #ede8dc;
+  --card-accent: #b8cfe0;          /* ljusblå accent */
+  --white:       #1a2a38;          /* mörk marinblå text */
+  --white-dim:   rgba(26,42,56,.8);
+  --white-faint: rgba(26,42,56,.25);
+  --brass:       #7a5c1e;          /* mörkare guld — bättre kontrast */
+}
+
+[data-theme="light"] body {
+  background: var(--bg);
+  color: var(--white);
+}
+
+[data-theme="light"] .navbar {
+  background: rgba(232,226,214,.95);
+  border-bottom-color: rgba(122,92,30,.2);
+}
+
+[data-theme="light"] .andunge-table th {
+  background: var(--bg);
+}
+
+[data-theme="light"] .table-sticky-bar {
+  background: var(--bg);
+}
+
+[data-theme="light"] .page-hero-grad {
+  background: linear-gradient(to bottom, rgba(244,240,232,.3) 0%, rgba(244,240,232,.85) 100%);
+}
+
+[data-theme="light"] .page-hero-img img {
+  opacity: .55;
+}
+
+[data-theme="light"] .form-row input,
+[data-theme="light"] .form-row select,
+[data-theme="light"] .form-row textarea {
+  border-color: rgba(122,92,30,.35);
+  color: var(--white);
+  background: rgba(255,255,255,.5);
+}
+
+[data-theme="light"] .form-row input:focus,
+[data-theme="light"] .form-row select:focus,
+[data-theme="light"] .form-row textarea:focus {
+  border-color: var(--brass);
+}
+
+[data-theme="light"] .form-row select option {
+  background: var(--card);
+  color: var(--white);
+}
+
+[data-theme="light"] #lightbox,
+[data-theme="light"] #kos-lb,
+[data-theme="light"] #vm-photo-lb {
+  background: rgba(244,240,232,.96);
+}
+
+[data-theme="light"] #lb-close,
+[data-theme="light"] #lb-prev,
+[data-theme="light"] #lb-next {
+  color: rgba(26,42,56,.5);
+}
+
+/* Temväljare-knapp */
+.theme-toggle {
+  background: none; border: none; cursor: pointer;
+  font-family: sans-serif; font-size: .58rem;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--brass); padding: .3rem .6rem;
+  border: 1px solid rgba(184,145,74,.3);
+  border-radius: 2px; transition: opacity .2s;
+  white-space: nowrap;
+}
+.theme-toggle:hover { opacity: .7; }
