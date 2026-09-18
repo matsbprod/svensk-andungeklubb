@@ -480,117 +480,100 @@ footer {
 
 
 /* ═══════════════════════════════════════════════════════════════
-   LJUST TEMA — aktiveras med data-theme="light" på <html>
-   Enbart tydlighet: svart text, vit bakgrund, fet stil på rubriker
+   LJUST TEMA  —  lägg till  data-theme="light"  på <html>
+   för att aktivera. Temväljaren i nav.html sätter detta via JS
+   och sparar valet i localStorage.
    ═══════════════════════════════════════════════════════════════ */
 [data-theme="light"] {
   --bg:          #ffffff;
-  --card:        #ffffff;
-  --card-alt:    #ffffff;
-  --card-dark:   #ffffff;
-  --card-accent: #ffffff;
+  --card:        #f0f0f0;
+  --card-alt:    #e4e4e4;
+  --card-dark:   #f8f8f8;
+  --card-accent: #d0d0d0;
   --white:       #000000;
-  --white-dim:   #000000;
-  --white-faint: #000000;
-  --brass:       #000000;
+  --white-dim:   #222222;
+  --white-faint: #888888;
+  --brass:       #333333;
 }
 
-/* Reset everything to black on white */
-[data-theme="light"] body,
-[data-theme="light"] h1,
-[data-theme="light"] h2,
-[data-theme="light"] h3,
-[data-theme="light"] h4,
-[data-theme="light"] p,
-[data-theme="light"] a,
-[data-theme="light"] span,
-[data-theme="light"] td,
-[data-theme="light"] th,
-[data-theme="light"] li,
-[data-theme="light"] label {
-  color: #000000 !important;
-  font-weight: 600 !important;
+[data-theme="light"] body {
+  background: var(--bg);
+  color: var(--white);
 }
 
-/* Undantag: brödtext behöver inte vara fet */
-[data-theme="light"] p,
-[data-theme="light"] td,
-[data-theme="light"] li,
-[data-theme="light"] label,
-[data-theme="light"] .bat-description p,
-[data-theme="light"] .page-section p,
-[data-theme="light"] .info-box p,
-[data-theme="light"] .info-box li,
-[data-theme="light"] .form-note {
-  font-weight: 400 !important;
+[data-theme="light"] .navbar {
+  background: rgba(255,255,255,.97);
+  border-bottom-color: rgba(0,0,0,.15);
 }
 
-[data-theme="light"] body { background: #ffffff; }
+[data-theme="light"] .andunge-table th {
+  background: var(--bg);
+}
 
-/* Navbar */
-[data-theme="light"] .navbar { background: #ffffff; border-bottom: 1px solid #000000; }
-[data-theme="light"] .nav-sep { color: #000000; }
+[data-theme="light"] .table-sticky-bar {
+  background: var(--bg);
+}
 
-/* Bakgrunder: allt vitt */
-[data-theme="light"] .info-box,
-[data-theme="light"] .f-solid-a,
-[data-theme="light"] .f-solid-b,
-[data-theme="light"] .f-solid-c,
-[data-theme="light"] .shop-item,
-[data-theme="light"] .bat-meta,
-[data-theme="light"] .bat-photo img { background: #ffffff; }
-[data-theme="light"] .shop-item:hover { background: #f5f5f5; }
+[data-theme="light"] .page-hero-grad {
+  display: none;
+}
 
-/* Info-box border */
-[data-theme="light"] .info-box { border-left-color: #000000; }
+/* Frostad bakgrund bakom text på bilder */
+[data-theme="light"] .f-body {
+  background: rgba(255,255,255,.82);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 1.2rem 1.4rem;
+  margin: 1rem;
+}
+[data-theme="light"] .hero-inner {
+  background: rgba(255,255,255,.82);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 1.5rem 2rem;
+}
+[data-theme="light"] .page-hero-content {
+  background: rgba(255,255,255,.82);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
 
-/* Bilder: full opacitet, inga overlays */
-[data-theme="light"] .page-hero-img img,
-[data-theme="light"] .f-img img,
-[data-theme="light"] .f-img-tall img { opacity: 1; }
-[data-theme="light"] .hero-grad { display: none; }
-[data-theme="light"] .f-overlay { display: none; }
-[data-theme="light"] .page-hero-grad { display: none; }
+[data-theme="light"] .page-hero-img img {
+  opacity: 1;
+}
 
-/* Hero-text: svart på bild — lägg vit bakgrund bakom */
-[data-theme="light"] .page-hero-content { background: #ffffff; }
-[data-theme="light"] .hero-inner { background: rgba(255,255,255,.88); padding: 1rem; }
-
-/* Tabeller */
-[data-theme="light"] .andunge-table th { background: #ffffff; border-bottom: 2px solid #000000; }
-[data-theme="light"] .andunge-table td { border-bottom: 1px solid #dddddd; }
-[data-theme="light"] .andunge-table tr:hover td { background: #f5f5f5; }
-[data-theme="light"] .table-sticky-bar { background: #ffffff; border-bottom: 1px solid #000000; }
-
-/* Formulär */
 [data-theme="light"] .form-row input,
 [data-theme="light"] .form-row select,
 [data-theme="light"] .form-row textarea {
-  border-color: #000000; color: #000000; background: #ffffff;
+  border-color: rgba(0,0,0,.25);
+  color: #000000;
+  background: #ffffff;
 }
-[data-theme="light"] .form-row select option { background: #ffffff; color: #000000; }
 
-/* Knappar */
-[data-theme="light"] .btn-outline { color: #000000 !important; border-color: #000000; }
-[data-theme="light"] .btn-outline:hover { background: #000000; color: #ffffff !important; }
+[data-theme="light"] .form-row input:focus,
+[data-theme="light"] .form-row select:focus,
+[data-theme="light"] .form-row textarea:focus {
+  border-color: #000000;
+}
 
-/* Lightbox */
+[data-theme="light"] .form-row select option {
+  background: #ffffff;
+  color: #000000;
+}
+
 [data-theme="light"] #lightbox,
 [data-theme="light"] #kos-lb,
-[data-theme="light"] #vm-photo-lb { background: rgba(255,255,255,.97); }
+[data-theme="light"] #vm-photo-lb {
+  background: rgba(255,255,255,.97);
+}
+
 [data-theme="light"] #lb-close,
 [data-theme="light"] #lb-prev,
-[data-theme="light"] #lb-next { color: #000000 !important; }
+[data-theme="light"] #lb-next {
+  color: rgba(0,0,0,.5);
+}
 
-/* Footer */
-[data-theme="light"] footer { background: #ffffff; border-top: 1px solid #000000; }
-[data-theme="light"] .footer-bottom { border-top: 1px solid #dddddd; color: #000000; }
-
-/* Rule-linjer */
-[data-theme="light"] .rule { background: #000000; }
-[data-theme="light"] .bat-meta-row { border-bottom-color: #dddddd; }
-
-/* Temknapp */
+/* Temväljare-knapp */
 .theme-toggle {
   background: none; border: none; cursor: pointer;
   font-family: sans-serif; font-size: .58rem;
@@ -601,4 +584,3 @@ footer {
   white-space: nowrap;
 }
 .theme-toggle:hover { opacity: .7; }
-[data-theme="light"] .theme-toggle { color: #000000; border-color: #000000; }
