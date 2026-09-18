@@ -485,15 +485,15 @@ footer {
    och sparar valet i localStorage.
    ═══════════════════════════════════════════════════════════════ */
 [data-theme="light"] {
-  --bg:          #f4f0e8;          /* varmt papper */
-  --card:        #e8e2d6;          /* lite mörkare papper */
-  --card-alt:    #ddd7ca;
-  --card-dark:   #ede8dc;
-  --card-accent: #b8cfe0;          /* ljusblå accent */
-  --white:       #1a2a38;          /* mörk marinblå text */
-  --white-dim:   rgba(26,42,56,.8);
-  --white-faint: rgba(26,42,56,.25);
-  --brass:       #7a5c1e;          /* mörkare guld — bättre kontrast */
+  --bg:          #ffffff;
+  --card:        #f0f0f0;
+  --card-alt:    #e4e4e4;
+  --card-dark:   #f8f8f8;
+  --card-accent: #d0d0d0;
+  --white:       #000000;
+  --white-dim:   #222222;
+  --white-faint: #888888;
+  --brass:       #333333;
 }
 
 [data-theme="light"] body {
@@ -502,8 +502,8 @@ footer {
 }
 
 [data-theme="light"] .navbar {
-  background: rgba(232,226,214,.95);
-  border-bottom-color: rgba(122,92,30,.2);
+  background: rgba(255,255,255,.97);
+  border-bottom-color: rgba(0,0,0,.15);
 }
 
 [data-theme="light"] .andunge-table th {
@@ -515,42 +515,42 @@ footer {
 }
 
 [data-theme="light"] .page-hero-grad {
-  background: linear-gradient(to bottom, rgba(244,240,232,.3) 0%, rgba(244,240,232,.85) 100%);
+  background: linear-gradient(to bottom, rgba(255,255,255,.2) 0%, rgba(255,255,255,.75) 100%);
 }
 
 [data-theme="light"] .page-hero-img img {
-  opacity: .55;
+  opacity: 1;
 }
 
 [data-theme="light"] .form-row input,
 [data-theme="light"] .form-row select,
 [data-theme="light"] .form-row textarea {
-  border-color: rgba(122,92,30,.35);
-  color: var(--white);
-  background: rgba(255,255,255,.5);
+  border-color: rgba(0,0,0,.25);
+  color: #000000;
+  background: #ffffff;
 }
 
 [data-theme="light"] .form-row input:focus,
 [data-theme="light"] .form-row select:focus,
 [data-theme="light"] .form-row textarea:focus {
-  border-color: var(--brass);
+  border-color: #000000;
 }
 
 [data-theme="light"] .form-row select option {
-  background: var(--card);
-  color: var(--white);
+  background: #ffffff;
+  color: #000000;
 }
 
 [data-theme="light"] #lightbox,
 [data-theme="light"] #kos-lb,
 [data-theme="light"] #vm-photo-lb {
-  background: rgba(244,240,232,.96);
+  background: rgba(255,255,255,.97);
 }
 
 [data-theme="light"] #lb-close,
 [data-theme="light"] #lb-prev,
 [data-theme="light"] #lb-next {
-  color: rgba(26,42,56,.5);
+  color: rgba(0,0,0,.5);
 }
 
 /* Temväljare-knapp */
