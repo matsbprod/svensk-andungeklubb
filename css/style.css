@@ -480,9 +480,7 @@ footer {
 
 
 /* ═══════════════════════════════════════════════════════════════
-   LJUST TEMA  —  lägg till  data-theme="light"  på <html>
-   för att aktivera. Temväljaren i nav.html sätter detta via JS
-   och sparar valet i localStorage.
+   LJUST TEMA  —  aktiveras med  data-theme="light"  på <html>
    ═══════════════════════════════════════════════════════════════ */
 [data-theme="light"] {
   --bg:          #ffffff;
@@ -495,63 +493,93 @@ footer {
   --white-faint: #888888;
   --brass:       #333333;
 }
-
-[data-theme="light"] body {
-  background: var(--bg);
-  color: var(--white);
+[data-theme="light"] body { background:#ffffff; color:#000000; }
+[data-theme="light"] .navbar { background:rgba(255,255,255,.97); border-bottom-color:rgba(0,0,0,.15); }
+[data-theme="light"] .nav-sep { color:rgba(0,0,0,.3); }
+[data-theme="light"] .nav-links a { color:#000000; }
+[data-theme="light"] .nav-drawer { background:rgba(255,255,255,.97); }
+[data-theme="light"] .nav-drawer a { color:#000000; }
+[data-theme="light"] .hamburger span { background:#000000; }
+[data-theme="light"] .hero-grad {
+  background: linear-gradient(to bottom,
+    rgba(255,255,255,.10) 0%,
+    rgba(255,255,255,.35) 35%,
+    rgba(255,255,255,.35) 55%,
+    rgba(255,255,255,.88) 100%);
 }
-
-[data-theme="light"] .navbar {
-  background: rgba(255,255,255,.97);
-  border-bottom-color: rgba(0,0,0,.15);
+[data-theme="light"] .hero-h1 { color:#000000; }
+[data-theme="light"] .hero-btns .btn-outline { color:#000000; border-color:rgba(0,0,0,.4); }
+[data-theme="light"] .hero-btns .btn-outline:hover { background:#000000; color:#ffffff; }
+[data-theme="light"] .f-overlay {
+  background: linear-gradient(
+    rgba(255,255,255,.05) 0%,
+    rgba(255,255,255,.4) 50%,
+    rgba(255,255,255,.85) 100%);
 }
-
-[data-theme="light"] .andunge-table th {
-  background: var(--bg);
-}
-
-[data-theme="light"] .table-sticky-bar {
-  background: var(--bg);
-}
-
+[data-theme="light"] .f-solid-a,
+[data-theme="light"] .f-solid-b,
+[data-theme="light"] .f-solid-c { background:#e8e8e8; }
+[data-theme="light"] .h2,
+[data-theme="light"] .h3 { color:#000000; }
+[data-theme="light"] .body { color:#000000; }
+[data-theme="light"] .lbl { color:#555555; letter-spacing:.18em; }
+[data-theme="light"] .rule { background:rgba(0,0,0,.2); }
+[data-theme="light"] .link-arr { color:#333333; border-bottom-color:rgba(0,0,0,.25); }
+[data-theme="light"] footer { background:#f0f0f0; color:#000000; }
+[data-theme="light"] .footer-inner { border-top-color:rgba(0,0,0,.12); border-bottom-color:rgba(0,0,0,.12); }
+[data-theme="light"] .footer-bottom { border-top-color:rgba(0,0,0,.08); color:#555555; }
+[data-theme="light"] .footer-col h4 { color:#000000; }
+[data-theme="light"] .footer-col a { color:#333333; }
 [data-theme="light"] .page-hero-grad {
-  background: linear-gradient(to bottom, rgba(255,255,255,.2) 0%, rgba(255,255,255,.75) 100%);
+  background: linear-gradient(to bottom, rgba(255,255,255,.2) 0%, rgba(255,255,255,.8) 100%);
 }
-
-[data-theme="light"] .page-hero-img img {
-  opacity: 1;
-}
-
+[data-theme="light"] .page-hero-img img { opacity:1; }
+[data-theme="light"] .page-section h2 { color:#000000; }
+[data-theme="light"] .page-section p { color:#000000; }
+[data-theme="light"] .info-box { border-left-color:#333333; }
+[data-theme="light"] .info-box h3 { color:#000000; }
+[data-theme="light"] .info-box p,
+[data-theme="light"] .info-box li { color:#000000; }
+[data-theme="light"] .info-box ul li { border-bottom-color:rgba(0,0,0,.08); }
+[data-theme="light"] .info-box .brass { color:#333333; }
+[data-theme="light"] .andunge-table th { background:#ffffff; color:#333333; border-bottom-color:rgba(0,0,0,.3); }
+[data-theme="light"] .andunge-table td { border-bottom-color:rgba(0,0,0,.08); color:#000000; }
+[data-theme="light"] .andunge-table tr:hover td { background:rgba(0,0,0,.03); }
+[data-theme="light"] .andunge-table a { color:#333333; }
+[data-theme="light"] .table-sticky-bar { background:#ffffff; border-bottom-color:rgba(0,0,0,.1); }
+[data-theme="light"] .form-row label { color:#333333; }
 [data-theme="light"] .form-row input,
 [data-theme="light"] .form-row select,
-[data-theme="light"] .form-row textarea {
-  border-color: rgba(0,0,0,.25);
-  color: #000000;
-  background: #ffffff;
-}
-
+[data-theme="light"] .form-row textarea { border-color:rgba(0,0,0,.25); color:#000000; background:#ffffff; }
 [data-theme="light"] .form-row input:focus,
 [data-theme="light"] .form-row select:focus,
-[data-theme="light"] .form-row textarea:focus {
-  border-color: #000000;
-}
-
-[data-theme="light"] .form-row select option {
-  background: #ffffff;
-  color: #000000;
-}
-
+[data-theme="light"] .form-row textarea:focus { border-color:#000000; }
+[data-theme="light"] .form-row select option { background:#ffffff; color:#000000; }
+[data-theme="light"] .form-note { color:#555555; }
+[data-theme="light"] .bat-meta { background:#f0f0f0; }
+[data-theme="light"] .bat-meta-row { border-bottom-color:rgba(0,0,0,.08); }
+[data-theme="light"] .bat-meta-label { color:#333333; }
+[data-theme="light"] .bat-meta-value { color:#000000; }
+[data-theme="light"] .bat-description p { color:#000000; }
+[data-theme="light"] .bat-back { color:#333333; border-bottom-color:rgba(0,0,0,.25); }
+[data-theme="light"] .bat-photo img { background:#f0f0f0; }
 [data-theme="light"] #lightbox,
 [data-theme="light"] #kos-lb,
-[data-theme="light"] #vm-photo-lb {
-  background: rgba(255,255,255,.97);
-}
-
+[data-theme="light"] #vm-photo-lb { background:rgba(255,255,255,.97); }
 [data-theme="light"] #lb-close,
 [data-theme="light"] #lb-prev,
-[data-theme="light"] #lb-next {
-  color: rgba(0,0,0,.5);
-}
+[data-theme="light"] #lb-next { color:rgba(0,0,0,.5); }
+[data-theme="light"] #lb-close:hover,
+[data-theme="light"] #lb-prev:hover,
+[data-theme="light"] #lb-next:hover { color:#000000; }
+[data-theme="light"] .shop-item { background:#f0f0f0; }
+[data-theme="light"] .shop-item:hover { background:#e4e4e4; }
+[data-theme="light"] .shop-item-name { color:#000000; }
+[data-theme="light"] .shop-item-desc { color:#000000; }
+[data-theme="light"] .shop-item-price { color:#333333; }
+[data-theme="light"] .race-date { color:#333333; }
+[data-theme="light"] .race-name { color:#000000; }
+[data-theme="light"] .race-loc { color:#555555; }
 
 /* Temväljare-knapp */
 .theme-toggle {
@@ -564,3 +592,4 @@ footer {
   white-space: nowrap;
 }
 .theme-toggle:hover { opacity: .7; }
+[data-theme="light"] .theme-toggle { color:#333333; border-color:rgba(0,0,0,.25); }
