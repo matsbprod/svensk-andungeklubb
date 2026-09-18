@@ -573,6 +573,11 @@ footer {
   color: rgba(0,0,0,.5);
 }
 
+/* Anden: svart istället för vit i ljust läge */
+[data-theme="light"] #duck-img {
+  filter: brightness(0);
+}
+
 /* Temväljare-knapp */
 .theme-toggle {
   background: none; border: none; cursor: pointer;

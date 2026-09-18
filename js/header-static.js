@@ -5,6 +5,33 @@
     if (saved === 'light') document.documentElement.setAttribute('data-theme', 'light');
   })();
 
+  // ── Temväljare-knapp ───────────────────────────────────────────────────────
+  function injectThemeButton() {
+    var navLinks = document.querySelector('.nav-links');
+    if (!navLinks || document.getElementById('theme-toggle')) return;
+    var btn = document.createElement('button');
+    btn.id = 'theme-toggle';
+    btn.className = 'theme-toggle';
+    btn.setAttribute('aria-label', 'Byt tema');
+    function updateBtn() {
+      btn.textContent = document.documentElement.getAttribute('data-theme') === 'light'
+        ? '\u2602 M\u00f6rkt' : '\u2600 Ljust';
+    }
+    updateBtn();
+    btn.addEventListener('click', function() {
+      var next = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      if (next === 'dark') {
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.removeItem('sak-theme');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+        localStorage.setItem('sak-theme', 'light');
+      }
+      updateBtn();
+    });
+    navLinks.appendChild(btn);
+  }
+
   // ── Inject shared navbar ──────────────────────────────────────────────────
   var existingNav = document.getElementById('navbar');
   fetch('../../nav.html')
@@ -20,9 +47,11 @@
           document.body.insertBefore(newNav, document.body.firstChild);
         }
       }
+      injectThemeButton();
     })
     .catch(function(){
       // If fetch fails (e.g. local file://) leave existing nav in place
+      injectThemeButton();
     });
 
   // ── Logo + duck placement ─────────────────────────────────────────────────
