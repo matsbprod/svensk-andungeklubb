@@ -333,13 +333,25 @@ function initKeys() {
 async function loadStock() {
   try {
     const res = await fetch('/.netlify/functions/lager');
-    if (res.ok) {
-      const d = await res.json();
-      stock = d.stock || {};
-      lastUpdated = d.lastUpdated || null;
+    const d = await res.json();
+    if (!res.ok) {
+      showLoadError(d.error ? (d.error + (d.detail ? ': ' + d.detail : '')) : ('Fel ' + res.status));
+      return;
     }
-  } catch(e) {}
+    stock = d.stock || {};
+    lastUpdated = d.lastUpdated || null;
+  } catch(e) {
+    showLoadError('Kunde inte nå servern: ' + e.message);
+  }
   initKeys();
+}
+
+function showLoadError(msg) {
+  const el = document.getElementById('last-updated');
+  if (el) {
+    el.textContent = '⚠ Kunde inte hämta lagersaldo — ' + msg;
+    el.style.color = 'var(--red)';
+  }
 }
 
 let saveTimer = null;
@@ -356,9 +368,14 @@ function saveStock() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ stock, lastUpdated })
       });
-      if (res.ok) showSaved();
+      if (res.ok) {
+        showSaved();
+      } else {
+        const d = await res.json().catch(() => ({}));
+        showLoadError('Sparning misslyckades — ' + (d.error || res.status));
+      }
     } catch(e) {
-      console.error('Sparning misslyckades:', e);
+      showLoadError('Sparning misslyckades: ' + e.message);
     }
   }, 800);
 }
