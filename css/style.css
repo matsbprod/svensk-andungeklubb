@@ -493,7 +493,7 @@ footer {
   --card-dark:   #f8f8f8;
   --card-accent: #d0d0d0;
   --white:       #000000;
-  --white-dim:   #222222;
+  --white-dim:   #000000;
   --white-faint: #888888;
   --brass:       #333333;
 }
@@ -529,11 +529,30 @@ footer {
   padding: 1.2rem 1.4rem;
   margin: 1rem;
 }
-[data-theme="light"] .hero-inner {
-  background: rgba(255,255,255,.82);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  padding: 1.5rem 2rem;
+/* Startsidans hero i ljust läge: bilden får synas, texten får vita rutor.
+   (Behåller hero-innerns ordinarie padding så rubriken hamnar under menyn.) */
+[data-theme="light"] .hero-grad { display: none; }
+[data-theme="light"] .hero-h1 {
+  align-self: center;
+  max-width: 100%;
+  background: #ffffff;
+  color: #000000;
+  font-size: clamp(2.4rem, 4.8vw, 4.4rem);
+  padding: .25em .6em .3em;
+  box-shadow: 0 0 0 1px rgba(0,0,0,.08), 0 8px 28px rgba(0,0,0,.22);
+}
+[data-theme="light"] .hero-bottom {
+  background: #ffffff;
+  padding: 1.1rem 1.5rem 1.3rem;
+  box-shadow: 0 0 0 1px rgba(0,0,0,.08), 0 8px 28px rgba(0,0,0,.22);
+}
+[data-theme="light"] .hero-btns { gap: .6rem; }
+[data-theme="light"] .hero-btns .btn { padding: .65rem 1.1rem; }
+[data-theme="light"] .hero-btns .btn-outline {
+  color: #000000; border-color: #000000;
+}
+[data-theme="light"] .hero-btns .btn-outline:hover {
+  background: #000000; color: #ffffff;
 }
 [data-theme="light"] .page-hero-content {
   background: rgba(255,255,255,.82);

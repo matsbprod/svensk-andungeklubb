@@ -42,6 +42,11 @@
   max-width: var(--max-w); margin: 0 auto;
   padding: 5rem var(--pad);
   background: var(--bg);   /* ljus kolumn i ljust läge, sidorna utanför är mörkblå */
+  overflow-x: clip;        /* inget får sticka ut över de mörka sidoytorna */
+}
+.page-body:has(.andunge-table) {
+  padding-left: clamp(1rem, 2.5vw, 2rem);
+  padding-right: clamp(1rem, 2.5vw, 2rem);
 }
 .page-section { margin-bottom: 4.5rem; }
 .page-section h2 {
@@ -96,9 +101,9 @@
   font-size: 1rem; color: var(--white-dim);
 }
 .andunge-table th {
-  font-family: sans-serif; font-size: .8rem;
-  letter-spacing: .14em; text-transform: uppercase;
-  color: var(--brass); padding: 1rem 1.2rem;
+  font-family: sans-serif; font-size: .78rem;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--brass); padding: 1rem .8rem;
   border-bottom: 2px solid rgba(184,145,74,.4);
   text-align: left;
   position: sticky;
@@ -108,7 +113,7 @@
   white-space: nowrap;
 }
 .andunge-table td {
-  padding: .95rem 1.2rem;
+  padding: .95rem .8rem;
   border-bottom: 1px solid rgba(255,255,255,.07);
   vertical-align: top;
   color: var(--white);
@@ -249,3 +254,37 @@
 [data-theme="light"] .race-item { border-bottom-color: rgba(0,0,0,.12); }
 [data-theme="light"] .table-sticky-bar { border-bottom-color: rgba(0,0,0,.15); }
 [data-theme="light"] .shop-item-img { background: #f4f4f4; }
+
+/* ═══ Ljust läge: brödtext helt svart ═══ */
+[data-theme="light"] .page-body :is(p, li, td, dd, dt, blockquote, figcaption, address) {
+  color: #000000 !important;
+}
+/* Delvis genomskinlig text (t.ex. kontaktrader) blir fullt svart */
+[data-theme="light"] .page-body [style*="opacity:.5"],
+[data-theme="light"] .page-body [style*="opacity: .5"],
+[data-theme="light"] .page-body [style*="opacity:.55"],
+[data-theme="light"] .page-body [style*="opacity: .55"],
+[data-theme="light"] .page-body [style*="opacity:.6"],
+[data-theme="light"] .page-body [style*="opacity: .6"],
+[data-theme="light"] .page-body [style*="opacity:.65"],
+[data-theme="light"] .page-body [style*="opacity: .65"],
+[data-theme="light"] .page-body [style*="opacity:.7"],
+[data-theme="light"] .page-body [style*="opacity: .7"],
+[data-theme="light"] .page-body [style*="opacity:.75"],
+[data-theme="light"] .page-body [style*="opacity: .75"],
+[data-theme="light"] .page-body [style*="opacity:.8"],
+[data-theme="light"] .page-body [style*="opacity: .8"],
+[data-theme="light"] .page-body [style*="opacity:.85"],
+[data-theme="light"] .page-body [style*="opacity: .85"],
+[data-theme="light"] .page-body [style*="opacity:.9"],
+[data-theme="light"] .page-body [style*="opacity: .9"],
+[data-theme="light"] .page-body [style*="opacity:.95"],
+[data-theme="light"] .page-body [style*="opacity: .95"] {
+  opacity: 1 !important;
+}
+
+/* Tabellrubriker i ljust läge (sidornas egna regler använder !important) */
+[data-theme="light"] .andunge-table th {
+  background: #ffffff !important;
+  color: #000000;
+}
