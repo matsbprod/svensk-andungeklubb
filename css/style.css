@@ -681,3 +681,21 @@ footer {
 [data-theme="light"] .hero-notice {
   border-radius: 12px;
 }
+
+/* ═══ Informationsruta på startsidan (t.ex. höstfest) ═══ */
+.notice-box {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 1rem 4rem;
+  align-items: start;
+  background: var(--card);
+  border-left: 3px solid var(--brass);
+  padding: 3.2rem var(--pad);
+}
+.notice-box .h2 { margin-top: .2rem; }
+.notice-box .body { margin: 0 0 1rem; max-width: 34rem; }
+.notice-box .body:last-child { margin-bottom: 0; }
+.notice-box .notice-when { color: var(--white); font-size: clamp(1.4rem, 2.2vw, 1.8rem); font-weight: 400; }
+@media (max-width: 740px) {
+  .notice-box { grid-template-columns: 1fr; gap: 1.2rem; }
+}
