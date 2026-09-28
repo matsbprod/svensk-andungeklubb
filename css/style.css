@@ -14,7 +14,8 @@
   --white:      #f0f4f6;
   --white-dim:  rgba(240,244,246,1);
   --white-faint:rgba(240,244,246,.32);
-  --brass:      #b8914a;
+  --brass:      #9fd8f5;      /* isblå accent — hög kontrast mot mörkblått */
+  --brass-rgb:  159,216,245;  /* samma färg som kanalvärden, för linjer med genomskinlighet */
   --nav-h:      64px;  /* initial — JS overrides */
   --max-w:      1180px;
   --pad:        clamp(1.5rem, 5vw, 6rem);
@@ -40,7 +41,7 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
   padding: 0 var(--pad);
   background: rgba(14,25,35,.92);
   backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(184,145,74,.15);
+  border-bottom: 1px solid rgba(var(--brass-rgb),.15);
   transition: border-color .4s;
   will-change: height;
 }
@@ -59,7 +60,7 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
   color: var(--white-dim); transition: color .2s;
 }
 .nav-links a:hover { color: var(--white); }
-.nav-sep { color: rgba(184,145,74,.35); }
+.nav-sep { color: rgba(var(--brass-rgb),.35); }
 
 /* ── Logo ────────────────────────────────────────────────────── */
 #logo-block {
@@ -203,7 +204,7 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
   font-family: sans-serif; font-size: .84rem;
   letter-spacing: .18em; text-transform: uppercase;
   color: var(--brass);
-  border-bottom: 1px solid rgba(184,145,74,.35);
+  border-bottom: 1px solid rgba(var(--brass-rgb),.35);
   padding-bottom: 2px; transition: border-color .2s;
 }
 .link-arr:hover { border-color: var(--brass); }
@@ -312,7 +313,7 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
   display: flex; align-items: center; justify-content: center;
   font-family: sans-serif; font-size: .58rem;
   letter-spacing: .14em; text-transform: uppercase;
-  color: rgba(184,145,74,.2);
+  color: rgba(var(--brass-rgb),.2);
 }
 .ph-1 { background: linear-gradient(160deg,#0a1520,#0f2035,#0c1b2e); }
 .ph-2 { background: linear-gradient(160deg,#0c1a28,#132438,#0f2030); }
@@ -334,8 +335,8 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
   background: var(--card);
   padding: 6rem var(--pad);
   text-align: center;
-  border-top: 1px solid rgba(184,145,74,.12);
-  border-bottom: 1px solid rgba(184,145,74,.12);
+  border-top: 1px solid rgba(var(--brass-rgb),.12);
+  border-bottom: 1px solid rgba(var(--brass-rgb),.12);
 }
 .quote-banner blockquote {
   font-style: italic; font-weight: 300;
@@ -347,7 +348,7 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 /* ── Newsletter ──────────────────────────────────────────────── */
 .newsletter {
   padding: 6rem var(--pad); text-align: center;
-  border-top: 1px solid rgba(184,145,74,.08);
+  border-top: 1px solid rgba(var(--brass-rgb),.08);
 }
 .nl-form {
   display: flex; gap: .5rem;
@@ -355,7 +356,7 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 }
 .nl-form input[type=email] {
   background: transparent;
-  border: 1px solid rgba(184,145,74,.35);
+  border: 1px solid rgba(var(--brass-rgb),.35);
   color: var(--white); padding: .75rem 1.4rem;
   font-family: inherit; font-size: 1rem;
   width: 290px; outline: none; transition: border-color .2s;
@@ -367,7 +368,7 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 footer {
   background: #07101a;
   padding: 5rem var(--pad) 2.5rem;
-  border-top: 1px solid rgba(184,145,74,.1);
+  border-top: 1px solid rgba(var(--brass-rgb),.1);
 }
 .footer-inner { max-width: var(--max-w); margin: 0 auto; }
 .footer-grid {
@@ -496,6 +497,7 @@ footer {
   --white-dim:   #000000;
   --white-faint: #888888;
   --brass:       #333333;
+  --brass-rgb:   184,145,74;  /* ljust läge behåller de tidigare linjefärgerna */
 }
 
 /* Sidoytorna behåller den mörkblå färgen; innehållskolumnen (.folk-grid, .page-body) är ljus */
@@ -606,7 +608,7 @@ footer {
   font-family: sans-serif; font-size: .7rem;
   letter-spacing: .14em; text-transform: uppercase;
   color: var(--brass); padding: .35rem .7rem;
-  border: 1px solid rgba(184,145,74,.3);
+  border: 1px solid rgba(var(--brass-rgb),.3);
   border-radius: 2px; transition: opacity .2s;
   white-space: nowrap;
 }
@@ -638,7 +640,7 @@ footer {
 [data-theme="light"] .footer-col a:hover { color: #f0f4f6; }
 [data-theme="light"] .footer-brand p,
 [data-theme="light"] .footer-col a { color: rgba(240,244,246,.88); }
-[data-theme="light"] .footer-col h4 { color: #c9a45c; }
+[data-theme="light"] .footer-col h4 { color: #9fd8f5; }
 
 /* Notisen överst på startsidan (Andunge-VM-resultat) */
 .hero-notice {
@@ -647,7 +649,7 @@ footer {
   padding: .7rem 1rem; border-radius: 4px;
   display: inline-block;
   backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
-  border: 1px solid rgba(184,145,74,.35);
+  border: 1px solid rgba(var(--brass-rgb),.35);
   flex: 1; min-width: 260px; max-width: 480px;
   font-size: 1.2rem; line-height: 1.6;
 }
