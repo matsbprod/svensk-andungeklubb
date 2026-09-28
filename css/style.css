@@ -664,3 +664,26 @@ footer {
 
 /* Bildtext i lightbox på vit bakgrund */
 [data-theme="light"] #lightbox-caption { color: rgba(0,0,0,.6); }
+
+/* ═══ Mjuka vita rutor över bilder (ljust läge) ═══
+   Rundade hörn + en luddig vit kant som tonar ut i genomskinlighet.
+   Justera avrundningen med border-radius och kantens bredd/styrka med box-shadow
+   (x-förskjutning, y-förskjutning, oskärpa, spridning, färg/opacitet). */
+[data-theme="light"] .hero-h1,
+[data-theme="light"] .hero-bottom,
+[data-theme="light"] .f-body,
+[data-theme="light"] .page-hero-content {
+  border-radius: 18px;
+  box-shadow: 0 0 26px 10px rgba(255,255,255,.6);
+}
+/* Rutan under bildhjälten går sömlöst över i den vita kolumnen — bara överkanten rundas */
+[data-theme="light"] .page-hero-content {
+  border-radius: 18px 18px 0 0;
+}
+/* Bildkorten: lite mer marginal så den luddiga kanten inte klipps av kortets kant */
+[data-theme="light"] .f-body {
+  margin: 1.4rem;
+}
+[data-theme="light"] .hero-notice {
+  border-radius: 12px;
+}
