@@ -288,3 +288,26 @@
   background: #ffffff !important;
   color: #000000;
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   Båtsidor (pages/bat/*.html)
+   Sidornas egna <style>-block laddas efter den här filen, därför står
+   `body` framför selektorerna (högre specificitet) — då slipper vi
+   ändra i varje båtsida.
+   ═══════════════════════════════════════════════════════════════ */
+body .bat-hero       { background: transparent; border-bottom: none; }
+body .bat-hero-inner { background: var(--bg); border-bottom: 1px solid rgba(184,145,74,.15); }
+body .bat-body       { background: var(--bg); }
+
+body .bat-nr          { font-size: .78rem; white-space: nowrap; flex-shrink: 0; }
+body .bat-owner       { font-size: 1.25rem; font-weight: 400; }
+body .bat-meta-label  { font-size: .72rem; }
+body .bat-meta-value  { font-size: 1.1rem; }
+body .bat-description p { font-size: 1.15rem; font-weight: 400; line-height: 1.65; max-width: 760px; }
+body .bat-prev h3     { font-size: .78rem; }
+body .bat-prev td     { font-size: 1.1rem; }
+body .bat-prev td:first-child { font-size: 1rem !important; }
+body .bat-back        { font-size: .78rem; }
+
+[data-theme="light"] body .bat-meta-row { border-bottom-color: rgba(0,0,0,.12); }
+[data-theme="light"] .bat-body :is(p, li, td) { color: #000000 !important; }

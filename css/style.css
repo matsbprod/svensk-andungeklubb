@@ -656,3 +656,9 @@ footer {
   border-color: rgba(0,0,0,.35);
   color: #000000;
 }
+
+/* Logotexten är hårdkodad ljus i båtsidornas egna <style> — måste bli svart i ljust läge */
+[data-theme="light"] .logo-line { color: #000000 !important; }
+
+/* Bildtext i lightbox på vit bakgrund */
+[data-theme="light"] #lightbox-caption { color: rgba(0,0,0,.6); }
