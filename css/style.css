@@ -6,6 +6,7 @@
 
 :root {
   --bg:         #0e1923;
+  --side-bg:    #0e1923;      /* sidoytor utanför innehållskolumnen — alltid mörkblå */
   --card:       #152130;      /* dark navy card */
   --card-alt:   #1a2d3d;      /* mid navy card */
   --card-dark:  #0c1620;      /* deepest card */
@@ -19,9 +20,9 @@
   --pad:        clamp(1.5rem, 5vw, 6rem);
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; font-size: 112.5%; -webkit-text-size-adjust: 100%; }
 body {
-  background: var(--bg);
+  background: var(--side-bg);
   color: var(--white);
   font-family: "Cormorant Garamond", Georgia, serif;
   overflow-x: hidden;
@@ -53,8 +54,8 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
   justify-content: flex-end;
 }
 .nav-links a {
-  font-family: sans-serif; font-size: 0.68rem;
-  letter-spacing: .10em; text-transform: uppercase;
+  font-family: sans-serif; font-size: 0.74rem;
+  letter-spacing: .09em; text-transform: uppercase;
   color: var(--white-dim); transition: color .2s;
 }
 .nav-links a:hover { color: var(--white); }
@@ -122,7 +123,7 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
   display: block;
 }
 .hero-h1 {
-  font-size: clamp(4rem, 10vw, 9rem);
+  font-size: clamp(3.6rem, 9vw, 8rem);
   font-weight: 300; letter-spacing: .04em;
   line-height: 1.05; color: var(--white);
   margin-bottom: 1.4rem;
@@ -143,7 +144,7 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
   transform: translateX(-50%);
   z-index: 10;
   display: flex; flex-direction: column; align-items: center; gap: .5rem;
-  font-family: sans-serif; font-size: .55rem;
+  font-family: sans-serif; font-size: .68rem;
   letter-spacing: .2em; text-transform: uppercase;
   color: var(--white-faint);
 }
@@ -159,8 +160,8 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 
 /* ── Buttons ─────────────────────────────────────────────────── */
 .btn {
-  display: inline-block; padding: .75rem 2.4rem;
-  font-family: sans-serif; font-size: .66rem;
+  display: inline-block; padding: .8rem 2rem;
+  font-family: sans-serif; font-size: .78rem;
   letter-spacing: .2em; text-transform: uppercase;
   transition: all .25s; cursor: pointer;
   background: transparent; border: none;
@@ -174,33 +175,33 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 
 /* ── Type helpers ────────────────────────────────────────────── */
 .lbl {
-  font-family: sans-serif; font-size: .8rem;
-  letter-spacing: .26em; text-transform: uppercase;
+  font-family: sans-serif; font-size: .85rem;
+  letter-spacing: .24em; text-transform: uppercase;
   color: var(--brass); display: block;
 }
 .rule { width: 38px; height: 1px; background: var(--brass); margin: 1.1rem 0; }
 
 /* Card heading — Folkoperan-scale: large, light, serif */
 .h2 {
-  font-size: clamp(2.4rem, 4vw, 3.8rem);
+  font-size: clamp(2.1rem, 3.6vw, 3.3rem);
   font-weight: 300; letter-spacing: .03em;
   line-height: 1.15; color: var(--white);
 }
 .h3 {
-  font-size: clamp(1.8rem, 2.8vw, 2.6rem);
+  font-size: clamp(1.6rem, 2.5vw, 2.3rem);
   font-weight: 300; letter-spacing: .03em;
   line-height: 1.2; color: var(--white);
 }
 /* Body — larger and more readable */
 .body {
   font-size: clamp(1.2rem, 1.8vw, 1.4rem);
-  font-weight: 300; color: var(--white-dim);
+  font-weight: 400; color: var(--white-dim);
   line-height: 1.6;
 }
 .link-arr {
   display: inline-block; margin-top: 1.6rem;
-  font-family: sans-serif; font-size: .78rem;
-  letter-spacing: .2em; text-transform: uppercase;
+  font-family: sans-serif; font-size: .84rem;
+  letter-spacing: .18em; text-transform: uppercase;
   color: var(--brass);
   border-bottom: 1px solid rgba(184,145,74,.35);
   padding-bottom: 2px; transition: border-color .2s;
@@ -208,14 +209,14 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .link-arr:hover { border-color: var(--brass); }
 
 /* ── Folk grid ───────────────────────────────────────────────── */
-.folk-grid { max-width: var(--max-w); margin: 0 auto; }
+.folk-grid { max-width: var(--max-w); margin: 0 auto; background: var(--bg); }
 
 .folk-block {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 320px 500px;
+  grid-template-rows: minmax(320px, auto) minmax(500px, auto);
 }
-.folk-block-flip { grid-template-rows: 500px 320px; }
+.folk-block-flip { grid-template-rows: minmax(500px, auto) minmax(320px, auto); }
 
 .f-img-tall {
   grid-row: 1 / 3;
@@ -323,7 +324,7 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 @media (max-width: 740px) {
   .folk-block, .folk-block-flip {
     grid-template-columns: 1fr;
-    grid-template-rows: 340px 300px 340px;
+    grid-template-rows: minmax(340px, auto) minmax(380px, auto) minmax(340px, auto);
   }
   .f-img-tall { grid-row: auto; }
 }
@@ -379,22 +380,22 @@ footer {
   letter-spacing: .14em; text-transform: uppercase;
   color: var(--white); margin-bottom: 1rem;
 }
-.footer-brand p { font-size: .95rem; color: var(--white-dim); line-height: 1.6; }
+.footer-brand p { font-size: 1.05rem; color: var(--white-dim); line-height: 1.6; }
 .footer-col h4 {
-  font-family: sans-serif; font-size: .78rem;
-  letter-spacing: .22em; text-transform: uppercase;
+  font-family: sans-serif; font-size: .85rem;
+  letter-spacing: .2em; text-transform: uppercase;
   color: var(--brass); margin-bottom: 1.2rem;
 }
 .footer-col ul { list-style: none; }
 .footer-col li { margin-bottom: .6rem; }
-.footer-col a { font-size: .95rem; color: var(--white-dim); transition: color .2s; }
+.footer-col a { font-size: 1.05rem; color: var(--white-dim); transition: color .2s; }
 .footer-col a:hover { color: var(--white); }
 .footer-bottom {
   border-top: 1px solid rgba(255,255,255,.05);
   padding-top: 1.5rem;
   display: flex; justify-content: space-between;
-  font-family: sans-serif; font-size: .6rem;
-  letter-spacing: .12em; text-transform: uppercase; color: #2a3f52;
+  font-family: sans-serif; font-size: .74rem;
+  letter-spacing: .1em; text-transform: uppercase; color: #8497a9;
 }
 @media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 480px) { .footer-grid { grid-template-columns: 1fr; } }
@@ -430,6 +431,7 @@ footer {
   flex-direction: column;
   align-items: center; justify-content: center;
   gap: 2.2rem;
+  overflow-y: auto;
   opacity: 0;
   transition: opacity .25s;
   pointer-events: none;
@@ -440,7 +442,7 @@ footer {
 }
 .nav-drawer a {
   font-family: 'Cinzel', serif;
-  font-size: 1.1rem; letter-spacing: .12em;
+  font-size: 1.2rem; letter-spacing: .12em;
   text-transform: uppercase;
   color: var(--white-dim);
   transition: color .2s;
@@ -453,10 +455,10 @@ footer {
   .nav-drawer { display: flex; }
 
   /* Hero adjustments */
-  .hero-h1 { font-size: clamp(2.8rem, 10vw, 5rem) !important; }
+  .hero-h1 { font-size: clamp(2.4rem, 9vw, 4.4rem) !important; }
   .hero-sub { font-size: clamp(1rem, 3.5vw, 1.3rem) !important; }
   .hero-btns { gap: .6rem !important; }
-  .hero-btns .btn { font-size: .65rem !important; padding: .6rem 1rem !important; }
+  .hero-btns .btn { font-size: .74rem !important; padding: .65rem 1rem !important; }
 
   /* Page hero */
   .page-hero { min-height: 40vh; }
@@ -496,8 +498,9 @@ footer {
   --brass:       #333333;
 }
 
+/* Sidoytorna behåller den mörkblå färgen; innehållskolumnen (.folk-grid, .page-body) är ljus */
 [data-theme="light"] body {
-  background: var(--bg);
+  background: var(--side-bg);
   color: var(--white);
 }
 
@@ -581,11 +584,56 @@ footer {
 /* Temväljare-knapp */
 .theme-toggle {
   background: none; border: none; cursor: pointer;
-  font-family: sans-serif; font-size: .58rem;
+  font-family: sans-serif; font-size: .7rem;
   letter-spacing: .14em; text-transform: uppercase;
-  color: var(--brass); padding: .3rem .6rem;
+  color: var(--brass); padding: .35rem .7rem;
   border: 1px solid rgba(184,145,74,.3);
   border-radius: 2px; transition: opacity .2s;
   white-space: nowrap;
 }
 .theme-toggle:hover { opacity: .7; }
+
+/* Temaknapp i mobilmenyn (nav-links är dold på små skärmar) */
+.nav-drawer .theme-toggle {
+  font-size: .9rem; padding: .8rem 1.8rem;
+  border: 1px solid var(--brass);
+  margin-top: .4rem;
+}
+@media (max-height: 700px) {
+  .nav-drawer { gap: 1.3rem; }
+}
+
+/* Kort som byter till mörk bakgrund vid hover måste få ljus hover i ljust läge */
+[data-theme="light"] .f-solid-a:hover { background: #e6e6e6; }
+[data-theme="light"] .f-solid-b:hover { background: #d8d8d8; }
+[data-theme="light"] .f-solid-c:hover { background: #ececec; }
+[data-theme="light"] .f-solid-accent:hover { background: #c4c4c4; }
+
+/* Mobilmeny i ljust läge */
+[data-theme="light"] .nav-drawer {
+  background: rgba(255,255,255,.98);
+}
+
+/* Sidfoten är mörk i båda lägena — texten måste vara ljus */
+[data-theme="light"] .footer-logo,
+[data-theme="light"] .footer-col a:hover { color: #f0f4f6; }
+[data-theme="light"] .footer-brand p,
+[data-theme="light"] .footer-col a { color: rgba(240,244,246,.88); }
+[data-theme="light"] .footer-col h4 { color: #c9a45c; }
+
+/* Notisen överst på startsidan (Andunge-VM-resultat) */
+.hero-notice {
+  color: inherit; text-decoration: none;
+  background: rgba(10,18,26,.6);
+  padding: .7rem 1rem; border-radius: 4px;
+  display: inline-block;
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(184,145,74,.35);
+  flex: 1; min-width: 260px; max-width: 480px;
+  font-size: 1.2rem; line-height: 1.6;
+}
+[data-theme="light"] .hero-notice {
+  background: #ffffff;
+  border-color: rgba(0,0,0,.35);
+  color: #000000;
+}

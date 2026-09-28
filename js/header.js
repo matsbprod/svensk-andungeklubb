@@ -1,33 +1,45 @@
 (function() {
-  // ── Tema (ljust/mörkt) ──────────────────────────────────────
-  (function(){
-    var saved = localStorage.getItem('sak-theme');
-    if (saved === 'light') document.documentElement.setAttribute('data-theme', 'light');
-  })();
+  // ── Tema: ljust är standard, mörkt är ett val ───────────────
+  var THEME_KEY = 'sak-theme';
 
+  function readTheme() {
+    try { return localStorage.getItem(THEME_KEY) === 'dark' ? 'dark' : 'light'; }
+    catch (e) { return 'light'; }
+  }
+  function applyTheme(mode) {
+    document.documentElement.setAttribute('data-theme', mode);
+    try { localStorage.setItem(THEME_KEY, mode); } catch (e) {}
+  }
+  document.documentElement.setAttribute('data-theme', readTheme());
+
+  var toggleButtons = [];
+  function toggleLabel(long) {
+    var isLight = document.documentElement.getAttribute('data-theme') !== 'dark';
+    var text = isLight ? '\u263E M\u00f6rkt' : '\u2600 Ljust';
+    return long ? text + ' l\u00e4ge' : text;
+  }
+  function makeToggle(long) {
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'theme-toggle';
+    btn.setAttribute('aria-label', 'Byt tema');
+    btn._long = long;
+    btn.textContent = toggleLabel(long);
+    btn.addEventListener('click', function() {
+      var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      applyTheme(next);
+      toggleButtons.forEach(function(b) { b.textContent = toggleLabel(b._long); });
+    });
+    toggleButtons.push(btn);
+    return btn;
+  }
+
+  // Knapp i den vanliga menyraden (syns på dator/surfplatta)
   function injectThemeButton() {
     var navLinks = document.querySelector('.nav-links');
     if (!navLinks || document.getElementById('theme-toggle')) return;
-    var btn = document.createElement('button');
+    var btn = makeToggle(false);
     btn.id = 'theme-toggle';
-    btn.className = 'theme-toggle';
-    btn.setAttribute('aria-label', 'Byt tema');
-    function updateBtn() {
-      btn.textContent = document.documentElement.getAttribute('data-theme') === 'light'
-        ? '\u2602 M\u00f6rkt' : '\u2600 Ljust';
-    }
-    updateBtn();
-    btn.addEventListener('click', function() {
-      var next = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-      if (next === 'dark') {
-        document.documentElement.removeAttribute('data-theme');
-        localStorage.removeItem('sak-theme');
-      } else {
-        document.documentElement.setAttribute('data-theme', 'light');
-        localStorage.setItem('sak-theme', 'light');
-      }
-      updateBtn();
-    });
     navLinks.appendChild(btn);
   }
 
@@ -64,6 +76,7 @@
       drawer.appendChild(link);
     });
   }
+  drawer.appendChild(makeToggle(true));   // temaknapp i mobilmenyn
   document.body.appendChild(drawer);
 
   burger.addEventListener('click', function() {

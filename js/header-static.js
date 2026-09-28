@@ -1,35 +1,84 @@
 (function() {
-  // ── Tema (ljust/mörkt) ──────────────────────────────────────
-  (function(){
-    var saved = localStorage.getItem('sak-theme');
-    if (saved === 'light') document.documentElement.setAttribute('data-theme', 'light');
-  })();
+  // ── Tema: ljust är standard, mörkt är ett val ───────────────
+  var THEME_KEY = 'sak-theme';
 
-  // ── Temväljare-knapp ───────────────────────────────────────────────────────
+  function readTheme() {
+    try { return localStorage.getItem(THEME_KEY) === 'dark' ? 'dark' : 'light'; }
+    catch (e) { return 'light'; }
+  }
+  function applyTheme(mode) {
+    document.documentElement.setAttribute('data-theme', mode);
+    try { localStorage.setItem(THEME_KEY, mode); } catch (e) {}
+  }
+  document.documentElement.setAttribute('data-theme', readTheme());
+
+  var toggleButtons = [];
+  function toggleLabel(long) {
+    var isLight = document.documentElement.getAttribute('data-theme') !== 'dark';
+    var text = isLight ? '\u263E M\u00f6rkt' : '\u2600 Ljust';
+    return long ? text + ' l\u00e4ge' : text;
+  }
+  function makeToggle(long) {
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'theme-toggle';
+    btn.setAttribute('aria-label', 'Byt tema');
+    btn._long = long;
+    btn.textContent = toggleLabel(long);
+    btn.addEventListener('click', function() {
+      var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      applyTheme(next);
+      toggleButtons.forEach(function(b) { b.textContent = toggleLabel(b._long); });
+    });
+    toggleButtons.push(btn);
+    return btn;
+  }
+
+  // Knapp i den vanliga menyraden (dator/surfplatta)
   function injectThemeButton() {
     var navLinks = document.querySelector('.nav-links');
     if (!navLinks || document.getElementById('theme-toggle')) return;
-    var btn = document.createElement('button');
+    var btn = makeToggle(false);
     btn.id = 'theme-toggle';
-    btn.className = 'theme-toggle';
-    btn.setAttribute('aria-label', 'Byt tema');
-    function updateBtn() {
-      btn.textContent = document.documentElement.getAttribute('data-theme') === 'light'
-        ? '\u2602 M\u00f6rkt' : '\u2600 Ljust';
-    }
-    updateBtn();
-    btn.addEventListener('click', function() {
-      var next = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-      if (next === 'dark') {
-        document.documentElement.removeAttribute('data-theme');
-        localStorage.removeItem('sak-theme');
-      } else {
-        document.documentElement.setAttribute('data-theme', 'light');
-        localStorage.setItem('sak-theme', 'light');
-      }
-      updateBtn();
-    });
     navLinks.appendChild(btn);
+  }
+
+  // Hamburgermeny + mobilmeny med temaknapp (nav-links är dold på små skärmar).
+  // Görs bara om sidan inte redan har en hamburgermeny.
+  function setupMobileMenu() {
+    if (document.querySelector('.hamburger') || document.querySelector('.nav-drawer')) return;
+    var navLinks = document.querySelector('.nav-links');
+    if (!navLinks) return;
+
+    var burger = document.createElement('button');
+    burger.className = 'hamburger';
+    burger.setAttribute('aria-label', 'Meny');
+    burger.innerHTML = '<span></span><span></span><span></span>';
+    document.body.appendChild(burger);
+
+    var drawer = document.createElement('div');
+    drawer.className = 'nav-drawer';
+    navLinks.querySelectorAll('a').forEach(function(a) {
+      var link = document.createElement('a');
+      link.href = a.href;
+      link.textContent = a.textContent;
+      drawer.appendChild(link);
+    });
+    drawer.appendChild(makeToggle(true));
+    document.body.appendChild(drawer);
+
+    burger.addEventListener('click', function() {
+      var isOpen = burger.classList.toggle('open');
+      drawer.classList.toggle('open', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+    drawer.addEventListener('click', function(e) {
+      if (e.target.tagName === 'A') {
+        burger.classList.remove('open');
+        drawer.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    });
   }
 
   // ── Inject shared navbar ──────────────────────────────────────────────────
@@ -48,10 +97,12 @@
         }
       }
       injectThemeButton();
+      setupMobileMenu();
     })
     .catch(function(){
       // If fetch fails (e.g. local file://) leave existing nav in place
       injectThemeButton();
+      setupMobileMenu();
     });
 
   // ── Logo + duck placement ─────────────────────────────────────────────────
