@@ -155,7 +155,7 @@ var ISSUES = {
   var root=document.getElementById('archive'), html='';
   Object.keys(ISSUES).sort(function(a,b){return b-a;}).forEach(function(y){
     html+='<h4 class="archive-year">'+y+'</h4><div class="pdf-grid">';
-    ISSUES[y].forEach(function(n){
+    ISSUES[y].slice().sort(function(a,b){return a-b;}).forEach(function(n){
       var src='../pdf/andungeblad/'+y+'-'+n+'.pdf';
       var label=(typeof n==='number')?'Nr '+n+' '+y:'Medlemsbrev '+y;
       html+='<a href="#" class="pdf-card" data-src="'+src+'">'+
