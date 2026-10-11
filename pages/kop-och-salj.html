@@ -147,28 +147,6 @@
       <div class="info-box" style="position:relative">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem">
           <div>
-            <span style="font-family:'Cinzel',serif;font-size:.75em;letter-spacing:.07em;color:var(--brass)">BORTSKÄNKES · BÅT</span>
-            <h3 style="margin:.2rem 0 0">Renoveringsprojekt bortskänkes, SWE 37</h3>
-          </div>
-          <span style="font-family:'Cinzel',serif;font-size:.85em;color:var(--brass)">Gratis</span>
-        </div>
-        <p style="margin:0 0 .8rem">Sonen och undertecknad köpte en Andunge för många år sedan. Den hade stått i en lagerlokal där värmen var för hög så resultatet blev att bordläggningen släppte i fogarna. Båten är renskrapad på utsidan. Båten bortskänkes med enklare tvåaxlad vagn.</p>
-        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;margin:.9rem 0">
-          <img src="../img/kop_salj/37_1.jpg" alt="SWE 37" loading="lazy" onclick="openKosLb37(0)" style="width:100%;aspect-ratio:1;object-fit:cover;cursor:zoom-in;border-radius:2px;transition:opacity .2s" onmouseover="this.style.opacity='.75'" onmouseout="this.style.opacity='1'">
-          <img src="../img/kop_salj/37_2.jpg" alt="SWE 37" loading="lazy" onclick="openKosLb37(1)" style="width:100%;aspect-ratio:1;object-fit:cover;cursor:zoom-in;border-radius:2px;transition:opacity .2s" onmouseover="this.style.opacity='.75'" onmouseout="this.style.opacity='1'">
-          <img src="../img/kop_salj/37_3.jpg" alt="SWE 37" loading="lazy" onclick="openKosLb37(2)" style="width:100%;aspect-ratio:1;object-fit:cover;cursor:zoom-in;border-radius:2px;transition:opacity .2s" onmouseover="this.style.opacity='.75'" onmouseout="this.style.opacity='1'">
-          <img src="../img/kop_salj/37_4.jpg" alt="SWE 37" loading="lazy" onclick="openKosLb37(3)" style="width:100%;aspect-ratio:1;object-fit:cover;cursor:zoom-in;border-radius:2px;transition:opacity .2s" onmouseover="this.style.opacity='.75'" onmouseout="this.style.opacity='1'">
-        </div>
-        <div style="font-size:.88em;margin-top:.9rem;display:flex;flex-direction:column;gap:.25rem;opacity:.8">
-          <div>Kontakt: <strong style="color:var(--white)">Gunnar Drougge</strong></div>
-          <div>E-post: <a href="mailto:gunnar.drougge@gmail.com" style="color:var(--brass)">gunnar.drougge@gmail.com</a></div>
-          <div>Mobil: <a href="tel:+46707123427" style="color:var(--brass)">0707-12 34 27</a></div>
-        </div>
-      </div>
-
-      <div class="info-box" style="position:relative">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem">
-          <div>
             <span style="font-family:'Cinzel',serif;font-size:.75em;letter-spacing:.07em;color:var(--brass)">SÄLJES · BÅT</span>
             <h3 style="margin:.2rem 0 0">Andunge nr 52 till salu</h3>
           </div>
@@ -286,8 +264,6 @@ function updateFormLabels(typ) {
 <script>
 var kosActivePhotos=[];var kosActiveCur=0;
 function openKosLbSet(photos,i){kosActivePhotos=photos;kosActiveCur=i;document.getElementById('kos-lb-img').src=kosActivePhotos[i];document.getElementById('kos-lb').style.display='flex';}
-var kosPhotos37=['../img/kop_salj/37_1.jpg','../img/kop_salj/37_2.jpg','../img/kop_salj/37_3.jpg','../img/kop_salj/37_4.jpg'];
-function openKosLb37(i){openKosLbSet(kosPhotos37,i);}
 var kosPhotos52=['../img/SWE52.jpg'];
 function openKosLb52(i){openKosLbSet(kosPhotos52,i);}
 function kosLbNav(d){if(!kosActivePhotos.length)return;kosActiveCur=(kosActiveCur+d+kosActivePhotos.length)%kosActivePhotos.length;document.getElementById('kos-lb-img').src=kosActivePhotos[kosActiveCur];}
