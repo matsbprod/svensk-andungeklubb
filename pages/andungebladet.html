@@ -68,6 +68,8 @@
     color: var(--brass); margin-bottom: 1.5rem;
     padding-top: 1rem; border-top: 1px solid rgba(184,145,74,.15);
   }
+  .archive-year {font-family:'Cinzel',serif;font-weight:400;font-size:1.1rem;letter-spacing:.08em;color:var(--white);margin:2.2rem 0 1rem;}
+  .archive-year:first-child {margin-top:0;}
   @media(max-width:700px) {
     .pdf-featured-card { grid-template-columns: 1fr; }
   }
@@ -78,7 +80,7 @@
   <div class="nav-links">
     <a href="../index.html">Hem</a>
     <a href="om-klubben.html">Om klubben</a>
-    <a href="om-andungen.html" style="color:var(--white)">Om Andungen</a>
+    <a href="om-andungen.html">Om Andungen</a>
     <a href="batregistret.html">B&#229;tregistret</a>
     <a href="andungebladet.html" style="color:var(--white)">Andungebladet</a>
     <a href="kappsegling.html">Kappsegling</a>
@@ -106,14 +108,14 @@
 
 <div class="archive-body">
   <div class="archive-note">
-    &#196;ldre nummer l&#228;ggs till l&#246;pande. Kontakta oss om du har nummer som saknas &mdash;
+    Arkivet str&#228;cker sig fr&#229;n 1985 och fram&#229;t, men n&#229;gra nummer saknas &mdash; bland annat hela 1986&ndash;1990. Har du gamla nummer som inte finns h&#228;r? H&#246;r av dig &mdash;
     <a href="mailto:register@andunge.se">register@andunge.se</a>
   </div>
   <!-- Featured latest issue -->
   <div class="pdf-featured">
-    <a href="#" onclick="openPdf('../pdf/andungeblad/Andungebladet%201%202026.pdf'); return false;" class="pdf-featured-card">
+    <a href="#" onclick="openPdf('../pdf/andungeblad/2026-1.pdf'); return false;" class="pdf-featured-card">
       <div class="pdf-featured-thumb">
-        <canvas class="pdf-canvas" data-src="../pdf/andungeblad/Andungebladet%201%202026.pdf"></canvas>
+        <canvas class="pdf-canvas" data-src="../pdf/andungeblad/2026-1.pdf"></canvas>
         <div class="pdf-fallback">
           <svg viewBox="0 0 40 52" xmlns="http://www.w3.org/2000/svg">
             <path d="M24 0H4C1.8 0 0 1.8 0 4v44c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
@@ -134,398 +136,41 @@
 
   <h3 class="archive-section-heading">Tidigare nummer</h3>
 
-  <div class="pdf-grid">
-      <a href="#" onclick="openPdf('../pdf/andungeblad/Andungebladet%201%202025.pdf'); return false;" class="pdf-card">
-        <div class="pdf-thumb">
-          <canvas class="pdf-canvas" data-src="../pdf/andungeblad/Andungebladet%201%202025.pdf"></canvas>
-          <div class="pdf-fallback">
-            <svg viewBox="0 0 40 52" xmlns="http://www.w3.org/2000/svg">
-              <path d="M24 0H4C1.8 0 0 1.8 0 4v44c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
-              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
-              <text x="20" y="36" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#b8914a">PDF</text>
-            </svg>
-          </div>
-        </div>
-        <div class="pdf-info">
-          <span class="pdf-year">2025</span>
-          <span class="pdf-label">Nr 1 2025</span>
-        </div>
-      </a>
-      <a href="#" onclick="openPdf('../pdf/andungeblad/Andungebladet%202%202025.pdf'); return false;" class="pdf-card">
-        <div class="pdf-thumb">
-          <canvas class="pdf-canvas" data-src="../pdf/andungeblad/Andungebladet%202%202025.pdf"></canvas>
-          <div class="pdf-fallback">
-            <svg viewBox="0 0 40 52" xmlns="http://www.w3.org/2000/svg">
-              <path d="M24 0H4C1.8 0 0 1.8 0 4v44c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
-              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
-              <text x="20" y="36" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#b8914a">PDF</text>
-            </svg>
-          </div>
-        </div>
-        <div class="pdf-info">
-          <span class="pdf-year">2025</span>
-          <span class="pdf-label">Nr 2 2025</span>
-        </div>
-      </a>
-      <a href="#" onclick="openPdf('../pdf/andungeblad/Andungebladet%201%202024.pdf'); return false;" class="pdf-card">
-        <div class="pdf-thumb">
-          <canvas class="pdf-canvas" data-src="../pdf/andungeblad/Andungebladet%201%202024.pdf"></canvas>
-          <div class="pdf-fallback">
-            <svg viewBox="0 0 40 52" xmlns="http://www.w3.org/2000/svg">
-              <path d="M24 0H4C1.8 0 0 1.8 0 4v44c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
-              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
-              <text x="20" y="36" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#b8914a">PDF</text>
-            </svg>
-          </div>
-        </div>
-        <div class="pdf-info">
-          <span class="pdf-year">2024</span>
-          <span class="pdf-label">Nr 1 2024</span>
-        </div>
-      </a>
-      <a href="#" onclick="openPdf('../pdf/andungeblad/Andungebladet%202%202024.pdf'); return false;" class="pdf-card">
-        <div class="pdf-thumb">
-          <canvas class="pdf-canvas" data-src="../pdf/andungeblad/Andungebladet%202%202024.pdf"></canvas>
-          <div class="pdf-fallback">
-            <svg viewBox="0 0 40 52" xmlns="http://www.w3.org/2000/svg">
-              <path d="M24 0H4C1.8 0 0 1.8 0 4v44c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
-              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
-              <text x="20" y="36" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#b8914a">PDF</text>
-            </svg>
-          </div>
-        </div>
-        <div class="pdf-info">
-          <span class="pdf-year">2024</span>
-          <span class="pdf-label">Nr 2 2024</span>
-        </div>
-      </a>
-      <a href="#" onclick="openPdf('../pdf/andungeblad/Andungebladet%203%202024.pdf'); return false;" class="pdf-card">
-        <div class="pdf-thumb">
-          <canvas class="pdf-canvas" data-src="../pdf/andungeblad/Andungebladet%203%202024.pdf"></canvas>
-          <div class="pdf-fallback">
-            <svg viewBox="0 0 40 52" xmlns="http://www.w3.org/2000/svg">
-              <path d="M24 0H4C1.8 0 0 1.8 0 4v44c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
-              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
-              <text x="20" y="36" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#b8914a">PDF</text>
-            </svg>
-          </div>
-        </div>
-        <div class="pdf-info">
-          <span class="pdf-year">2024</span>
-          <span class="pdf-label">Nr 3 2024</span>
-        </div>
-      </a>
-      <a href="#" onclick="openPdf('../pdf/andungeblad/Andungebladet%201%202023.pdf'); return false;" class="pdf-card">
-        <div class="pdf-thumb">
-          <canvas class="pdf-canvas" data-src="../pdf/andungeblad/Andungebladet%201%202023.pdf"></canvas>
-          <div class="pdf-fallback">
-            <svg viewBox="0 0 40 52" xmlns="http://www.w3.org/2000/svg">
-              <path d="M24 0H4C1.8 0 0 1.8 0 4v44c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
-              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
-              <text x="20" y="36" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#b8914a">PDF</text>
-            </svg>
-          </div>
-        </div>
-        <div class="pdf-info">
-          <span class="pdf-year">2023</span>
-          <span class="pdf-label">Nr 1 2023</span>
-        </div>
-      </a>
-      <a href="#" onclick="openPdf('../pdf/andungeblad/Andungebladet%202%202023.pdf'); return false;" class="pdf-card">
-        <div class="pdf-thumb">
-          <canvas class="pdf-canvas" data-src="../pdf/andungeblad/Andungebladet%202%202023.pdf"></canvas>
-          <div class="pdf-fallback">
-            <svg viewBox="0 0 40 52" xmlns="http://www.w3.org/2000/svg">
-              <path d="M24 0H4C1.8 0 0 1.8 0 4v44c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
-              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
-              <text x="20" y="36" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#b8914a">PDF</text>
-            </svg>
-          </div>
-        </div>
-        <div class="pdf-info">
-          <span class="pdf-year">2023</span>
-          <span class="pdf-label">Nr 2 2023</span>
-        </div>
-      </a>
-      <a href="#" onclick="openPdf('../pdf/andungeblad/Andungebladet%203%202023.pdf'); return false;" class="pdf-card">
-        <div class="pdf-thumb">
-          <canvas class="pdf-canvas" data-src="../pdf/andungeblad/Andungebladet%203%202023.pdf"></canvas>
-          <div class="pdf-fallback">
-            <svg viewBox="0 0 40 52" xmlns="http://www.w3.org/2000/svg">
-              <path d="M24 0H4C1.8 0 0 1.8 0 4v44c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/>
-              <path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/>
-              <text x="20" y="36" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#b8914a">PDF</text>
-            </svg>
-          </div>
-        </div>
-        <div class="pdf-info">
-          <span class="pdf-year">2023</span>
-          <span class="pdf-label">Nr 3 2023</span>
-        </div>
-      </a>
-
-      <a href="#" onclick="openPdf('../pdf/andungeblad/Andungebladet%203%202022.pdf'); return false;" class="pdf-card">
-        <div class="pdf-thumb">
-          <canvas class="pdf-canvas" data-src="../pdf/andungeblad/Andungebladet%203%202022.pdf"></canvas>
-          <div class="pdf-fallback"><svg viewBox="0 0 40 52" xmlns="http://www.w3.org/2000/svg"><path d="M24 0H4C1.8 0 0 1.8 0 4v44c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/><path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/><text x="20" y="36" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#b8914a">PDF</text></svg></div>
-        </div>
-        <div class="pdf-info">
-          <span class="pdf-year">2022</span>
-          <span class="pdf-label">Nr 3 2022</span>
-        </div>
-      </a>
-      <a href="#" onclick="openPdf('../pdf/andungeblad/Andungebladet%202%202022.pdf'); return false;" class="pdf-card">
-        <div class="pdf-thumb">
-          <canvas class="pdf-canvas" data-src="../pdf/andungeblad/Andungebladet%202%202022.pdf"></canvas>
-          <div class="pdf-fallback"><svg viewBox="0 0 40 52" xmlns="http://www.w3.org/2000/svg"><path d="M24 0H4C1.8 0 0 1.8 0 4v44c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/><path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/><text x="20" y="36" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#b8914a">PDF</text></svg></div>
-        </div>
-        <div class="pdf-info">
-          <span class="pdf-year">2022</span>
-          <span class="pdf-label">Nr 2 2022</span>
-        </div>
-      </a>
-      <a href="#" onclick="openPdf('../pdf/andungeblad/Andungebladet%201%202022.pdf'); return false;" class="pdf-card">
-        <div class="pdf-thumb">
-          <canvas class="pdf-canvas" data-src="../pdf/andungeblad/Andungebladet%201%202022.pdf"></canvas>
-          <div class="pdf-fallback"><svg viewBox="0 0 40 52" xmlns="http://www.w3.org/2000/svg"><path d="M24 0H4C1.8 0 0 1.8 0 4v44c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/><path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/><text x="20" y="36" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#b8914a">PDF</text></svg></div>
-        </div>
-        <div class="pdf-info">
-          <span class="pdf-year">2022</span>
-          <span class="pdf-label">Nr 1 2022</span>
-        </div>
-      </a>
-      <a href="#" onclick="openPdf('../pdf/andungeblad/Andungebladet%203%202021.pdf'); return false;" class="pdf-card">
-        <div class="pdf-thumb">
-          <canvas class="pdf-canvas" data-src="../pdf/andungeblad/Andungebladet%203%202021.pdf"></canvas>
-          <div class="pdf-fallback"><svg viewBox="0 0 40 52" xmlns="http://www.w3.org/2000/svg"><path d="M24 0H4C1.8 0 0 1.8 0 4v44c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/><path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/><text x="20" y="36" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#b8914a">PDF</text></svg></div>
-        </div>
-        <div class="pdf-info">
-          <span class="pdf-year">2021</span>
-          <span class="pdf-label">Nr 3 2021</span>
-        </div>
-      </a>
-      <a href="#" onclick="openPdf('../pdf/andungeblad/Andungebladet%202%202021.pdf'); return false;" class="pdf-card">
-        <div class="pdf-thumb">
-          <canvas class="pdf-canvas" data-src="../pdf/andungeblad/Andungebladet%202%202021.pdf"></canvas>
-          <div class="pdf-fallback"><svg viewBox="0 0 40 52" xmlns="http://www.w3.org/2000/svg"><path d="M24 0H4C1.8 0 0 1.8 0 4v44c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/><path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/><text x="20" y="36" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#b8914a">PDF</text></svg></div>
-        </div>
-        <div class="pdf-info">
-          <span class="pdf-year">2021</span>
-          <span class="pdf-label">Nr 2 2021</span>
-        </div>
-      </a>
-      <a href="#" onclick="openPdf('../pdf/andungeblad/Andungebladet%201%202021.pdf'); return false;" class="pdf-card">
-        <div class="pdf-thumb">
-          <canvas class="pdf-canvas" data-src="../pdf/andungeblad/Andungebladet%201%202021.pdf"></canvas>
-          <div class="pdf-fallback"><svg viewBox="0 0 40 52" xmlns="http://www.w3.org/2000/svg"><path d="M24 0H4C1.8 0 0 1.8 0 4v44c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/><path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/><text x="20" y="36" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#b8914a">PDF</text></svg></div>
-        </div>
-        <div class="pdf-info">
-          <span class="pdf-year">2021</span>
-          <span class="pdf-label">Nr 1 2021</span>
-        </div>
-      </a>
-      <a href="#" onclick="openPdf('../pdf/andungeblad/Andungebladet%202%202020.pdf'); return false;" class="pdf-card">
-        <div class="pdf-thumb">
-          <canvas class="pdf-canvas" data-src="../pdf/andungeblad/Andungebladet%202%202020.pdf"></canvas>
-          <div class="pdf-fallback"><svg viewBox="0 0 40 52" xmlns="http://www.w3.org/2000/svg"><path d="M24 0H4C1.8 0 0 1.8 0 4v44c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/><path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/><text x="20" y="36" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#b8914a">PDF</text></svg></div>
-        </div>
-        <div class="pdf-info">
-          <span class="pdf-year">2020</span>
-          <span class="pdf-label">Nr 2 2020</span>
-        </div>
-      </a>
-      <a href="#" onclick="openPdf('../pdf/andungeblad/Andungebladet%201%202020.pdf'); return false;" class="pdf-card">
-        <div class="pdf-thumb">
-          <canvas class="pdf-canvas" data-src="../pdf/andungeblad/Andungebladet%201%202020.pdf"></canvas>
-          <div class="pdf-fallback"><svg viewBox="0 0 40 52" xmlns="http://www.w3.org/2000/svg"><path d="M24 0H4C1.8 0 0 1.8 0 4v44c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/><path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/><text x="20" y="36" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#b8914a">PDF</text></svg></div>
-        </div>
-        <div class="pdf-info">
-          <span class="pdf-year">2020</span>
-          <span class="pdf-label">Nr 1 2020</span>
-        </div>
-      </a>
-      <a href="#" onclick="openPdf('../pdf/andungeblad/Andungebladet%203%202019.pdf'); return false;" class="pdf-card">
-        <div class="pdf-thumb">
-          <canvas class="pdf-canvas" data-src="../pdf/andungeblad/Andungebladet%203%202019.pdf"></canvas>
-          <div class="pdf-fallback"><svg viewBox="0 0 40 52" xmlns="http://www.w3.org/2000/svg"><path d="M24 0H4C1.8 0 0 1.8 0 4v44c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/><path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/><text x="20" y="36" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#b8914a">PDF</text></svg></div>
-        </div>
-        <div class="pdf-info">
-          <span class="pdf-year">2019</span>
-          <span class="pdf-label">Nr 3 2019</span>
-        </div>
-      </a>
-      <a href="#" onclick="openPdf('../pdf/andungeblad/Andungebladet%202%202019.pdf'); return false;" class="pdf-card">
-        <div class="pdf-thumb">
-          <canvas class="pdf-canvas" data-src="../pdf/andungeblad/Andungebladet%202%202019.pdf"></canvas>
-          <div class="pdf-fallback"><svg viewBox="0 0 40 52" xmlns="http://www.w3.org/2000/svg"><path d="M24 0H4C1.8 0 0 1.8 0 4v44c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/><path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/><text x="20" y="36" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#b8914a">PDF</text></svg></div>
-        </div>
-        <div class="pdf-info">
-          <span class="pdf-year">2019</span>
-          <span class="pdf-label">Nr 2 2019</span>
-        </div>
-      </a>
-      <a href="#" onclick="openPdf('../pdf/andungeblad/Andungebladet%201%202019.pdf'); return false;" class="pdf-card">
-        <div class="pdf-thumb">
-          <canvas class="pdf-canvas" data-src="../pdf/andungeblad/Andungebladet%201%202019.pdf"></canvas>
-          <div class="pdf-fallback"><svg viewBox="0 0 40 52" xmlns="http://www.w3.org/2000/svg"><path d="M24 0H4C1.8 0 0 1.8 0 4v44c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/><path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/><text x="20" y="36" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#b8914a">PDF</text></svg></div>
-        </div>
-        <div class="pdf-info">
-          <span class="pdf-year">2019</span>
-          <span class="pdf-label">Nr 1 2019</span>
-        </div>
-      </a>
-      <a href="#" onclick="openPdf('../pdf/andungeblad/Andungebladet%203%202018.pdf'); return false;" class="pdf-card">
-        <div class="pdf-thumb">
-          <canvas class="pdf-canvas" data-src="../pdf/andungeblad/Andungebladet%203%202018.pdf"></canvas>
-          <div class="pdf-fallback"><svg viewBox="0 0 40 52" xmlns="http://www.w3.org/2000/svg"><path d="M24 0H4C1.8 0 0 1.8 0 4v44c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/><path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/><text x="20" y="36" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#b8914a">PDF</text></svg></div>
-        </div>
-        <div class="pdf-info">
-          <span class="pdf-year">2018</span>
-          <span class="pdf-label">Nr 3 2018</span>
-        </div>
-      </a>
-      <a href="#" onclick="openPdf('../pdf/andungeblad/Andungebladet%202%202018.pdf'); return false;" class="pdf-card">
-        <div class="pdf-thumb">
-          <canvas class="pdf-canvas" data-src="../pdf/andungeblad/Andungebladet%202%202018.pdf"></canvas>
-          <div class="pdf-fallback"><svg viewBox="0 0 40 52" xmlns="http://www.w3.org/2000/svg"><path d="M24 0H4C1.8 0 0 1.8 0 4v44c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/><path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/><text x="20" y="36" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#b8914a">PDF</text></svg></div>
-        </div>
-        <div class="pdf-info">
-          <span class="pdf-year">2018</span>
-          <span class="pdf-label">Nr 2 2018</span>
-        </div>
-      </a>
-      <a href="#" onclick="openPdf('../pdf/andungeblad/Andungebladet%201%202018.pdf'); return false;" class="pdf-card">
-        <div class="pdf-thumb">
-          <canvas class="pdf-canvas" data-src="../pdf/andungeblad/Andungebladet%201%202018.pdf"></canvas>
-          <div class="pdf-fallback"><svg viewBox="0 0 40 52" xmlns="http://www.w3.org/2000/svg"><path d="M24 0H4C1.8 0 0 1.8 0 4v44c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/><path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/><text x="20" y="36" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#b8914a">PDF</text></svg></div>
-        </div>
-        <div class="pdf-info">
-          <span class="pdf-year">2018</span>
-          <span class="pdf-label">Nr 1 2018</span>
-        </div>
-      </a>
-      <a href="#" onclick="openPdf('../pdf/andungeblad/Andungebladet%203%202017.pdf'); return false;" class="pdf-card">
-        <div class="pdf-thumb">
-          <canvas class="pdf-canvas" data-src="../pdf/andungeblad/Andungebladet%203%202017.pdf"></canvas>
-          <div class="pdf-fallback"><svg viewBox="0 0 40 52" xmlns="http://www.w3.org/2000/svg"><path d="M24 0H4C1.8 0 0 1.8 0 4v44c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/><path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/><text x="20" y="36" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#b8914a">PDF</text></svg></div>
-        </div>
-        <div class="pdf-info">
-          <span class="pdf-year">2017</span>
-          <span class="pdf-label">Nr 3 2017</span>
-        </div>
-      </a>
-      <a href="#" onclick="openPdf('../pdf/andungeblad/Andungebladet%202%202017.pdf'); return false;" class="pdf-card">
-        <div class="pdf-thumb">
-          <canvas class="pdf-canvas" data-src="../pdf/andungeblad/Andungebladet%202%202017.pdf"></canvas>
-          <div class="pdf-fallback"><svg viewBox="0 0 40 52" xmlns="http://www.w3.org/2000/svg"><path d="M24 0H4C1.8 0 0 1.8 0 4v44c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/><path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/><text x="20" y="36" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#b8914a">PDF</text></svg></div>
-        </div>
-        <div class="pdf-info">
-          <span class="pdf-year">2017</span>
-          <span class="pdf-label">Nr 2 2017</span>
-        </div>
-      </a>
-      <a href="#" onclick="openPdf('../pdf/andungeblad/Andungebladet%201%202017.pdf'); return false;" class="pdf-card">
-        <div class="pdf-thumb">
-          <canvas class="pdf-canvas" data-src="../pdf/andungeblad/Andungebladet%201%202017.pdf"></canvas>
-          <div class="pdf-fallback"><svg viewBox="0 0 40 52" xmlns="http://www.w3.org/2000/svg"><path d="M24 0H4C1.8 0 0 1.8 0 4v44c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/><path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/><text x="20" y="36" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#b8914a">PDF</text></svg></div>
-        </div>
-        <div class="pdf-info">
-          <span class="pdf-year">2017</span>
-          <span class="pdf-label">Nr 1 2017</span>
-        </div>
-      </a>
-      <a href="#" onclick="openPdf('../pdf/andungeblad/Andungebladet%204%202016.pdf'); return false;" class="pdf-card">
-        <div class="pdf-thumb">
-          <canvas class="pdf-canvas" data-src="../pdf/andungeblad/Andungebladet%204%202016.pdf"></canvas>
-          <div class="pdf-fallback"><svg viewBox="0 0 40 52" xmlns="http://www.w3.org/2000/svg"><path d="M24 0H4C1.8 0 0 1.8 0 4v44c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/><path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/><text x="20" y="36" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#b8914a">PDF</text></svg></div>
-        </div>
-        <div class="pdf-info">
-          <span class="pdf-year">2016</span>
-          <span class="pdf-label">Nr 4 2016</span>
-        </div>
-      </a>
-      <a href="#" onclick="openPdf('../pdf/andungeblad/Andungebladet%203%202016.pdf'); return false;" class="pdf-card">
-        <div class="pdf-thumb">
-          <canvas class="pdf-canvas" data-src="../pdf/andungeblad/Andungebladet%203%202016.pdf"></canvas>
-          <div class="pdf-fallback"><svg viewBox="0 0 40 52" xmlns="http://www.w3.org/2000/svg"><path d="M24 0H4C1.8 0 0 1.8 0 4v44c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/><path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/><text x="20" y="36" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#b8914a">PDF</text></svg></div>
-        </div>
-        <div class="pdf-info">
-          <span class="pdf-year">2016</span>
-          <span class="pdf-label">Nr 3 2016</span>
-        </div>
-      </a>
-      <a href="#" onclick="openPdf('../pdf/andungeblad/Andungebladet%202%202016.pdf'); return false;" class="pdf-card">
-        <div class="pdf-thumb">
-          <canvas class="pdf-canvas" data-src="../pdf/andungeblad/Andungebladet%202%202016.pdf"></canvas>
-          <div class="pdf-fallback"><svg viewBox="0 0 40 52" xmlns="http://www.w3.org/2000/svg"><path d="M24 0H4C1.8 0 0 1.8 0 4v44c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/><path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/><text x="20" y="36" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#b8914a">PDF</text></svg></div>
-        </div>
-        <div class="pdf-info">
-          <span class="pdf-year">2016</span>
-          <span class="pdf-label">Nr 2 2016</span>
-        </div>
-      </a>
-      <a href="#" onclick="openPdf('../pdf/andungeblad/Andungebladet%201%202016.pdf'); return false;" class="pdf-card">
-        <div class="pdf-thumb">
-          <canvas class="pdf-canvas" data-src="../pdf/andungeblad/Andungebladet%201%202016.pdf"></canvas>
-          <div class="pdf-fallback"><svg viewBox="0 0 40 52" xmlns="http://www.w3.org/2000/svg"><path d="M24 0H4C1.8 0 0 1.8 0 4v44c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/><path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/><text x="20" y="36" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#b8914a">PDF</text></svg></div>
-        </div>
-        <div class="pdf-info">
-          <span class="pdf-year">2016</span>
-          <span class="pdf-label">Nr 1 2016</span>
-        </div>
-      </a>
-      <a href="#" onclick="openPdf('../pdf/andungeblad/Andungebladet%205%202015.pdf'); return false;" class="pdf-card">
-        <div class="pdf-thumb">
-          <canvas class="pdf-canvas" data-src="../pdf/andungeblad/Andungebladet%205%202015.pdf"></canvas>
-          <div class="pdf-fallback"><svg viewBox="0 0 40 52" xmlns="http://www.w3.org/2000/svg"><path d="M24 0H4C1.8 0 0 1.8 0 4v44c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/><path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/><text x="20" y="36" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#b8914a">PDF</text></svg></div>
-        </div>
-        <div class="pdf-info">
-          <span class="pdf-year">2015</span>
-          <span class="pdf-label">Nr 5 2015</span>
-        </div>
-      </a>
-      <a href="#" onclick="openPdf('../pdf/andungeblad/Andungebladet%204%202015.pdf'); return false;" class="pdf-card">
-        <div class="pdf-thumb">
-          <canvas class="pdf-canvas" data-src="../pdf/andungeblad/Andungebladet%204%202015.pdf"></canvas>
-          <div class="pdf-fallback"><svg viewBox="0 0 40 52" xmlns="http://www.w3.org/2000/svg"><path d="M24 0H4C1.8 0 0 1.8 0 4v44c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/><path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/><text x="20" y="36" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#b8914a">PDF</text></svg></div>
-        </div>
-        <div class="pdf-info">
-          <span class="pdf-year">2015</span>
-          <span class="pdf-label">Nr 4 2015</span>
-        </div>
-      </a>
-      <a href="#" onclick="openPdf('../pdf/andungeblad/Andungebladet%203%202015.pdf'); return false;" class="pdf-card">
-        <div class="pdf-thumb">
-          <canvas class="pdf-canvas" data-src="../pdf/andungeblad/Andungebladet%203%202015.pdf"></canvas>
-          <div class="pdf-fallback"><svg viewBox="0 0 40 52" xmlns="http://www.w3.org/2000/svg"><path d="M24 0H4C1.8 0 0 1.8 0 4v44c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/><path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/><text x="20" y="36" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#b8914a">PDF</text></svg></div>
-        </div>
-        <div class="pdf-info">
-          <span class="pdf-year">2015</span>
-          <span class="pdf-label">Nr 3 2015</span>
-        </div>
-      </a>
-      <a href="#" onclick="openPdf('../pdf/andungeblad/Andungebladet%202%202015.pdf'); return false;" class="pdf-card">
-        <div class="pdf-thumb">
-          <canvas class="pdf-canvas" data-src="../pdf/andungeblad/Andungebladet%202%202015.pdf"></canvas>
-          <div class="pdf-fallback"><svg viewBox="0 0 40 52" xmlns="http://www.w3.org/2000/svg"><path d="M24 0H4C1.8 0 0 1.8 0 4v44c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/><path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/><text x="20" y="36" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#b8914a">PDF</text></svg></div>
-        </div>
-        <div class="pdf-info">
-          <span class="pdf-year">2015</span>
-          <span class="pdf-label">Nr 2 2015</span>
-        </div>
-      </a>
-      <a href="#" onclick="openPdf('../pdf/andungeblad/Andungebladet%201%202015.pdf'); return false;" class="pdf-card">
-        <div class="pdf-thumb">
-          <canvas class="pdf-canvas" data-src="../pdf/andungeblad/Andungebladet%201%202015.pdf"></canvas>
-          <div class="pdf-fallback"><svg viewBox="0 0 40 52" xmlns="http://www.w3.org/2000/svg"><path d="M24 0H4C1.8 0 0 1.8 0 4v44c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/><path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/><text x="20" y="36" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#b8914a">PDF</text></svg></div>
-        </div>
-        <div class="pdf-info">
-          <span class="pdf-year">2015</span>
-          <span class="pdf-label">Nr 1 2015</span>
-        </div>
-      </a>
-  </div>
+  <!-- Nummer per år. Lägg till ett nytt nummer genom att skriva in det här;
+       filen ska heta pdf/andungeblad/ÅÅÅÅ-N.pdf -->
+  <div id="archive"></div>
 </div>
+<script>
+var ISSUES = {
+  2025:[2,1], 2024:[3,2,1], 2023:[3,2,1], 2022:[3,2,1], 2021:[3,2,1], 2020:[2,1],
+  2019:[3,2,1], 2018:[3,2,1], 2017:[3,2,1], 2016:[4,3,2,1], 2015:[5,4,3,2,1],
+  2014:[3,2,1], 2013:[5,4,3,2,1], 2012:[5,4,3,2,1], 2011:[2], 2010:[3,2,1],
+  2009:[3,2,1], 2008:[3,2,1], 2007:[3,2,1], 2006:[2,1], 2005:[4,3,2,1],
+  2004:[3,2,1], 2003:[3,2,1], 2002:[1], 2001:[3,1], 2000:[3,2,1],
+  1999:[3,2,1], 1998:[3,2,1], 1997:[1], 1996:[2,1], 1995:[3,2], 1994:[1],
+  1993:[3,2], 1992:[2,1], 1991:[2,1], 1985:['medlemsbrev']
+};
+(function(){
+  var FB='<div class="pdf-fallback"><svg viewBox="0 0 40 52" xmlns="http://www.w3.org/2000/svg"><path d="M24 0H4C1.8 0 0 1.8 0 4v44c0 2.2 1.8 4 4 4h32c2.2 0 4-1.8 4-4V16L24 0z" fill="#1a2d3d"/><path d="M24 0v16h16" fill="none" stroke="#b8914a" stroke-width="1.5"/><text x="20" y="36" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#b8914a">PDF</text></svg></div>';
+  var root=document.getElementById('archive'), html='';
+  Object.keys(ISSUES).sort(function(a,b){return b-a;}).forEach(function(y){
+    html+='<h4 class="archive-year">'+y+'</h4><div class="pdf-grid">';
+    ISSUES[y].forEach(function(n){
+      var src='../pdf/andungeblad/'+y+'-'+n+'.pdf';
+      var label=(typeof n==='number')?'Nr '+n+' '+y:'Medlemsbrev '+y;
+      html+='<a href="#" class="pdf-card" data-src="'+src+'">'+
+        '<div class="pdf-thumb"><canvas class="pdf-canvas" data-src="'+src+'"></canvas>'+FB+'</div>'+
+        '<div class="pdf-info"><span class="pdf-year">'+y+'</span><span class="pdf-label">'+label+'</span></div></a>';
+    });
+    html+='</div>';
+  });
+  root.innerHTML=html;
+  root.addEventListener('click',function(e){
+    var card=e.target.closest('.pdf-card'); if(!card) return;
+    e.preventDefault(); openPdf(card.dataset.src);
+  });
+})();
+</script>
 <!-- Lightbox -->
 <div id="pdf-lightbox" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.95);backdrop-filter:blur(8px);flex-direction:column;align-items:center;justify-content:center;">
   <div style="position:absolute;top:1.2rem;right:1.5rem;display:flex;gap:1.5rem;align-items:center;z-index:2">
