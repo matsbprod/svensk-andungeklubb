@@ -614,6 +614,14 @@ footer {
 }
 .theme-toggle:hover { opacity: .7; }
 
+/* Knappen visar AKTUELLT läge, oavsett vilken text header.js sätter.
+   Originaltexten döljs (font-size:0) och ersätts med ::after. */
+.theme-toggle { font-size: 0 !important; }
+.theme-toggle::after { font-size: .7rem; letter-spacing: .14em; }
+:root:not([data-theme="light"]) .theme-toggle::after { content: "\263E  Mörkt läge"; }
+[data-theme="light"] .theme-toggle::after { content: "\2600  Ljust läge"; }
+.nav-drawer .theme-toggle::after { font-size: .9rem; }
+
 /* Temaknapp i mobilmenyn (nav-links är dold på små skärmar) */
 .nav-drawer .theme-toggle {
   font-size: .9rem; padding: .8rem 1.8rem;
